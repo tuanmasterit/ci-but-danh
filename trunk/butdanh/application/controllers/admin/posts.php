@@ -58,8 +58,7 @@ class Posts extends CI_Controller {
 	//------------------------------------------------------------------------
 	//-- Update post
 	//------------------------------------------------------------------------ 
-	public function update(){
-		$flag=false;		
+	public function update(){		
 		$l_id = $this->input->post('post_id');
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
@@ -68,13 +67,11 @@ class Posts extends CI_Controller {
 		$l_post_type = $this->input->post('hdfposttype');
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
-		if($flag==false){			
-			//Insert posts			
-			if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories)){
-				edirect('admin/posts/lists/post');							
-			}
-		}
-		redirect('admin/posst/add/'.$l_post_type);											
+		//Insert posts			
+		if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories)){
+			redirect('admin/posts/lists/post');							
+		}		
+		redirect('admin/posst/add/'.$l_post_type);
 	}
 	public function edit($id){
 		$data['lstbutdanh'] = $this->User_model->list_butdanh();
