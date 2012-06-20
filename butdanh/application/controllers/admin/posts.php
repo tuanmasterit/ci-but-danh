@@ -83,7 +83,29 @@ class Posts extends CI_Controller {
 	}
 	public function categories(){
 		$data['lstCategories'] = $this->Post_model->list_categories(10,0);
+		$data['Categories'] = $this->Post_model->getTopCategories();
 		$this->load->view('back_end/categories_view',$data);	
+	}
+	
+	public function save_categories()
+	{
+		if($this->input->post('txttitle'))
+		{
+			$this->Post_model->addCategory();			
+			$this-> session-> set_flashdata('message','Category created');			
+			redirect('admin/posts/categories','refresh');				
+		}
+		else {
+			$this-> session-> set_flashdata('message','Lỗi!');
+			redirect('admin/posts/categories','refresh');
+		}
+	}
+	
+	function categories_delete($id)
+	{
+		$this-> Post_model-> deleteCategory($id);
+		$this-> session-> set_flashdata('message','Category deleted');
+		redirect('admin/posts/categories','refresh');
 	}
 }
 
