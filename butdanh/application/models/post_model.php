@@ -152,6 +152,54 @@ class Post_model extends CI_Model{
 		$query = $this->db->get('ci_posts');			
 		$last_row = $query->last_row();
 		return $last_row->ID;
-	}	
+	}
+	
+	//Get Top Category Parent
+	function getTopCategories(){
+		$data[0] = 'Root';		
+		$Q = $this-> db-> get('ci_terms');
+		if ($Q-> num_rows() > 0){
+			foreach ($Q-> result_array() as $row){
+				$data[$row['term_id']] = $row['name'];
+			}
+		}
+		$Q-> free_result();
+		return $data;
+	}
+
+	//Add Category
+	function addCategory()
+	{
+		//Add Category
+		$cat = array(
+				'name' => $_POST['txttitle'],
+				'slug' => $_POST['txtslug'],				
+				);
+		$Q = $this-> db-> insert('ci_terms', $cat);
+		
+		//Add Term Taxonomy
+		$query = $this->db->get('ci_terms');			
+		$last_row = $query->last_row('array');
+		
+		$termTaxonomy = array(
+			'term_id' => $last_row['term_id'],
+			'taxonomy ' => 'category',
+			'description' => $_POST['txtexcerpt'],
+			'parent' =>$_POST['butdanh']
+		);
+		$this->db->insert('ci_term_taxonomy',$termTaxonomy);					
+	}
+	
+	//Delete Category
+	function deleteCategory($id)
+	{
+		//Delete Category
+		$this->db->where('term_id',$id);
+		$this->db->delete('ci_terms');
+		
+		//Delete Term Taxonomy
+		$this->db->where('term_id',$id);
+		$this->db->delete('ci_term_taxonomy');
+	}
 }
 ?>
