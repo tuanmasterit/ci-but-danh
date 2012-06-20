@@ -39,15 +39,24 @@ jQuery(document).ready(function(){
 	});
 	
 	//delete selected row in table
-	jQuery('.deletebutton').click(function(){
+	jQuery('.deletebutton').click(function(){		
+		var url = jQuery(this).attr('value');		
+		var p_method = jQuery(this).attr('name');
+		var id = '';
 		var tb = jQuery(this).attr('title');							// get target id of table								   
 		var sel = false;											//initialize to false as no selected row
 		var ch = jQuery('#'+tb).find('tbody input[type=checkbox]');		//get each checkbox in a table
-		
 		//check if there is/are selected row in table
 		ch.each(function(){
 			if(jQuery(this).is(':checked')) {
-				sel = true;											//set to true if there is/are selected row
+				sel = true;
+				id = jQuery(this).attr('value');
+				alert(url);
+				alert(p_method);
+				alert(id);
+				jQuery.post(url,{method:p_method,param:id},function(data) {
+					//alert(data);				
+				});
 				jQuery(this).parents('tr').fadeOut(function(){
 					jQuery(this).remove();							//remove row when animation is finished
 				});
@@ -62,12 +71,9 @@ jQuery(document).ready(function(){
 	jQuery('.stdtable a.delete').click(function(){
 		var c = confirm('Continue delete ?');
 		if(c){
-			//url=$("#home_url").attr('value');
-			var flag = '';
-			url = jQuery(this).attr('href');
-			id = jQuery(this).attr('id');
-			p_methor = jQuery(this).attr('name');
-			//alert(url);
+			var url = jQuery(this).attr('href');
+			var id = jQuery(this).attr('id');
+			var p_methor = jQuery(this).attr('name');
 			jQuery.post(url,{method:p_methor,param:id},function(data) {
 				//alert(data);				
 			});			
@@ -142,3 +148,12 @@ jQuery(document).ready(function(){
 	});*/
 
 });
+function delete_object(ur,p_method,id){
+	jQuery(document).ready(function(){
+		
+	});		
+	jQuery.post(url,{method:p_methor,param:id},function(data) {
+		//alert(data);				
+	});	
+	return true;
+}

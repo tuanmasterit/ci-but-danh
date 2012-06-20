@@ -16,7 +16,7 @@
                         <h2 class="table"><span>Table with Action</span></h2>
                     </div><!--contenttitle-->
                     <div class="tableoptions">
-                        <button class="deletebutton radius3" title="table2">Delete Selected</button> &nbsp;
+                        <button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
                         <select class="radius3">
                             <option value="">Show All</option>
                             <option value="">Rendering Engine</option>
@@ -57,7 +57,7 @@
                         <tbody>
                             <?php foreach($lstPosts as $Post){?>                            	
                             	<tr>
-                                	<td class="center"><span class="checkbox"><input type="checkbox"></span></td>
+                                	<td class="center"><input value="<?php echo $Post->id;?>" type="checkbox"></td>
                                     <td><?php echo $Post->post_title;?></td>
                                     <td><?php echo $Post->user_nicename;?></td>
                                     <td><?php echo $Post->post_excerpt;?></td>
