@@ -51,9 +51,6 @@ jQuery(document).ready(function(){
 			if(jQuery(this).is(':checked')) {
 				sel = true;
 				id = jQuery(this).attr('value');
-				alert(url);
-				alert(p_method);
-				alert(id);
 				jQuery.post(url,{method:p_method,param:id},function(data) {
 					//alert(data);				
 				});
