@@ -102,7 +102,7 @@ class Posts extends CI_Controller {
 	}
 	public function categories(){
 		$data['lstCategories'] = $this->Post_model->list_categories(10,0);
-		$data['Categories'] = $this->Post_model->getTopCategories();
+		$data['Categories'] = $this->Post_model->list_categories(100,0);
 		$this->load->view('back_end/categories_view',$data);	
 	}
 	

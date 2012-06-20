@@ -26,9 +26,11 @@
                             <br />
                             <p><label>Danh mục cha:</label></p>                            
                             <p>
-                            	<?php					
-									echo form_dropdown('butdanh', $Categories,'root',"style='width:80%;'");
-								?>
+                            	<select name="select">
+                                	<?php foreach($Categories as $cat){?>
+	                                    <option value="<?php echo $cat->term_id;?>"><?php echo $cat->name;?></option>
+									<?php }?>
+                                </select>
                             </p>
                             <br />
                             <p class="stdformbutton">

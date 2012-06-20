@@ -19,11 +19,11 @@ class Author extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('back_end/view_dashboard');
+		$this->load->view('back_end/author_view');
 	}
 	public function add()
 	{
-		$this->load->view('back_end/view_addbutdanh');
+		$this->load->view('back_end/add_butdanh_view');
 	}
 }
 
