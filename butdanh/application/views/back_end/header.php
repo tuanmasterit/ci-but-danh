@@ -16,7 +16,33 @@
 <!--[if IE 7]>
     <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/ie7.css"/>
 <![endif]-->
-<script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery-1.6.min.js"></script>
+<link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/validationEngine.jquery.css"/>
+
+<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/jquery.validationEngine-vi.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/jquery.validationEngine.js"></script>
+<script>
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine();
+			
+		});
+
+		/**
+		*
+		* @param {jqObject} the field where the validation applies
+		* @param {Array[String]} validation rules for this field
+		* @param {int} rule index
+		* @param {Map} form options
+		* @return an error string if validation failed
+		*/
+		function checkHELLO(field, rules, i, options){
+			if (field.val() != "HELLO") {
+				// this allows to use i18 for the error msgs
+				return options.allrules.validate2fields.alertText;
+			}
+		}
+</script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery.flot.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery.flot.resize.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
