@@ -120,11 +120,22 @@ class Posts extends CI_Controller {
 		}
 	}
 	
-	function categories_delete($id)
+	public function categories_delete($id)
 	{
 		$this-> Post_model-> deleteCategory($id);
 		$this-> session-> set_flashdata('message','Category deleted');
 		redirect('admin/posts/categories','refresh');
+	}
+	
+	function categories_edit($id=0)
+	{
+		if ($this-> input-> post('txttitle')){
+			$this-> Post_model-> updateCategory();
+			$this-> session-> set_flashdata('message','Category updated');
+			redirect('admin/posts/categories','refresh');
+		}else{
+			redirect('admin/posts/categories','refresh');
+		}
 	}
 }
 
