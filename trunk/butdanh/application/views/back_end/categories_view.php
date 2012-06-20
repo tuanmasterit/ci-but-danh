@@ -82,7 +82,7 @@
                                         <td class="center"><span class="checkbox"><input type="checkbox"></span></td>
                                         <td><?php echo $Category->name;?></td>
                                         <td><?php echo $Category->description;?></td>
-                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>/admin/posts/categories-edit/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" title="Xóa" href="<?php echo base_url();?>/admin/posts/categories_delete/<?php echo $Category->term_id;?>" >Xóa</a></td>
+                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>/admin/posts/categories-edit/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $Category->term_id;?>" name="delete_term" title="Xóa danh mục" href="<?php echo base_url();?>/admin/posts/delete/<?php echo $Category->term_id;?>" >Xóa</a></td>
                                     </tr>
                                 <?php }?>
                             </tbody>

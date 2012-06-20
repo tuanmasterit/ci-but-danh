@@ -10,7 +10,26 @@ class Posts extends CI_Controller {
 		$this->load->model('Post_model');
 		$this->load->model('User_model');
     }
-	
+	public function delete()
+	{
+		$method	= $this->input->post('method');
+		$param = $this->input->post('param');
+		if($method == 'delete_term'){
+			//Delete Category
+			$this->db->where('term_id',$param);
+			$this->db->delete('ci_terms');
+			
+			//Delete Term Taxonomy
+			$this->db->where('term_id',$param);
+			$this->db->delete('ci_term_taxonomy');
+		}
+		if($method == 'delete_post'){
+			//delete post meta
+			$this->Post_model->delete_post($param);					
+		}elseif($method == 'delete_term'){
+			$this->Post_model->delete_term($param);
+		}		
+	}
 	//------------------------------------------------------------------------
 	//-- Function default: List posts by post_type
 	//------------------------------------------------------------------------ 
