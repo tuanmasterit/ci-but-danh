@@ -8,21 +8,12 @@ class Posts extends CI_Controller {
 			redirect('admin/dashboard/login');
 		}
 		$this->load->model('Post_model');
-		$this->load->model('User_model');
+		$this->load->model('Author_model');
     }
 	public function delete()
 	{
 		$method	= $this->input->post('method');
-		$param = $this->input->post('param');
-		if($method == 'delete_term'){
-			//Delete Category
-			$this->db->where('term_id',$param);
-			$this->db->delete('ci_terms');
-			
-			//Delete Term Taxonomy
-			$this->db->where('term_id',$param);
-			$this->db->delete('ci_term_taxonomy');
-		}
+		$param = $this->input->post('param');		
 		if($method == 'delete_post'){
 			//delete post meta
 			$this->Post_model->delete_post($param);					
@@ -48,7 +39,7 @@ class Posts extends CI_Controller {
 	//------------------------------------------------------------------------
 	public function add($post_type)
 	{						
-		$data['lstbutdanh'] = $this->User_model->list_butdanh();
+		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 		$data['lstCategories'] = $this->Post_model->list_categories(100,0);
 		$data['post_type'] = $post_type;		
 		$this->load->view('back_end/view_add_post',$data);
@@ -93,7 +84,7 @@ class Posts extends CI_Controller {
 		redirect('admin/posst/add/'.$l_post_type);
 	}
 	public function edit($id){
-		$data['lstbutdanh'] = $this->User_model->list_butdanh();
+		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 		$data['lstCategories'] = $this->Post_model->list_categories(100,0);
 		$data['Post'] = $this->Post_model->get_post($id);
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
