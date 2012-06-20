@@ -163,7 +163,7 @@ class Post_model extends CI_Model{
 	
 	//Get Top Category Parent
 	function getTopCategories(){
-		$data[0] = 'Root';		
+		$data[0] = 'Không có cha';		
 		$Q = $this-> db-> get('ci_terms');
 		if ($Q-> num_rows() > 0){
 			foreach ($Q-> result_array() as $row){
