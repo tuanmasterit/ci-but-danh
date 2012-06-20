@@ -60,10 +60,21 @@ jQuery(document).ready(function(){
 	
 	//delete individual row
 	jQuery('.stdtable a.delete').click(function(){
-		var c = confirm('Continue delete?');
-		if(c) jQuery(this).parents('tr').fadeOut(function(){ 
-			jQuery(this).remove();
-		});
+		var c = confirm('Continue delete ?');
+		if(c){
+			//url=$("#home_url").attr('value');
+			var flag = '';
+			url = jQuery(this).attr('href');
+			id = jQuery(this).attr('id');
+			p_methor = jQuery(this).attr('name');
+			//alert(url);
+			jQuery.post(url,{method:p_methor,param:id},function(data) {
+				//alert(data);				
+			});			
+			jQuery(this).parents('tr').fadeOut(function(){ 
+				jQuery(this).remove();
+			});
+		}
 		return false;
 	});
 	

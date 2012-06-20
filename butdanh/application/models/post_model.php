@@ -129,6 +129,13 @@ class Post_model extends CI_Model{
 		}
         return '';
 	}
+	//delete post
+	function delete_post($id){
+		$this->db->delete('ci_postmeta',array('post_id'=>$id));
+		$this->db->delete('ci_term_relationships',array('object_id'=>$id));
+		$this->db->delete('ci_posts',array('id'=>$id));
+		$this->db->delete('ci_comments',array('comment_post_ID'=>$id));	
+	}
 	function get_categories_of_post($id){
 		$this->db->select('term_taxonomy_id');
 		$this->db->from('ci_term_relationships');
@@ -191,15 +198,23 @@ class Post_model extends CI_Model{
 	}
 	
 	//Delete Category
-	function deleteCategory($id)
+	function delete_term($id)
 	{
-		//Delete Category
-		$this->db->where('term_id',$id);
-		$this->db->delete('ci_terms');
-		
-		//Delete Term Taxonomy
-		$this->db->where('term_id',$id);
-		$this->db->delete('ci_term_taxonomy');
+		if($id != 1){
+			//update post to category 1
+			$taxonomy_id = get_taxonomy_by_term($id);
+			$this->db->where('term_taxonomy_id',$taxonomy_id);
+			$this->db->update('ci_term_relationships',array('term_taxonomy_id'=>$taxonomy_id));			
+			//Delete Category
+			$this->db->delete('ci_term_taxonomy',array('term_id'=>$id));
+			$this->db->delete('ci_terms',array('term_id'=>$id));						
+		}
+	}
+	//get term_taxonomy_by_term_id
+	function get_taxonomy_by_term($term_id){
+		$query = $this->db->get_where('ci_term_taxonomy',array('term_id' => $term_id));
+		$row = $query->first_row();
+		return $row->term_taxonomy_id;
 	}
 }
 ?>

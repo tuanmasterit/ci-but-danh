@@ -10,7 +10,8 @@
                     <li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
                     <li><a href="<?php echo base_url();?>admin/posts/categories">Danh mục bài viết</a></li>
                 </ul>                
-                <div class="content">                       	                            
+                <div class="content">
+                	<h1 id="ajaxtitle"></h1>                       	                            
                     <div class="contenttitle radiusbottom0">
                         <h2 class="table"><span>Table with Action</span></h2>
                     </div><!--contenttitle-->
@@ -61,7 +62,7 @@
                                     <td><?php echo $Post->user_nicename;?></td>
                                     <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo $Post->post_date;?></td>
-                                    <td class="center"><a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; <a class="delete" href="<?php echo base_url();?>admin/posts/delete/<?php echo $Post->id;?>">Xóa</a></td>
+                                    <td class="center"><a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/posts/delete">Xóa</a></td>
                                 </tr>
                             <?php }?>
                         </tbody>
