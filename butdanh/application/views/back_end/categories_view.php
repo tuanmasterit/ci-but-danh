@@ -27,6 +27,7 @@
                             <p><label>Danh mục cha:</label></p>                            
                             <p>
                             	<select name="select">
+                                	<option value="0">-- Không có danh mục cha --</option>
                                 	<?php foreach($Categories as $cat){?>
 	                                    <option value="<?php echo $cat->term_id;?>"><?php echo $cat->name;?></option>
 									<?php }?>
