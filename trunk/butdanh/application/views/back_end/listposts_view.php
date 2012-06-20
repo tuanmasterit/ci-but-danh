@@ -62,7 +62,9 @@
                                     <td><?php echo $Post->user_nicename;?></td>
                                     <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo $Post->post_date;?></td>
-                                    <td class="center"><a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/posts/delete">Xóa</a></td>
+                                    <td class="center">
+                                    	<a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
+                                        <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/posts/delete">Xóa</a></td>
                                 </tr>
                             <?php }?>
                         </tbody>

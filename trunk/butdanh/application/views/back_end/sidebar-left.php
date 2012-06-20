@@ -16,10 +16,9 @@
                         <li><a href="<?php echo base_url();?>admin/posts/add/topic"><span>Thêm mới chủ đề</span></a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo base_url();?>admin/butdanh/author" class="widgets menudrop"><span>Bút Danh</span></a>
+                <li><a href="<?php echo base_url();?>admin/author" class="widgets menudrop"><span>Bút Danh</span></a>
                     <ul>
-                        <li><a href="<?php echo base_url();?>admin/author"><span>Danh sách</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/author/add"><span>Thêm mới</span></a></li>                        
+                        <li><a href="<?php echo base_url();?>admin/author"><span>Danh sách</span></a></li>                        
                     </ul>
                 </li>                                        
                 <li><a href="<?php echo base_url();?>admin/user" class="elements menudrop"><span>Thành viên</span></a>
