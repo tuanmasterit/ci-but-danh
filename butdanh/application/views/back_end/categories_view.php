@@ -1,6 +1,5 @@
 <?php include('header.php'); ?>
-<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckeditor/ckeditor.js"></script>
-<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckfinder/ckfinder.js"></script>
+ 
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
@@ -14,27 +13,26 @@
                 </ul>
                 <div class="content">                	
                 	<div class="edit-left">   
-                    		<form method="post" action="<?php echo base_url();?>admin/posts/save_categories" class="stdform">
+                    		<form method="post" id="formID" action="<?php echo base_url();?>admin/posts/save_categories" class="stdform">
                             <p><label>Tên danh mục:</label></p>
-                            <p><span class="field"><input type="text" class="longinput" name="txttitle"></span></p>
-                            </br>
+                            <?php $data = array('name'=> 'txttitle','id'=> 'txttitle','class'=>'longinput validate[required]');?>
+                            <p><span class="field"><?php echo form_input($data);?></span></p>
+                            <br />
                             <p><label>Đường dẫn:</label></p>
-                            <p><span class="field"><input type="text" class="longinput" name="txtslug"></span></p>
-                            </br>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtslug"></span></p>
+                            <br />
                             <p><label>Mô tả:</label></p>                            
-                            <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
-                            </br>
+                            <p><span class="field"><textarea name="txtexcerpt" class="validate[required]"></textarea></span></p>
+                            <br />
                             <p><label>Danh mục cha:</label></p>                            
                             <p>
-                            	<select name="butdanh" style="width:80%;">
-									<?php foreach($lstCategories as $Category){?>
-                                        <option value="<?php echo $Category->term_id;?>"><?php echo $Category->name;?></option>
-                                    <?php }?>
-                                </select>
+                            	<?php					
+									echo form_dropdown('butdanh', $Categories,'root',"style='width:80%;'");
+								?>
                             </p>
-                            </br>
+                            <br />
                             <p class="stdformbutton">
-                                <button class="submit radius2">Thêm mới</button>
+                            	<?php echo form_submit('submit','Thêm mới',"class='submit radius2'");?>                                
                                 <input type="reset" value="Hủy" class="reset radius2">
                             </p>                            
                             </form>
@@ -84,7 +82,7 @@
                                         <td class="center"><span class="checkbox"><input type="checkbox"></span></td>
                                         <td><?php echo $Category->name;?></td>
                                         <td><?php echo $Category->description;?></td>
-                                        <td class="center"><a class="edit" href="">Sửa</a> &nbsp; <a class="delete" href="">Xóa</a></td>
+                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>/admin/posts/categories-edit/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" title="Xóa" href="<?php echo base_url();?>/admin/posts/categories_delete/<?php echo $Category->term_id;?>" >Xóa</a></td>
                                     </tr>
                                 <?php }?>
                             </tbody>
@@ -101,9 +99,6 @@
      	</div><!--mainwrapperinner-->
     </div><!--mainwrapper-->
 	<!-- END OF MAIN CONTENT -->        
-<script type="text/javascript">
-	var editor = CKEDITOR.replace( 'editor_content' );
-	CKFinder.setupCKEditor( editor, '../../application/ckfinder/' );
-</script>
+
 </body>
 </html>
