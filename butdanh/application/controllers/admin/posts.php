@@ -101,7 +101,12 @@ class Posts extends CI_Controller {
 	{
 		if($this->input->post('txttitle'))
 		{
-			$this->Post_model->addCategory();			
+			$name = $this->input->post('txttitle');
+			$slug = $this->input->post('txtslug');
+			$taxonomy = 'category';
+			$description = $this->input->post('txtexcerpt');
+			$parent = $this->input->post('butdanh');
+			$this->Post_model->addCategory($name,$slug,$taxonomy,$description,$parent);			
 			$this-> session-> set_flashdata('message','Category created');			
 			redirect('admin/posts/categories','refresh');				
 		}
@@ -118,14 +123,25 @@ class Posts extends CI_Controller {
 		redirect('admin/posts/categories','refresh');
 	}
 	
-	function categories_edit($id=0)
+	function editCat($id=0)
 	{
+		
+		$name = $this->input->post('txttitle');
+		$slug = $this->input->post('txtslug');		
+		$description = $this->input->post('txtexcerpt');
+		$parent = $this->input->post('select');
 		if ($this-> input-> post('txttitle')){
-			$this-> Post_model-> updateCategory();
+			$id=$this->input->post('term_id');
+			$this-> Post_model-> updateCategory($id,$name,$slug,$description,$parent);
 			$this-> session-> set_flashdata('message','Category updated');
 			redirect('admin/posts/categories','refresh');
 		}else{
-			redirect('admin/posts/categories','refresh');
+			$data['category'] = $this-> Post_model-> getCategory($id);
+			$data['TermTaxonomy'] = $this->Post_model->getTermTaxonomy($id);
+			$data['lstCategories'] = $this->Post_model->list_categories(10,0);
+			$data['Categories'] = $this->Post_model->list_categories(100,0);
+			$this->load->vars($data);
+			$this->load->view('back_end/categories_edit');	
 		}
 	}
 }
