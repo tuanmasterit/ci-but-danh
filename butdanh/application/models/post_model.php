@@ -161,6 +161,34 @@ class Post_model extends CI_Model{
 		return $last_row->ID;
 	}
 	
+	//Get Category ID
+	function getCategory($id)
+	{
+		$data= array();
+		$option = array('term_id'=>$id);
+		$Q = $this->db->get_where('ci_terms',$option,1);
+		if($Q->num_rows()>0)
+			{
+				$data = $Q->row_array();
+			}			
+		$Q->free_result();
+		return $data;		
+	}
+	
+	//Get Term Taxonomy
+	function getTermTaxonomy($id)
+	{
+		$data= array();
+		$option = array('term_id'=>$id);
+		$Q = $this->db->get_where('ci_term_taxonomy',$option,1);
+		if($Q->num_rows()>0)
+			{
+				$data = $Q->row_array();
+			}			
+		$Q->free_result();
+		return $data;	
+	}
+	
 	//Get Top Category Parent
 	function getTopCategories(){
 		$data[0] = 'Không có cha';		
@@ -175,12 +203,12 @@ class Post_model extends CI_Model{
 	}
 
 	//Add Category
-	function addCategory()
+	function addCategory($name,$slug,$taxonomy,$description,$parent)
 	{
 		//Add Category
 		$cat = array(
-				'name' => $_POST['txttitle'],
-				'slug' => $_POST['txtslug'],				
+				'name' => $name,
+				'slug' => $slug,				
 				);
 		$Q = $this-> db-> insert('ci_terms', $cat);
 		
@@ -190,9 +218,9 @@ class Post_model extends CI_Model{
 		
 		$termTaxonomy = array(
 			'term_id' => $last_row['term_id'],
-			'taxonomy ' => 'category',
-			'description' => $_POST['txtexcerpt'],
-			'parent' =>$_POST['butdanh']
+			'taxonomy ' => $taxonomy,
+			'description' => $description,
+			'parent' =>$parent
 		);
 		$this->db->insert('ci_term_taxonomy',$termTaxonomy);					
 	}
@@ -215,6 +243,26 @@ class Post_model extends CI_Model{
 		$query = $this->db->get_where('ci_term_taxonomy',array('term_id' => $term_id));
 		$row = $query->first_row();
 		return $row->term_taxonomy_id;
+	}
+	
+	function updateCategory($id,$name,$slug,$description,$parent)
+	{
+		//Update Category
+		$cat = array(
+				'name' => $name,
+				'slug' => $slug,				
+				);
+		$this-> db-> where('term_id', $id);
+		$this-> db-> update('ci_terms', $cat);
+
+		//Update Term Taxonomy
+		$termTaxonomy = array(			
+			
+			'description' => $description,
+			'parent' =>$parent
+		);
+		$this-> db-> where('term_id', $id);
+		$this-> db-> update('ci_term_taxonomy', $termTaxonomy);
 	}
 }
 ?>
