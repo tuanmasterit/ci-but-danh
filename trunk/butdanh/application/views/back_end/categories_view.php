@@ -87,8 +87,7 @@
                                         <td><?php echo $Category->description;?></td>
 
                                         <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/posts/editCat/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $Category->term_id;?>" title="Xóa danh mục" href="<?php echo base_url();?>admin/posts/delete/<?php echo $Category->term_id;?>" >Xóa</a></td>
-
-                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>/admin/posts/categories-edit/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" name="delete_term" id="<?php echo $Category->term_id;?>" title="Xóa danh mục" href="<?php echo base_url();?>/admin/posts/delete">Xóa</a></td>
+                                        
 
                                     </tr>
                                 <?php }?>
