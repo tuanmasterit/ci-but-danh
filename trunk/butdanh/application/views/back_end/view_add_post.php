@@ -8,12 +8,17 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/categories">Danh mục bài viết</a></li>
+                	<?php if($post_type == 'post'){?>
+                		<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
+                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
+                    <?php }elseif($post_type == 'topic'){?>
+                    	<li><a href="<?php echo base_url();?>admin/posts/lists/topic">Tất cả chủ đề</a></li>
+                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/add/topic">Thêm mới chủ đề</a></li>
+                    <?php }?>
+                    <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
                 </ul>
                 <div class="content">                	
-                	<form method="post" action="<?php echo base_url();?>admin/posts/save_add" class="stdform">                             
+                	<form method="post" action="<?php echo base_url();?>admin/posts/save_add" class="stdform">
                 	<div class="edit-main">                    	                    	                            
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput" name="txttitle"></span></p>
@@ -30,14 +35,30 @@
                     	<div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Xuất bản</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
-                            	<p>
-                                    Tác giả:                                    
+                            	<p id="sl_butdanh_ajax">
+                                    Tác giả:
                                     <select name="cbxbutdanh" style="width:80%;">
                                     	<?php foreach($lstbutdanh as $butdanh){?>
                                         	<option value="<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></option>
                                         <?php }?>
                                     </select>
                                 </p>
+                                <p class="linkadd"><a href="javascript: return false;" id="link-add">Thêm mới</a></p>
+                                <div class="thembutdanh" style="display:none;">
+                                	<input type="hidden" id="hd_url_ajax_add_butdanh" value="<?php echo base_url();?>admin/author/add_ajax" />
+                                	<p>Tác giả: <input type="text" id="txtbutdanh" value="" style="width:75%;" /></p>
+                                    <p>
+                                    	Báo: 
+                                        <select id="slmagazine" style="width:80%;">
+                                        	<?php foreach($lstmagazine as $magazine){?>
+                                        		<option value="<?php echo $magazine->term_id;?>"><?php echo $magazine->name;?></option>
+                                            <?php }?>
+                                        </select>
+                                    </p>
+                                    <p class="stdformbutton">
+                                        <button class="submit radius2" id="btn_add_butdanh_ajax">Thêm</button>                                        
+                                    </p>
+                                </div>                                
                                 </br>
                                 <p class="stdformbutton">
                                     <button class="submit radius2">Xuất bản</button>

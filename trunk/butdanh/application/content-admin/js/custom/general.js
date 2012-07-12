@@ -1,14 +1,48 @@
 jQuery.noConflict();
 
 jQuery(document).ready(function(){
-	//Brow server image upload
+	//Ajax load post by butdanh and category
+	jQuery("#cbxbutdanh").change(function(){		
+		var l_butdanh = jQuery('#cbxbutdanh option:selected').attr('value');
+		var l_category = jQuery('#cbxcategory option:selected').attr('value');
+		var url = jQuery('#hdurlajax').attr('value');
+		jQuery.post(url,{butdanh:l_butdanh,category:l_category},function(data) {
+			jQuery('#divpostajax').html(data);
+		});		
+	});
+	jQuery("#cbxcategory").change(function(){		
+		var l_butdanh = jQuery('#cbxbutdanh option:selected').attr('value');
+		var l_category = jQuery('#cbxcategory option:selected').attr('value');
+		var url = jQuery('#hdurlajax').attr('value');
+		jQuery.post(url,{butdanh:l_butdanh,category:l_category},function(data) {
+			jQuery('#divpostajax').html(data);
+		});	
+	});
 	
+	//Brow server image upload	
 	jQuery('#imageUpload').popupWindow({ 
 			windowURL:'/butdanh/application/elfinder/standalone-elfinder.php?mode=image', 
 			windowName:'Filebrowser',
 			height:490, 
 			width:950,
 			centerScreen:1
+	});
+	//Add butdanh ajax
+	jQuery('#btn_add_butdanh_ajax').click(function(){
+		var ten_but_danh = jQuery('#txtbutdanh').val();		
+		var magazine = jQuery('#slmagazine').val();
+		var url = jQuery('#hd_url_ajax_add_butdanh').val();
+		//alert(url);
+		jQuery.post(url,{txtnicename:ten_but_danh,slmagazine:magazine},function(data) {
+			jQuery('#sl_butdanh_ajax').html(data);
+		});
+		jQuery('.thembutdanh').hide('slow');
+		return false;
+	});
+	//link add
+	jQuery('#link-add').click(function(){
+		jQuery('.thembutdanh').show('slow');
+		return false;
 	});
 	//search box of header
 	jQuery('#keyword').bind('focusin focusout', function(e){
@@ -340,8 +374,7 @@ jQuery(document).ready(function(){
 		jQuery('#userPanel').insertAfter('#notiPanel');
 		jQuery('#userPanel').removeClass('userinfomenu');
 		jQuery('.headerinner2').remove();
-	}
-	
+	}		
 	
 	/*jQuery('body').append('<div class="theme"><h4>Color</h4><a href="darkblue/dashboard.html" class="darkblue"></a><a href="gray/dashboard.html" class="gray"></a></div>');*/
 	

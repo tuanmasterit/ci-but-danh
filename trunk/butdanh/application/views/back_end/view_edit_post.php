@@ -47,7 +47,7 @@
                                 </br>
                                 <p class="stdformbutton">
                                     <button class="submit radius2">Cập nhật</button>
-                                    <input type="reset" value="Hủy" class="reset radius2">
+                                    <input type="reset" value="Hủy" onclick="javascript:history.back(-1);" class="reset radius2">
                                 </p>
                             </div><!--widgetcontent-->
                         </div>
