@@ -9,11 +9,15 @@
                 <ul class="maintabmenu multipletabmenu">
                 	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
                     <li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/posts/categories">Danh mục bài viết</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
                 </ul>
                 <div class="content">                	
-                	<div class="edit-left">   
-                    		<form method="post" id="formID" action="<?php echo base_url();?>admin/posts/save_categories" class="stdform">
+                	<div class="edit-left">
+                	<?php if(!isset($category))
+                	{
+                	?>
+                		<?php echo form_open('admin/categories/save_categories',array('id'=>'formID','class'=>'stdform'));?>
+                    		
                             <p><label>Tên danh mục:</label></p>
                             <?php $data = array('name'=> 'txttitle','id'=> 'txttitle','class'=>'longinput validate[required]');?>
                             <p><span class="field"><?php echo form_input($data);?></span></p>
@@ -22,7 +26,7 @@
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtslug"></span></p>
                             <br />
                             <p><label>Mô tả:</label></p>                            
-                            <p><span class="field"><textarea name="txtexcerpt" class="validate[required]"></textarea></span></p>
+                            <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
                             <br />
                             <p><label>Danh mục cha:</label></p>                            
                             <p>
@@ -38,14 +42,61 @@
                             	<?php echo form_submit('submit','Thêm mới',"class='submit radius2'");?>                                
                                 <input type="reset" value="Hủy" class="reset radius2">
                             </p>                            
-                            </form>
+                        <?php echo form_close();?>
+                    <?php 
+                	}
+                	else 
+                	{
+                		
+                    ?>
+                    <?php echo form_open('admin/categories/edit',array('id'=>'formID','class'=>'stdform'));?>   
+                    		<input type="hidden" value="<?php echo $category['term_id']?>" name="term_id">
+                            <p><label>Tên danh mục:</label></p>
+                            <?php $data = array('name'=> 'txttitle','id'=> 'txttitle','value'=>$category['name'],'class'=>'longinput validate[required]');?>
+                            <p><span class="field"><?php echo form_input($data);?></span></p>
+                            <br />
+                            <p><label>Đường dẫn:</label></p>
+                            <p><span class="field"><input type="text" value="<?php echo $category['slug']?>" class="longinput validate[required]" name="txtslug"></span></p>
+                            <br />
+                            <p><label>Mô tả:</label></p>                            
+                            <p><span class="field"><textarea name="txtexcerpt"  ><?php echo $category['description']?></textarea></span></p>
+                            <br />
+                            <p><label>Danh mục cha:</label></p>                            
+                            <p>
+                            	<select name="select">
+                            		<option value="0">-- Không có danh mục cha --</option>
+                                	<?php foreach($Categories as $cat){?>
+                                	<?php 
+                                		if($cat->term_id == $category['parent'])
+                                		{                                		
+                                	?>
+                                		<option selected="selected" value="<?php echo $cat->term_id;?>"><?php echo $cat->name;?></option>
+                                	<?php 
+                                		}
+                                		else {
+                                	?>
+	                                    <option value="<?php echo $cat->term_id;?>"><?php echo $cat->name;?></option>
+									<?php }
+                                	}
+									?>
+                                </select>
+                            </p>
+                            <br />
+                            <p class="stdformbutton">
+                            	<?php echo form_submit('submit','Cập nhật',"class='submit radius2'");?>                                
+                                <input type="reset" value="Hủy" class="reset radius2">
+                            </p>                            
+                           	<?php echo form_close();?>
+                    <?php 
+                	}
+                	?>
                     </div>
                     <div class="list-right">
                     	<div class="contenttitle radiusbottom0">
                             <h2 class="table"><span>Danh mục bài viết</span></h2>
                         </div><!--contenttitle-->
                         <div class="tableoptions">
-                            <button class="deletebutton radius3" name="delete_term" value="<?php echo base_url();?>admin/posts/delete" title="table2">Delete Selected</button> &nbsp;
+                            <button class="deletebutton radius3" name="delete_term" value="<?php echo base_url();?>admin/categories/delete" title="table2">Delete Selected</button> &nbsp;
                             <select class="radius3">
                                 <option value="">Show All</option>
                                 <option value="">Rendering Engine</option>
@@ -59,9 +110,7 @@
                                 <col class="con1" />
                                 <col class="con0" />
                                 <col class="con1" />
-                                <col class="con0" />
-                                <col class="con1" />
-                                <col class="con0" />
+                                
                             </colgroup>
                             <thead>
                                 <tr>
@@ -86,7 +135,7 @@
                                         <td><?php echo $Category->name;?></td>
                                         <td><?php echo $Category->description;?></td>
 
-                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/posts/editCat/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $Category->term_id;?>" title="Xóa danh mục" href="<?php echo base_url();?>admin/posts/delete/<?php echo $Category->term_id;?>" >Xóa</a></td>
+                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/categories/edit/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $Category->term_id;?>" name="delete" title="Xóa danh mục" href="<?php echo base_url();?>admin/categories/delete" >Xóa</a></td>
                                         
 
                                     </tr>

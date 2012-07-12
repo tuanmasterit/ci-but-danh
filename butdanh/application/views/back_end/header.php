@@ -93,8 +93,7 @@
                     </a>
                     <div class="userdrop">
                         <ul>
-                            <li><a href="">Profile</a></li>
-                            <li><a href="">Account Settings</a></li>
+                            <li><a href="<?php echo base_url();?>admin/users/profile">Profile</a></li>
                             <li><a href="<?php echo base_url();?>admin/login/logout">Logout</a></li>
                         </ul>
                     </div><!--userdrop-->

@@ -6,9 +6,14 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/categories">Danh mục bài viết</a></li>
+                	<?php if($post_type == 'post'){?>
+                		<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
+                    	<li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
+                    <?php }elseif($post_type == 'topic'){?>
+                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/topic">Tất cả chủ đề</a></li>
+                    	<li><a href="<?php echo base_url();?>admin/posts/add/topic">Thêm mới chủ đề</a></li>
+                    <?php }?>
+                    <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
                 </ul>                
                 <div class="content">
                 	<h1 id="ajaxtitle"></h1>                       	                            
@@ -16,13 +21,20 @@
                         <h2 class="table"><span>Table with Action</span></h2>
                     </div><!--contenttitle-->
                     <div class="tableoptions">
-                        <button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
-                        <select class="radius3">
-                            <option value="">Show All</option>
-                            <option value="">Rendering Engine</option>
-                            <option value="">Platform</option>
-                        </select> &nbsp;
-                        <button class="radius3">Apply Filter</button>
+                        <form name="frmfilter" method="post" action="<?php echo base_url();?>admin/posts/lists/<?php echo $post_type;?>" >                        	
+                        	<button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
+                            <select class="category" name="slcategory">
+                                <option value="">--- Tất cả ---</option>
+                                <?php foreach($lstCategories as $l_category){?>                                 
+                                	<?php if($l_category->term_id == $category){?>
+                                    	<option selected="selected" value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
+                                    <?php }else{?>
+                                    	<option value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
+                                    <?php }?>
+                                <?php }?>
+                            </select> &nbsp;
+                            <input type="submit" class="btn" value="Tìm kiếm"></button>
+                        </form>
                     </div><!--tableoptions-->	
                     <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                         <colgroup>
@@ -63,12 +75,13 @@
                                     <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo $Post->post_date;?></td>
                                     <td class="center">
-                                    	<a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
+                                    	<a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
                                         <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/posts/delete">Xóa</a></td>
                                 </tr>
                             <?php }?>
                         </tbody>
-                    </table>                                 
+                    </table>    
+                    <?php echo $list_link;?>                             
                 </div><!--content-->
                 
             </div><!--maincontentinner-->
