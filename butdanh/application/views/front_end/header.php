@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="application/content/css/style.css" />
-<script language="javascript" type="text/javascript" src="application/content/js/jquery.js"></script>
-<script language="javascript" type="text/javascript" src="application/content/js/script.js"></script>
+<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/style.css" />
+<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/script.js"></script>
 <title>Bút danh</title>
 <?php $this->load->model('Post_model');?>
 </head>

@@ -99,3 +99,76 @@ input[type="submit"] {-moz-transition: opacity 0.2s linear 0s;}
 #footer{background:#A00000;border-top:5px solid #EEEEEE;padding:10px;color:#FFF;margin-bottom:10px;}
 #footer p{margin-bottom:5px;}
 .copyright{font-size:14px;}
+
+/*****************************/
+.post-author
+{
+	margin-top: 10px;
+	height: 80px;
+}
+.post-author img
+{
+	float: left;
+	height: 80px;
+	width: 80px;
+}
+.author-info
+{
+	margin-left: 10px;
+    padding-left: 80px;
+}
+#thread .content
+{
+	margin-top: 10px;
+}
+#thread .content .post-content
+{
+	
+}
+
+#comment-post
+{
+	margin-top: 10px;
+}
+.adword-hdf {
+    background: url("../images/cmt-header.gif") no-repeat scroll center top transparent;
+}
+.adword-hdf, .adword-ftf {
+    height: 4px;
+    overflow: hidden;
+}
+.adword-middle {
+   
+    
+}
+.adword {
+    background: url("../images/adword.gif") repeat-x scroll center top #FFFFFF;
+    border-left: 1px solid #E3E3E4;
+    border-right: 1px solid #E3E3E4;
+    line-height: 18px;
+        
+}
+.fl {
+    float: left;
+}
+.adword-nav2 {
+    
+    
+}
+.adword-textbox {
+    color: #9196A2;
+}
+.adword-textbox, .adword-textbox2 {
+    border: 1px solid #7F9DB9;
+    font: 11px arial;
+    height: 13px;
+    padding: 3px;
+}
+.fr {
+    float: right;
+}
+.SForm {
+    font-family: 'Arial';
+    font-size: 9pt;
+    text-decoration: none;
+}
