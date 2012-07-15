@@ -38,8 +38,44 @@
 	            	</div>
             	</div>            	
             	<?php }?>
-            	<div id="comments">
-            		
+            	<div class="box-item" style="margin-top:10px;margin-bottom:5px;">
+            		<div class="othernews-header-fb">
+						<div class="othernews-title fl" style="margin-left:18px; padding:0px 9px">
+							<a id="aComment" name="aComment">
+								Ý kiến bình luận
+								<label style="font-weight:normal;">( <?php echo count($lstComment);?> )</label>
+							</a>
+						</div>
+					</div>
+					<div id="divOutComment">
+		            	<div id="DivShowComment">
+		            		<?php 
+		            			$i=0;		            			
+		            			foreach ($lstComment as $Comment)
+		            			{
+		            		?>
+		            		<div class="comment_ct_fb <?php if(($i%2==0)) {echo "cmg";} else {echo "cmw";}?>">
+								<p class="Title"><?php echo $Comment->comment_agent;?></p>
+								<p class="Normal"></p>
+								<p class="Normal"><?php echo $Comment->comment_content;?></p>
+								<p></p>
+								<p class="Normal" style="margin-top:3px">
+								<label class="Author"><?php echo $Comment->comment_author;?></label>
+								<label class="CommSep">|</label>
+								<label class="CommDate"><?php echo $Comment->comment_date;?></label>
+								</p>
+							</div>
+							<?php
+								$i++; 
+		            			}
+		            			?>							
+							
+	            			<div id="last-comment" class="comment_ct_fb <?php if(($i%2==0)) {echo "cmg";} else {echo "cmw";}?>">
+								
+							</div>
+		            		
+		            	</div>		            	
+	            	</div>
             	</div>
             	<div id="comment-post">
             		<p id="pShow" style="display: block;">
@@ -47,8 +83,8 @@
 							<img border="0" alt="Ý kiến của bạn" style="cursor:pointer" src="<?php echo base_url();?>application/content/images/Y-kien-cua-ban.gif">
 						</a>
 					</p>
-            		<form id="frmComment" action=""  method="post">
-	            		
+            		<form id="frmComment" action="<?php echo base_url();?>/comments/add"  method="post">
+	            		<input id="post_id" type="hidden" name="post_id" value="<?php echo $post_id;?>">
 						<div class="adword-hdf">&nbsp;</div> 
 						<div class="adword adword-middle" style="padding-top:0px;">
 							<div class="adword-nav2 fl" style="padding-top:10px; width:100%; background-color:#ffffff">
@@ -67,7 +103,7 @@
 								</div>
 								<div style="overflow:hidden;">
 									<div class="fl" style="width:60%;margin-left:5px">
-										<input class="SForm" type="submit" onclick="submitForm(); return false;" name="B1" value="Gửi bình luận">
+										<input class="SForm" type="submit"  onclick="submitForm(); return false;" name="B1" value="Gửi bình luận">
 										<input class="SForm" type="reset" onclick="InputDefault();" name="B2" value="Xoá trắng">
 										<input class="SForm" type="button" onclick="ShowFormComment()" value="Đóng lại">									
 									</div>

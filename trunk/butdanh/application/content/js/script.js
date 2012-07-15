@@ -82,7 +82,12 @@ function submitForm(){
 		
 		if(flag==true)
 		{
+			var url = $("#frmComment").attr('action');
+			var post_id = $("#post_id").attr('value');
 			
+			jQuery.post(url,{post_id:post_id,comment_author:name,comment_author_email:email,comment_content:content,comment_title:title},function(data) {
+				jQuery("#last-comment").html(data);				
+			});
 		}
 	}	
 	
