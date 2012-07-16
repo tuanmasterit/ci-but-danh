@@ -27,7 +27,9 @@
                     	<li><a href="<?php echo base_url();?>admin/users"><span>Tất cả thành viên</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/users/add"><span>Thêm mới thành viên</span></a></li>
                     </ul>
-                </li>                        
+                </li>  
+                <li><a href="<?php echo base_url();?>admin/comments" class="elements menudrop"><span>Comment</span></a>                   
+                </li>                       
             </ul>                
         </div><!--leftmenu-->
         <div id="togglemenuleft"><a></a></div>
