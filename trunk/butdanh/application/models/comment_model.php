@@ -8,16 +8,34 @@
 		}	
 		
 		// Get Comments By Post ID
-		function getByPost($post_id)
+		function getByPost($post_id,$comment_approved)
 		{
-			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content');
+			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,comment_approved');
 			$this->db->from('ci_comments');			
 			$this->db->where('ci_comments.comment_post_ID',$post_id);
+			$this->db->where('comment_approved',$comment_approved);
 			$query = $this->db->get();
 			return  $query->result();
 		}
 		
-		function add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$title)
+		function get($limit=0,$offset=0,$order_by='comment_date',$order='DESC',$comment_approved='')
+		{
+			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,comment_approved');
+			$this->db->from('ci_comments');	
+			if($comment_approved!='')
+			{		
+				$this->db->where('comment_approved',$comment_approved);
+			}
+			$this->db->order_by($order_by,$order);
+			if($limit>0)
+			{
+				$this->db->limit($limit,$offset);
+			}
+			$query = $this->db->get();
+			return  $query->result();
+		}
+		
+		function add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$title,$comment_approved)
 		{
 			$comment = array(
 				'comment_post_ID'=>$comment_post_ID,
@@ -25,14 +43,15 @@
 				'comment_author_email'=>$comment_author_email,
 				'comment_date'=>$comment_date,
 				'comment_content'=>$comment_content,
-				'comment_agent'=>$title
+				'comment_agent'=>$title,
+				'comment_approved'=>$comment_approved
 			);
 			
 			$this->db->insert('ci_comments',$comment);
 		}
 		
-		function get($id){
-			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent');
+		function get_by_id($id){
+			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,comment_approved');
 			$this->db->from('ci_comments');			
 			$this->db->where('ci_comments.comment_ID',$id);
 			$query = $this->db->get();
@@ -49,6 +68,24 @@
 			{
 				return  $query->first_row()->comment_ID;
 			}
+		}
+		
+		function update($comment_ID,$comment_author,$comment_author_email,$comment_content,$title,$comment_approved)
+		{
+			$comment = array(
+				'comment_author'=>$comment_author,
+				'comment_author_email'=>$comment_author_email,
+				'comment_content'=>$comment_content,
+				'comment_agent'=>$title,
+				'comment_approved'=>$comment_approved
+			);
+			$this->db->where('comment_ID',$comment_ID);
+			$this->db->update('ci_comments',$comment);			
+		}
+		
+		function delete($id)
+		{			
+			$this->db->delete('ci_comments',array('comment_ID'=>$id));
 		}
 	}	
 ?>

@@ -15,7 +15,7 @@ class Threads extends CI_Controller {
 		//tranfer data
 		$data['post_id'] = $id;
 		$data['thread'] = $this->Post_model->get($id);
-		$data['lstComment'] = $this->Comment_model->getByPost($id);
+		$data['lstComment'] = $this->Comment_model->getByPost($id,'approved');
 		$this->load->view('front_end/thread_view',$data);		
 	}
 }

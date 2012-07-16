@@ -15,10 +15,10 @@
 			$comment_date = date('Y-m-d h-i-s');
 			$comment_content = $this->input->post('comment_content');
 			$comment_title = $this->input->post('comment_title');
-			$this->Comment_model->add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$comment_title);
+			$this->Comment_model->add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$comment_title,'approved');
 			
 			$last_id =  $this->Comment_model->get_id_last_row();
-			$last_comment = $this->Comment_model->get($last_id);
+			$last_comment = $this->Comment_model->get_by_id($last_id);
 			$html='';
 			foreach ($last_comment as $comment)
 			{
