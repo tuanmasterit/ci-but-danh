@@ -27,6 +27,7 @@ class Author extends CI_Controller {
 		$this->load->model('Term_model');
 		$this->load->model('Post_model');
 		$this->load->library('pagination');
+		$this->load->model('Author_model');
     }
     
 	public function index($row=0)
@@ -47,16 +48,27 @@ class Author extends CI_Controller {
 		if($this->input->post('txtnicename'))
 		{
 			$user_nicename = $this->input->post('txtnicename');
-			$user_regitered = date('Y-m-d h-i-s');
-			$display_name = $this->input->post('txtdescription');
-			$term = $this->input->post('slmagazine');
-			$meta_value = 'butdanh';
+			if($this->Author_model->checkExitUser($user_nicename))
+			{
+				$this->session->set_flashdata('message',true);
+				$this->session->keep_flashdata('mesage');
+				redirect('admin/author','refresh');
+			}
+			else 
+			{
+				$user_regitered = date('Y-m-d h-i-s');
+				$display_name = $this->input->post('txtdescription');
+				$term = $this->input->post('slmagazine');
+				$meta_value = 'butdanh';
+				
+				$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,$meta_value);
+				$id = $this->User_model->get_id_last_row();
+				$this->Term_model->add_term_relationship($id,$term);
+				$this-> session-> set_flashdata('message','Thêm thành viên thành công!');
+							
+				redirect('admin/author','refresh');	
+			}
 			
-			$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,$meta_value);
-			$id = $this->User_model->get_id_last_row();
-			$this->Term_model->add_term_relationship($id,$term);
-			$this-> session-> set_flashdata('message','Thêm thành viên thành công!');			
-			redirect('admin/author','refresh');	
 		}
 		else 
 		{

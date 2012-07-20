@@ -32,10 +32,7 @@
 		}
 	} // lookup
 	
-	function fill(thisValue) {
-		jQuery('#inputString').val(thisValue);
-		setTimeout("jQuery('#suggestions').hide();", 200);
-	}
+	
 </script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery-1.6.min.js"></script>
 <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/validationEngine.jquery.css"/>
