@@ -46,14 +46,30 @@
 				$this->db->from('ci_users');
 				$this->db->join('ci_usermeta', 'id = user_id');
 				$this->db->where('meta_key','group');
-				$this->db->where('meta_value','butdanh');					
-				$this->db->limit($limit,$offset);
+				$this->db->where('meta_value','butdanh');	
+				if($limit>0)
+				{				
+					$this->db->limit($limit,$offset);
+				}
 				$query = $this->db->get();			
 				return $query->result();
 			}elseif($id > 0){
 				$query = $this->db->get_where('ci_users',array('ID'=>$id));			
 				return $query->result();
 			}
+		}
+		
+		function getAjax($user_nicename)
+		{
+			$this->db->select('id,user_nicename,display_name');
+			$this->db->from('ci_users');
+			$this->db->join('ci_usermeta', 'id = user_id');
+			$this->db->where('meta_key','group');
+			$this->db->where('meta_value','butdanh');	
+			$this->db->like('user_nicename',$user_nicename);
+			
+			$query = $this->db->get();			
+			return $query->result();
 		}
 		//get id last record
 		function get_id_last_row(){
