@@ -9,6 +9,7 @@ class Threads extends CI_Controller {
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
 		$this->load->model('Comment_model');
+		$this->load->helper('captcha');
     }	
 	public function index($id=0)
 	{				
@@ -16,7 +17,34 @@ class Threads extends CI_Controller {
 		$data['post_id'] = $id;
 		$data['thread'] = $this->Post_model->get($id);
 		$data['lstComment'] = $this->Comment_model->getByPost($id,'approved');
-		$this->load->view('front_end/thread_view',$data);		
+		
+		$vals = array(
+		    'word'		 => $this->rand_string(3),
+		    'img_path'	 => './captcha/',
+		    'img_url'	 => base_url().'captcha/',
+		    'font_path'	 => base_url().'system/fonts/texb.ttf',
+		    'img_width'	 => 30,
+		    'img_height' => 20,
+		    'expiration' => 7200
+		    );
+		
+		$cap = create_captcha($vals);
+		$data['image']=$cap['image'];
+		$data['word'] = $cap['word'];	
+		
+		$this->load->view('front_end/thread_view',$data);
+				
+	}
+	
+	function rand_string( $length ) {
+		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
+		$str='';
+		$size = strlen( $chars );
+		for( $i = 0; $i < $length; $i++ ) {
+			$str .= $chars[ rand( 0, $size - 1 ) ];
+	}
+		
+		return $str;
 	}
 }
 

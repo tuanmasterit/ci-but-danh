@@ -71,6 +71,26 @@
 			$query = $this->db->get();			
 			return $query->result();
 		}
+		
+		function checkExitUser($user_nicename)
+		{
+			$this->db->select('user_nicename');
+			$this->db->from('ci_users');
+			$this->db->join('ci_usermeta', 'id = user_id');
+			$this->db->where('meta_key','group');
+			$this->db->where('meta_value','butdanh');	
+			$this->db->where('user_nicename',$user_nicename);
+			
+			$query = $this->db->get();			
+			$result =$query->result();
+			if(count($result)>0)
+			{
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 		//get id last record
 		function get_id_last_row(){
 			$query = $this->db->get('ci_users');			

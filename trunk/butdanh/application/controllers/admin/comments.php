@@ -9,6 +9,7 @@
 			}
 			$this->load->model('Comment_model');
 			$this->load->library('pagination');
+			$this->load->helper('captcha');
 		}
 		function index($row=0)
 		{			

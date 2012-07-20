@@ -51,7 +51,18 @@
                 			if(!isset($user))
                 			{
                 		?>   
-                			<?php echo form_open('admin/author/add',array('id'=>'formID','class'=>'stdform'));?>                    		
+                			<?php echo form_open('admin/author/add',array('id'=>'formID','class'=>'stdform'));?>
+                			<?php 
+                				if($this->session->flashdata('message')==true)
+                				{
+                			?>
+                				<div class="notification msgalert">
+									<a class="close"></a>
+									<p>Bút danh đã tồn tại!</p>
+								</div>
+                			<?php 		
+                				}
+                			?>               		
                             <p><label>Tên bút danh:</label></p>                            
                             <p><span class="field"><input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookup(this.value);" onblur="fill();" /></span></p>
                             <div class="suggestionsBox" id="suggestions" style="display: none;">

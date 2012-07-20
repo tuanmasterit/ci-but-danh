@@ -100,6 +100,11 @@
 									<div class="fl" style="width:60%">
 										<input id="txtAddedTitle" class="adword-textbox" type="text" onclick="if(this.value=='Tiêu đề'){this.value=''}" onblur="if(this.value==''){this.value='Tiêu đề'}" size="29" style="width:280px;" name="txtAddedTitle" value="Tiêu đề">
 									</div>
+									<div class="fr" style="width:180px;">
+										<input id="txtValidCode" class="adword-textbox" type="text" "="" onkeyup="initTyper(this)" onblur="ValidateCodeOnBlur(this)" onfocus="ValidateCodeOnFocus(this)" size="29" style="width:99px;" name="txtValidCode" value="Mã xác nhận">
+										<?php echo $image;?>
+										<img style="vertical-align:top;cursor:pointer; padding-top:1px" onclick="ChangeImage()" alt="Thay hình khác" src="/Images/change-image.gif">
+									</div>
 								</div>
 								<div style="overflow:hidden;">
 									<div class="fl" style="width:60%;margin-left:5px">
