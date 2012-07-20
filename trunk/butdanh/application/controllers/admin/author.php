@@ -48,6 +48,7 @@ class Author extends CI_Controller {
 		if($this->input->post('txtnicename'))
 		{
 			$user_nicename = $this->input->post('txtnicename');
+			$user_nicename = trim($user_nicename);
 			if($this->Author_model->checkExitUser($user_nicename))
 			{
 				$this->session->set_flashdata('message',true);
