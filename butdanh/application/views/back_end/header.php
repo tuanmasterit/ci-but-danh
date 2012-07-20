@@ -16,6 +16,27 @@
 <!--[if IE 7]>
     <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/ie7.css"/>
 <![endif]-->
+<script type="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/jquery-1.2.1.pack.js"></script>
+<script type="text/javascript">
+	function lookup(inputString) {
+		if(inputString.length == 0) {
+			// Hide the suggestion box.
+			jQuery('#suggestions').hide();
+		} else {
+			jQuery.post("<?php echo base_url();?>admin/rpc", {queryString: ""+inputString+""}, function(data){
+				if(data.length >0) {
+					jQuery('#suggestions').show();
+					jQuery('#autoSuggestionsList').html(data);
+				}
+			});
+		}
+	} // lookup
+	
+	function fill(thisValue) {
+		jQuery('#inputString').val(thisValue);
+		setTimeout("jQuery('#suggestions').hide();", 200);
+	}
+</script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery-1.6.min.js"></script>
 <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/validationEngine.jquery.css"/>
 
