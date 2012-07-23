@@ -40,15 +40,18 @@
 		}
 		//get
 		//List Posts
-		function get($id,$limit,$offset){
+		function get($id=0,$magazine='',$limit=-1,$offset=0){
 			if($id == 0){
 				$this->db->select('id,user_nicename,display_name');
 				$this->db->from('ci_users');
 				$this->db->join('ci_usermeta', 'id = user_id');
 				$this->db->where('meta_key','group');
-				$this->db->where('meta_value','butdanh');	
-				if($limit>0)
-				{				
+				$this->db->where('meta_value','butdanh');
+				if($magazine != '' and $magazine > 0){
+					$this->db->join('ci_term_relationships','id = object_id');
+					$this->db->where('term_taxonomy_id',$magazine);
+				}					
+				if($limit > 0){
 					$this->db->limit($limit,$offset);
 				}
 				$query = $this->db->get();			

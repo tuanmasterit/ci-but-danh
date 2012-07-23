@@ -67,8 +67,8 @@ class Posts extends CI_Controller {
 	public function add($post_type='post')
 	{						
 		if($post_type == 'post'){
-			$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-			$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
+			$data['lstbutdanh'] = $this->Author_model->get(0,-1,0);
+			$data['lstCategories'] = $this->Term_model->get(0,-1,0,'category');
 			$data['post_type'] = $post_type;		
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 			$this->load->view('back_end/view_add_post',$data);

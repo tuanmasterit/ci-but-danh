@@ -11,7 +11,7 @@ class magazine extends CI_Controller {
     }
 	
 	public function index(){
-		$data['lstmagazine'] = $this->Term_model->get(0,10,0,'magazine');
+		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$data['magazine_parent'] = $this->Term_model->get(0,-1,0,'magazine');
 		$this->load->view('back_end/magazine_view',$data);	
 	}

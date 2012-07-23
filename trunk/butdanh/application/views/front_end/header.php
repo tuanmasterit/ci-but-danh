@@ -7,16 +7,17 @@
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/script.js"></script>
 <title>Bút danh</title>
 <?php $this->load->model('Post_model');?>
+<?php $this->load->model('User_model');?>
 </head>
 <div id="wr">
 <div id="wrap">
 	<div id="header">
     	<div id="banner">
         	<div id="logo">
-            	<a href="/butdanh/index.html"><img src="application/content/images/logo2.png" /></a>                                
+            	<a href="/butdanh/index.html"><img src="<?php echo base_url();?>application/content/images/logo2.png" /></a>                                
             </div>
             <div class="ads-banner">
-            	<img src="application/content/images/header-ads.png" />
+            	<img src="<?php echo base_url();?>application/content/images/header-ads.png" />
             </div>
 
             <form method="get" action="">
@@ -28,13 +29,34 @@
         </div><!-- end banner -->
         <div id="menu-top">
         	<ul class="nav-top">
-            	<li><a href="/butdanh/index.html" class="current">Trang chủ</a></li>
-				<li><a href="#">Chính trị xã hội</a></li>
-                <li><a href="#">Văn hóa thể thao</a></li>
-                <li><a href="#">Tài chính kinh tế</a></li>
+            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
+				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
+                <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
+                <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
+                <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
+                <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
             </ul>
             <div class="user">
-            	<p>Xin chào: <a href="#"><span class="fullname">Nguyễn Tất Vinh</span></a></p>
+            	<?php if($this->session->userdata('username') != ''){?>
+                	<p class="display-user">Xin chào: <a href="<?php echo base_url();?>profile"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
+                <?php }else{?>
+            		<a id="link-login" href="javascript:return false;">Đăng nhập</a>
+                    <div class="frm-login">
+                		<form id="login" action="<?php echo base_url();?>home/authentication" method="post">                        
+                            <p>
+                                <label for="username" class="lbllogin">Tài khoản:</label>
+                                <input type="text" id="username" name="txtuser" class="text" />
+                            </p>
+                            <p>
+                                <label for="password" class="lbllogin">Mật khẩu:</label>
+                                <input type="password" id="password" name="txtpassword" class="text" />
+                            </p>
+                            <p>
+                                <input type="submit" class="btnlogin" value="Đăng nhập"  />
+                            </p>
+                        </form>
+                    </div>
+                <?php }?>                
             </div>
         </div><!-- end menu-top -->
     </div><!-- end header -->

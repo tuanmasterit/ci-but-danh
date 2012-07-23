@@ -41,6 +41,7 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 $route['threads/(:num)'] = 'threads/index/$1';
+$route['category/(:num)'] = 'category/index/$1';
 
 
 /* End of file routes.php */

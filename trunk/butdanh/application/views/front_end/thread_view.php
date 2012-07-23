@@ -11,7 +11,7 @@
         </div>-->
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">        	
-        	<div class="box-center" id="thread">
+        	<div class="box-center box-thread" id="thread">
         		<?php        		
         		foreach ($thread as $thr)
         		{
@@ -77,6 +77,7 @@
 		            	</div>		            	
 	            	</div>
             	</div>
+                <?php if($this->session->userdata('username') != ''){?>
             	<div id="comment-post">
             		<p id="pShow" style="display: block;">
 						<a class="SForm" onclick="ShowFormComment()">
@@ -121,6 +122,7 @@
 						<div class="adword-ftf">&nbsp;</div>
 					</form>           		
             	</div>
+                <?php }?>                
             </div>           
         </div><!-- end middle-center -->
         <?php $this->load->view('front_end/right');?>

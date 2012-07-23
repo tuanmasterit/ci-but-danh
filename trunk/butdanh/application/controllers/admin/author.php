@@ -38,7 +38,7 @@ class Author extends CI_Controller {
 		$config['cur_page']= $row;	
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();
-		$data['lstthanhvien'] = $this->User_model->get(0,'butdanh',$config['per_page'],$row);
+		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh');
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$this->load->view('back_end/author_view',$data);
 	}
@@ -90,7 +90,7 @@ class Author extends CI_Controller {
 			$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,$meta_value);
 			$id = $this->User_model->get_id_last_row();
 			$this->Term_model->add_term_relationship($id,$term);
-			$lstbutdanh = $this->User_model->get(0,'butdanh');
+			$lstbutdanh = $this->User_model->get(0,-1,0,'butdanh');
 			$html = 'Tác giả:';
 			$html .= '<select name="cbxbutdanh" style="width:80%;">';
 			foreach($lstbutdanh as $butdanh){
@@ -124,15 +124,17 @@ class Author extends CI_Controller {
 			$user_nicename = $this->input->post('txtnicename');
 			$user_email = $this->input->post('txtemail');			
 			$display_name = $this->input->post('txtdisplay');
+			$magazine = $this->input->post('slmagazine');
 			
-			$this->User_model->edit($user_id,$user_nicename,$user_email,$display_name);
+			$this->User_model->update_author($user_id,$user_nicename,$user_email,$display_name,$magazine);
 			
 			redirect('admin/author','refresh');
 		}
 		else 
 		{
 			$data['user'] = $this->User_model->get($id);
-			$data['lstthanhvien'] = $this->User_model->get(0,'butdanh',10,0);
+			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh');
+			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 			$this->load->view('back_end/author_view',$data);
 		}
 	}
