@@ -18,18 +18,19 @@
                     <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
                 </ul>
                 <div class="content">                	
-                	<form method="post" action="<?php echo base_url();?>admin/posts/save_add" class="stdform">
+                	
+                	<?php echo form_open('admin/posts/save_add',array('id'=>'formID','class'=>'stdform'));?>
                 	<div class="edit-main">                    	                    	                            
                             <p><label>Tiêu đề:</label></p>
-                            <p><span class="field"><input type="text" class="longinput" name="txttitle"></span></p>
-                            </br>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txttitle"></span></p>
+                            <br/>
                             <p><label>Tóm tắt:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
-                            </br>
+                            <br/>
                             <p><label>Nội dung:</label></p>                            
                             <p><textarea name="txtcontent" id="editor_content"></textarea></p>
                             <input type="hidden" value="<?php echo $post_type;?>" name="hdfposttype"  />
-                            </br>
+                            <br/>
                     </div>
                     <div class="edit-right">
 <style type="text/css">
@@ -80,7 +81,7 @@
 									</div>                                    
                                 </p>
                                 <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red"><b>Chưa chọn tác giả</b></label></p>
-                                <input type="hidden" name="txtAuthor" id="txtAuthor">
+                                <input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]">
                                 <p class="linkadd"><a href="javascript: return false;" id="link-add">Thêm mới</a></p>
                                 <div class="thembutdanh" style="display:none;">
                                 	<input type="hidden" id="hd_url_ajax_add_butdanh" value="<?php echo base_url();?>admin/author/add_ajax" />
@@ -121,7 +122,7 @@
                             </div>
                         </div>
                     </div>
-                    </form>              
+                    <?php echo form_close();?>    
                 </div><!--content-->                
             </div><!--maincontentinner-->            
             <div class="footer">
