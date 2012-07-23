@@ -9,7 +9,10 @@ $(document).ready(function(){
 	});
 	
 	/**********Comment*************/
-	$("#frmComment").hide();	
+	$("#frmComment").hide();
+	$("#link-login").click(function(){
+		$('.frm-login').show();
+	});
 });
 var flag = false;
 function ShowFormComment() {

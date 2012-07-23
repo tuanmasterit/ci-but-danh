@@ -24,11 +24,19 @@ class Users extends CI_Controller {
 			redirect('admin/login');
 		}
 		$this->load->model('User_model');
+		$this->load->library('pagination');
     }
     
-	public function index()
+	public function index($row = 0)
 	{
-		$data['lstthanhvien'] = $this->User_model->get(0,10,0,'thanhvien');
+		include('paging.php');		
+		$config['base_url']= base_url()."/admin/users/index/";
+		$config['total_rows']= $this->User_model->getCount('thanhvien');		
+		$config['cur_page']= $row;	
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();
+		
+		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
 		$this->load->view('back_end/view_users',$data);
 	}
 	
@@ -54,7 +62,7 @@ class Users extends CI_Controller {
 		}
 	}
 	
-	public function edit($id=0)
+	public function edit($id=0,$row=0)
 	{
 		if($this->input->post('txtnicename'))
 		{
@@ -68,8 +76,16 @@ class Users extends CI_Controller {
 		}
 		else 
 		{
+			include('paging.php');		
+			$config['base_url']= base_url()."/admin/users/index/";
+			$config['total_rows']= $this->User_model->getCount('thanhvien');		
+			$config['cur_page']= $row;	
+			$this->pagination->initialize($config);
+			$data['list_link'] = $this->pagination->create_links();
+			
 			$data['user'] = $this->User_model->get($id,0,0,'thanhvien');
-			$data['lstthanhvien'] = $this->User_model->get(0,10,0,'thanhvien');
+			
+			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
 			$this->load->view('back_end/view_users',$data);
 		}
 	}
@@ -142,6 +158,10 @@ class Users extends CI_Controller {
 	{
 		$param = $this->input->post('param');		
 		$this->User_model->delete($param);		
+	}
+	
+	public function group(){
+		$this->load->view('back_end/view_group',$data);	
 	}
 }
 

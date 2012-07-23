@@ -6,6 +6,7 @@ class Threads extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Post_model');
 		$this->load->model('Author_model');
+		$this->load->model('User_model');
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
 		$this->load->model('Comment_model');
@@ -14,6 +15,10 @@ class Threads extends CI_Controller {
 	public function index($id=0)
 	{				
 		//tranfer data
+		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
+		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
+		
 		$data['post_id'] = $id;
 		$data['thread'] = $this->Post_model->get($id);
 		$data['lstComment'] = $this->Comment_model->getByPost($id,'approved');

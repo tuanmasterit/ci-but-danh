@@ -17,7 +17,7 @@ class Login extends CI_Controller {
 			if($this->User_model->authentication($user_name,$password)){
 				redirect('admin/index');	
 			}else{
-				redirect('admin/login');
+				redirect('admin/index');
 			}
 		}else{
 			redirect('admin/login');	

@@ -9,7 +9,7 @@ class User_model extends CI_Model{
 		$this->load->helper('security');	
     }		
 	//List User
-	function get($id,$limit,$offset,$meta_value){
+	function get($id=0,$limit=-1,$offset=0,$meta_value='',$term_id=0,$order_by='user_registered',$order='DESC'){
 		if($id==0)
 		{
 			$this->db->select('id,user_login,user_nicename,user_email,display_name');
@@ -17,18 +17,23 @@ class User_model extends CI_Model{
 			$this->db->join('ci_usermeta', 'id = user_id');
 			$this->db->where('meta_key','group');
 			$this->db->where('meta_value',$meta_value);
-			$this->db->limit($limit,$offset);
+			if($term_id > 0){
+				$this->db->join('ci_term_relationships','id = object_id');
+				$this->db->where('term_taxonomy_id',$term_id);	
+			}
+			if($limit > 0){
+				$this->db->limit($limit,$offset);
+			}
+			$this->db->order_by($order_by,$order);
 			$query = $this->db->get();
         
 			return $query->result();
 		}
 		elseif ($id>0)
 		{
-			$this->db->select('id,user_login,user_nicename,user_email,display_name');
+			$this->db->select('id,user_login,user_nicename,user_email,display_name,term_taxonomy_id');
 			$this->db->from('ci_users');
-			$this->db->join('ci_usermeta', 'id = user_id');
-			$this->db->where('meta_key','group');
-			$this->db->where('meta_value',$meta_value);
+			$this->db->join('ci_term_relationships','id = object_id');
 			$this->db->where('id',$id);
 			$query = $this->db->get();
         	$data = array();
@@ -96,7 +101,8 @@ class User_model extends CI_Model{
 			'user_id'=>$id,
 			'meta_key'=>'group',
 			'meta_value'=>$meta_value
-		);		
+		);
+		$this->db->insert('ci_usermeta',$user_meta);		
 	}
 	
 	//get id last record
@@ -116,7 +122,23 @@ class User_model extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->update('ci_users',$user);
 	}
-	
+	function update_author($id,$user_nicename,$user_email,$display_name,$magazine_id)
+	{
+		$user = array(
+			'user_nicename'=>$user_nicename,
+			'user_email'=>$user_email,
+			'display_name'=>$display_name,			
+		);		
+		$this->db->where('id',$id);
+		$this->db->update('ci_users',$user);
+		
+		//update magazine
+		$arr_magazine = array(
+			'term_taxonomy_id' => $magazine_id
+		);
+		$this->db->where('object_id',$id);
+		$this->db->update('ci_term_relationships',$arr_magazine);
+	}
 	function delete($id)
 	{
 		//Delete User		
