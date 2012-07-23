@@ -88,13 +88,14 @@ class Posts extends CI_Controller {
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
-		$l_butdanh = $this->input->post('"txtAuthor"');		
+		$l_butdanh = $this->input->post('txtAuthor');	
+		$id_butdanh = $this->Author_model->get_by_user_nicename($l_butdanh);	
 		$l_post_type = $this->input->post('hdfposttype');
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		if($flag==false){			
 			//Insert posts			
-			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
+			$last_id = $this->Post_model->add($id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
 			if($last_id > 0){
 				redirect('admin/posts/lists/post');							
 			}
