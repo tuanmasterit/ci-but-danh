@@ -33,10 +33,12 @@
 	} // lookup
 	
 	function fill(thisValue) {
-		jQuery('#inputString').val(thisValue);
-		jQuery('#lblAuthor').html('<b>'+thisValue+'</b>');
-		jQuery('#txtAuthor').val(thisValue);
-		setTimeout("jQuery('#suggestions').hide();", 200);
+		if(thisValue != null){
+			jQuery('#inputString').val(thisValue);
+			jQuery('#lblAuthor').html('<b>'+thisValue+'</b>');
+			jQuery('#txtAuthor').val(thisValue);
+			setTimeout("jQuery('#suggestions').hide();", 200);
+		}
 	}
 </script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery-1.6.min.js"></script>
