@@ -64,7 +64,7 @@
                 				}
                 			?>               		
                             <p><label>Tên bút danh:</label></p>                            
-                            <p><span class="field"><input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookup(this.value);" onblur="fill();" /></span></p>
+                            <p><span class="field"><input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookup(this.value);" /></span></p>
                             <div class="suggestionsBox" id="suggestions" style="display: none;">
 								<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
 								<div class="suggestionList" id="autoSuggestionsList">
