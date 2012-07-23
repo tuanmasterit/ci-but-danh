@@ -32,17 +32,55 @@
                             </br>
                     </div>
                     <div class="edit-right">
+<style type="text/css">
+	h3 {
+		margin: 0px;
+		padding: 0px;	
+	}
+
+	.suggestionsBox {
+		position: relative;
+		left: 0px;
+		margin: 10px 0px 0px 0px;
+		width: 95%;
+		background-color: #212427;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		border: 2px solid #000;	
+		color: #fff;
+	}
+	
+	.suggestionList {
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	.suggestionList li {
+		
+		margin: 0px 0px 3px 0px;
+		padding: 3px;
+		cursor: pointer;
+	}
+	
+	.suggestionList li:hover {
+		background-color: #659CD8;
+	}
+</style>
                     	<div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Xuất bản</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
                             	<p id="sl_butdanh_ajax">
                                     Tác giả:
-                                    <select name="cbxbutdanh" style="width:80%;">
-                                    	<?php foreach($lstbutdanh as $butdanh){?>
-                                        	<option value="<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></option>
-                                        <?php }?>
-                                    </select>
+                                    <input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookup(this.value);" onblur="fill();" />
+                                    <div class="suggestionsBox" id="suggestions" style="display: none;">
+										<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+										<div class="suggestionList" id="autoSuggestionsList">
+											&nbsp;
+										</div>
+									</div>                                    
                                 </p>
+                                <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red"><b>Chưa chọn tác giả</b></label></p>
+                                <input type="hidden" name="txtAuthor" id="txtAuthor">
                                 <p class="linkadd"><a href="javascript: return false;" id="link-add">Thêm mới</a></p>
                                 <div class="thembutdanh" style="display:none;">
                                 	<input type="hidden" id="hd_url_ajax_add_butdanh" value="<?php echo base_url();?>admin/author/add_ajax" />
