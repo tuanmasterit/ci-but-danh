@@ -99,6 +99,20 @@
 			$query = $this->db->get('ci_users');			
 			$last_row = $query->last_row();
 			return $last_row->ID;
-		}		
+		}
+
+		function get_by_user_nicename($user_nicename)
+		{
+			$this->db->select('id');
+			$this->db->from('ci_users');			
+			$this->db->where('user_nicename',$user_nicename);			
+			
+			$query = $this->db->get();
+			$result = $query->result();			
+			if(count($result)>0)
+			{
+				return  $result[0]->id;
+			}
+		}
 	}
 ?>
