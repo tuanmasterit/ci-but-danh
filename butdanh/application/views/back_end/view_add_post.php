@@ -80,8 +80,10 @@
 										</div>
 									</div>                                    
                                 </p>
-                                <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red"><b>Chưa chọn tác giả</b></label></p>
-                                <input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]">
+                                <div id="author_load_ajax">
+                                    <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red"><b>Chưa chọn tác giả</b></label></p>
+                                    <input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]">
+                                </div>
                                 <p class="linkadd"><a href="javascript: return false;" id="link-add">Thêm mới</a></p>
                                 <div class="thembutdanh" style="display:none;">
                                 	<input type="hidden" id="hd_url_ajax_add_butdanh" value="<?php echo base_url();?>admin/author/add_ajax" />

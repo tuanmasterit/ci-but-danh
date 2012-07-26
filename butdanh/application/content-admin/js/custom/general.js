@@ -34,7 +34,7 @@ jQuery(document).ready(function(){
 		var url = jQuery('#hd_url_ajax_add_butdanh').val();
 		//alert(url);
 		jQuery.post(url,{txtnicename:ten_but_danh,slmagazine:magazine},function(data) {
-			jQuery('#sl_butdanh_ajax').html(data);
+			jQuery('#author_load_ajax').html(data);
 		});
 		jQuery('.thembutdanh').hide('slow');
 		return false;

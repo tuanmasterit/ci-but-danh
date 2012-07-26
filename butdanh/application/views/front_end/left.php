@@ -9,7 +9,7 @@
                         <?php $lstbutdanh = $this->User_model->get(0,-1,0,'butdanh',$magazine->term_id);?>                       
                     	<div class="lst-butdanh">
                         	<?php foreach($lstbutdanh as $butdanh){?>
-                        		<a href="#"><?php echo $butdanh->user_nicename;?></a>,&nbsp;
+                        		<a href="<?php echo base_url();?>profile/<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></a>,&nbsp;
 							<?php }?>
                         </div>
                     </li>
