@@ -239,3 +239,10 @@ a.bullet{background:url('../images/bullet-arrow.png') no-repeat left center;padd
 #user-online{background:#EEEEEE;border:1px solid #CCC;margin-bottom:10px;}
 #user-online h3{border-bottom:1px solid #CCC;padding:5px;background:#CC0000;color:#FFF;font-weight:normal;}
 #user-online .ctn{padding:5px;font-size:10px;}
+.post_date{color:#CC0000;font-size:11px;}
+.list-post{margin-bottom:10px;}
+.list-post h3{margin-bottom:10px;}
+.list-post ul{padding-left:8px;}
+.list-post ul li{margin-bottom:8px;}
+.topic-relation{margin-bottom:10px;}
+.link-like{}

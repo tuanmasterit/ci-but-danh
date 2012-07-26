@@ -31,9 +31,10 @@ class User_model extends CI_Model{
 		}
 		elseif ($id>0)
 		{
-			$this->db->select('id,user_login,user_nicename,user_email,display_name,term_taxonomy_id');
+			$this->db->select('id,user_login,user_nicename,user_email,display_name,term_taxonomy_id,name');
 			$this->db->from('ci_users');
 			$this->db->join('ci_term_relationships','id = object_id');
+			$this->db->join('ci_terms','term_taxonomy_id = term_id');
 			$this->db->where('id',$id);
 			$query = $this->db->get();
         	$data = array();
@@ -107,7 +108,9 @@ class User_model extends CI_Model{
 	
 	//get id last record
 	function get_id_last_row(){
-		$query = $this->db->get('ci_users');			
+		$this->db->order_by('id','ASC');
+		$query = $this->db->get('ci_users');
+					
 		$last_row = $query->last_row();
 		return $last_row->ID;
 	}

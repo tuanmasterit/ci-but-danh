@@ -90,17 +90,12 @@ class Author extends CI_Controller {
 			$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,$meta_value);
 			$id = $this->User_model->get_id_last_row();
 			$this->Term_model->add_term_relationship($id,$term);
-			$lstbutdanh = $this->User_model->get(0,-1,0,'butdanh');
-			$html = 'Tác giả:';
-			$html .= '<select name="cbxbutdanh" style="width:80%;">';
-			foreach($lstbutdanh as $butdanh){
-				if($butdanh->id == $id){
-					$html .= '<option selected="selected" value="'.$butdanh->id.'">'.$butdanh->user_nicename.'</option>';		
-				}else{
-					$html .= '<option value="'.$butdanh->id.'">'.$butdanh->user_nicename.'</option>';
-				}				
-			}
-			$html .= '</select>';
+			$lstbutdanh = $this->User_model->get($id);
+						
+			$html = '<p>Tác giả đã chọn: <label id="lblAuthor" style="color:red">';
+			$html .='<b>'.$lstbutdanh['user_nicename'].'</b></label></p>';
+			$html .='<input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]" value="'.$lstbutdanh['id'].'">';				
+
 			echo $html;	
 		}
 		else 
