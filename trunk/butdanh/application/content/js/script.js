@@ -20,8 +20,10 @@ $(document).ready(function(){
 		var id = $(this).attr('id');
 		
 		$.post(url,{id:id},function(data) {
-			$('#div-like').html(data);	
-		});
+			
+			$('#div-like').html(data.mess1);
+			$('#list-like').html(data.mess2);
+		},'json');
 		return false;
 	});
 	
@@ -31,8 +33,9 @@ $(document).ready(function(){
 		var id = $(this).attr('id');
 		
 		$.post(url,{id:id},function(data) {
-			$('#div-like').html(data);	
-		});
+			$('#div-like').html(data.mess1);
+			$('#list-like').html(data.mess2);
+		},'json');
 		return false;
 	});
 	
