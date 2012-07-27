@@ -29,6 +29,21 @@
                             <p><label>Tên hiển thị:</label></p>                            
                             <p><span class="field"><input type="text" class="longinput" name="txtdisplay" /></span></p>
                             <br />
+                            <p><label>Nhóm người dùng:</label></p>
+                            <p><span class="field">
+                            	<select name="group">
+                            		<option value="bandieuphoi">Ban điều phối</option>
+                                    <option value="congtacvien">Cộng tác viên</option>
+                                    <option value="thanhvien">Thành viên</option>
+                            	</select>
+                            </span></p>
+                            <br />
+                            <p><label>Mật khẩu:</label></p>                            
+                            <p><span class="field"><input type="password" id="txtpassword" class="longinput validate[required]" name="txtpassword" /></span></p>
+                            <br />
+                            <p><label>Xác nhận mật khẩu:</label></p>                            
+                            <p><span class="field"><input type="password" class="longinput validate[required,equals[txtpassword]]" name="txtconfirmpassword" /></span></p>
+                            <br />
                             <p class="stdformbutton">
                             	<button class="submit radius2">Thêm mới</button>
                                 <input type="reset" value="Hủy" class="reset radius2">
@@ -41,7 +56,7 @@
                 			<?php echo form_open('admin/users/edit',array('id'=>'formID','class'=>'stdform'));?>
                 			<input type="hidden" name="id" value="<?php echo $user['id'];?>">
                             <p><label>Tên đăng nhập:</label></p>
-                            <p><span class="field"><input type="text" value="<?php echo $user['user_login']?>" readonly="readonly" class="longinput validate[required]" name="txtname" /></span></p>
+                            <p><span class="field"><input type="text" disabled="disabled" value="<?php echo $user['user_login']?>" readonly="readonly" class="longinput validate[required]" name="txtname" /></span></p>
                             <br />
                             <p><label>Tên thành viên:</label></p>                            
                             <p><span class="field"><input type="text" value="<?php echo $user['user_nicename'];?>" class="longinput validate[required]" name="txtnicename" /></span></p>
@@ -51,6 +66,21 @@
                             <br />
                             <p><label>Tên hiển thị:</label></p>                            
                             <p><span class="field"><input type="text" value="<?php echo $user['display_name']?>" class="longinput" name="txtdisplay" /></span></p>
+                            </br>
+                            <p><label>Nhóm người dùng:</label></p>
+                            <p><span class="field">
+                            	<select name="group">
+                            		<option value="bandieuphoi">Ban điều phối</option>
+                                    <option value="congtacvien">Cộng tác viên</option>
+                                    <option value="thanhvien">Thành viên</option>
+                            	</select>
+                            </span></p>
+                            <br />                            
+                            <p><label>Mật khẩu:</label></p>                            
+                            <p><span class="field"><input type="password" id="txtpassword" class="longinput validate[required]" name="txtpassword" /></span></p>
+                            <br />
+                            <p><label>Xác nhận mật khẩu:</label></p>                            
+                            <p><span class="field"><input type="password" class="longinput validate[required,equals[txtpassword]]" name="txtconfirmpassword" /></span></p>
                             <br />
                             <p class="stdformbutton">
                             	<button class="submit radius2">Cập nhật</button>
@@ -64,13 +94,29 @@
                             <h2 class="table"><span>Danh sách thành viên</span></h2>
                         </div><!--contenttitle-->
                         <div class="tableoptions">
-                            <button class="deletebutton radius3" name="delete" value="<?php echo base_url();?>admin/users/delete" title="table2">Delete Selected</button> &nbsp;
-                            <select class="radius3">
-                                <option value="">Show All</option>
-                                <option value="">Rendering Engine</option>
-                                <option value="">Platform</option>
-                            </select> &nbsp;
-                            <button class="radius3">Apply Filter</button>
+                        	<form name="frmfilter" method="post" action="<?php echo base_url();?>admin/users/index" >
+                                <button class="deletebutton radius3" name="delete" value="<?php echo base_url();?>admin/users/delete" title="table2">Delete Selected</button> &nbsp;
+                                <select class="radius3" name="slgroup">
+                                	<?php switch($group){
+										case 'thanhvien':?>
+                                            <option value="thanhvien">Thành viên</option>
+                                            <option value="congtacvien">Cộng tác viên</option>
+                                            <option value="bandieuphoi">Ban điều phối</option>
+                                            <?php break;
+                                    	case 'congtacvien':?>        
+                                        	<option value="thanhvien">Thành viên</option>
+                                            <option selected="selected" value="congtacvien">Cộng tác viên</option>
+                                            <option value="bandieuphoi">Ban điều phối</option>
+                                            <?php break;
+										case 'bandieuphoi':?>        
+                                        	<option value="thanhvien">Thành viên</option>
+                                            <option value="congtacvien">Cộng tác viên</option>
+                                            <option selected="selected" value="bandieuphoi">Ban điều phối</option>
+                                            <?php break;	
+                                    }?>									                                    
+                                </select> &nbsp;
+                                <input type="submit" class="btn" value="Tìm kiếm"></button>
+                            </form>
                         </div><!--tableoptions-->	
                         <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                             <colgroup>
@@ -112,15 +158,4 @@
                     </div>                                  
                 </div><!--content-->                
             </div><!--maincontentinner-->            
-            <div class="footer">
-            	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
-            </div><!--footer-->
-            
-        </div><!--maincontent--> 
-
-     	</div><!--mainwrapperinner-->
-    </div><!--mainwrapper-->
-	<!-- END OF MAIN CONTENT -->        
-
-</body>
-</html>
+<?php $this->load->view('back_end/footer');

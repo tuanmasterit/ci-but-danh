@@ -25,18 +25,26 @@ class Users extends CI_Controller {
 		}
 		$this->load->model('User_model');
 		$this->load->library('pagination');
+		// thiết lập vùng giờ mặc định 
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
     
-	public function index($row = 0)
-	{
+	public function index($row = 0,$group='thanhvien')
+	{				
+		//paging
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/users/index/";
-		$config['total_rows']= $this->User_model->getCount('thanhvien');		
+		$config['total_rows']= $this->User_model->getCount($group);		
 		$config['cur_page']= $row;	
-		$this->pagination->initialize($config);
+		$this->pagination->initialize($config);		
 		$data['list_link'] = $this->pagination->create_links();
 		
-		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
+		//data transfer
+		if($this->input->post('slgroup') != ''){
+			$group = $this->input->post('slgroup');			
+		}
+		$data['group'] = $group;
+		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,$group);
 		$this->load->view('back_end/view_users',$data);
 	}
 	
@@ -49,16 +57,17 @@ class Users extends CI_Controller {
 			$user_email = $this->input->post('txtemail');
 			$user_regitered = date('Y-m-d h-i-s');
 			$display_name = $this->input->post('txtdisplay');
-			$meta_value = 'thanhvien';
+			$meta_value = $this->input->post('group');
+			$user_pass = $this->input->post('txtpassword');
 			
-			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value);
+			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$user_pass);
 			$this-> session-> set_flashdata('message','Thêm thành viên thành công!');			
-			redirect('admin/users','refresh');	
+			redirect('admin/users/index/0/'.$meta_value,'refresh');
 		}
 		else 
 		{
 			$this-> session-> set_flashdata('message','Lỗi!');
-			redirect('admin/users','refresh');
+			redirect('admin/users'.$meta_value,'refresh');
 		}
 	}
 	
@@ -70,8 +79,10 @@ class Users extends CI_Controller {
 			$user_nicename = $this->input->post('txtnicename');
 			$user_email = $this->input->post('txtemail');			
 			$display_name = $this->input->post('txtdisplay');
+			$meta_value = $this->input->post('group');
+			$user_pass = $this->input->post('txtpassword');
 			
-			$this->User_model->edit($user_id,$user_nicename,$user_email,$display_name);
+			$this->User_model->edit($user_id,$user_nicename,$user_email,$display_name,$meta_value,$user_pass);
 			redirect('admin/users','refresh');
 		}
 		else 
@@ -83,7 +94,7 @@ class Users extends CI_Controller {
 			$this->pagination->initialize($config);
 			$data['list_link'] = $this->pagination->create_links();
 			
-			$data['user'] = $this->User_model->get($id,0,0,'thanhvien');
+			$data['user'] = $this->User_model->get($id);
 			
 			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
 			$this->load->view('back_end/view_users',$data);

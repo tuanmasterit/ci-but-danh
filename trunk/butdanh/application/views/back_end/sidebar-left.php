@@ -25,7 +25,7 @@
                 <li><a href="<?php echo base_url();?>admin/users" class="elements menudrop"><span>Thành viên</span></a>
                     <ul>
                     	<li><a href="<?php echo base_url();?>admin/users"><span>Tất cả thành viên</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/users/add"><span>Thêm mới thành viên</span></a></li>
+                        <!-- <li><a href="<?php echo base_url();?>admin/users/add"><span>Thêm mới thành viên</span></a></li>-->
                         <li><a href="<?php echo base_url();?>admin/users/group"><span>Nhóm thành viên</span></a></li>
                     </ul>
                 </li>  
