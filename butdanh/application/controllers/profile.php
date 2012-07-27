@@ -21,6 +21,12 @@ class Profile extends CI_Controller {
 		$data['butdanh'] = $this->User_model->get_butdanh($author_id);
 		$data['lstpostofbutdanh'] = $this->Post_model->get(0,'post','',$author_id);
 		$data['lsttopicofbutdanh'] = $this->Post_model->get(0,'topic','',$author_id);
+		
+		$list_like = $this->User_model->list_like($author_id);
+		
+		$data['list_like'] =$list_like;
+		
+		
 		//check login
 		if($this->session->userdata('logged_in') != 1){
 			$data['check_login'] = false;

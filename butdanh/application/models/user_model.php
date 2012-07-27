@@ -278,5 +278,16 @@ class User_model extends CI_Model{
 		}
 	}
 	
+	function list_like($user_be_liked)
+	{
+		$this->db->select('user_id,meta_value');
+		$this->db->from('ci_usermeta');
+		$this->db->where('user_id',$user_be_liked);
+		$this->db->where('meta_key','like');
+		$query = $this->db->get();
+		
+		$result = $query->result();		
+		return $result;
+	}
 }
 ?>

@@ -14,9 +14,8 @@ $(document).ready(function(){
 		$('.frm-login').show();
 	});
 	
-	/********* Like *******/
-	$('.link-like').click(function(){
-		
+	/********* Like *******/	
+	$(document).on("click",".link-like",function(){		
 		var url = $(this).attr('href');
 		var id = $(this).attr('id');
 		
@@ -25,9 +24,9 @@ $(document).ready(function(){
 		});
 		return false;
 	});
+	
 	/********* Dislike *******/
-	$('.link-dislike').click(function(){
-		
+	$(document).on("click",".link-dislike",function(){
 		var url = $(this).attr('href');
 		var id = $(this).attr('id');
 		
