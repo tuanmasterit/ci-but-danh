@@ -237,5 +237,46 @@ class User_model extends CI_Model{
 		$this->db->where('id',$user_id);
 		$this->db->update('ci_users',array('user_pass'=>$user_pass));	
 	}
+	
+	function add_like($user_be_liked,$user_liked)
+	{
+		$like = array(
+			'user_id' 	=> $user_be_liked,
+			'meta_key'	=> 'like',
+			'meta_value'=> $user_liked
+		);
+		
+		$this->db->insert('ci_usermeta',$like);
+	}
+	
+	function delete_like($user_be_liked,$user_liked)
+	{
+		$like = array(
+			'user_id' 	=> $user_be_liked,
+			'meta_key'	=> 'like',
+			'meta_value'=> $user_liked
+		);
+		
+		$this->db->delete('ci_usermeta',$like);
+	}
+	
+	function check_like($user_be_liked,$user_liked)
+	{
+		
+		$this->db->where('user_id',$user_be_liked);
+		$this->db->where('meta_key','like');
+		$this->db->where('meta_value',$user_liked);
+		$query = $this->db->get('ci_usermeta');
+		$result = $query->result();
+		if(count($result)>0)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+	
 }
 ?>

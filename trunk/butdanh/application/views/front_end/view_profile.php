@@ -22,8 +22,25 @@
                         	<li><a href="#"></a></li>
                         </ul>
                     </div>
-                    <div class="like">
-                    	<a class="link-like" href="#"><img src="<?php echo base_url();?>application/content/images/icon-like.png" /></a>
+                    <div class="like" id="div-like">
+                    <input type="hidden" id="hdflike" value="<?php echo $check_like;?>" />
+                    <?php 
+                    	if($check_login==false)
+                    	{
+                    ?>
+                    	<a class="link-login-like" href="#"><img src="<?php echo base_url();?>application/content/images/icon-like.png" /></a>
+                    <?php
+                    	}
+                    	else {
+                    	if($check_like==false)
+                    	{
+                    ?>
+                    <a class="link-like" id="<?php echo $butdanh['id'];?>" href="<?php echo base_url();?>like/add"><img src="<?php echo base_url();?>application/content/images/icon-like.png" /></a>
+                    <?php 
+                    	}else{                    	
+                    ?>
+                    <a class="link-dislike" id="<?php echo $butdanh['id'];?>" href="<?php echo base_url();?>like/dislike"><img src="<?php echo base_url();?>application/content/images/dislike-button.jpg" /></a>
+                    <?php }}?>                    	
                     </div>
                 </div><!-- end box-content -->
             </div><!-- end newtopic -->           

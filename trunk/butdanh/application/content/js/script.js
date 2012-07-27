@@ -13,6 +13,35 @@ $(document).ready(function(){
 	$("#link-login").click(function(){
 		$('.frm-login').show();
 	});
+	
+	/********* Like *******/
+	$('.link-like').click(function(){
+		
+		var url = $(this).attr('href');
+		var id = $(this).attr('id');
+		
+		$.post(url,{id:id},function(data) {
+			$('#div-like').html(data);	
+		});
+		return false;
+	});
+	/********* Dislike *******/
+	$('.link-dislike').click(function(){
+		
+		var url = $(this).attr('href');
+		var id = $(this).attr('id');
+		
+		$.post(url,{id:id},function(data) {
+			$('#div-like').html(data);	
+		});
+		return false;
+	});
+	
+	/********* Check login to like *******/
+	$('.link-login-like').click(function(){
+		alert('Bạn cần đăng nhập để thực hiện chức năng này!');		
+		return false;
+	});
 });
 var flag = false;
 function ShowFormComment() {
