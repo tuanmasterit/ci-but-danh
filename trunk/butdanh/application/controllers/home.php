@@ -29,6 +29,8 @@ class Home extends CI_Controller {
 		}	
 	}
 	function logout(){
+		$this->db->where('user_login',$this->session->userdata('username'));
+		$this->db->update('ci_users',array('user_status'=>0));
 		$userdata = array(
                    'username'  => '',
                    'logged_in' => FALSE

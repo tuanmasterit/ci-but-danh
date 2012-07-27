@@ -9,10 +9,10 @@ class User_model extends CI_Model{
 		$this->load->helper('security');	
     }		
 	//List User
-	function get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC'){
+	function get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC',$status=-1){
 		if($id==0)
 		{
-			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key');
+			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,user_status');
 			$this->db->from('ci_users');
 			if($user_activation_key != ''){
 				$this->db->where('user_activation_key',$user_activation_key);	
@@ -25,6 +25,10 @@ class User_model extends CI_Model{
 				$this->db->limit($limit,$offset);
 			}
 			$this->db->order_by($order_by,$order);
+			if($status>-1)
+			{
+				$this->db->where('user_status',$status);
+			}
 			$query = $this->db->get();
         
 			return $query->result();
@@ -105,6 +109,8 @@ class User_model extends CI_Model{
                    'logged_in' => TRUE
                );
 			$this->session->set_userdata($userdata);
+			$this->db->where('user_login',$user_name);
+			$this->db->update('ci_users',array('user_status'=>1));
 		 	return true;
 		}
 		return false;	

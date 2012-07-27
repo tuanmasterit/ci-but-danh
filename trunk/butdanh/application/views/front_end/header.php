@@ -8,7 +8,9 @@
 <title>Bút danh</title>
 <?php $this->load->model('Post_model');?>
 <?php $this->load->model('User_model');?>
+ 
 </head>
+<body>
 <div id="wr">
 <div id="wrap">
 	<div id="header">
