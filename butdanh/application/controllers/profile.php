@@ -21,9 +21,20 @@ class Profile extends CI_Controller {
 		$data['butdanh'] = $this->User_model->get_butdanh($author_id);
 		$data['lstpostofbutdanh'] = $this->Post_model->get(0,'post','',$author_id);
 		$data['lsttopicofbutdanh'] = $this->Post_model->get(0,'topic','',$author_id);
-		
+		//check login
+		if($this->session->userdata('logged_in') != 1){
+			$data['check_login'] = false;
+		}
+		else {
+			$data['check_login'] = true;
+		}
+		//check like
+		$user_like = $this->session->userdata('username');
+		$check_like = $this->User_model->check_like($author_id,$user_like);
+		$data['check_like'] = $check_like;
 		if($author_id != 0){
 			$this->load->view('front_end/view_profile',$data);
+			
 		}else{redirect('home');}
 	}		
 }
