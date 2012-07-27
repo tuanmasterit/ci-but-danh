@@ -70,6 +70,7 @@ class Posts extends CI_Controller {
 	{						
 		if($post_type == 'post'){
 			$data['lstbutdanh'] = $this->Author_model->get(0,-1,0);
+			
 			$data['lstCategories'] = $this->Term_model->get(0,-1,0,'category');
 			$data['post_type'] = $post_type;		
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
@@ -134,12 +135,13 @@ class Posts extends CI_Controller {
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
-		$l_butdanh = $this->input->post('cbxbutdanh');		
+		$l_butdanh = $this->input->post('txtAuthor');	
+		$id_butdanh = $this->Author_model->get_by_user_nicename($l_butdanh);
 		$l_post_type = $this->input->post('hdfposttype');
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		//Insert posts			
-		if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'post')){
+		if($this->Post_model->update($l_id,$id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'post')){
 			redirect('admin/posts/lists/post');							
 		}		
 		redirect('admin/posts/lists/post/'.$l_id);
@@ -170,6 +172,7 @@ class Posts extends CI_Controller {
 	}
 	public function edit($post_type='post', $id=0){
 		if($post_type == 'post'){
+			$data['butdanh'] = $this->Post_model->get_author_name($id);
 			$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 			$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
 			$data['Post'] = $this->Post_model->get($id,$post_type);
