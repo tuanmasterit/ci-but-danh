@@ -8,8 +8,8 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li><a href="<?php echo base_url();?>admin/posts/lists/topic">Tất cả chủ đề</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/posts/add/topic">Cập nhật chủ đề</a></li>
+                	<li><a href="<?php echo base_url();?>admin/topic/lists/topic">Tất cả chủ đề</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>admin/topic/add/topic">Cập nhật chủ đề</a></li>
                 </ul>
                 <div class="content"> 
                 	<?php foreach($lsttopic as $l_topic){?>                                   	
@@ -91,15 +91,7 @@
                     <?php }?>          
                 </div><!--content-->                
             </div><!--maincontentinner-->            
-            <div class="footer">
-            	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
-            </div><!--footer-->
-            
-        </div><!--maincontent--> 
-
-     	</div><!--mainwrapperinner-->
-    </div><!--mainwrapper-->
-	<!-- END OF MAIN CONTENT -->        
+<?php $this->load->view('back_end/footer');?>        
 <script type="text/javascript">
 	var editor = CKEDITOR.replace( 'editor_content',
 	{			
@@ -115,5 +107,3 @@
 	});
 
 </script>
-</body>
-</html>

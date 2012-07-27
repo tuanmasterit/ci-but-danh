@@ -15,6 +15,35 @@
 					<?php }?>                  
                 </ul>
             </div>
+            <div class="box-sidebar" id="box-topichot">
+                <h2>Bút danh được yêu thích</h2>
+                <p>&nbsp;</p>
+                <div class="lst-butdanh">
+                    <a href="http://localhost/butdanh/profile/167">La Hoàn</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/165">Long Hà</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/164">Huy Quân</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/163">Như Châu</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/162">Hạnh Phương</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/161">Thanh Phương</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/160">Phan Duy Nghĩa</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/159">Tạ Lương</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/158">Thanh Lê</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/157">Gia Văn</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/169">Nguyễn Hà</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/168">Hạnh Giang</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/148">Nam Phong</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/147">Phước Hà</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/146">Phan Thế Hải</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/145">Linh Thư</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/144">Nguyễn Hường</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/143">Hoàng Mai</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/142">Cao Nam</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/141">Bích Ngọc</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/140">Cao Thái</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/139">Thanh Huyền</a>,&nbsp;
+                    <a href="http://localhost/butdanh/profile/138">Thu Đông</a>,&nbsp;
+                </div>    
+            </div>
             <div class="ads-sidebar">
             	<embed width="180" height="270" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1024453%26adm_aditem%3D144550%26adm_zoneid%3D228%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fwww.pnj.com.vn%2Ftintuc-ruc-ro-don-he-cung-bo-suu-tap-colors-of-your-style-cua-pnjsilver-165-_-2012-07-02%26adm_random%3D0.3391509298396217&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://admicro2.vcmedia.vn/images/pnj-silver-right-1-dan-tri-180x270-len-16-07.swf">
             </div>

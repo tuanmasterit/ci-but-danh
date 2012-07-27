@@ -66,9 +66,7 @@
 		{
 			$this->db->select('id,user_nicename,display_name');
 			$this->db->from('ci_users');
-			$this->db->join('ci_usermeta', 'id = user_id');
-			$this->db->where('meta_key','group');
-			$this->db->where('meta_value','butdanh');	
+			$this->db->where('user_activation_key','butdanh');				
 			$this->db->like('user_nicename',$user_nicename);
 			
 			$query = $this->db->get();			

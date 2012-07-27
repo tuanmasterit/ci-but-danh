@@ -218,9 +218,13 @@ class Post_model extends CI_Model{
 	}
 	//Get id last record
 	function get_id_last_row(){
+		$this->db->order_by('ID','DESC');
+		$this->db->limit(1);
 		$query = $this->db->get('ci_posts');			
-		$last_row = $query->last_row();
-		return $last_row->ID;
+		foreach($query->result() as $row){
+			return $row->ID;
+		}
+		return 0;
 	}	
 	function get_term_taxonomy_id_by_term($term_id){
 			

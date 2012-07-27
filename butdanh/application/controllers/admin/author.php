@@ -20,14 +20,13 @@ class Author extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('logged_in') != 1){
-			redirect('admin/login');
-		}
-		$this->load->model('User_model');
-		$this->load->model('Term_model');
-		$this->load->model('Post_model');
-		$this->load->library('pagination');
-		$this->load->model('Author_model');
+		if($this->session->userdata('logged_in') == 1 && ($this->session->userdata('user_activation_key') == 'administrator' || $this->session->userdata('user_activation_key') == 'bandieuphoi' || $this->session->userdata('user_activation_key') == 'congtacvien')){
+			$this->load->model('User_model');
+			$this->load->model('Term_model');
+			$this->load->model('Post_model');
+			$this->load->library('pagination');
+			$this->load->model('Author_model');
+		}else{redirect('admin/index/accesdenied');}		
     }
     
 	public function index($row=0)
@@ -119,15 +118,13 @@ class Author extends CI_Controller {
 			$user_nicename = $this->input->post('txtnicename');
 			$user_email = $this->input->post('txtemail');			
 			$display_name = $this->input->post('txtdisplay');
-			$magazine = $this->input->post('slmagazine');
-			
-			$this->User_model->update_author($user_id,$user_nicename,$user_email,$display_name,$magazine);
-			
+			$magazine = $this->input->post('slmagazine');		
+			$this->User_model->update_author($user_id,$user_nicename,$user_email,$display_name,$magazine);			
 			redirect('admin/author','refresh');
 		}
 		else 
 		{
-			$data['user'] = $this->User_model->get($id);
+			$data['user'] = $this->User_model->get_butdanh($id);
 			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh');
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 			$this->load->view('back_end/author_view',$data);

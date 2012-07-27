@@ -6,8 +6,6 @@
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/script.js"></script>
 <title>Bút danh</title>
-<?php $this->load->model('Post_model');?>
-<?php $this->load->model('User_model');?>
  
 </head>
 <body>

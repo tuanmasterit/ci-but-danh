@@ -20,13 +20,12 @@ class Users extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('logged_in') != 1){
-			redirect('admin/login');
-		}
-		$this->load->model('User_model');
-		$this->load->library('pagination');
-		// thiết lập vùng giờ mặc định 
-		date_default_timezone_set('Asia/Ho_Chi_Minh');
+		if($this->session->userdata('logged_in') == 1 && $this->session->userdata('user_activation_key') == 'administrator'){
+			$this->load->model('User_model');
+			$this->load->library('pagination');
+			// thiết lập vùng giờ mặc định 
+			date_default_timezone_set('Asia/Ho_Chi_Minh');			
+		}else{redirect('admin/index/accesdenied');}
     }
     
 	public function index($row = 0,$group='thanhvien')
@@ -57,12 +56,12 @@ class Users extends CI_Controller {
 			$user_email = $this->input->post('txtemail');
 			$user_regitered = date('Y-m-d h-i-s');
 			$display_name = $this->input->post('txtdisplay');
-			$meta_value = $this->input->post('group');
+			$user_activation_key = $this->input->post('group');
 			$user_pass = $this->input->post('txtpassword');
 			
-			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$user_pass);
+			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass);
 			$this-> session-> set_flashdata('message','Thêm thành viên thành công!');			
-			redirect('admin/users/index/0/'.$meta_value,'refresh');
+			redirect('admin/users/index/0/'.$user_activation_key,'refresh');
 		}
 		else 
 		{
@@ -79,11 +78,11 @@ class Users extends CI_Controller {
 			$user_nicename = $this->input->post('txtnicename');
 			$user_email = $this->input->post('txtemail');			
 			$display_name = $this->input->post('txtdisplay');
-			$meta_value = $this->input->post('group');
+			$user_activation_key = $this->input->post('group');
 			$user_pass = $this->input->post('txtpassword');
 			
-			$this->User_model->edit($user_id,$user_nicename,$user_email,$display_name,$meta_value,$user_pass);
-			redirect('admin/users','refresh');
+			$this->User_model->edit($user_id,$user_nicename,$user_email,$display_name,$user_activation_key,$user_pass);
+			redirect('admin/users/index/0/'.$user_activation_key,'refresh');
 		}
 		else 
 		{

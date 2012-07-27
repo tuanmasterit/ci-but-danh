@@ -11,7 +11,12 @@ class Index extends CI_Controller {
 	public function index()
 	{		
 		$this->load->view('back_end/view_dashboard');		
-	}	
+	}
+	public function accesdenied(){?>
+		<script>alert('Bạn không đủ quyền truy cập vào khu vực này !');</script>
+        <?php
+		$this->load->view('back_end/view_dashboard');
+	}
 }
 
 /* End of file welcome.php */

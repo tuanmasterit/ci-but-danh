@@ -8,11 +8,11 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">                	
-                    <li><a href="<?php echo base_url();?>admin/posts/lists/topic">Tất cả chủ đề</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/posts/add/topic">Thêm mới chủ đề</a></li>
+                    <li><a href="<?php echo base_url();?>admin/topic/lists/topic">Tất cả chủ đề</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>admin/topic/add/topic">Thêm mới chủ đề</a></li>
                 </ul>
                 <div class="content">                	
-                	<form method="post" action="<?php echo base_url();?>admin/posts/save_topic" class="stdform">
+                	<form method="post" action="<?php echo base_url();?>admin/topic/save_topic" class="stdform">
                 	<div class="edit-main">                    	                    	                            
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput" name="txttitle"></span></p>
@@ -79,15 +79,7 @@
                     </form>              
                 </div><!--content-->                
             </div><!--maincontentinner-->            
-            <div class="footer">
-            	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
-            </div><!--footer-->
-            
-        </div><!--maincontent--> 
-
-     	</div><!--mainwrapperinner-->
-    </div><!--mainwrapper-->
-	<!-- END OF MAIN CONTENT -->        
+<?php $this->load->view('back_end/footer');?>      
 <script type="text/javascript">
 	var editor = CKEDITOR.replace( 'editor_content',
 	{			
@@ -103,5 +95,3 @@
 	});
 
 </script>
-</body>
-</html>
