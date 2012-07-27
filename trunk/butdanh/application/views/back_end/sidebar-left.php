@@ -12,8 +12,8 @@
                 </li>
                 <li><a href="<?php echo base_url();?>admin/posts/lists/topic" class="tables menudrop"><span>Chủ đề</span></a>
                     <ul>
-                        <li><a href="<?php echo base_url();?>admin/posts/lists/topic"><span>Tất cả chủ đề</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/posts/add/topic"><span>Thêm mới chủ đề</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/topic/lists/topic"><span>Tất cả chủ đề</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/topic/add/topic"><span>Thêm mới chủ đề</span></a></li>
                     </ul>
                 </li>
                 <li><a href="<?php echo base_url();?>admin/author" class="elements menudrop"><span>Bút Danh</span></a>
@@ -22,15 +22,18 @@
                         <li><a href="<?php echo base_url();?>admin/magazine"><span>Danh sách báo</span></a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo base_url();?>admin/users" class="elements menudrop"><span>Thành viên</span></a>
-                    <ul>
-                    	<li><a href="<?php echo base_url();?>admin/users"><span>Tất cả thành viên</span></a></li>
-                        <!-- <li><a href="<?php echo base_url();?>admin/users/add"><span>Thêm mới thành viên</span></a></li>-->
-                        <li><a href="<?php echo base_url();?>admin/users/group"><span>Nhóm thành viên</span></a></li>
-                    </ul>
-                </li>  
+                
                 <li><a href="<?php echo base_url();?>admin/comments" class="elements menudrop"><span>Comment</span></a>                   
                 </li>                       
+                <?php if($this->session->userdata('logged_in') == 1 && $this->session->userdata('user_activation_key') == 'administrator'){?>
+					<li><a href="<?php echo base_url();?>admin/users" class="elements menudrop"><span>Thành viên</span></a>
+                        <ul>
+                            <li><a href="<?php echo base_url();?>admin/users"><span>Tất cả thành viên</span></a></li>
+                            <!-- <li><a href="<?php echo base_url();?>admin/users/add"><span>Thêm mới thành viên</span></a></li> -->
+                            <!-- <li><a href="<?php echo base_url();?>admin/users/group"><span>Nhóm thành viên</span></a></li> -->
+                        </ul>
+                    </li>
+				<?php }?>                  
             </ul>                
         </div><!--leftmenu-->
         <div id="togglemenuleft"><a></a></div>

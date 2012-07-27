@@ -32,9 +32,9 @@
                             <p><label>Nhóm người dùng:</label></p>
                             <p><span class="field">
                             	<select name="group">
-                            		<option value="bandieuphoi">Ban điều phối</option>
+                            		<option value="thanhvien">Thành viên</option>
                                     <option value="congtacvien">Cộng tác viên</option>
-                                    <option value="thanhvien">Thành viên</option>
+                                    <option value="bandieuphoi">Ban điều phối</option>
                             	</select>
                             </span></p>
                             <br />
@@ -69,18 +69,36 @@
                             </br>
                             <p><label>Nhóm người dùng:</label></p>
                             <p><span class="field">
-                            	<select name="group">
-                            		<option value="bandieuphoi">Ban điều phối</option>
-                                    <option value="congtacvien">Cộng tác viên</option>
-                                    <option value="thanhvien">Thành viên</option>
-                            	</select>
+                            	<select class="radius3" name="group">
+                            	<?php switch($user['user_activation_key']){
+										case 'thanhvien':?>
+                                            <option value="thanhvien">Thành viên</option>
+                                            <option value="congtacvien">Cộng tác viên</option>
+                                            <option value="bandieuphoi">Ban điều phối</option>
+                                            <?php break;
+                                    	case 'congtacvien':?>        
+                                        	<option value="thanhvien">Thành viên</option>
+                                            <option selected="selected" value="congtacvien">Cộng tác viên</option>
+                                            <option value="bandieuphoi">Ban điều phối</option>
+                                            <?php break;
+										case 'bandieuphoi':?>        
+                                        	<option value="thanhvien">Thành viên</option>
+                                            <option value="congtacvien">Cộng tác viên</option>
+                                            <option selected="selected" value="bandieuphoi">Ban điều phối</option>
+                                            <?php break;
+										default:?>		
+											<option selected="selected" value="thanhvien">Thành viên</option>
+                                            <option value="congtacvien">Cộng tác viên</option>
+                                            <option value="bandieuphoi">Ban điều phối</option>
+                                <?php }?>
+                                </select>
                             </span></p>
                             <br />                            
                             <p><label>Mật khẩu:</label></p>                            
-                            <p><span class="field"><input type="password" id="txtpassword" class="longinput validate[required]" name="txtpassword" /></span></p>
+                            <p><span class="field"><input type="password" id="txtpassword" class="longinput" name="txtpassword" /></span></p>
                             <br />
                             <p><label>Xác nhận mật khẩu:</label></p>                            
-                            <p><span class="field"><input type="password" class="longinput validate[required,equals[txtpassword]]" name="txtconfirmpassword" /></span></p>
+                            <p><span class="field"><input type="password" class="longinput validate[equals[txtpassword]]" name="txtconfirmpassword" /></span></p>
                             <br />
                             <p class="stdformbutton">
                             	<button class="submit radius2">Cập nhật</button>
@@ -112,8 +130,12 @@
                                         	<option value="thanhvien">Thành viên</option>
                                             <option value="congtacvien">Cộng tác viên</option>
                                             <option selected="selected" value="bandieuphoi">Ban điều phối</option>
-                                            <?php break;	
-                                    }?>									                                    
+                                            <?php break;
+										default:?>		
+											<option selected="selected" value="thanhvien">Thành viên</option>
+                                            <option value="congtacvien">Cộng tác viên</option>
+                                            <option value="bandieuphoi">Ban điều phối</option>
+                                    <?php }?>
                                 </select> &nbsp;
                                 <input type="submit" class="btn" value="Tìm kiếm"></button>
                             </form>

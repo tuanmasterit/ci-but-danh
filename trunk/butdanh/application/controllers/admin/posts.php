@@ -4,15 +4,14 @@ class Posts extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('logged_in') != 1){
-			redirect('admin/login');
-		}
-		$this->load->model('Post_model');
-		$this->load->model('Author_model');
-		$this->load->model('Term_model');
-		$this->load->library('pagination');
-		// thiết lập vùng giờ mặc định 
-		date_default_timezone_set('Asia/Ho_Chi_Minh');
+		if($this->session->userdata('logged_in') == 1 && ($this->session->userdata('user_activation_key') == 'administrator' || $this->session->userdata('user_activation_key') == 'bandieuphoi' || $this->session->userdata('user_activation_key') == 'congtacvien')){
+			$this->load->model('Post_model');
+			$this->load->model('Author_model');
+			$this->load->model('Term_model');
+			$this->load->library('pagination');
+			// thiết lập vùng giờ mặc định 
+			date_default_timezone_set('Asia/Ho_Chi_Minh');
+		}else{redirect('admin/index/accesdenied');}		
     }
 	public function delete()
 	{	

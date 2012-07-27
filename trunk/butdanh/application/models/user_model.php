@@ -35,7 +35,7 @@ class User_model extends CI_Model{
 		}
 		elseif ($id>0)
 		{
-			$this->db->select('id,user_login,user_nicename,user_email,display_name,term_taxonomy_id,user_activation_key');
+			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key');
 			$this->db->from('ci_users');
 			$this->db->where('id',$id);
 			$query = $this->db->get();
@@ -102,11 +102,13 @@ class User_model extends CI_Model{
 	function authentication($user_name,$password){		
 		$user_pass = do_hash($password, 'md5'); // MD5
 		$query = $this->db->get_where('ci_users',array('user_login'=>$user_name,'user_pass'=>$user_pass));
-		if ($query->num_rows() > 0)
+		foreach ($query->result() as $row)
 		{
 			$userdata = array(
                    'username'  => $user_name,
-                   'logged_in' => TRUE
+                   'logged_in' => TRUE,
+				   'user_id' => $row->ID,
+				   'user_activation_key'=>$row->user_activation_key
                );
 			$this->session->set_userdata($userdata);
 			$this->db->where('user_login',$user_name);
@@ -145,23 +147,18 @@ class User_model extends CI_Model{
 		return $last_row->ID;
 	}
 	
-	function edit($id,$user_nicename,$user_email,$display_name,$meta_value='',$user_pass='')
+	function edit($id,$user_nicename,$user_email,$display_name,$user_activation_key='',$user_pass='')
 	{
 		$user = array(
 			'user_nicename'=>$user_nicename,
 			'user_email'=>$user_email,
 			'display_name'=>$display_name,
-			'user_pass'=>$user_pass			
+			'user_pass'=>$user_pass,
+			'user_activation_key'=>$user_activation_key
 		);		
 		$this->db->where('id',$id);
-		$this->db->update('ci_users',$user);
-		if($meta_value != ''){
-			$this->db->where('user_id',$id);	
-			$this->db->where('meta_key','group');
-			$this->db->update('ci_usermeta',array('meta_key'=>$meta_value));
-		}
-		if($user_pass != ''){
-			
+		$this->db->update('ci_users',$user);		
+		if($user_pass != ''){			
 			$this->changePass($id,$user_pass);
 		}
 	}
@@ -192,12 +189,11 @@ class User_model extends CI_Model{
 		
 	}
 	
-	function getCount($meta_value)
+	function getCount($user_activation_key)
 	{
 		$this->db->from('ci_users');
-		$this->db->join('ci_usermeta', 'id = user_id');
-		$this->db->where('meta_key','group');
-		$this->db->where('meta_value',$meta_value);		
+		$this->db->where('user_activation_key',$user_activation_key);	
+		
 		return $this->db->count_all_results();
 	}
 	
