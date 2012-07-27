@@ -22,8 +22,9 @@
                         	<li><a href="#"></a></li>
                         </ul>
                     </div>
-                    <div class="like" id="div-like">
                     <input type="hidden" id="hdflike" value="<?php echo $check_like;?>" />
+                    <div class="like" id="div-like">
+                    
                     <?php 
                     	if($check_login==false)
                     	{
@@ -41,6 +42,16 @@
                     ?>
                     <a class="link-dislike" id="<?php echo $butdanh['id'];?>" href="<?php echo base_url();?>like/dislike"><img src="<?php echo base_url();?>application/content/images/dislike-button.jpg" /></a>
                     <?php }}?>                    	
+                    </div>
+                    <br/>
+                    <div id="list-like">
+                    
+                    	<?php 
+                    	if(count($list_like)>0)
+                    	{
+                    		echo "Có ".count($list_like)." người like bút danh này.";
+                    	}                  	
+                    	?>
                     </div>
                 </div><!-- end box-content -->
             </div><!-- end newtopic -->           
