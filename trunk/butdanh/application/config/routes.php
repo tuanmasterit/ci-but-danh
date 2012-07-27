@@ -43,6 +43,7 @@ $route['404_override'] = '';
 $route['threads/(:num)'] = 'threads/index/$1';
 $route['category/(:num)'] = 'category/index/$1';
 $route['profile/(:num)'] = 'profile/index/$1';
+$route['admin'] = 'admin/login';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
