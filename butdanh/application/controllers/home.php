@@ -39,6 +39,15 @@ class Home extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('home');
 	}
+	
+	function register()
+	{
+		//tranfer data
+		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
+		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
+		$this->load->view('front_end/view_register',$data);
+	}
 }
 
 /* End of file welcome.php */
