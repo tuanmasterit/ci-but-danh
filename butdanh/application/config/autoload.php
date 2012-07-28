@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('Count_access','User_model');
+$autoload['model'] = array('Count_access','User_model','Like_model');
 
 
 /* End of file autoload.php */

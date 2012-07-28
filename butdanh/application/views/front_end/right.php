@@ -19,29 +19,18 @@
                 <h2>Bút danh được yêu thích</h2>
                 <p>&nbsp;</p>
                 <div class="lst-butdanh">
-                    <a href="http://localhost/butdanh/profile/167">La Hoàn</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/165">Long Hà</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/164">Huy Quân</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/163">Như Châu</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/162">Hạnh Phương</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/161">Thanh Phương</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/160">Phan Duy Nghĩa</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/159">Tạ Lương</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/158">Thanh Lê</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/157">Gia Văn</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/169">Nguyễn Hà</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/168">Hạnh Giang</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/148">Nam Phong</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/147">Phước Hà</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/146">Phan Thế Hải</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/145">Linh Thư</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/144">Nguyễn Hường</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/143">Hoàng Mai</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/142">Cao Nam</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/141">Bích Ngọc</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/140">Cao Thái</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/139">Thanh Huyền</a>,&nbsp;
-                    <a href="http://localhost/butdanh/profile/138">Thu Đông</a>,&nbsp;
+                    <?php 
+                    	$lstTopLike = $this->Like_model->listTopLike();
+                    	$num = 1;
+                    	foreach ($lstTopLike as $TopLike){
+                    ?>
+                    <ul>
+                    	<li><?php echo $num;?>.&nbsp;<a href="<?php echo base_url().'profile/'.$TopLike->user_id;?>"><b><?php echo $TopLike->user_nicename;?></b> &nbsp;(<?php echo $TopLike->name;?>)</a></li>
+                    </ul>
+                    <?php 
+                    	$num++;
+                    	}
+                    	?>
                 </div>    
             </div>
             <div class="ads-sidebar">
