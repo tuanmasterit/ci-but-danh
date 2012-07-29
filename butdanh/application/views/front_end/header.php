@@ -8,6 +8,11 @@
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/script.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.validationEngine-vi.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.validationEngine.js"></script>
+<link href="<?php echo base_url();?>application/content/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet"/>
+<link href="<?php echo base_url();?>application/content/css/jquery-ui-timepicker-addon.css" type="text/css" media="all" rel="stylesheet"/>
+<script src="<?php echo base_url();?>application/content/js/jquery-ui.min.js" type="text/javascript" ></script>
+<script src="<?php echo base_url();?>application/content/js/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>application/content/js/jquery-ui-sliderAccess.js" type="text/javascript"></script>
 <title>Bút danh</title>
 <script>
 		jQuery(document).ready(function(){

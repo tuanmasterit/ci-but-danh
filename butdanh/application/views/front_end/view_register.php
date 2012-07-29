@@ -2,7 +2,12 @@
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">
-        <?php echo form_open('home/register',array('id'=>'formID','class'=>'stdform'));?>        	
+        <?php echo form_open('home/register',array('id'=>'formID','class'=>'stdform'));?>
+        <script type="text/javascript">
+        	$(function(){
+        		$('#txtNgaySinh').datepicker();
+            	});
+        </script>        	
         	<div id="box-newtopic" class="box-center">
 				<h2>Đăng ký thành viên</h2>
 				<div class="box-content">
@@ -24,7 +29,7 @@
 									</li>
 									<li>
 										<label for="passwordconfirm">Nhập lại Mật Khẩu:</label>
-										<input id="passwordconfirm" class="textbox" type="password" tabindex="1" value="" maxlength="50" name="passwordconfirm">
+										<input id="passwordconfirm" class="textbox validate[required,quals[password]]" type="password" tabindex="1" value="" maxlength="50" name="passwordconfirm">
 									</li>
 								</ul>
 								<p class="description">Nhập Mật khẩu cho tài khoản của bạn. Chú ý: Mật khẩu phân biệt chữ HOA và chữ thường.</p>
@@ -33,22 +38,15 @@
 								<ul class="group">
 									<li>
 										<label for="email">Địa chỉ Email:</label>
-										<input id="email" class="textbox" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="email">
+										<input id="email" class="textbox validate[required,custom[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="email">
 									</li>
 									<li>
 										<label for="emailconfirm">Nhập lại Email:</label>
-										<input id="emailconfirm" class="textbox" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="emailconfirm">
+										<input id="emailconfirm" class="textbox validate[required,custom[email],quals[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="emailconfirm">
 									</li>
 								</ul>
 								<p class="description">Xin mời nhập địa chỉ Email của bạn.</p>
-							</div>
-							<div class="blockrow">
-								<label for="humanverify">Câu hỏi ngẫu nhiên:</label>
-								<div class="rightcol">
-									<p class="description">Một cộng một bằng mấy? Bạn hãy điền câu trả lời bằng giá trị số vào bên dưới.</p>
-									<input id="humanverify" class="primary textbox" type="text" tabindex="1" name="humanverify[input]">									
-								</div>
-							</div>
+							</div>							
 						</div>
 						<h3 class="blocksubhead">Thông Tin cần thêm (Hồ sơ)</h3>
 						<div class="section">
@@ -75,7 +73,7 @@
 							<div class="blockrow">
 								<label>Ngày sinh:</label>
 								<div class="rightcol">
-									<input id="cfield_2" class="primary textbox" type="text" tabindex="1" maxlength="100" value="" name="userfield[field2]">
+									<input id="txtNgaySinh" class="primary textbox" type="text" tabindex="1" maxlength="100" value="" name="txtNgaySinh">
 									<p class="description">Hãy nhập ngày sinh của bạn ?</p>									
 								</div>
 							</div>
