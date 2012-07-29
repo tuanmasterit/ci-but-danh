@@ -42,6 +42,7 @@ class Home extends CI_Controller {
 	
 	function register()
 	{
+		
 		//tranfer data
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');

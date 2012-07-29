@@ -44,6 +44,9 @@ $(document).ready(function(){
 		alert('Bạn cần đăng nhập để thực hiện chức năng này!');		
 		return false;
 	});
+	
+	/***********  Datetime picker  **************************/
+	
 });
 var flag = false;
 function ShowFormComment() {
