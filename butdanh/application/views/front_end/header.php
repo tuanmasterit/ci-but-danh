@@ -70,6 +70,7 @@
                 	<p class="display-user">Xin chào: <a href="<?php echo base_url();?>profile"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
                 <?php }else{?>
             		<a id="link-login" href="javascript:return false;">Đăng nhập</a>
+            		<a id="link-login" href="<?php echo base_url();?>home/register">Đăng ký |</a>
                     <div class="frm-login">
                 		<form id="login" action="<?php echo base_url();?>home/authentication" method="post">                        
                             <p>
