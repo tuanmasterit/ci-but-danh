@@ -10,6 +10,8 @@ class Home extends CI_Controller {
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
 		$this->load->helper('captcha');
+		$this->load->library('email');
+		$this->load->helper('security');
     }	
 	public function index($module='',$obj_id=0)
 	{				
@@ -72,6 +74,20 @@ class Home extends CI_Controller {
 					$this->User_model->add($username,$user_nicename,$email,$user_regitered,$user_nicename,'thanhvien',$pass,$birthday,$phone);
 					
 					$data['check_success'] = true;
+					$user_id = $this->User_model->getByUsername($username);
+					$verify_code = do_hash($pass, 'md5');
+					$verify_code = do_hash($verify_code, 'md5');
+					//Send Mail
+					$this->email->from('dangky@butdanh.com','Bút Danh');		
+					
+					
+					$this->email->to($email);  
+					$this->email->subject('Đăng ký thành viên');
+					$email_msg='Chào mừng bạn đến với '.base_url().' <br/><br/>';
+					$email_msg.='Hãy nhấn vào đường dẫn sau để kích hoạt tài khoản của bạn: <br/>';
+					$email_msg.=base_url().'home/verify/'.$user_id.'/'.$verify_code;
+					$this->email->message($email_msg);  
+					$this->email->send();   
 				}
 				
 			}			
@@ -106,6 +122,30 @@ class Home extends CI_Controller {
 			$str .= $chars[ rand( 0, $size - 1 ) ];
 		}		
 		return $str;
+	}
+	
+	function verify($user_id,$verify_code)
+	{
+		$check = $this->User_model->verify($user_id,$verify_code);
+		$data['check'] = $check;
+		//tranfer data		
+		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
+		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
+		$this->load->view('front_end/view_verify',$data);
+	}
+	
+	function sendmail()
+	{
+		$this->email->from('dangky@butdanh.com','Bút Danh');					
+					
+		$this->email->to('phamvanhung0818@gmail.com');  
+		$this->email->subject('Đăng ký thành viên');
+		$email_msg='Chào mừng bạn đến với '.base_url().' <br/>';
+		$email_msg.='';
+		$email_msg.=base_url();
+		$this->email->message($email_msg);  
+		$this->email->send();   
 	}
 }
 
