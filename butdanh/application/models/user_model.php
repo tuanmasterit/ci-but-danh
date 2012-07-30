@@ -118,7 +118,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass='',$birthday='',$phone='')
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass='',$birthday='',$phone='',$verify='false')
 	{
 		if($user_pass != ''){
 			$user_pass = do_hash($user_pass, 'md5');	
@@ -142,6 +142,11 @@ class User_model extends CI_Model{
 
 		//Thêm số điện thoại
 		$this->add_usermeta($id, 'phone_number', $phone);
+		
+		//Thêm trạng thái xác nhận
+		$this->add_usermeta($id, 'verify', $verify);
+		//Thêm code xác nhận
+		$this->add_usermeta($id, 'verify_code', do_hash($user_pass, 'md5'));
 	}
 	
 	//get id last record
@@ -335,6 +340,31 @@ class User_model extends CI_Model{
 		}
 		else
 		{
+			return false;
+		}
+	}
+	
+	function verify($id,$verify_code)
+	{
+		$this->db->select('user_id,meta_key,meta_value');
+		$this->db->from('ci_usermeta');
+		$this->db->where('user_id',$id);
+		$this->db->where('meta_key','verify_code');
+		$this->db->where('meta_value',$verify_code);
+		$query = $this->db->get();
+		$result = $query->result();
+		
+		if(count($result)>0)
+		{
+			$arr = array(				
+				'meta_value'=>'true'
+			);		
+			$this->db->where('user_id',$id);
+			$this->db->where('meta_key','verify');
+			$this->db->update('ci_usermeta',$arr);
+			return true;
+		}
+		else{
 			return false;
 		}
 	}
