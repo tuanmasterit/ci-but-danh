@@ -58,7 +58,7 @@ class Home extends CI_Controller {
 				$address = $this->input->post('txtAddress');
 				$gender =  $this->input->post('ddlSex');
 				$phone = $this->input->post('txtPhone');
-				$birthday = $this->input->post('');
+				$birthday = $this->input->post('txtNgaySinh');
 				
 				$data['check_success'] = true;
 			}			
