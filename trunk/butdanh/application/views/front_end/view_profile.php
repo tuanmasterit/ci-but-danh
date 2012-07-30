@@ -1,3 +1,4 @@
+
 <?php $this->load->view('front_end/header');?>
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
@@ -8,18 +9,32 @@
                 </h2>
                 <div class="box-content">
                 	<p>Đơn vị công tác: <span><?php echo $butdanh['name'];?></span></p>
-                    <div class="list-post">
-                    	<h3>Danh sách các bài viết</h3>
-                        <ul>
-                        	<?php foreach($lstpostofbutdanh as $post){?>                            
-                        		<li><a class="bullet" href="#"><?php echo $post->post_title;?><span class="post_date">(<?php echo $post->post_date;?>)</span></a></li>
-                            <?php }?>
-                        </ul>
+                    <p>Lĩnh vực bài viết: <span><?php echo $butdanh['display_name'];?></span></p>
+                    <div class="list-post">                    	
+                        <?php for($i=1;$i<6;$i++)
+                        {
+                        ?>
+                        <a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?> | </a> 
+                        <?php } ?> 
+                        <a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo 6;?>">Tháng 6 </a>
+                        <br />
+                        <?php for($i=7;$i<12;$i++)
+                        {
+                        ?>
+                        <a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?> | </a> 
+                        <?php } ?> 
+                        <a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo 12;?>">Tháng 12</a>
+
+                        <h3>Danh sách các bài viết</h3>
+                        <div id="resultpostmonth"></div>                                                 
                     </div>
                     <div class="topic-relation">
                     	<h3>Chủ đề bình luận liên quan</h3>
                         <ul>
-                        	<li><a href="#"></a></li>
+                      
+                            <?php foreach($listTopicRelation as $topic){?>
+                        	<li><a href="#"><?php echo $topic->post_title; ?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                     <input type="hidden" id="hdflike" value="<?php echo $check_like;?>" />
