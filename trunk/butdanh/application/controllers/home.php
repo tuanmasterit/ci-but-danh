@@ -42,7 +42,27 @@ class Home extends CI_Controller {
 	
 	function register()
 	{
-		
+		$data['check_exit'] = false;
+		$data['check_success'] = false;
+		if($this->input->post('txtUserName'))
+		{			
+			$username = $this->input->post('txtUserName');
+			if($this->User_model->check_user_exit($username))
+			{
+				$data['check_exit'] = true;
+			}
+			else 
+			{
+				$pass = $this->input->post('password');
+				$email = $this->input->post('email');
+				$address = $this->input->post('txtAddress');
+				$gender =  $this->input->post('ddlSex');
+				$phone = $this->input->post('txtPhone');
+				$birthday = $this->input->post('');
+				
+				$data['check_success'] = true;
+			}			
+		}
 		//tranfer data
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
