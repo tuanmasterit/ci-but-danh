@@ -134,7 +134,7 @@ class Post_model extends CI_Model{
 		if($id == 0){											
 			if($author != ''){
 				$this->db->where('ci_users.id',$author);
-			}
+			}                      
 			if($term_id != '' and $term_id > 0 ){
 				$this->db->join('ci_term_relationships','ci_posts.id=object_id');
 				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
@@ -149,6 +149,7 @@ class Post_model extends CI_Model{
 			return $query->result();
 		}elseif($id > 0){								
 			$this->db->where('ci_posts.id',$id);
+            
 			$query = $this->db->get();
 			return $query->result();	
 		}
@@ -229,5 +230,79 @@ class Post_model extends CI_Model{
 	function get_term_taxonomy_id_by_term($term_id){
 			
 	}
+    
+    function get_post_by_month($author='',$month=1, $limit=-1, $offset=0, $order='DESC', $order_by='post_date'){
+		$this->db->select('
+					ci_posts.id,
+					post_author,
+					user_nicename,
+					post_date,
+					post_title,
+					post_excerpt,
+					post_content,
+					post_type,
+					post_parent					
+				');
+		$this->db->from('ci_posts');
+		$this->db->join('ci_users','post_author=ci_users.id');                													
+		if($author != ''){
+			$this->db->where('ci_users.id',$author);
+		}
+       
+        $this->db->where("YEAR(post_date)",date("Y"));
+        $this->db->where("MONTH(post_date)",$month);
+					
+		$this->db->where('post_type','post');
+		$this->db->order_by($order_by, $order);
+		if($limit > 0){
+			$this->db->limit($limit,$offset);
+		}
+		$query = $this->db->get();
+		return $query->result();		
+	}
+    function get_relation_topic($author_id,$limit=5, $offset=0, $order='DESC', $order_by='post_date')
+    {
+        $this->db->select('ci_posts.id');
+        $this->db->from('ci_posts');
+        $this->db->join('ci_users','post_author=ci_users.id');
+        if ($author_id != '')
+        {
+            $this->db->where('ci_users.id',$author_id);
+        }
+        
+        $query = $this->db->get();
+        $result = $query->result();
+        //return $result;
+        $listPost = array();
+        foreach($result as $topic)
+        {
+            $listPost[] = $topic->id;
+        }
+        if (count($listPost) >0 )
+        {        
+            $this->db->select('
+    					ci_posts.id,
+    					post_author,					
+    					post_date,
+    					post_title,
+    					post_excerpt,
+    					post_content,
+    					post_type,
+    					post_parent					
+    				');
+            $this->db->from('ci_posts');
+            $this->db->where('post_type','topic');           	
+            $this->db->where_in('post_parent',$listPost);
+            $this->db->order_by($order_by, $order);
+            if($limit > 0)
+            {
+                $this->db->limit($limit,$offset);
+            }
+            $query = $this->db->get();
+            return $query->result();
+         } 
+         return array();  
+    }	
+	
 }
 ?>
