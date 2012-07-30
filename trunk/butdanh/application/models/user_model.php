@@ -101,7 +101,15 @@ class User_model extends CI_Model{
 	
 	function authentication($user_name,$password){		
 		$user_pass = do_hash($password, 'md5'); // MD5
-		$query = $this->db->get_where('ci_users',array('user_login'=>$user_name,'user_pass'=>$user_pass));
+		$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,user_status,meta_value,meta_key');
+		$this->db->from('ci_users');
+		$this->db->join('ci_usermeta','ci_users.id=ci_usermeta.user_id');
+		$this->db->where('user_login',$user_name);
+		$this->db->where('user_pass',$user_pass);
+		$this->db->where('meta_key','verify');
+		$this->db->where('meta_value','true');
+		$query = $this->db->get();
+		//$query = $this->db->get_where('ci_users',array('user_login'=>$user_name,'user_pass'=>$user_pass));
 		foreach ($query->result() as $row)
 		{
 			$userdata = array(
@@ -118,7 +126,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass='',$birthday='',$phone='',$verify='false')
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass='',$birthday='',$phone='',$verify='true')
 	{
 		if($user_pass != ''){
 			$user_pass = do_hash($user_pass, 'md5');	
