@@ -53,12 +53,15 @@ class Home extends CI_Controller {
 			}
 			else 
 			{
-				$pass = $this->input->post('password');
+				$pass = $this->input->post('txtpassword');
 				$email = $this->input->post('email');
+				$user_nicename = $this->input->post('txtHoTen');
 				$address = $this->input->post('txtAddress');
 				$gender =  $this->input->post('ddlSex');
 				$phone = $this->input->post('txtPhone');
 				$birthday = $this->input->post('txtNgaySinh');
+				$user_regitered = date('Y-m-d h-i-s');
+				$this->User_model->add($username,$user_nicename,$email,$user_regitered,$user_nicename,'thanhvien',$pass,$birthday,$phone);
 				
 				$data['check_success'] = true;
 			}			
