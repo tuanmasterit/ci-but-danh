@@ -19,14 +19,10 @@ class Profile extends CI_Controller {
 		
 		//data profile
 		$data['butdanh'] = $this->User_model->get_butdanh($author_id);
-		$data['lstpostofbutdanh'] = $this->Post_model->get(0,'post','',$author_id);
-		$data['lsttopicofbutdanh'] = $this->Post_model->get(0,'topic','',$author_id);
-		
-		$list_like = $this->User_model->list_like($author_id);
-		
+		$data['author_id'] = $author_id;
+        $data['listTopicRelation'] = $this->Post_model->get_relation_topic($author_id);        
+		$list_like = $this->User_model->list_like($author_id);		
 		$data['list_like'] =$list_like;
-		
-		
 		//check login
 		if($this->session->userdata('logged_in') != 1){
 			$data['check_login'] = false;
@@ -43,6 +39,22 @@ class Profile extends CI_Controller {
 			
 		}else{redirect('home');}
 	}		
+    function listPostByMonth()
+    {
+        $this->load->helper('url');
+        $author_id = $this->input->post('author_id');
+        $month = $this->uri->segment(3);
+        $result = '';
+        $listPostByMonth = $this->Post_model->get_post_by_month($author_id, $month);
+        if (count($listPostByMonth) >0)
+        {
+            foreach($listPostByMonth as $post)
+            {
+                $result .= '<li><a class="bullet" href="#">'.$post->post_title.'</a></li>';
+            }
+        } else $result = 'Không có bài viết nào!';
+        echo $result;
+    }
 }
 
 /* End of file welcome.php */
