@@ -133,20 +133,8 @@ class Home extends CI_Controller {
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		$this->load->view('front_end/view_verify',$data);
-	}
+	}	
 	
-	function sendmail()
-	{
-		$this->email->from('dangky@butdanh.com','Bút Danh');					
-					
-		$this->email->to('phamvanhung0818@gmail.com');  
-		$this->email->subject('Đăng ký thành viên');
-		$email_msg='Chào mừng bạn đến với '.base_url().' <br/>';
-		$email_msg.='';
-		$email_msg.=base_url();
-		$this->email->message($email_msg);  
-		$this->email->send();   
-	}
 }
 
 /* End of file welcome.php */
