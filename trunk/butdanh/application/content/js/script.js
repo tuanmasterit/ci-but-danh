@@ -47,6 +47,21 @@ $(document).ready(function(){
 	
 	/***********  Datetime picker  **************************/
 	
+    
+    $(".ajaxmonth").click(function(){
+            var u = $(this).attr('href');
+    		var author_id = $(this).attr('id');
+            $.ajax({
+              type:"POST",
+              url:u, 
+              data:"author_id="+author_id, 
+              //dataType:"xml",                
+              success: function (data){ 
+                $("#resultpostmonth").html(data);
+              }
+            });
+            return false;
+    });	
 });
 var flag = false;
 function ShowFormComment() {
