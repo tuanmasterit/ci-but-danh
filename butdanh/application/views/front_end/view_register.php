@@ -56,6 +56,12 @@
 										<input id="emailconfirm" class="textbox validate[required,custom[email],equals[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="emailconfirm">
 									</li>
 								</ul>
+								<?php 
+										if($check_email_exit==true)
+										{
+									?>
+									<p class="description" style="color:red">Email này đã được đăng ký.</p>
+								<?php }?>	
 								<p class="description">Xin mời nhập địa chỉ Email của bạn.</p>
 							</div>							
 						</div>
@@ -106,6 +112,18 @@
 						</div>
 						<div class="section">
 							<div class="blockrow">
+								<label>Nhập mã xác nhận:</label>
+								<div class="rightcol">
+									<input id="txtCaptcha" class="primary textbox validate[required,equals[hdfCaptcha]" style="width:150px;" type="text" tabindex="1" maxlength="100" value="" name="txtCaptcha">
+									<input type="hidden" id="hdfCaptcha" value="<?php echo $word;?>">
+									<img id="refresh-img" title="Đổi mã xác nhận" style="vertical-align:top;cursor:pointer;  padding-top:1px;" width="25px" height="25px" onclick="ChangeImage()" alt="Thay hình khác" urllink="<?php echo base_url();?>ajax/refreshCaptcha" src="<?php echo base_url();?>application/content/images/refresh.jpg"/>
+									<span id="img-captcha"><?php echo $image;?></span>
+									<p class="description">Hãy nhập mã xác nhận ?</p>									
+								</div>
+							</div>
+						</div>
+						<div class="section">
+							<div class="blockrow">
 								<label></label>
 								<div class="rightcol">
 									<input class="button" type="submit" accesskey="s" tabindex="1" value="Hoàn tất đăng ký">
@@ -120,6 +138,8 @@
 					{											
 					?>
 					<p>Chúc mừng bạn đã đăng ký thành công!</p>
+					<br/>
+					<p>Chúng tôi sẽ gửi mail xác nhận cho bạn trong ít phút nữa. Hãy vào hòm thư của bạn để kích hoạt tài khoản.</p>
 					<?php }?>								
 					</div>				
 				</div> 

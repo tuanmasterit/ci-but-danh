@@ -146,3 +146,12 @@ function submitForm(){
 	return false;	
 }
 
+function ChangeImage(){
+	var url = $("#refresh-img").attr('urllink');	
+	$.post(url,function(data) {
+		$("#img-captcha").html(data.mess1);
+		$("#hdfCaptcha").val(data.mess2);
+	},'json');
+}
+
+

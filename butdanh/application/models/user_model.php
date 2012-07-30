@@ -320,5 +320,23 @@ class User_model extends CI_Model{
 		
 		$this->db->insert('ci_usermeta',$arr);
 	}
+	
+	function check_email_exit($user_email)
+	{
+		$this->db->select('user_email');
+		$this->db->from('ci_users');
+		$this->db->where('user_email',$user_email);
+		
+		$query = $this->db->get();
+		$result = $query->result();
+		if(count($result)>0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
 ?>

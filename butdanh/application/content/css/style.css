@@ -335,7 +335,10 @@ select {
     font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
     padding: 2.5px 5px;
 }
-.blockbody .button
+.blockrow .rightcol img
 {
-	
+	float: right;
+	margin-top: 2px;
+	margin-left: 3px;
+	margin-right: 5px;
 }

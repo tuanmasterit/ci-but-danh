@@ -17,7 +17,16 @@
                     	<li><a href="./editor.html" class="message">New Message</a></li>
                     </ul>
                     
-                    <br clear="all" /><br />                    
+                    <br clear="all" /><br />
+                    
+                    <div class="contenttitle">
+                    	<h2 class="chart"><span>Simple Chart</span></h2>
+                    </div><!--contenttitle-->
+                    <br />
+                    <div id="chartplace2" style="height:300px;"></div>                
+                	<br /><br />
+
+                    
                 </div><!--content-->
                 
             </div><!--maincontentinner-->            
