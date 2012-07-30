@@ -71,7 +71,7 @@ class Home extends CI_Controller {
 					$phone = $this->input->post('txtPhone');
 					$birthday = $this->input->post('txtNgaySinh');
 					$user_regitered = date('Y-m-d h-i-s');
-					$this->User_model->add($username,$user_nicename,$email,$user_regitered,$user_nicename,'thanhvien',$pass,$birthday,$phone);
+					$this->User_model->add($username,$user_nicename,$email,$user_regitered,$user_nicename,'thanhvien',$pass,$birthday,$phone,'false');
 					
 					$data['check_success'] = true;
 					$user_id = $this->User_model->getByUsername($username);
