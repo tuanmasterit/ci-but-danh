@@ -285,5 +285,23 @@ class User_model extends CI_Model{
 		$result = $query->result();		
 		return $result;
 	}
+	
+	function check_user_exit($user_login)
+	{
+		$this->db->select('user_id');
+		$this->db->from('ci_users');
+		$this->db->where('user_login',$user_login);
+		
+		$query = $this->db->get();
+		$result = $query->result();
+		if(count($result)>0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
 ?>
