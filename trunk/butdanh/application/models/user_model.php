@@ -118,7 +118,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass='',$birthday='')
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass='',$birthday='',$phone='')
 	{
 		if($user_pass != ''){
 			$user_pass = do_hash($user_pass, 'md5');	
@@ -136,9 +136,12 @@ class User_model extends CI_Model{
 		//Thêm thành viên
 		$this->db->insert('ci_users',$user);
 		
-		//Thêm ngày sinh
-		
-		$id = $this->get_id_last_row();						
+		//Thêm ngày sinh				
+		$id = $this->get_id_last_row();	
+		$this->add_usermeta($id,'birthday',$birthday);
+
+		//Thêm số điện thoại
+		$this->add_usermeta($id, 'phone_number', $phone);
 	}
 	
 	//get id last record
@@ -291,7 +294,7 @@ class User_model extends CI_Model{
 	
 	function check_user_exit($user_login)
 	{
-		$this->db->select('user_id');
+		$this->db->select('id');
 		$this->db->from('ci_users');
 		$this->db->where('user_login',$user_login);
 		

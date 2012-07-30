@@ -35,12 +35,12 @@
 							<div class="blockrow">
 								<ul class="group">
 									<li>
-										<label for="password">Mật Khẩu:</label>
-										<input id="password" class="textbox validate[required]" type="password" tabindex="1" value="" maxlength="50" name="password">
+										<label for="txtpassword">Mật Khẩu:</label>
+										<input id="txtpassword" class="textbox validate[required]" type="password" tabindex="1" value="" maxlength="50" name="txtpassword">
 									</li>
 									<li>
 										<label for="passwordconfirm">Nhập lại Mật Khẩu:</label>
-										<input id="passwordconfirm" class="textbox validate[required,quals[password]]" type="password" tabindex="1" value="" maxlength="50" name="passwordconfirm">
+										<input id="passwordconfirm" class="textbox validate[required,equals[txtpassword]]" type="password" tabindex="1" value="" maxlength="50" name="passwordconfirm">
 									</li>
 								</ul>
 								<p class="description">Nhập Mật khẩu cho tài khoản của bạn. Chú ý: Mật khẩu phân biệt chữ HOA và chữ thường.</p>
@@ -61,6 +61,13 @@
 						</div>
 						<h3 class="blocksubhead">Thông Tin cần thêm (Hồ sơ)</h3>
 						<div class="section">
+							<div class="blockrow">
+								<label>Họ và tên:</label>
+								<div class="rightcol">
+									<input id="txtHoTen" class="primary textbox" type="text" tabindex="1" maxlength="100" value="" name="txtHoTen">
+									<p class="description">Nhập họ tên thật của bạn ?</p>									
+								</div>
+							</div>
 							<div class="blockrow">
 								<label>Đến từ:</label>
 								<div class="rightcol">
