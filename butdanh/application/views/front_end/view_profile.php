@@ -33,7 +33,7 @@
                         <ul>
                       
                             <?php foreach($listTopicRelation as $topic){?>
-                        	<li><a href="#"><?php echo $topic->post_title; ?></a></li>
+                        	<li><a href="<?php echo base_url().'/threads/'.$topic->id; ?>"><?php echo $topic->post_title; ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>
