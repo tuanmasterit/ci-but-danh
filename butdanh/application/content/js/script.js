@@ -99,7 +99,7 @@ $(document).ready(function(){
     $("#address-hidden").hide();
     $("#link-address").click(function(){
     	var str = $("#address-show").text();
-    	$("#txtAddress").html(str); 
+    	$("#txtAddress").val(str); 
     	$("#address-show").hide(500);
     	$("#address-hidden").show(500);
     	return false;
@@ -125,6 +125,101 @@ $(document).ready(function(){
     	$("#address-hidden").hide(500);
     	return false;
     });
+    
+    /*Giới tính*/
+    $("#gender-hidden").hide();
+    $("#link-gender").click(function(){
+    	var str = $("#gender-show").text();
+    	 
+    	$("#gender-show").hide(500);
+    	$("#gender-hidden").show(500);
+    	return false;
+    });
+    $("#cancelbutton-gender").click(function(){
+    	$("#gender-show").show(500);
+    	$("#gender-hidden").hide(500);
+    });
+    $("#submitbutton-gender").click(function(){
+    	var id = $("#hdfID").attr("value");
+    	var meta_key = 'gender';
+    	var meta_value = $("#ddlGender").val();
+    	
+    	var url= $(this).attr("urllink");
+    	if(meta_value=='')
+		{
+    		meta_value ='N/A';
+		}
+    	$.post(url,{id:id,key:meta_key,value:meta_value,type:'meta'},function(data) {    		
+    		$("#gender-show").text(meta_value);		
+		});
+    	
+    	$("#gender-show").show(500);
+    	$("#gender-hidden").hide(500);
+    	return false;
+    });
+    
+    /*Ngày sinh*/
+    $("#birthday-hidden").hide();
+    $("#link-birthday").click(function(){
+    	var str = $("#birthday-show").text();
+    	$("#txtBirthday").val(str); 
+    	$("#birthday-show").hide(500);
+    	$("#birthday-hidden").show(500);
+    	return false;
+    });
+    $("#cancelbutton-birthday").click(function(){
+    	$("#birthday-show").show(500);
+    	$("#birthday-hidden").hide(500);
+    });
+    $("#submitbutton-birthday").click(function(){
+    	var id = $("#hdfID").attr("value");
+    	var meta_key = 'birthday';
+    	var meta_value = $("#txtBirthday").val();
+    	var url= $(this).attr("urllink");
+    	if(meta_value=='')
+		{
+    		meta_value ='N/A';
+		}
+    	$.post(url,{id:id,key:meta_key,value:meta_value,type:'meta'},function(data) {    		
+    		$("#birthday-show").text(meta_value);		
+		});
+    	
+    	$("#birthday-show").show(500);
+    	$("#birthday-hidden").hide(500);
+    	return false;
+    });
+    
+    /*Phone*/
+    $("#phone-hidden").hide();
+    $("#link-phone").click(function(){
+    	var str = $("#phone-show").text();
+    	$("#txtPhone").val(str); 
+    	$("#phone-show").hide(500);
+    	$("#phone-hidden").show(500);
+    	return false;
+    });
+    $("#cancelbutton-phone").click(function(){
+    	$("#phone-show").show(500);
+    	$("#phone-hidden").hide(500);
+    });
+    $("#submitbutton-phone").click(function(){
+    	var id = $("#hdfID").attr("value");
+    	var meta_key = 'phone_number';
+    	var meta_value = $("#txtPhone").val();
+    	var url= $(this).attr("urllink");
+    	if(meta_value=='')
+		{
+    		meta_value ='N/A';
+		}
+    	$.post(url,{id:id,key:meta_key,value:meta_value,type:'meta'},function(data) {    		
+    		$("#phone-show").text(meta_value);		
+		});
+    	
+    	$("#phone-show").show(500);
+    	$("#phone-hidden").hide(500);
+    	return false;
+    });
+    
 });
 var flag = false;
 function ShowFormComment() {
