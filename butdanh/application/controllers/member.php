@@ -17,6 +17,7 @@
 			$data['gender'] = $this->User_model->get_usermeta($id,'gender');
 			$data['phone'] = $this->User_model->get_usermeta($id,'phone_number');
 			$data['tieusu']=$this->User_model->get_usermeta($id,'tieu_su');
+			$data['sothich'] = $this->User_model->get_usermeta($id,'so_thich');
 			//tranfer data
 			$data['member'] = $member;
 			$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);

@@ -137,9 +137,24 @@
 						<div class="item-section">
 							<div class="about-left">
 								Sở thích &nbsp;
-								<a href="#" id="link-hobby"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+								<a href="#" id="link-sothich"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
 							</div>
-							<div class="about-right">phamvanhung0818@gmail.com</div>
+							<div class="about-right">
+								<label id="sothich-show"><?php if($sothich=='') {echo 'N/A';} else{echo $sothich;}?></label>
+								<div id="sothich-hidden">								
+									<div>
+										<textarea id="txtSoThich" class="primary textbox" tabindex="1" cols="35" rows="0" name="txtSoThich"></textarea>
+									</div>
+									<p class="description">Sở thích của bạn?</p>
+									
+									<div id="field_edit_error_container" class="hidden">
+										<div>
+											<input id="submitbutton-sothich" urllink="<?php echo base_url();?>member/updateProfile" class="userprof_button" type="submit" value=" Lưu lại ">
+											<input id="cancelbutton-sothich" class="userprof_button" type="reset" value="Hủy bỏ">										
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="blocksubhead">						
