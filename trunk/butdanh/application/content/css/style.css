@@ -342,3 +342,34 @@ select {
 	margin-left: 3px;
 	margin-right: 5px;
 }
+.profile_content {
+    
+}
+.profile_content .blocksubhead{
+	border: 1px solid #6B91AB;
+    clear: both;
+    font-size: 13px;
+    background-color: #CEDFEB;
+    height: 25px;
+    padding: 5px 10px 0;
+}
+.profile_content .blocksubhead h4 {
+    display: inline;
+    
+    margin: 0;
+    padding-right: 5px;
+}
+.subsection{
+	 padding: 10px;
+}
+.item-section{
+	width: 100%;
+	margin-bottom: 8px;
+}
+.item-section .about-left{
+	float: left;
+    font-weight: bold;
+}
+.item-section .about-right{
+	 padding-left: 160px;
+}
