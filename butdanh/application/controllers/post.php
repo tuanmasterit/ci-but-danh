@@ -10,7 +10,7 @@ class Post extends CI_Controller {
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
     }
-    public function index($post_id=10)
+    public function index($post_id=0)
 	{				
 		//tranfer data
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
@@ -24,12 +24,12 @@ class Post extends CI_Controller {
         {
            $data['post_detail'] = $temp; 
 	       $data['butdanh'] = $this->User_model->get_butdanh($temp->post_author); 
-		}
+		} else {redirect('home');}
         
         //print_r($data['post_detail']);
         if($post_id != 0){
 			$this->load->view('front_end/post_view',$data);
 			
-		}else{redirect('home');}
+		} else {redirect('home');}
 	}	
 }
