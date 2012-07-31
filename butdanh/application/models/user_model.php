@@ -395,5 +395,28 @@ class User_model extends CI_Model{
 		}
 		return '';
 	}
+	
+	function update_meta($id,$meta_key,$meta_value)
+	{
+		$this->db->select('meta_value');
+		$this->db->from('ci_usermeta');
+		$this->db->where('user_id',$id);
+		$this->db->where('meta_key',$meta_key);
+		$query = $this->db->get();
+		
+		if($query->num_rows()>0)
+		{
+			$arr = array(
+				'meta_value'=>$meta_value
+			);
+			$this->db->where('user_id',$id);
+			$this->db->where('meta_key',$meta_key);
+			$this->db->update('ci_usermeta',$arr);
+		}
+		else 
+		{
+			$this->add_usermeta($id, $meta_key, $meta_value);
+		}
+	}
 }
 ?>

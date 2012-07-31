@@ -62,6 +62,69 @@ $(document).ready(function(){
             });
             return false;
     });	
+    
+    /************** Change Info **********************/
+    /*Tiểu sử*/
+    $("#tieusu-hidden").hide();
+    $("#link-tieusu").click(function(){
+    	var str = $("#tieusu-show").text();
+    	$("#txtTieuSu").html(str); 
+    	$("#tieusu-show").hide(500);
+    	$("#tieusu-hidden").show(500);
+    	return false;
+    });
+    $("#cancelbutton-tieusu").click(function(){
+    	$("#tieusu-show").show(500);
+    	$("#tieusu-hidden").hide(500);
+    });
+    $("#submitbutton-tieusu").click(function(){
+    	var id = $("#hdfID").attr("value");
+    	var meta_key = 'tieu_su';
+    	var meta_value = $("#txtTieuSu").val();
+    	var url= $(this).attr("urllink");
+    	if(meta_value=='')
+		{
+    		meta_value ='N/A';
+		}
+    	$.post(url,{id:id,key:meta_key,value:meta_value,type:'meta'},function(data) {    		
+    		$("#tieusu-show").text(meta_value);		
+		});
+    	
+    	$("#tieusu-show").show(500);
+    	$("#tieusu-hidden").hide(500);
+    	return false;
+    });
+    
+    /*Địa chỉ*/
+    $("#address-hidden").hide();
+    $("#link-address").click(function(){
+    	var str = $("#address-show").text();
+    	$("#txtAddress").html(str); 
+    	$("#address-show").hide(500);
+    	$("#address-hidden").show(500);
+    	return false;
+    });
+    $("#cancelbutton-address").click(function(){
+    	$("#address-show").show(500);
+    	$("#address-hidden").hide(500);
+    });
+    $("#submitbutton-address").click(function(){
+    	var id = $("#hdfID").attr("value");
+    	var meta_key = 'address';
+    	var meta_value = $("#txtAddress").val();
+    	var url= $(this).attr("urllink");
+    	if(meta_value=='')
+		{
+    		meta_value ='N/A';
+		}
+    	$.post(url,{id:id,key:meta_key,value:meta_value,type:'meta'},function(data) {    		
+    		$("#address-show").text(meta_value);		
+		});
+    	
+    	$("#address-show").show(500);
+    	$("#address-hidden").hide(500);
+    	return false;
+    });
 });
 var flag = false;
 function ShowFormComment() {
