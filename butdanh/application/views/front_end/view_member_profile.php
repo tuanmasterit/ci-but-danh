@@ -39,19 +39,51 @@
 							</div>
 						</div>
 						<div class="item-section">
-							<div class="about-left">Giới tính</div>
-							<div class="about-right"><?php if($gender=='') {echo 'N/A';} else{echo $gender;}?></div>
+							<div class="about-left">
+								Giới tính &nbsp;
+								<a href="#" id="link-gender"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+							</div>
+							<div class="about-right">
+								<label id="gender-show"><?php if($gender=='') {echo 'N/A';} else{echo $gender;}?></label>
+								<div>
+									<select id="cfield_5" class="primary" tabindex="1" name="userfield[field5]">
+										<option value="0"></option>
+										<option selected="selected" value="1">Nam</option>
+										<option value="2">Nữ</option>
+									<option value="3">Kh&ocirc;ng biết</option>
+									</select>
+									
+									<p class="description">Bạn l&agrave; Nam (Male) hay Nữ (Female) vậy ?</p>
+									
+									<div>
+										<input id="submitbutton" class="userprof_button" type="submit" value=" Lưu lại ">
+										<input id="cancelbutton" class="userprof_button" type="reset" value="Hủy bỏ">
+										
+									</div>
+								</div>
+							</div>
 						</div>
 						<div class="item-section">
-							<div class="about-left">Ngày sinh</div>
+							<div class="about-left">
+								Ngày sinh &nbsp;
+								<a href="#" id="link-birthday"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+							</div>
 							<div class="about-right"><?php if($birthday=='') {echo 'N/A';} else{echo $birthday;}?></div>
 						</div>
 						<div class="item-section">
-							<div class="about-left">Số điện thoại</div>
-							<div class="about-right"><?php if($phone=='') {echo 'N/A';} else{echo $phone;}?></div>
+							<div class="about-left">
+								Số điện thoại &nbsp;
+								<a href="#" id="link-phone"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+							</div>
+							<div class="about-right">
+								<label id="phone-show"><?php if($phone=='') {echo 'N/A';} else{echo $phone;}?></label>
+							</div>
 						</div>
 						<div class="item-section">
-							<div class="about-left">Email</div>
+							<div class="about-left">
+								Email &nbsp;
+								<a href="#" id="link-email"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+							</div>
 							<div class="about-right"><?php echo $member['user_email'];?></div>
 						</div>
 						<div class="item-section">
@@ -77,7 +109,10 @@
 							</div>
 						</div>
 						<div class="item-section">
-							<div class="about-left">Sở thích</div>
+							<div class="about-left">
+								Sở thích &nbsp;
+								<a href="#" id="link-hobby"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+							</div>
 							<div class="about-right">phamvanhung0818@gmail.com</div>
 						</div>
 					</div>
