@@ -220,6 +220,37 @@ $(document).ready(function(){
     	return false;
     });
     
+    /*Sở thích*/
+    $("#sothich-hidden").hide();
+    $("#link-sothich").click(function(){
+    	var str = $("#sothich-show").text();
+    	$("#txtSoThich").html(str); 
+    	$("#sothich-show").hide(500);
+    	$("#sothich-hidden").show(500);
+    	return false;
+    });
+    $("#cancelbutton-sothich").click(function(){
+    	$("#sothich-show").show(500);
+    	$("#sothich-hidden").hide(500);
+    });
+    $("#submitbutton-sothich").click(function(){
+    	var id = $("#hdfID").attr("value");
+    	var meta_key = 'so_thich';
+    	var meta_value = $("#txtSoThich").val();
+    	var url= $(this).attr("urllink");
+    	if(meta_value=='')
+		{
+    		meta_value ='N/A';
+		}
+    	$.post(url,{id:id,key:meta_key,value:meta_value,type:'meta'},function(data) {    		
+    		$("#sothich-show").text(meta_value);		
+		});
+    	
+    	$("#sothich-show").show(500);
+    	$("#sothich-hidden").hide(500);
+    	return false;
+    });
+    
 });
 var flag = false;
 function ShowFormComment() {
