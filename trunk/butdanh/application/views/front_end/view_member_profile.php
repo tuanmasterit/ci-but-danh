@@ -12,31 +12,31 @@
 					<div class="subsection">
 						<div class="item-section">
 							<div class="about-left">Tên đăng nhập</div>
-							<div class="about-right">Vanhung90_hd</div>
+							<div class="about-right"><?php echo $member['user_login'];?></div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">Họ và tên</div>
-							<div class="about-right">Phạm Văn Hưng</div>
+							<div class="about-right"><?php echo $member['user_nicename'];?></div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">Đến từ</div>
-							<div class="about-right">Hải Dương</div>
+							<div class="about-right"><?php if($address=='') {echo 'N/A';} else{echo $address;}?></div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">Giới tính</div>
-							<div class="about-right">Nam</div>
+							<div class="about-right"><?php if($gender=='') {echo 'N/A';} else{echo $gender;}?></div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">Ngày sinh</div>
-							<div class="about-right">08/01/1990</div>
+							<div class="about-right"><?php if($birthday=='') {echo 'N/A';} else{echo $birthday;}?></div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">Số điện thoại</div>
-							<div class="about-right">0972263179</div>
+							<div class="about-right"><?php if($phone=='') {echo 'N/A';} else{echo $phone;}?></div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">Email</div>
-							<div class="about-right">phamvanhung0818@gmail.com</div>
+							<div class="about-right"><?php echo $member['user_email'];?></div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">Tiểu sử, lý lịch</div>
