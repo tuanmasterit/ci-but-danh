@@ -130,7 +130,8 @@
 						</div>
 					</div>
 				</div>				
-			</div>			   	
+			</div>			   
+		</div>	
     	</div><!-- end middle-center -->
         <?php $this->load->view('front_end/right');?>
     </div><!-- end middle -->
