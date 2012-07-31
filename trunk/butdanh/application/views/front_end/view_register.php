@@ -85,9 +85,9 @@
 								<label>Giới tính:</label>
 								<div class="rightcol">
 									<select id="ddlSex" class="primary" tabindex="1" name="ddlSex">
-										<option value="1" selected="selected">Nam</option>
-										<option value="2">Nữ</option>
-										<option value="3">Không biết</option>
+										<option value="Nam" selected="selected">Nam</option>
+										<option value="Nữ">Nữ</option>
+										<option value="Không biết">Không biết</option>
 									</select>									
 									<p class="description">Bạn là Nam (Male) hay Nữ (Female) vậy ?</p>
 								</div>

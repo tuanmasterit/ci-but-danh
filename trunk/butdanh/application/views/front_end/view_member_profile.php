@@ -2,7 +2,11 @@
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">
-                     	
+        <script type="text/javascript">
+        	$(function(){
+        		$('#txtBirthday').datepicker({ dateFormat: 'dd/mm/yy' });
+            	});
+        </script>               	
         	<div id="box-newtopic" class="box-center">
 				<h2>Thông tin thành viên</h2>
 				<div class="profile_content">
@@ -45,19 +49,19 @@
 							</div>
 							<div class="about-right">
 								<label id="gender-show"><?php if($gender=='') {echo 'N/A';} else{echo $gender;}?></label>
-								<div>
-									<select id="cfield_5" class="primary" tabindex="1" name="userfield[field5]">
-										<option value="0"></option>
-										<option selected="selected" value="1">Nam</option>
-										<option value="2">Nữ</option>
-									<option value="3">Kh&ocirc;ng biết</option>
+								<div id="gender-hidden">
+									<select id="ddlGender" class="primary" tabindex="1" name="ddlGender">
+										
+										<option selected="selected" value="Nam">Nam</option>
+										<option value="Nữ">Nữ</option>
+									<option value="Không biết">Không biết</option>
 									</select>
 									
-									<p class="description">Bạn l&agrave; Nam (Male) hay Nữ (Female) vậy ?</p>
+									<p class="description">Bạn là Nam (Male) hay Nữ (Female) vậy ?</p>
 									
 									<div>
-										<input id="submitbutton" class="userprof_button" type="submit" value=" Lưu lại ">
-										<input id="cancelbutton" class="userprof_button" type="reset" value="Hủy bỏ">
+										<input id="submitbutton-gender" urllink="<?php echo base_url();?>member/updateProfile" class="userprof_button" type="submit" value=" Lưu lại ">
+										<input id="cancelbutton-gender" class="userprof_button" type="reset" value="Hủy bỏ">
 										
 									</div>
 								</div>
@@ -68,7 +72,19 @@
 								Ngày sinh &nbsp;
 								<a href="#" id="link-birthday"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
 							</div>
-							<div class="about-right"><?php if($birthday=='') {echo 'N/A';} else{echo $birthday;}?></div>
+							<div class="about-right">
+								<label id="birthday-show"><?php if($birthday=='') {echo 'N/A';} else{echo $birthday;}?></label>
+								<div id="birthday-hidden">
+									<input id="txtBirthday" class="primary textbox" type="text" tabindex="1" maxlength="100" value="" name="txtBirthday">
+									<p class="description">Ngày sinh của bạn?</p>
+									
+									<div id="field_edit_error_container" class="hidden">
+									<div>
+										<input id="submitbutton-birthday" urllink="<?php echo base_url();?>member/updateProfile" class="userprof_button" type="submit" value=" Lưu lại ">
+										<input id="cancelbutton-birthday" class="userprof_button" type="reset" value="Hủy bỏ">										
+									</div>
+								</div>
+							</div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">
@@ -77,12 +93,22 @@
 							</div>
 							<div class="about-right">
 								<label id="phone-show"><?php if($phone=='') {echo 'N/A';} else{echo $phone;}?></label>
+								<div id="phone-hidden">
+									<input id="txtPhone" class="primary textbox" type="text" tabindex="1" maxlength="100" value="" name="txtPhone">
+									<p class="description">Số điện thoại của bạn?</p>
+									
+									<div id="field_edit_error_container" class="hidden">
+									<div>
+										<input id="submitbutton-phone" urllink="<?php echo base_url();?>member/updateProfile" class="userprof_button" type="submit" value=" Lưu lại ">
+										<input id="cancelbutton-phone" class="userprof_button" type="reset" value="Hủy bỏ">										
+									</div>
+								</div>
+							</div>
 							</div>
 						</div>
 						<div class="item-section">
 							<div class="about-left">
-								Email &nbsp;
-								<a href="#" id="link-email"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+								Email &nbsp;								
 							</div>
 							<div class="about-right"><?php echo $member['user_email'];?></div>
 						</div>
@@ -132,6 +158,7 @@
 				</div>				
 			</div>			   
 		</div>	
+		</div>
     	</div><!-- end middle-center -->
         <?php $this->load->view('front_end/right');?>
     </div><!-- end middle -->
