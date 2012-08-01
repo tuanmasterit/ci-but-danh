@@ -7,26 +7,38 @@
             	<h2>
                 	<span>Bút danh: <?php echo $butdanh['user_nicename'];?></span>
                 </h2>
-                <div class="box-content">
-                	<p>Đơn vị công tác: <span><?php echo $butdanh['name'];?></span></p>
+                <div class="info-butdanh">
+                    <p>Đơn vị công tác: <span><?php echo $butdanh['name'];?></span></p>
                     <p>Lĩnh vực bài viết: <span><?php echo $butdanh['display_name'];?></span></p>
-                    <div class="list-post">                    	
-                        <?php for($i=1;$i<6;$i++)
-                        {
-                        ?>
-                        <a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?> | </a> 
-                        <?php } ?> 
-                        <a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo 6;?>">Tháng 6 </a>
-                        <br />
-                        <?php for($i=7;$i<12;$i++)
-                        {
-                        ?>
-                        <a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?> | </a> 
-                        <?php } ?> 
-                        <a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo 12;?>">Tháng 12</a>
-
-                        <h3>Danh sách các bài viết</h3>
-                        <div id="resultpostmonth"></div>                                                 
+                </div>    
+                <div class="box-content">
+                	<div class="list-post">
+                        <ul class="tab_month">
+                            <?php
+                                $month = date("m"); 
+                                echo $month;
+                                for($i=1;$i<=12;$i++){
+                                    if($i!=$month){    
+                            ?>
+                                    <li><a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
+                             
+                             <?php  } else { ?>
+                                    <li><a class="ajaxmonth active" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>    
+                            <?php }} ?>
+                        </ul>
+                        <div class="list-post-right">
+                            <h3>Danh sách các bài viết</h3>
+                            <div id="resultpostmonth">
+                                <?php 
+                                   
+                                    if (count($listPostByMonth)>0)
+                                    foreach($listPostByMonth as $post){
+                                ?>
+                                    <li><a class="bullet" href="<?php echo base_url().'post/index/'.$post->id;?>"><?php echo $post->post_title;?></a></li>
+                                <?php } else echo 'Không có bài viết nào !' ?>    
+                            </div>
+                        </div>                    	                                                
+                        <input type="hidden" id="urlLoading" value="<?php echo base_url(); ?>"/>                                                                         
                     </div>
                     <div class="topic-relation">
                     	<h3>Chủ đề bình luận liên quan</h3>
