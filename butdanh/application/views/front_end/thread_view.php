@@ -89,23 +89,12 @@
 						<div class="adword-hdf">&nbsp;</div> 
 						<div class="adword adword-middle" style="padding-top:0px;">
 							<div class="adword-nav2 fl" style="padding-top:10px; width:100%; background-color:#ffffff">
-								<div style="padding-bottom:5px; overflow:hidden;">
-									<div class="fl" style="width:60%;margin-left:5px">
-										<input id="txtAddedBy" class="adword-textbox" type="text" onclick="if(this.value=='Họ tên'){this.value=''}" onblur="if(this.value==''){this.value='Họ tên'}" size="29" style="width:280px;" name="txtAddedBy" value="Họ tên">
-									</div>
-									<div class="fr" style="width:180px;margin-right:5px;">
-										<input id="txtAddedByEmail" class="adword-textbox" type="text" onclick="if(this.value=='Email'){this.value=''}" onblur="if(this.value==''){this.value='Email'}"  size="29" style="width:172px" name="txtAddedByEmail" value="Email">
-									</div>
-								</div>
+								
 								<div style="padding-bottom:5px; overflow:hidden;;margin-left:5px">
 									<div class="fl" style="width:60%">
 										<input id="txtAddedTitle" class="adword-textbox" type="text" onclick="if(this.value=='Tiêu đề'){this.value=''}" onblur="if(this.value==''){this.value='Tiêu đề'}" size="29" style="width:280px;" name="txtAddedTitle" value="Tiêu đề">
 									</div>
-									<div class="fr" style="width:180px;">
-										<input id="txtValidCode" class="adword-textbox" type="text" "="" onkeyup="initTyper(this)" onblur="ValidateCodeOnBlur(this)" onfocus="ValidateCodeOnFocus(this)" size="29" style="width:99px;" name="txtValidCode" value="Mã xác nhận">
-										<?php echo $image;?>
-										<img style="vertical-align:top;cursor:pointer; padding-top:1px" onclick="ChangeImage()" alt="Thay hình khác" src="/Images/change-image.gif">
-									</div>
+									
 								</div>
 								<div style="overflow:hidden;">
 									<div class="fl" style="width:60%;margin-left:5px">
