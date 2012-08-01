@@ -1,10 +1,7 @@
 <div id="middle-right">
         	<div class="box-sidebar" id="box-topichot">
                 <h2>Chủ đề hot</h2>
-                <ul>
-                	<?php 
-                		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
-                	?> 
+                <ul>	
                 	<?php foreach($lstToppic_top as $topic){?>
                     	<li><a class="bullet" href="<?php echo base_url();?>threads/<?php echo $topic->id;?>"><?php echo $topic->post_title;?></a></li>
 					<?php }?>                  
