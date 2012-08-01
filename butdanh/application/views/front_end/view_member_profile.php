@@ -187,7 +187,7 @@
 					<div class="subsection">
 						<div class="item-section">
 							<div class="about-left">Tổng số bài gửi</div>
-							<div class="about-right">50</div>
+							<div class="about-right"><?php echo $count_post;?></div>
 						</div>						
 					</div>
 				</div>				
