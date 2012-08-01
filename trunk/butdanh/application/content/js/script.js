@@ -51,6 +51,8 @@ $(document).ready(function(){
     $(".ajaxmonth").click(function(){
             var u = $(this).attr('href');
     		var author_id = $(this).attr('id');
+            var urlLoading = $("#urlLoading").attr('value');
+            $("#resultpostmonth").html('<p><img src="'+urlLoading+'application/content/images/loading.gif" width="32" height="32" /></p>');
             $.ajax({
               type:"POST",
               url:u, 
@@ -60,6 +62,8 @@ $(document).ready(function(){
                 $("#resultpostmonth").html(data);
               }
             });
+            $(".ajaxmonth").removeClass('active');
+            $(this).addClass('active');
             return false;
     });	
     
