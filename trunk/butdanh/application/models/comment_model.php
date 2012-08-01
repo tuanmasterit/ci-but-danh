@@ -10,7 +10,7 @@
 		// Get Comments By Post ID
 		function getByPost($post_id,$comment_approved)
 		{
-			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,comment_approved');
+			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,user_id,comment_approved');
 			$this->db->from('ci_comments');			
 			$this->db->where('ci_comments.comment_post_ID',$post_id);
 			$this->db->where('comment_approved',$comment_approved);
@@ -20,7 +20,7 @@
 		
 		function get($limit=0,$offset=0,$order_by='comment_date',$order='DESC',$comment_approved='')
 		{
-			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,comment_approved');
+			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,user_id,comment_approved');
 			$this->db->from('ci_comments');	
 			if($comment_approved!='')
 			{		
@@ -35,7 +35,7 @@
 			return  $query->result();
 		}
 		
-		function add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$title,$comment_approved)
+		function add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$title,$user_id,$comment_approved)
 		{
 			$comment = array(
 				'comment_post_ID'=>$comment_post_ID,
@@ -44,6 +44,7 @@
 				'comment_date'=>$comment_date,
 				'comment_content'=>$comment_content,
 				'comment_agent'=>$title,
+				'user_id'=>$user_id,
 				'comment_approved'=>$comment_approved
 			);
 			
@@ -51,7 +52,7 @@
 		}
 		
 		function get_by_id($id){
-			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,comment_approved');
+			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,user_id,comment_approved');
 			$this->db->from('ci_comments');			
 			$this->db->where('ci_comments.comment_ID',$id);
 			$query = $this->db->get();
