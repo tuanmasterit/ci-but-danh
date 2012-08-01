@@ -3,19 +3,16 @@
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">        	
-        	<div class="box-center" id="box-newtopic">            	
-                <div class="box-content">
-              	     <h2><p> <?php echo $post_detail->post_title;?></p></h2>
-                     <p><span><?php echo $post_detail->post_content ;?></span></p>                                      
+        	<div class="box-center" id="box-newtopic">
+                <h2><p> <?php echo $post_detail->post_title;?></p></h2>            	
+                <div class="box-content">              	     
+                     <p><?php echo $post_detail->post_content ;?></p>                                      
                 </div><!-- end box-content -->
-                <h2>
-                	<p> 
-                        <span>Bút danh: <?php echo $butdanh['user_nicename'];?></span>
-                        <span>Báo: <?php echo $butdanh['name'] ;?></span>
-                        <span><a href="#">Đề xuất chủ đề</a></span>
-                    </p>
-                                       
-                </h2>
+                <div class="meta_post">
+                	<p>Bút danh: <span><?php echo $butdanh['user_nicename'];?></span></p>
+                    <p>Đơn vị công tác: <span><?php echo $butdanh['name'] ;?></span></p>
+                    <a href="#">Đề xuất chủ đề</a>                            
+                </div>
                 
             </div><!-- end newtopic -->           
         </div><!-- end middle-center -->
