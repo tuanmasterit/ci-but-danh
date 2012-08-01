@@ -18,6 +18,8 @@
 			$data['phone'] = $this->User_model->get_usermeta($id,'phone_number');
 			$data['tieusu']=$this->User_model->get_usermeta($id,'tieu_su');
 			$data['sothich'] = $this->User_model->get_usermeta($id,'so_thich');
+			$lstPost = $this->Post_model->get_post_by_month($id);
+			$data['count_post'] = count($lstPost);
 			//tranfer data
 			$member_id = $this->session->userdata('user_id');
 			if($member_id==$id)
