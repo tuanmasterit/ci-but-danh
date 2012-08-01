@@ -17,7 +17,7 @@ class Home extends CI_Controller {
 	{				
 		//tranfer data
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
-		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'','2012-01-07 00:00:00');
 		$data['lstToppic_top'] = $lstToppic_top;
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
