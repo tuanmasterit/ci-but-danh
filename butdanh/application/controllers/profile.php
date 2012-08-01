@@ -20,6 +20,9 @@ class Profile extends CI_Controller {
 		//data profile
 		$data['butdanh'] = $this->User_model->get_butdanh($author_id);
 		$data['author_id'] = $author_id;
+        
+        $data['listPostByMonth'] = $this->Post_model->get_post_by_month($author_id, date("m"));
+        
         $data['listTopicRelation'] = $this->Post_model->get_relation_topic($author_id);        
 		$list_like = $this->User_model->list_like($author_id);		
 		$data['list_like'] =$list_like;
