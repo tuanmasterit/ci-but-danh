@@ -305,7 +305,7 @@ class Post_model extends CI_Model{
          return array();  
     }	
     
-    function get_top_toppic_comment($limit=0,$offset=0,$term_id='',$from_date='')
+    function get_top_toppic_comment($limit=0,$offset=0,$term_id='',$from_date='',$to_date='')
     {    	
     	$this->db->select('
 					ci_posts.id,				
@@ -323,8 +323,8 @@ class Post_model extends CI_Model{
 		}
 		if($from_date!='')
 		{
-			$this->db->where('post_date <=',date('Y-d-m h:i:s'));
-			$this->db->where('post_date >=',$from_date);
+			$this->db->where("post_date BETWEEN '".$from_date."' AND '".$to_date."'");
+			//$this->db->where('post_date >=',$from_date);
 		}	
     	$this->db->group_by('id');
     	$this->db->order_by('count','DESC');
