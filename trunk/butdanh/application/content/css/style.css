@@ -385,3 +385,6 @@ select {
 .meta_post{padding:5px;}
 .meta_post p{margin-bottom:5px;}
 .meta_post p span{color:#CC0000;font-weight:bold;}
+/* Content */
+.info-butdanh p{}
+.info-butdanh p span{color:#000000;font-weight:bold;}
