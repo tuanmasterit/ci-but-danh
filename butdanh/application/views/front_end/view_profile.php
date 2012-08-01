@@ -15,8 +15,7 @@
                 	<div class="list-post">
                         <ul class="tab_month">
                             <?php
-                                $month = date("m"); 
-                                echo $month;
+                                $month = date("m");                                 
                                 for($i=1;$i<=12;$i++){
                                     if($i!=$month){    
                             ?>
@@ -45,7 +44,7 @@
                         <ul>
                       
                             <?php foreach($listTopicRelation as $topic){?>
-                        	<li><a href="<?php echo base_url().'/threads/'.$topic->id; ?>"><?php echo $topic->post_title; ?></a></li>
+                        	<li><a class="bullet" href="<?php echo base_url().'threads/'.$topic->id; ?>"><?php echo $topic->post_title; ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>
