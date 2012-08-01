@@ -26,7 +26,11 @@
 						<div class="item-section">
 							<div class="about-left">
 								Đến từ &nbsp;
+								<?php 
+									if($check_duplicate==true){
+								?>
 								<a href="#" id="link-address"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+								<?php }?>
 							</div>
 							<div class="about-right" id="div-address">
 								<label id="address-show"><?php if($address=='') {echo 'N/A';} else{echo $address;}?></label>
@@ -45,7 +49,11 @@
 						<div class="item-section">
 							<div class="about-left">
 								Giới tính &nbsp;
+								<?php 
+									if($check_duplicate==true){
+								?>
 								<a href="#" id="link-gender"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+								<?php }?>
 							</div>
 							<div class="about-right">
 								<label id="gender-show"><?php if($gender=='') {echo 'N/A';} else{echo $gender;}?></label>
@@ -70,7 +78,11 @@
 						<div class="item-section">
 							<div class="about-left">
 								Ngày sinh &nbsp;
+								<?php 
+									if($check_duplicate==true){
+								?>
 								<a href="#" id="link-birthday"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+								<?php }?>
 							</div>
 							<div class="about-right">
 								<label id="birthday-show"><?php if($birthday=='') {echo 'N/A';} else{echo $birthday;}?></label>
@@ -89,7 +101,11 @@
 						<div class="item-section">
 							<div class="about-left">
 								Số điện thoại &nbsp;
+								<?php 
+									if($check_duplicate==true){
+								?>
 								<a href="#" id="link-phone"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+								<?php }?>
 							</div>
 							<div class="about-right">
 								<label id="phone-show"><?php if($phone=='') {echo 'N/A';} else{echo $phone;}?></label>
@@ -115,7 +131,11 @@
 						<div class="item-section">
 							<div class="about-left">
 								Tiểu sử, lý lịch &nbsp;
+								<?php 
+									if($check_duplicate==true){
+								?>
 								<a href="#" id="link-tieusu"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+								<?php }?>
 							</div>
 							<div class="about-right" id="div-tieusu">
 								<label id="tieusu-show"><?php if($tieusu=='') {echo 'N/A';} else{echo $tieusu;}?></label>
@@ -137,7 +157,11 @@
 						<div class="item-section">
 							<div class="about-left">
 								Sở thích &nbsp;
+								<?php 
+									if($check_duplicate==true){
+								?>
 								<a href="#" id="link-sothich"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+								<?php }?>
 							</div>
 							<div class="about-right">
 								<label id="sothich-show"><?php if($sothich=='') {echo 'N/A';} else{echo $sothich;}?></label>

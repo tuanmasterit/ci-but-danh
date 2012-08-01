@@ -19,6 +19,15 @@
 			$data['tieusu']=$this->User_model->get_usermeta($id,'tieu_su');
 			$data['sothich'] = $this->User_model->get_usermeta($id,'so_thich');
 			//tranfer data
+			$member_id = $this->session->userdata('user_id');
+			if($member_id==$id)
+			{
+				$data['check_duplicate'] = true;
+			}
+			else 
+			{
+				$data['check_duplicate'] = false;
+			}
 			$data['member'] = $member;
 			$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
