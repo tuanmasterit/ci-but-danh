@@ -188,11 +188,7 @@
 						<div class="item-section">
 							<div class="about-left">Tổng số bài gửi</div>
 							<div class="about-right">50</div>
-						</div>
-						<div class="item-section">
-							<div class="about-left">Tổng số lần thích</div>
-							<div class="about-right">50</div>
-						</div>
+						</div>						
 					</div>
 				</div>				
 			</div>			   
