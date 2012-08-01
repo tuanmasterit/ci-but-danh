@@ -8,7 +8,7 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">                	
-                		<li class="current"><a href="<?php echo base_url();?>admin/comments">Tất cả bình luận</a></li>                    
+                		<li class="current"><a href="<?php echo base_url();?>admin/comments">Cập nhật bình luận</a></li>                    
                 </ul>
                 <div class="content">     
                 	           	                	
@@ -20,10 +20,10 @@
                             <p><span class="field"><input type="text" class="longinput" name="txttitle" value="<?php echo $Comment->comment_agent;?>"></span></p>
                             <br/>
                             <p><label>Người đăng:</label></p>                            
-                            <p><span class="field"><input type="text" class="longinput" name="txtauthor" value="<?php echo $Comment->comment_author;?>" ></span></p>
+                            <p><span class="field"><input type="text" readonly="readonly" class="longinput" name="txtauthor" value="<?php echo $Comment->comment_author;?>" ></span></p>
                             <br/>
                             <p><label>Email:</label></p>                            
-                            <p><span class="field"><input type="text" class="longinput" name="txtemail" value="<?php echo $Comment->comment_author_email;?>" ></span></p>
+                            <p><span class="field"><input type="text" readonly="readonly" class="longinput" name="txtemail" value="<?php echo $Comment->comment_author_email;?>" ></span></p>
                             <br/>
                             <p><label>Nội dung:</label></p>                            
                             <p><textarea name="txtcontent" id="txtcontent"><?php echo $Comment->comment_content;?></textarea></p>
