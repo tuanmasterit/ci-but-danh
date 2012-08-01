@@ -305,7 +305,7 @@ class Post_model extends CI_Model{
          return array();  
     }	
     
-    function get_top_toppic_comment($limit=0,$offset=0,$term_id='')
+    function get_top_toppic_comment($limit=0,$offset=0,$term_id='',$from_date='')
     {    	
     	$this->db->select('
 					ci_posts.id,				
@@ -315,10 +315,16 @@ class Post_model extends CI_Model{
 				');
     	$this->db->from('ci_posts');
     	$this->db->join('ci_comments', 'ci_comments.comment_post_ID=ci_posts.id');
+    	
     	if($term_id != '' and $term_id > 0 ){
 				$this->db->join('ci_term_relationships','ci_posts.id=object_id');
 				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
 				$this->db->where('ci_term_taxonomy.term_id',$term_id);	
+		}
+		if($from_date!='')
+		{
+			$this->db->where('post_date <=',date('Y-d-m h:i:s'));
+			$this->db->where('post_date >=',$from_date);
 		}	
     	$this->db->group_by('id');
     	$this->db->order_by('count','DESC');

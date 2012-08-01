@@ -8,10 +8,10 @@
                 </ul>
             </div>
             <div class="box-sidebar" id="box-topichot">
-                <h2>Bình luận nhiều nhất</h2>
+                <h2>Bình luận mới nhất</h2>
                 <ul>
-                	<?php foreach($lsttopic as $topic){?>
-                    	<li><a class="bullet" href="<?php echo base_url();?>threads/<?php echo $topic->id;?>"><?php echo $topic->post_title;?></a></li>
+                	<?php foreach($lsttopic as $topic1){?>
+                    	<li><a class="bullet" href="<?php echo base_url();?>threads/<?php echo $topic1->id;?>"><?php echo $topic1->post_title;?></a></li>
 					<?php }?>                  
                 </ul>
             </div>
