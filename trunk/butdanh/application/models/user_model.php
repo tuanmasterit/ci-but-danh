@@ -106,6 +106,7 @@ class User_model extends CI_Model{
 		//$this->db->join('ci_usermeta','ci_users.id=ci_usermeta.user_id');
 		$this->db->where('user_login',$user_name);
 		$this->db->where('user_pass',$user_pass);
+		$this->db->where('user_activation_key!=','pending');
 		//$this->db->where('meta_key','verify');
 		//$this->db->where('meta_value','true');
 		$query = $this->db->get();
@@ -126,7 +127,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass='',$birthday='',$phone='',$address='',$gender='',$verify='true')
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$user_pass='',$birthday='',$phone='',$address='',$gender='')
 	{
 		if($user_pass != ''){
 			$user_pass = do_hash($user_pass, 'md5');	
@@ -154,7 +155,7 @@ class User_model extends CI_Model{
 		//Thêm địa chỉ
 		$this->add_usermeta($id, 'address', $address);
 		//Thêm trạng thái xác nhận
-		$this->add_usermeta($id, 'verify', $verify);
+		//$this->add_usermeta($id, 'verify', $verify);
 		//Thêm code xác nhận
 		$this->add_usermeta($id, 'verify_code', do_hash($user_pass, 'md5'));
 	}
@@ -366,12 +367,12 @@ class User_model extends CI_Model{
 		
 		if(count($result)>0)
 		{
-			$arr = array(				
-				'meta_value'=>'true'
+			$arr = array(
+				'user_activation_key'=>'thanhvien'			
+				
 			);		
-			$this->db->where('user_id',$id);
-			$this->db->where('meta_key','verify');
-			$this->db->update('ci_usermeta',$arr);
+			$this->db->where('id',$id);			
+			$this->db->update('ci_users',$arr);
 			return true;
 		}
 		else{
