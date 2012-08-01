@@ -43,7 +43,7 @@
 						<div class="othernews-title fl" style="margin-left:18px; padding:0px 9px">
 							<a id="aComment" name="aComment">
 								Ý kiến bình luận
-								<label style="font-weight:normal;">( <?php echo count($lstComment);?> )</label>
+								<label style="font-weight:normal;" id="lblCountComment">( <?php echo count($lstComment);?> )</label>
 							</a>
 						</div>
 					</div>

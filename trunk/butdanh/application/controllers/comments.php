@@ -35,7 +35,9 @@
 				$html.="<label class='CommDate'>".$comment->comment_date."</label>";
 				$html.="</p>";
 			}
-			echo $html;
+			$lstComment = $this->Comment_model->getByPost($comment_post_ID,'approved');
+			$mess2 = count($lstComment);
+			echo json_encode(array('mess1'=>$html,'mess2'=>$mess2));            
 		}
 	}
 ?>
