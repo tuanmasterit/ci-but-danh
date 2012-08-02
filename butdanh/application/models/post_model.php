@@ -159,9 +159,13 @@ class Post_model extends CI_Model{
 			return $query->result();	
 		}
 	}	
-	function getCount($post_type='post', $term_id=0, $author=''){		
+	function getCount($post_type='post', $term_id=0, $author='',$post_status=''){		
 		$this->db->from('ci_posts');
 		$this->db->where('post_type',$post_type);
+        if($post_status!='')
+			{
+				$this->db->where('post_status',$post_status);
+			}
 		if($author != ''){
 			$this->db->join('ci_users','post_author=ci_users.id');
 			$this->db->where('ci_users.id',$author);
