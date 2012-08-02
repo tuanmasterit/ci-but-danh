@@ -17,14 +17,15 @@
             <div class="box-sidebar" id="box-topichot">
                 <h2>Chủ đề mới đề xuất</h2>
                 <div id="scroll_box">
-				  <p style="margin-left:7px">
-				    Put a long text in here. It will be crollable.<br/>
-				    Put a long text in here. It will be crollable.<br/>
-				    Put a long text in here. It will be crollable.<br/>
-				    Put a long text in here. It will be crollable.<br/>
-				    Put a long text in here. It will be crollable.<br/>
-				    Put a long text in here. It will be crollable.<br/>
-				    Put a long text in here. It will be crollable.<br/>
+				  <p style="margin-left:7px; color:#174775">
+				    <?php 
+				    	foreach ($new_topics as $new_topic)
+				    	{
+				    ?>
+				    <span class="item-toptic-new"><?php echo $new_topic->post_title;?></span><br/>
+				    <?php
+				     	}
+				     ?>				    
 				  </p>
 				</div>
             </div>
