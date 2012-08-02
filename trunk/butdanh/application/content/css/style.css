@@ -408,3 +408,8 @@ select {
   margin: 1em 0;
   overflow-y:auto; 
 }
+.item-toptic-new{
+	background: url('../images/bullet-arrow.png') no-repeat left center;
+	padding-left: 7px;
+	line-height:20px;
+}

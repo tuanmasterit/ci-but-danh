@@ -17,6 +17,7 @@ class Post extends CI_Controller {
 		$data['term_toptic'] =$term_id;
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id);
 		$data['lstToppic_top'] = $lstToppic_top;
+		$data['new_topics'] = $this->Post_model->get(0, 'topic', $term_id,'', -1, 0, 'DESC', 'post_date','pending');
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');		
