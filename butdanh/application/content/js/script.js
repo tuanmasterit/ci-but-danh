@@ -52,7 +52,7 @@ $(document).ready(function(){
             var u = $(this).attr('href');
     		var author_id = $(this).attr('id');
             var urlLoading = $("#urlLoading").attr('value');
-            $("#resultpostmonth").html('<p><img src="'+urlLoading+'application/content/images/loading.gif" width="32" height="32" /></p>');
+            $("#resultpostmonth").html('<p><img src="'+urlLoading+'application/content/images/loading.gif" width="66" height="66" /></p>');
             $.ajax({
               type:"POST",
               url:u, 

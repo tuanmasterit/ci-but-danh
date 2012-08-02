@@ -266,6 +266,14 @@ class Post_model extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();		
 	}
+	function count_post_by_month($author_id,$month){
+		$this->db->from('ci_posts');
+		$this->db->join('ci_users','post_author=ci_users.id');
+		$this->db->where('ci_users.id',$author_id);
+		$this->db->where("YEAR(post_date)",date("Y"));
+        $this->db->where("MONTH(post_date)",$month);		
+		return $this->db->count_all_results();
+	}
     function get_relation_topic($author_id,$limit=5, $offset=0, $order='DESC', $order_by='post_date')
     {
         $this->db->select('ci_posts.id');
