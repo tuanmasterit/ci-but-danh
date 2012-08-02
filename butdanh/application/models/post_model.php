@@ -312,6 +312,7 @@ class Post_model extends CI_Model{
 					ci_posts.id,				
 					post_title,					
 					post_type,
+					post_date,
 					count(*) as count								
 				');
     	$this->db->from('ci_posts');
