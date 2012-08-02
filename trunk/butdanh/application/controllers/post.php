@@ -13,7 +13,9 @@ class Post extends CI_Controller {
     public function index($post_id=0)
 	{				
 		//tranfer data
-		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+		$term_id = $this->Post_model->get_term_id_by_id_post($id);
+		$data['term_toptic'] =$term_id;
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id);
 		$data['lstToppic_top'] = $lstToppic_top;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');

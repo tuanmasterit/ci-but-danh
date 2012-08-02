@@ -110,7 +110,7 @@ class Home extends CI_Controller {
 		$data['image']=$cap['image'];
 		$data['word'] = $cap['word'];
 		//tranfer data
-		
+		$data['term_toptic'] =0;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
 		$data['lstToppic_top'] = $lstToppic_top;
@@ -134,6 +134,7 @@ class Home extends CI_Controller {
 		$check = $this->User_model->verify($user_id,$verify_code);
 		$data['check'] = $check;
 		//tranfer data		
+		$data['term_toptic'] =0;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
 		$data['lstToppic_top'] = $lstToppic_top;
