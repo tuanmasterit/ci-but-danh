@@ -400,3 +400,11 @@ select {
 .top-topic .topic-list a{color:#FFF;padding:3px 5px;text-decoration:none;display:block;}
 .top-topic .topic-list  a.active,.top-topic .topic-list a:hover{background:#CC0000;}
 #div-topic {background:#191919; height: 30px;}
+#scroll_box {
+  height: 130px;
+  width: 180px; 
+  display: auto;
+  border: 1px solid #CCCCCC;
+  margin: 1em 0;
+  overflow-y:auto; 
+}

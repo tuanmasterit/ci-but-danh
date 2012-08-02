@@ -1,6 +1,6 @@
 <div id="middle-right">
         	<div class="box-sidebar" id="box-topichot">
-                <h2>Chủ đề hot</h2>
+                <h2>Chủ đề nóng</h2>
                 <div id="div-topic">
                 	<input type="hidden" id="hdfCat" value="<?php echo $term_toptic;?>">
 	                <ul class="top-topic">
@@ -15,12 +15,18 @@
                 </ul>
             </div>
             <div class="box-sidebar" id="box-topichot">
-                <h2>Bình luận mới nhất</h2>
-                <ul>
-                	<?php foreach($lsttopic as $topic1){?>
-                    	<li><a class="bullet" href="<?php echo base_url();?>threads/<?php echo $topic1->id;?>"><?php echo $topic1->post_title;?></a></li>
-					<?php }?>                  
-                </ul>
+                <h2>Chủ đề mới đề xuất</h2>
+                <div id="scroll_box">
+				  <p style="margin-left:7px">
+				    Put a long text in here. It will be crollable.<br/>
+				    Put a long text in here. It will be crollable.<br/>
+				    Put a long text in here. It will be crollable.<br/>
+				    Put a long text in here. It will be crollable.<br/>
+				    Put a long text in here. It will be crollable.<br/>
+				    Put a long text in here. It will be crollable.<br/>
+				    Put a long text in here. It will be crollable.<br/>
+				  </p>
+				</div>
             </div>
             <div class="box-sidebar" id="box-topichot">
                 <h2>Bút danh được yêu thích</h2>
