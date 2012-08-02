@@ -50,10 +50,9 @@
                             <?php echo form_close();?>                        
                     	</div>
                     </div>
-               </div>
-                <?php $this->load->view('back_end/footer');?>     
+               </div>                
            </div>  
        </div> 
                    
    </div><!--maincontentinner-->            
-            
+<?php $this->load->view('back_end/footer');?>                 
