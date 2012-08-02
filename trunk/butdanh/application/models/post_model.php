@@ -369,5 +369,15 @@ class Post_model extends CI_Model{
 		}
 		return 0;
 	}
+    function update_status($post_id=0,$post_status='')
+    {
+        $data = array(
+               'post_status' => $post_status
+               
+            );
+
+        $this->db->where('id', $post_id);
+        $this->db->update('ci_posts', $data); 
+    }
 }
 ?>
