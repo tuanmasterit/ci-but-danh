@@ -16,6 +16,27 @@
 					<div class="subsection">
 						<input type="hidden" name="hdfID" value="<?php echo $member['id'];?>" id="hdfID">
 						<div class="item-section">
+							<div class="about-left">
+							Ảnh đại diện &nbsp;
+							<a href="#" id="link-avatar"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+							</div>
+							<div class="about-right">
+								<img src="<?php echo base_url();?>application/content/images/avatar/Penguins.jpg">
+								<div id="avatar-hidden">
+									<br/>
+									<input id="userfile" class="primary textbox" type="file" tabindex="1" maxlength="100" value="" name="userfile">
+									<p class="description">Chọn avatar cho bạn?</p>
+									
+									<div id="field_edit_error_container" class="hidden">
+										<div>
+											<input id="submitbutton-avatar" urllink="<?php echo base_url();?>member/updateProfile" class="userprof_button" type="submit" value=" Lưu lại ">
+											<input id="cancelbutton-avatar" class="userprof_button" type="reset" value="Hủy bỏ">										
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item-section">
 							<div class="about-left">Tên đăng nhập</div>
 							<div class="about-right"><?php echo $member['user_login'];?></div>
 						</div>
@@ -39,12 +60,13 @@
 									<p class="description">Hiện tại bạn đang ở đâu?</p>
 									
 									<div id="field_edit_error_container" class="hidden">
-									<div>
-										<input id="submitbutton-address" urllink="<?php echo base_url();?>member/updateProfile" class="userprof_button" type="submit" value=" Lưu lại ">
-										<input id="cancelbutton-address" class="userprof_button" type="reset" value="Hủy bỏ">										
+										<div>
+											<input id="submitbutton-address" urllink="<?php echo base_url();?>member/updateProfile" class="userprof_button" type="submit" value=" Lưu lại ">
+											<input id="cancelbutton-address" class="userprof_button" type="reset" value="Hủy bỏ">										
+										</div>
 									</div>
 								</div>
-							</div>
+							</div>										
 						</div>
 						<div class="item-section">
 							<div class="about-left">
@@ -180,18 +202,17 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="blocksubhead">						
-						<h4 id="about-me" class="subsectionhead-understate">Thống kê chung</h4>						
-					</div>
-					<div class="subsection">
-						<div class="item-section">
-							<div class="about-left">Tổng số bài gửi</div>
-							<div class="about-right"><?php echo $count_post;?></div>
-						</div>						
-					</div>
-				</div>				
-			</div>			   
+					</div>					
+				</div>
+				<div class="blocksubhead">						
+					<h4 id="about-me" class="subsectionhead-understate">Thống kê chung</h4>						
+				</div>
+				<div class="subsection">
+					<div class="item-section">
+						<div class="about-left">Tổng số bài gửi</div>
+						<div class="about-right"><?php echo $count_post;?></div>
+					</div>						
+				</div>			   
 		</div>	
 		</div>
     	</div><!-- end middle-center -->
