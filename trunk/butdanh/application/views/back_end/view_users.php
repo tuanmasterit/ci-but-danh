@@ -1,5 +1,4 @@
-<?php include('header.php'); ?>
- 
+<?php include('header.php'); ?> 
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
