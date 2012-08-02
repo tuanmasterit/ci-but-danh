@@ -388,3 +388,15 @@ select {
 /* Content */
 .info-butdanh p{}
 .info-butdanh p span{color:#000000;font-weight:bold;}
+.top-topic{
+	background:#191919;
+}
+.top-topic .topic-list{
+	float: left;
+    margin-left: 17px;
+    overflow:hidden;
+    background:#191919;
+}
+.top-topic .topic-list a{color:#FFF;padding:3px 5px;text-decoration:none;display:block;}
+.top-topic .topic-list  a.active,.top-topic .topic-list a:hover{background:#CC0000;}
+#div-topic {background:#191919; height: 30px;}

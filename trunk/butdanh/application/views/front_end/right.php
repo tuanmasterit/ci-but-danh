@@ -1,7 +1,14 @@
 <div id="middle-right">
         	<div class="box-sidebar" id="box-topichot">
                 <h2>Chủ đề hot</h2>
-                <ul>	
+                <div id="div-topic">
+                	<input type="hidden" id="hdfCat" value="<?php echo $term_toptic;?>">
+	                <ul class="top-topic">
+	                	<li class="topic-list"><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a month active">Top tháng</a></li>
+	                	<li class="topic-list"><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a week">Top tuần</a></li>
+	                </ul>
+                </div>
+                <ul id="list-topic-detail">	
                 	<?php foreach($lstToppic_top as $topic){?>
                     	<li><a class="bullet" href="<?php echo base_url();?>threads/<?php echo $topic->id;?>"><?php echo $topic->post_title;?></a></li>
 					<?php }?>                  

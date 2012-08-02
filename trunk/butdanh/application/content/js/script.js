@@ -67,6 +67,24 @@ $(document).ready(function(){
             return false;
     });	
     
+    /**************   Topic Top    ******************************/
+    $(".topic-a").click(function(){
+        var url = $(this).attr('href');
+		var term_id = $("#hdfCat").attr("value");
+		var get_by = '';
+		if($(this).hasClass('month')){
+			get_by='month';
+		}
+		if($(this).hasClass('week')){
+			get_by='week';
+		}
+		$.post(url,{term_id:term_id,by:get_by},function(data) {
+			$("#list-topic-detail").html(data);			
+		});
+        $(".topic-a").removeClass('active');
+        $(this).addClass('active');
+        return false;
+});	
     /************** Change Info **********************/
     /*Tiểu sử*/
     $("#tieusu-hidden").hide();
