@@ -118,7 +118,7 @@ class Post_model extends CI_Model{
 		return $flag;
 	}	
 	//List Posts	
-	function get($id, $post_type='post', $term_id=0,$author='', $limit=-1, $offset=0, $order='DESC', $order_by='post_date'){
+	function get($id, $post_type='post', $term_id=0,$author='', $limit=-1, $offset=0, $order='DESC', $order_by='post_date',$post_status=''){
 		$this->db->select('
 					ci_posts.id,
 					post_author,
@@ -145,6 +145,10 @@ class Post_model extends CI_Model{
 			$this->db->order_by($order_by, $order);
 			if($limit > 0){
 				$this->db->limit($limit,$offset);
+			}
+			if($post_status!='')
+			{
+				$this->db->where('post_status',$post_status);
 			}
 			$query = $this->db->get();
 			return $query->result();
