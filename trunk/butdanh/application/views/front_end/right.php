@@ -30,6 +30,21 @@
 				</div>
             </div>
             <div class="box-sidebar" id="box-topichot">
+                <h2>Chủ đề bị từ chối</h2>
+                <div id="scroll_box">
+				  <p style="margin-left:7px; color:#174775">
+				    <?php 
+				    	foreach ($new_topics_reject as $new_topic_reject)
+				    	{
+				    ?>
+				    <span class="item-toptic-new"><?php echo $new_topic_reject->post_title;?></span><br/>
+				    <?php
+				     	}
+				     ?>				    
+				  </p>
+				</div>
+            </div>
+            <div class="box-sidebar" id="box-topichot">
                 <h2>Bút danh được yêu thích</h2>
                 <p>&nbsp;</p>
                 <div class="lst-butdanh">
