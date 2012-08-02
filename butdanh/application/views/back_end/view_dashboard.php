@@ -4,6 +4,7 @@
     <div class="mainwrapperinner">
 		<?php include('sidebar-left.php');?>        
         <div class="maincontent">
+
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu">
                 	<li class="current"><a href="./dashboard.html">Dashboard</a></li>
@@ -12,9 +13,10 @@
                 	<ul class="widgetlist">
                     	<li><a href="./calendar.html" class="events">Latest Events</a></li>
                     	<li><a href="./editor.html" class="message">New Message</a></li>
-                        <li><a href="./dashboard.html" class="upload">Upload Image</a></li>
+                        <li><a href="<?php echo base_url();?>application/elfinder/standalone-elfinder.php?mode=image" id="imageUpload" class="upload submit radius2">Upload Image</a></li>
                     	<li><a href="./calendar.html" class="events">Statistics</a></li>
                     	<li><a href="./editor.html" class="message">New Message</a></li>
+                    	
                     </ul>
                     
                     <br clear="all" /><br />

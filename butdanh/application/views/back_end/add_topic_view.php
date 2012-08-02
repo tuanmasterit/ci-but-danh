@@ -59,8 +59,8 @@
                                         <?php }?>
                                     </select>
                                     </div>
-                                </p>
-                                </br>
+                                <p/>
+                                <br/>
                                 <p class="stdformbutton">
                                     <button class="submit radius2">Xuất bản</button>
                                     <input type="reset" value="Hủy" class="reset radius2">
