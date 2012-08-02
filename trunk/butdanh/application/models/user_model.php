@@ -101,12 +101,12 @@ class User_model extends CI_Model{
 	
 	function authentication($user_name,$password){		
 		$user_pass = do_hash($password, 'md5'); // MD5
-		$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,user_status,meta_value,meta_key');
+		$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,user_status');
 		$this->db->from('ci_users');
 		//$this->db->join('ci_usermeta','ci_users.id=ci_usermeta.user_id');
 		$this->db->where('user_login',$user_name);
 		$this->db->where('user_pass',$user_pass);
-		$this->db->where('user_activation_key!=','pending');
+		$this->db->where('user_activation_key !=','pending');
 		//$this->db->where('meta_key','verify');
 		//$this->db->where('meta_value','true');
 		$query = $this->db->get();
