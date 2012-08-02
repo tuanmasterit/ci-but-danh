@@ -9,7 +9,7 @@ class Post_model extends CI_Model{
 		$this->load->database();		
     }
 	//Add posts
-	function add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category,$post_id=0){		
+	function add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category,$post_id=0,$post_status=''){		
 		$arr=array(
 			'post_author'=>$post_author,
 			'post_date'=>$post_date,
@@ -17,7 +17,8 @@ class Post_model extends CI_Model{
 			'post_title'=>$post_title,
 			'post_excerpt'=>$post_excerpt,			
 			'post_type'=>$post_type,
-			'post_parent'=>$post_id	
+			'post_parent'=>$post_id,
+            'post_status'=>$post_status	
 		);
 		$this->db->insert('ci_posts',$arr);
 		$last_id = $this->get_id_last_row();
