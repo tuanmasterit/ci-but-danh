@@ -293,6 +293,35 @@ $(document).ready(function(){
     	$("#sothich-hidden").hide(500);
     	return false;
     });
+    /*Ảnh đại diện*/
+    $("#avatar-hidden").hide();
+    $("#link-avatar").click(function(){
+    	var str = $("#avatar-show").text();
+    	
+    	$("#avatar-show").hide(500);
+    	$("#avatar-hidden").show(500);
+    	return false;
+    });
+    $("#cancelbutton-avatar").click(function(){
+    	$("#avatar-show").show(500);
+    	$("#avatar-hidden").hide(500);
+    });
+    
+    /*$("#uploadform").submit(function(event){
+    	event.preventDefault();
+    	$.ajaxFileUpload({
+			url : "./member/changeAvatar",
+			secureuri : false,
+			fileElementId : "userfile",
+			dataType :"json",
+			data : { },
+			success : function(data, status){
+				
+				alert(data.msg);
+			}
+		});
+    	return false;
+    });*/
     
 });
 var flag = false;
