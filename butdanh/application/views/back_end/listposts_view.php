@@ -23,6 +23,9 @@
                     <div class="tableoptions">
                         <form name="frmfilter" method="post" action="<?php echo base_url();?>admin/posts/lists/<?php echo $post_type;?>" >                        	
                         	<button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
+                            
+                            <input type="text" class="txt" name="titlePost" value="<?php echo $titlePost; ?>" />
+                            
                             <select class="category" name="slcategory">
                                 <option value="">--- Tất cả ---</option>
                                 <?php foreach($lstCategories as $l_category){?>                                 
