@@ -193,6 +193,79 @@ class Topic extends CI_Controller {
 		$data['lstCategories'] = $this->Post_model->list_categories(10,0);
 		$data['Categories'] = $this->Post_model->list_categories(100,0);
 		$this->load->view('back_end/categories_view',$data);	
+	}
+    public function approval($post_type='post',$term=0,$row=0)
+	{
+		// Get post type
+		$data['post_type'] = $post_type;
+		
+		// Get category
+		$data['category'] = $term;
+		if($this->input->post('slcategory') != ''){
+			$data['category'] = $this->input->post('slcategory');
+		}
+		//paging
+		include('paging.php');		
+		$config['base_url']= base_url()."/admin/topic/approval/".$post_type."/".$data['category']."/";
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','pending');		
+		$config['cur_page']= $row;		
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();	
+		//data tranfer
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','pending');
+		$data['lstCategories'] = $this->Term_model->get();
+		$data['post_type'] = $post_type;
+		$this->load->view('back_end/view_approval_topic',$data);
+	}
+    public function reject($post_type='post',$term=0,$row=0)
+	{
+		// Get post type
+		$data['post_type'] = $post_type;
+		
+		// Get category
+		$data['category'] = $term;
+		if($this->input->post('slcategory') != ''){
+			$data['category'] = $this->input->post('slcategory');
+		}
+		//paging
+		include('paging.php');		
+		$config['base_url']= base_url()."/admin/topic/reject/".$post_type."/".$data['category']."/";
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','reject');		
+		$config['cur_page']= $row;		
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();	
+		//data tranfer
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','reject');
+		$data['lstCategories'] = $this->Term_model->get();
+		$data['post_type'] = $post_type;
+		$this->load->view('back_end/view_reject_topic',$data);
+	}
+   public function confirm($post_type='topic', $id=0){
+		
+            if ($this->input->post('approval')!= '')
+            {
+               $this->Post_model->update_status($id,'publish');
+               redirect('/admin/topic/approval/topic');
+            } 
+            else if ($this->input->post('reject')!= '')
+            {
+                $this->Post_model->update_status($id,'reject');
+                redirect('/admin/topic/approval/topic');
+            } 
+            else
+            {      
+    			$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
+    			$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
+    			$data['lstposts'] = $this->Post_model->get(0,'post');			
+    			$data['lsttopic'] = $this->Post_model->get($id);			
+    			$ofpost = $this->Post_model->get($data['lsttopic'][0]->post_parent);
+    			//print_r($ofpost);
+    			$data['ofpost'] = $ofpost[0];
+    			$data['featured_image'] = $this->Post_model->get_featured_image($id);
+    			$data['categories_of_topic'] = $this->Post_model->get_categories_of_post($id);
+    			//print_r($data['categories_of_topic']);
+    			$this->load->view('back_end/view_confirm_topic',$data);
+            }		
 	}		
 }
 
