@@ -15,7 +15,7 @@
                         <li><a href="<?php echo base_url();?>admin/topic/lists/topic"><span>Tất cả chủ đề</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/topic/add/topic"><span>Thêm mới chủ đề</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/topic/approval/topic"><span>Phê duyệt chủ đề</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/topic/approval/topic"><span>Chủ đề từ chối</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/topic/reject/topic"><span>Chủ đề từ chối</span></a></li>
                     </ul>
                 </li>
                 <li><a href="<?php echo base_url();?>admin/author" class="elements menudrop"><span>Bút Danh</span></a>

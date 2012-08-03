@@ -9,7 +9,9 @@
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">                	
                     <li><a href="<?php echo base_url();?>admin/topic/lists/topic">Tất cả chủ đề</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/topic/add/topic">Thêm mới chủ đề</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>admin/topic/add/topic">Thêm mới chủ đề</a></li>                    
+                   	<li><a href="<?php echo base_url();?>admin/topic/approval/topic">Chủ đề cần phê duyệt</a></li>
+                   	<li><a href="<?php echo base_url();?>admin/topic/reject/topic">Chủ đề từ chối</a></li>
                 </ul>
                 <div class="content">                	
                 	<form method="post" action="<?php echo base_url();?>admin/topic/save_topic" class="stdform">
