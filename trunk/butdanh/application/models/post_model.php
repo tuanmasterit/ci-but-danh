@@ -118,7 +118,7 @@ class Post_model extends CI_Model{
 		return $flag;
 	}	
 	//List Posts	
-	function get($id, $post_type='post', $term_id=0,$author='', $limit=-1, $offset=0, $order='DESC', $order_by='post_date',$post_status=''){
+	function get($id, $post_type='post', $term_id=0,$author='', $limit=-1, $offset=0, $order='DESC', $order_by='post_date',$post_status='',$titleTopic=''){
 		$this->db->select('
 					ci_posts.id,
 					post_author,
@@ -130,6 +130,7 @@ class Post_model extends CI_Model{
 					post_type,
 					post_parent					
 				');
+        // echo $titleTopic;       
 		$this->db->from('ci_posts');
 		$this->db->join('ci_users','post_author=ci_users.id');
 		if($id == 0){											
@@ -140,7 +141,11 @@ class Post_model extends CI_Model{
 				$this->db->join('ci_term_relationships','ci_posts.id=object_id');
 				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
 				$this->db->where('ci_term_taxonomy.term_id',$term_id);	
-			}			
+			}	
+            if ($titleTopic != '')
+            {
+                $this->db->like('post_title',$titleTopic);
+            }		
 			$this->db->where('post_type',$post_type);
 			$this->db->order_by($order_by, $order);
 			if($limit > 0){
@@ -159,7 +164,7 @@ class Post_model extends CI_Model{
 			return $query->result();	
 		}
 	}	
-	function getCount($post_type='post', $term_id=0, $author='',$post_status=''){		
+	function getCount($post_type='post', $term_id=0, $author='',$post_status='',$titleTopic=''){		
 		$this->db->from('ci_posts');
 		$this->db->where('post_type',$post_type);
         if($post_status!='')
@@ -175,6 +180,10 @@ class Post_model extends CI_Model{
 			$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
 			$this->db->where('ci_term_taxonomy.term_id',$term_id);	
 		}
+        if ($titleTopic != '')
+        {
+            $this->db->like('post_title',$titleTopic);
+        }
 		return $this->db->count_all_results();
 	}	
 	function get_featured_image($id){
