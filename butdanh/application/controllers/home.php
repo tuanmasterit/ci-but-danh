@@ -81,6 +81,23 @@ class Home extends CI_Controller {
 					
 					$data['check_success'] = true;
 					$user_id = $this->User_model->getByUsername($username);
+					
+					$config = array(
+						'allowed_types' => 'jpg|jpeg|gif|png',
+						'upload_path' => './application/content/images/avatars',
+						'max_size' => 2000
+					);
+			
+					$this->load->library('upload', $config);
+					if(!$this->upload->do_upload()){
+						$this->session->set_flashdata('message','Lỗi upload ảnh');
+					}
+					else {
+						//$this->User_model->update_meta($member_id,'avatar','');
+						$image_data = $this->upload->data();
+						$title = $image_data['file_name'];
+						$this->User_model->add_usermeta($user_id,'avatar',$title);
+					}
 					$verify_code = do_hash($pass, 'md5');
 					$verify_code = do_hash($verify_code, 'md5');
 					//Send Mail
