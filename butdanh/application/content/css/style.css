@@ -413,3 +413,7 @@ select {
 	padding-left: 7px;
 	line-height:20px;
 }
+.suggestTopic {
+    overflow: hidden;
+    display: none;
+}
