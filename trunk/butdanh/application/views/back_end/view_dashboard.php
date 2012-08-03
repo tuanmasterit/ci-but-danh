@@ -11,11 +11,11 @@
                 </ul><!--maintabmenu-->                
                 <div class="content">
                 	<ul class="widgetlist">
-                    	<li><a href="./calendar.html" class="events">Latest Events</a></li>
-                    	<li><a href="./editor.html" class="message">New Message</a></li>
+                    	<li><a href="<?php echo base_url();?>admin/posts/add/post" class="events">Add Post</a></li>
+                    	<li><a href="<?php echo base_url();?>admin/topic/add/topic" class="events">Add Topic</a></li>
+                    	<li><a href="<?php echo base_url();?>admin/categories" class="events">Add Category</a></li>
                         <li><a href="<?php echo base_url();?>application/elfinder/standalone-elfinder.php?mode=image" id="imageUpload" class="upload submit radius2">Upload Image</a></li>
-                    	<li><a href="./calendar.html" class="events">Statistics</a></li>
-                    	<li><a href="./editor.html" class="message">New Message</a></li>
+                    	
                     	
                     </ul>
                     

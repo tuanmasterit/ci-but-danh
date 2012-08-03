@@ -50,13 +50,17 @@
 		
 		function updateProfile()
 		{
-			$id= $this->input->post('id');
-			$meta_key = $this->input->post('key');
-			$meta_value = $this->input->post('value');
-			$type = $this->input->post('type');
-			if($type=='meta')
+			$member_id = $this->session->userdata('user_id');
+			if($member_id!='')
 			{
-				$this->User_model->update_meta($id,$meta_key,$meta_value);
+				$id= $this->input->post('id');
+				$meta_key = $this->input->post('key');
+				$meta_value = $this->input->post('value');
+				$type = $this->input->post('type');
+				if($type=='meta')
+				{
+					$this->User_model->update_meta($id,$meta_key,$meta_value);
+				}
 			}
 		}	
 
