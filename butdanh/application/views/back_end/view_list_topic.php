@@ -24,6 +24,9 @@
                     <div class="tableoptions">
                         <form name="frmfilter" method="post" action="<?php echo base_url();?>admin/topic/lists/<?php echo $post_type;?>" >                        	
                         	<button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
+                            
+                            <input type="text" class="txt" name="titleTopic" />
+                            
                             <select class="category" name="slcategory">
                                 <option value="">--- Tất cả ---</option>
                                 <?php foreach($lstCategories as $l_category){?>                                 
@@ -33,7 +36,8 @@
                                     	<option value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
                                     <?php }?>
                                 <?php }?>
-                            </select> &nbsp;
+                            </select> &nbsp;                                                                                   
+                            
                             <input type="submit" class="btn" value="Tìm kiếm"></button>
                         </form>
                     </div><!--tableoptions-->	
