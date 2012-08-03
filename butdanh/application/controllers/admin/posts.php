@@ -57,8 +57,14 @@ class Posts extends CI_Controller {
 	}	
 	public function list_posts_ajax(){
 		$butdanh = $this->input->post('butdanh');
+		$butdanh_id = '';
+		if($butdanh!='')
+		{
+			$butdanh_id = $this->Author_model->get_by_user_nicename($butdanh);		
+		}
+		
 		$category = $this->input->post('category');	
-		$lstposts = $this->Post_model->get(0,'post',$category,$butdanh);
+		$lstposts = $this->Post_model->get(0,'post',$category,$butdanh_id);
 		$html = '<select name="cbxbaiviet" style="width:100%;" id="cbxbaiviet">';
 		foreach($lstposts as $post){
 			$html .= "<option value='" . $post->id . "'>" . $post->post_title . "</option>";

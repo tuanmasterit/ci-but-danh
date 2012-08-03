@@ -10,13 +10,21 @@ jQuery(document).ready(function(){
 			jQuery('#divpostajax').html(data);
 		});		
 	});
-	jQuery("#cbxcategory").change(function(){		
-		var l_butdanh = jQuery('#cbxbutdanh option:selected').attr('value');
+	jQuery("#cbxcategory").change(function(){
+		var txtButDanh = jQuery("#inputString").attr("value");
+		var lblButDanh = jQuery("#txtAuthor").attr("value");		
+		var l_butdanh = '';
+		if(txtButDanh!='')
+		{
+			l_butdanh = lblButDanh;
+		}
+		//var l_butdanh = jQuery('#cbxbutdanh option:selected').attr('value');
 		var l_category = jQuery('#cbxcategory option:selected').attr('value');
 		var url = jQuery('#hdurlajax').attr('value');
 		jQuery.post(url,{butdanh:l_butdanh,category:l_category},function(data) {
 			jQuery('#divpostajax').html(data);
 		});	
+		
 	});
 	
 	//Brow server image upload	
