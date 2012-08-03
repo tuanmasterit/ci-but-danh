@@ -45,7 +45,7 @@ class Topic extends CI_Controller {
         //paging
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/topic/lists/".$post_type."/".$data['category']."/";
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],$data['titleTopic']);		
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
