@@ -37,16 +37,21 @@ class Topic extends CI_Controller {
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
-		//paging
+        $data['titleTopic'] = '';
+        if ($this->input->post('titleTopic') != '')
+        {
+            $data['titleTopic'] = $this->input->post('titleTopic');
+        }
+        //paging
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/topic/lists/".$post_type."/".$data['category']."/";
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category']);		
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],$data['titleTopic']);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer
-		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row);
-		$data['lstCategories'] = $this->Term_model->get();
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);
+        $data['lstCategories'] = $this->Term_model->get();
 		$data['post_type'] = $post_type;
 		$this->load->view('back_end/view_list_topic',$data);
 	}	
