@@ -28,7 +28,7 @@ class Profile extends CI_Controller {
         
         $data['listPostByMonth'] = $this->Post_model->get_post_by_month($author_id, date("m"));
         
-        $data['listTopicRelation'] = $this->Post_model->get_relation_topic($author_id);        
+        $data['listTopicRelation'] = $this->Post_model->get_relation_topic($author_id,'publish');        
 		$list_like = $this->User_model->list_like($author_id);		
 		$data['list_like'] =$list_like;
 		//check login
