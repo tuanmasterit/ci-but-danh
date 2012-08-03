@@ -11,17 +11,24 @@
                 </div><!-- end box-content -->
                 <div class="meta_post">
                 	<p>Bút danh: <span><?php echo $butdanh['user_nicename'];?></span></p>
-                    <p>Đơn vị công tác: <span><?php echo $butdanh['name'] ;?></span></p>
-                    <button id="btSuggestTopic">Hiện đề xuất chủ đề</button>                            
+                    <p>Đơn vị công tác: <span><?php echo $butdanh['name'] ;?></span></p>                                                                 
                 </div>
-                <div class="suggestTopic">                	
-                	<form method="post" action="<?php echo base_url().'post/suggest/'.$post_id;?>" class="stdform" accept-charset="utf-8" enctype="multipart/form-data">        
+                <div id="showSuggestTopic">                        
+                        <img id="imgShow" src="<?php echo base_url();?>application/content/images/show.png" alt="suggest"/>
+                        
+                        <input type="hidden" id="imageHidden" value="<?php echo base_url();?>application/content/images/hidden.png" />
+                        <input type="hidden" id="imageShow" value="<?php echo base_url();?>application/content/images/show.png" />
+                                                                    
+                        <label id="btSuggestTopic" >Hiện đề xuất chủ đề</label>                                                                            
+                </div> 
+                <div id="suggestTopic">                	
+                	<form method="post" action="<?php echo base_url().'post/suggest/'.$post_id;?>"  accept-charset="utf-8" enctype="multipart/form-data">        
                     	<div class="edit-main">   
                                 <p><label>Tiêu đề:</label></p>
                                 <p><span class="field"><input type="text" class="longinput" name="txttitle"></span></p>
                                 <br/>                                
                                 <p><label>Ảnh đại diện:</label></p>
-                                <p><span class="field"><input type="file" name="userfile" size="30"  /></span></p>
+                                <p><span class="field"><input type="file" name="userfile"   /></span></p>
                                 <br/>                            
                                 <p><label>Tóm tắt:</label></p>                            
                                 <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
@@ -29,7 +36,7 @@
                                 <p><label>Nội dung:</label></p>                            
                                 <p><textarea name="txtcontent" id="editor_content"></textarea></p>                                
                                 <br/>
-                                <input type="submit" name="submit" value="Đề xuất"/>
+                                <input id="btSubmit" type="submit" name="submit" value="Đề xuất"/>
                         </div>                    
                     </form>              
             </div><!--suggusetTopic-->
