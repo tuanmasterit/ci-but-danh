@@ -18,21 +18,31 @@
 						<div class="item-section">
 							<div class="about-left">
 							Ảnh đại diện &nbsp;
+							<?php 
+									if($check_duplicate==true){
+								?>
 							<a href="#" id="link-avatar"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+							<?php }?>
 							</div>
 							<div class="about-right">
-								<img src="<?php echo base_url();?>application/content/images/avatar/Penguins.jpg">
+							<?php 
+								if($avatar=='') {echo "N/A";} else{
+							?>
+								<img width="150" height="100" src="<?php echo base_url().'application/content/images/avatars/'.$avatar;?>">
+								<?php }?>
 								<div id="avatar-hidden">
 									<br/>
-									<input id="userfile" class="primary textbox" type="file" tabindex="1" maxlength="100" value="" name="userfile">
-									<p class="description">Chọn avatar cho bạn?</p>
-									
-									<div id="field_edit_error_container" class="hidden">
-										<div>
-											<input id="submitbutton-avatar" urllink="<?php echo base_url();?>member/updateProfile" class="userprof_button" type="submit" value=" Lưu lại ">
-											<input id="cancelbutton-avatar" class="userprof_button" type="reset" value="Hủy bỏ">										
+									<?php echo form_open_multipart('member/changeAvatar',array('id'=>'uploadform'));?>
+										<input id="userfile" class="primary textbox" type="file" tabindex="1" maxlength="100" value="" name="userfile">
+										<p class="description">Chọn avatar cho bạn?</p>
+										
+										<div id="field_edit_error_container" class="hidden">
+											<div>
+												<input id="submitbutton-avatar" urllink="<?php echo base_url();?>member/changeAvatar" class="userprof_button" type="submit" value=" Lưu lại ">
+												<input id="cancelbutton-avatar" class="userprof_button" type="reset" value="Hủy bỏ">										
+											</div>
 										</div>
-									</div>
+									<?php echo form_close();?>
 								</div>
 							</div>
 						</div>

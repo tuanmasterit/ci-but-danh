@@ -2,7 +2,7 @@
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">
-        <?php echo form_open('home/register',array('id'=>'formID','class'=>'stdform'));?>
+        <?php echo form_open_multipart('home/register',array('id'=>'formID','class'=>'stdform'));?>
         <script type="text/javascript">
         	$(function(){
         		$('#txtNgaySinh').datepicker({ dateFormat: 'dd/mm/yy' });
@@ -107,6 +107,15 @@
 								<div class="rightcol">
 									<input id="txtPhone" class="primary textbox" type="text" tabindex="1" maxlength="100" value="" name="txtPhone">
 									<p class="description">Hãy nhập số điện thoại ?</p>									
+								</div>
+							</div>
+						</div>
+						<div class="section">
+							<div class="blockrow">
+								<label>Ảnh đại diện:</label>
+								<div class="rightcol">
+									<input id="userfile" class="primary textbox" type="file" tabindex="1" maxlength="100" value="" name="userfile">
+									<p class="description">Hãy chọn ảnh đại diện của bạn ?</p>									
 								</div>
 							</div>
 						</div>

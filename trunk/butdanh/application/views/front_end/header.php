@@ -13,6 +13,7 @@
 <script src="<?php echo base_url();?>application/content/js/jquery-ui.min.js" type="text/javascript" ></script>
 <script src="<?php echo base_url();?>application/content/js/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>application/content/js/jquery-ui-sliderAccess.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>application/content/js/ajaxfileupload.js" type="text/javascript"></script>
 <title>Bút danh</title>
 <script>
 		jQuery(document).ready(function(){
