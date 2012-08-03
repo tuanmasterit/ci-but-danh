@@ -278,7 +278,7 @@ class Post_model extends CI_Model{
         $this->db->where("MONTH(post_date)",$month);		
 		return $this->db->count_all_results();
 	}
-    function get_relation_topic($author_id,$limit=5, $offset=0, $order='DESC', $order_by='post_date')
+    function get_relation_topic($author_id,$post_status='',$limit=5, $offset=0, $order='DESC', $order_by='post_date' )
     {
         $this->db->select('ci_posts.id');
         $this->db->from('ci_posts');
@@ -309,7 +309,11 @@ class Post_model extends CI_Model{
     					post_parent					
     				');
             $this->db->from('ci_posts');
-            $this->db->where('post_type','topic');           	
+            $this->db->where('post_type','topic');  
+           	if($post_status!='')
+			{
+				$this->db->where('post_status',$post_status);
+			}         	
             $this->db->where_in('post_parent',$listPost);
             $this->db->order_by($order_by, $order);
             if($limit > 0)
