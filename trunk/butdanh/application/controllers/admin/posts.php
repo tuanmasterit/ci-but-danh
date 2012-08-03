@@ -37,6 +37,11 @@ class Posts extends CI_Controller {
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
+        $data['titlePost'] = '';
+        if ($this->input->post('titlePost') != '')
+        {
+            $data['titlePost'] = $this->input->post('titlePost');
+        }
 		//paging
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/";
@@ -45,7 +50,7 @@ class Posts extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer
-		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row);
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titlePost']);
 		$data['lstCategories'] = $this->Term_model->get();
 		$data['post_type'] = $post_type;
 		$this->load->view('back_end/listposts_view',$data);
