@@ -48,7 +48,7 @@
 		{
 			if($term_id==0)
 			{
-				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('y-m-d h:i:s',strtotime('-30 days')),date('y-m-d h:i:s'));
+				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
 				
 				foreach($lstToppic_top as $topic){
                     $html.="<li><a class='bullet' href='".base_url()."'threads/".$topic->id."'>".$topic->post_title."</a></li>";
@@ -56,7 +56,7 @@
 			}
 			else 
 			{
-				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id,date('y-m-d h:i:s',strtotime('-30 days')),date('y-m-d h:i:s'));
+				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id,date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
 				foreach($lstToppic_top as $topic){
                     $html.="<li><a class='bullet' href='".base_url()."'threads/".$topic->id."'>".$topic->post_title."</a></li>";
 				}
@@ -66,14 +66,14 @@
 		{
 			if($term_id==0)
 			{
-				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('y-m-d h:i:s',strtotime('-7 days')),date('y-m-d h:i:s'));
+				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-7 days')),date('Y-m-d h:i:s'));
 				foreach($lstToppic_top as $topic){
                     $html.="<li><a class='bullet' href='".base_url()."'threads/".$topic->id."'>".$topic->post_title."</a></li>";
 				}
 			}
 			else 
 			{
-				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id,date('y-m-d h:i:s',strtotime('-7 days')),date('y-m-d h:i:s'));
+				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id,date('Y-m-d h:i:s',strtotime('-7 days')),date('Y-m-d h:i:s'));
 				foreach($lstToppic_top as $topic){
                     $html.="<li><a class='bullet' href='".base_url()."'threads/".$topic->id."'>".$topic->post_title."</a></li>";
 				}
