@@ -79,7 +79,7 @@
 											&nbsp;
 										</div>
 									</div>                                    
-                                </p>
+                                <p/>
                                 <div id="author_load_ajax">
                                     <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red"><b>Chưa chọn tác giả</b></label></p>
                                     <input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]">
