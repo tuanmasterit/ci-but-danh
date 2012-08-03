@@ -70,16 +70,19 @@ $(document).ready(function(){
     $(function(){
         $("#btSuggestTopic").click(function(){
            //alert('ajsb'); 
+           
            if (!isOpened)
            {
-                 $(".suggestTopic").show("slow");
+                 $(".suggestTopic").slideDown(900);
                  //$("#btSuggestTopic").attr("value") = "Ẩn đề xuất chủ đề";
+                 $(this).html('Ẩn đề xuất chủ đề');
                  isOpened = true;
                  
            } else
            {
-                $(".suggestTopic").hide("slow");
+                $(".suggestTopic").slideUp(900);
                 //$("#btSuggestTopic").attr("value") = "Hiện đề xuất chủ đề";
+                $(this).html('Hiện đề xuất chủ đề');
                 isOpened = false; 
                 
            }
