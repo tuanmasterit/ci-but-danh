@@ -413,7 +413,27 @@ select {
 	padding-left: 7px;
 	line-height:20px;
 }
-.suggestTopic {
+#suggestTopic {
     overflow: hidden;
     display: none;
 }
+#btSuggestTopic {cursor: pointer; font-size: 12px; color: #2E3192; font-weight: bold; text-decoration: none;}
+#showSuggestTopic { background: #DBEAF9 ;}
+.edit-main{
+    margin-left: 5px;
+    margin-top: 15px;
+    margin-right: 5px;
+    
+}
+.edit-main p label{
+    width: 100px;
+    font-weight:bold;
+}
+.edit-main p span textarea{
+    width: 100%;
+    position: relative;
+}
+#btsubmit{
+    margin-left: 220px;
+	
+} 
