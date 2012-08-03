@@ -18,7 +18,7 @@ class Home extends CI_Controller {
 		//tranfer data
 		$data['term_toptic'] =0;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
-		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('y-m-d h:i:s',strtotime('-30 days')),date('y-m-d h:i:s'));
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
 		$data['lstToppic_top'] = $lstToppic_top;
 		//New topic
 		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');

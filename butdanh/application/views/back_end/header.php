@@ -3,7 +3,7 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dashboard | Starlight Premium Admin Template</title>
+<title>Bút Danh | Quản Trị</title>
 <link rel="stylesheet" href="<?php echo base_url();?>application/content-admin/css/style.css" type="text/css" />
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/ie9.css"/>
