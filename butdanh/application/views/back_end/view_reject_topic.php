@@ -10,10 +10,10 @@
                 		<li class="current"><a href="<?php echo base_url();?>admin/topic/lists/post">Tất cả bài viết</a></li>
                     	<li><a href="<?php echo base_url();?>admin/topic/add/post">Thêm mới bài viết</a></li>
                     <?php }elseif($post_type == 'topic'){?>
-                    	<li class="current"><a href="<?php echo base_url();?>admin/topic/lists/topic">Tất cả chủ đề</a></li>
-                    	<li><a href="<?php echo base_url();?>admin/topic/add/topic">Thêm mới chủ đề</a></li>
+                        <li><a href="<?php echo base_url();?>admin/topic/lists/topic">Tất cả chủ đề</a></li>
+                        <li><a href="<?php echo base_url();?>admin/topic/add/topic">Thêm mới chủ đề</a></li>
                     	<li><a href="<?php echo base_url();?>admin/topic/approval/topic">Chủ đề cần phê duyệt</a></li>
-                    	<li><a href="<?php echo base_url();?>admin/topic/reject/topic">Chủ đề từ chối</a></li>
+                    	<li class="current"><a href="<?php echo base_url();?>admin/topic/reject/topic">Chủ đề từ chối</a></li>
                     <?php }?>
                 </ul>                
                 <div class="content">
@@ -76,8 +76,7 @@
                                     <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo $Post->post_date;?></td>
                                     <td class="center">
-                                    	<a class="edit" href="<?php echo base_url();?>admin/topic/edit/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
-                                        <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/topic/delete">Xóa</a></td>
+                                    	<a class="edit" href="<?php echo base_url();?>admin/topic/confirm/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>">Phê duyệt</a>                                        
                                 </tr>
                             <?php }?>
                         </tbody>
