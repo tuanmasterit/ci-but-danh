@@ -66,7 +66,25 @@ $(document).ready(function(){
             $(this).addClass('active');
             return false;
     });	
-    
+    var isOpened = false;
+    $(function(){
+        $("#btSuggestTopic").click(function(){
+           //alert('ajsb'); 
+           if (!isOpened)
+           {
+                 $(".suggestTopic").show("slow");
+                 //$("#btSuggestTopic").attr("value") = "Ẩn đề xuất chủ đề";
+                 isOpened = true;
+                 
+           } else
+           {
+                $(".suggestTopic").hide("slow");
+                //$("#btSuggestTopic").attr("value") = "Hiện đề xuất chủ đề";
+                isOpened = false; 
+                
+           }
+        });
+    });
     /**************   Topic Top    ******************************/
     $(".topic-a").click(function(){
         var url = $(this).attr('href');
