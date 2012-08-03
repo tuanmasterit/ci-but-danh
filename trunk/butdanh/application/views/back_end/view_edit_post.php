@@ -10,7 +10,7 @@
                 <ul class="maintabmenu multipletabmenu">
                 	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
                     <li class="current"><a href="<?php echo base_url();?>admin/posts/add/post">Cập nhật bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/categories">Danh mục bài viết</a></li>
+                    <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
                 </ul>
                 <div class="content">     
                 	<?php //print_r($Post);?>           	                	
