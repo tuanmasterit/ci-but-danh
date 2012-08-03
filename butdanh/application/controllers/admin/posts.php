@@ -45,8 +45,8 @@ class Posts extends CI_Controller {
 		//paging
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/";
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'], $data['titlePost']);		
-		$config['cur_page']= $row;		
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','', $data['titlePost']);		
+	    $config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer
