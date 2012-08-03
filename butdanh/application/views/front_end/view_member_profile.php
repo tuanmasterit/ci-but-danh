@@ -33,6 +33,7 @@
 								<div id="avatar-hidden">
 									<br/>
 									<?php echo form_open_multipart('member/changeAvatar',array('id'=>'uploadform'));?>
+										<input type="hidden" name="hdfMemberID" value="<?php echo $member_id;?>">
 										<input id="userfile" class="primary textbox" type="file" tabindex="1" maxlength="100" value="" name="userfile">
 										<p class="description">Chọn avatar cho bạn?</p>
 										
