@@ -73,16 +73,18 @@ $(document).ready(function(){
            
            if (!isOpened)
            {
-                 $(".suggestTopic").slideDown(900);
-                 //$("#btSuggestTopic").attr("value") = "Ẩn đề xuất chủ đề";
-                 $(this).html('Ẩn đề xuất chủ đề');
+                 $("#suggestTopic").slideDown(900);
+                 $("#btSuggestTopic").text('Ẩn đề xuất chủ đề');
+                 $imageHidden = $("#imageHidden").attr("value");                 
+                 $("#imgShow").attr("src",$imageHidden); 
                  isOpened = true;
                  
            } else
            {
-                $(".suggestTopic").slideUp(900);
-                //$("#btSuggestTopic").attr("value") = "Hiện đề xuất chủ đề";
-                $(this).html('Hiện đề xuất chủ đề');
+                $("#suggestTopic").slideUp(500);
+                $("#btSuggestTopic").text('Hiện đề xuất chủ đề');
+                $imageShow = $("#imageShow").attr("value");
+                $("#imgShow").attr("src",$imageShow);
                 isOpened = false; 
                 
            }
