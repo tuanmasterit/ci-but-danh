@@ -40,6 +40,35 @@
 			setTimeout("jQuery('#suggestions').hide();", 200);
 		}
 	}
+
+	function lookupauthor(inputString) {
+		if(inputString.length == 0) {
+			// Hide the suggestion box.
+			jQuery('#suggestions').hide();
+		} else {
+			jQuery.post("<?php echo base_url();?>admin/rpc/fill", {queryString: ""+inputString+""}, function(data){
+				if(data.length >0) {
+					jQuery('#suggestions').show();
+					jQuery('#autoSuggestionsList').html(data);
+				}
+			});
+		}
+	} // lookup
+	
+	function fillauthor(thisValue) {
+		if(thisValue != null){
+			jQuery('#inputString').val(thisValue);
+			jQuery('#lblAuthor').html('<b>'+thisValue+'</b>');
+			jQuery('#txtAuthor').val(thisValue);
+			setTimeout("jQuery('#suggestions').hide();", 200);
+			var l_butdanh = thisValue;
+			var l_category = jQuery('#cbxcategory option:selected').attr('value');
+			var url = jQuery('#hdurlajax').attr('value');
+			jQuery.post(url,{butdanh:l_butdanh,category:l_category},function(data) {
+				jQuery('#divpostajax').html(data);
+			});
+		}
+	}
 </script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery-1.6.min.js"></script>
 <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/validationEngine.jquery.css"/>

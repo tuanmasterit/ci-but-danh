@@ -25,5 +25,27 @@
 				} // There is a queryString.
 			
 		}
+		
+		function fill()
+		{
+			if($this->input->post('queryString')) 
+			{
+				$user_nicename = $this->input->post('queryString');
+				$lstUser = $this->Author_model->getAjax($user_nicename);
+				if(count($lstUser)>0) 
+				{						
+					foreach ($lstUser as $User)
+					{							
+         				echo '<li onClick="fillauthor(\''.$User->user_nicename.'\');">'.$User->user_nicename.'</li>';
+         			}
+				} else 
+				{
+					echo 'Không có bút danh nào.';
+				}
+			} else 
+			{
+					// Dont do anything.
+			}
+		}
 	}
 ?>

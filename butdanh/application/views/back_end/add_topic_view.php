@@ -68,7 +68,7 @@
                             	<input type="hidden" id="hdurlajax" value="<?php echo base_url();?>/admin/posts/list_posts_ajax" />
                             	<p id="sl_butdanh_ajax">
                                     Tác giả:
-                                    <input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookup(this.value);" onblur="fill();" />
+                                    <input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookupauthor(this.value);" onblur="fillauthor();" />
                                     <div class="suggestionsBox" id="suggestions" style="display: none;">
 										<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
 										<div class="suggestionList" id="autoSuggestionsList">
