@@ -9,6 +9,7 @@ class Profile extends CI_Controller {
 		$this->load->model('User_model');
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
+		$this->load->model('Comment_model');
     }	
 	public function index($author_id=0)
 	{				
