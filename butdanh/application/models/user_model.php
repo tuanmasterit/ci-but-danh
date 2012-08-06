@@ -419,5 +419,19 @@ class User_model extends CI_Model{
 			$this->add_usermeta($id, $meta_key, $meta_value);
 		}
 	}
+	
+	function get_latest_author($limit=5,$ofset=0)
+	{
+		$this->db->select('id,user_nicename,name');
+		$this->db->from('ci_users');
+		$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id = id');
+		$this->db->join('ci_term_taxonomy', 'ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
+		$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
+		$this->db->where('user_activation_key','butdanh');
+		$this->db->limit($limit,$ofset);
+		$this->db->order_by('user_registered','DESC');
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
 ?>
