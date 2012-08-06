@@ -1,6 +1,6 @@
 <div id="middle-right">
         	<div class="box-sidebar" id="box-topichot">
-                <h2>Chủ đề nóng</h2>
+                <h2>Thảo luận nóng</h2>
                 <div id="div-topic">
                 	<input type="hidden" id="hdfCat" value="<?php echo $term_toptic;?>">
 	                <ul class="top-topic">
@@ -13,36 +13,6 @@
                     	<li><a class="bullet" href="<?php echo base_url();?>threads/<?php echo $topic->id;?>"><?php echo $topic->post_title;?></a></li>
 					<?php }?>                  
                 </ul>
-            </div>
-            <div class="box-sidebar" id="box-topichot">
-                <h2>Chủ đề mới đề xuất</h2>
-                <div id="scroll_box">
-				  <p style="margin-left:7px; color:#174775">
-				    <?php 
-				    	foreach ($new_topics as $new_topic)
-				    	{
-				    ?>
-				    <span class="item-toptic-new"><?php echo $new_topic->post_title;?></span><br/>
-				    <?php
-				     	}
-				     ?>				    
-				  </p>
-				</div>
-            </div>
-            <div class="box-sidebar" id="box-topichot">
-                <h2>Chủ đề bị từ chối</h2>
-                <div id="scroll_box">
-				  <p style="margin-left:7px; color:#174775">
-				    <?php 
-				    	foreach ($new_topics_reject as $new_topic_reject)
-				    	{
-				    ?>
-				    <span class="item-toptic-new"><?php echo $new_topic_reject->post_title;?></span><br/>
-				    <?php
-				     	}
-				     ?>				    
-				  </p>
-				</div>
             </div>
             <div class="box-sidebar" id="box-topichot">
                 <h2>Bút danh được yêu thích</h2>
@@ -61,6 +31,58 @@
                     	}
                     	?>
                 </div>    
+            </div>
+            <div class="box-sidebar" id="box-topichot">
+                <h2>Bút danh có nhiều bài viết</h2>                
+                <p>&nbsp;</p>
+                <div class="lst-butdanh">
+                    <?php 
+                    	
+                    	$num = 1;
+                    	foreach ($lstAuthorMonth as $AuthorMonth){
+                    ?>
+                    <ul>
+                    	<li><?php echo $num;?>.&nbsp;<a href="<?php echo base_url().'profile/'.$AuthorMonth->post_author;?>"><b><?php echo $AuthorMonth->user_nicename;?></b> &nbsp;(<?php echo $TopLike->name;?>)</a></li>
+                    </ul>
+                    <?php 
+                    	$num++;
+                    	}
+                    	?>
+                </div>  
+            </div>
+            <div class="box-sidebar" id="box-topichot">
+                <h2>Bút danh mới nhất</h2>                
+                <p>&nbsp;</p>
+                <div class="lst-butdanh">
+                    <?php                     	
+                    	$num = 1;
+                    	foreach ($lstLatestAuthor as $LatestAuthor){
+                    ?>
+                    <ul>
+                    	<li><?php echo $num;?>.&nbsp;<a href="<?php echo base_url().'profile/'.$LatestAuthor->id;?>"><b><?php echo $LatestAuthor->user_nicename;?></b> &nbsp;(<?php echo $LatestAuthor->name;?>)</a></li>
+                    </ul>
+                    <?php 
+                    	$num++;
+                    	}
+                    	?>
+                </div>  
+            </div>
+            <div class="box-sidebar" id="box-topichot">
+                <h2>Bình luận mới nhất</h2>                
+                <p>&nbsp;</p>
+                <div class="lst-butdanh">
+                    <?php                     	
+                    	$num = 1;
+                    	foreach ($lstLatestComment as $LatestComment){
+                    ?>
+                    <ul>
+                    	<li><?php echo $num;?>.&nbsp;<?php echo $LatestComment->comment_agent;?></li>
+                    </ul>
+                    <?php 
+                    	$num++;
+                    	}
+                    	?>
+                </div>  
             </div>
             <div class="ads-sidebar">
             	<embed width="180" height="270" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1024453%26adm_aditem%3D144550%26adm_zoneid%3D228%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fwww.pnj.com.vn%2Ftintuc-ruc-ro-don-he-cung-bo-suu-tap-colors-of-your-style-cua-pnjsilver-165-_-2012-07-02%26adm_random%3D0.3391509298396217&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://admicro2.vcmedia.vn/images/pnj-silver-right-1-dan-tri-180x270-len-16-07.swf">
