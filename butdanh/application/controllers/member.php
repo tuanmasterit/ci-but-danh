@@ -9,6 +9,7 @@
 			$this->load->model('Post_model');
 			$this->load->model('Term_model');
 			$this->load->model('Upload_model');
+			$this->load->model('Comment_model');
 			$gallery_path = realpath(APPPATH . '../uploads');
 		}
 		
@@ -37,6 +38,9 @@
 				$data['check_duplicate'] = false;
 			}
 			$data['member'] = $member;
+			$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+			$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+			$data['lstLatestComment'] = $this->Comment_model->get(5);
 			$data['term_toptic'] =0;
 			$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
 			$data['lstToppic_top'] = $lstToppic_top;
