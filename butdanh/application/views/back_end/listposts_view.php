@@ -9,9 +9,9 @@
                 	<?php if($post_type == 'post'){?>
                 		<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
                     	<li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <?php }elseif($post_type == 'topic'){?>
-                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/topic">Tất cả chủ đề</a></li>
-                    	<li><a href="<?php echo base_url();?>admin/posts/add/topic">Thêm mới chủ đề</a></li>
+                    <?php }elseif($post_type == 'page'){?>
+                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/page">Tất cả trang</a></li>
+                    	<li><a href="<?php echo base_url();?>admin/posts/add/page">Thêm mới trang</a></li>
                     <?php }?>
                     <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
                 </ul>                
