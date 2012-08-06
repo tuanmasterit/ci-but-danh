@@ -1,4 +1,5 @@
-$(document).ready(function(){
+
+$(document).ready(function(){    
 	$(".openfull").click(function(){
 		$(".excerpt").hide();
 		$(".fullcontent").show();
@@ -47,24 +48,48 @@ $(document).ready(function(){
 	
 	/***********  Datetime picker  **************************/
 	
-    
+    var isFirst = [];
+    for (var i = 0; i<=12;i++) isFirst[i] = true;
+    var isShowMonth = [];
+    for (var i = 0; i<=12;i++) isShowMonth[i] = false;
     $(".ajaxmonth").click(function(){
-            var u = $(this).attr('href');
-    		var author_id = $(this).attr('id');
+        var month = $(this).attr('month');
+        var author_id = $(this).attr('id');            
+        if (isFirst[month] == true )
+        {
+            isFirst[month] = false;
+            isShowMonth[month] = true;                               
+            var u = $(this).attr('href');    		
             var urlLoading = $("#urlLoading").attr('value');
-            $("#resultpostmonth").html('<p><img src="'+urlLoading+'application/content/images/loading.gif" width="66" height="66" /></p>');
+            $("#resultpostmonth"+author_id+month).html('<p><img src="'+urlLoading+'application/content/images/loading.gif" width="66" height="66" /></p>');
             $.ajax({
               type:"POST",
               url:u, 
               data:"author_id="+author_id, 
               //dataType:"xml",                
               success: function (data){ 
-                $("#resultpostmonth").html(data);
+                $("#resultpostmonth"+author_id+month).html(data);
               }
             });
-            $(".ajaxmonth").removeClass('active');
+            //$(".ajaxmonth").removeClass('active');
             $(this).addClass('active');
-            return false;
+         } else
+         {
+            if (isShowMonth[month] == true )
+            {     
+                $(this).removeClass('active');
+                //alert("#resultpostmonth"+author_id+month);
+                $("#resultpostmonth"+author_id+month).hide(100);
+                isShowMonth[month] = false;
+            } else
+            {
+                $(this).addClass('active');
+               // alert(month + 'chua show');
+               $("#resultpostmonth"+author_id+month).show(100);
+               isShowMonth[month] = true;
+            }
+         }   
+         return false;
     });	
     var isOpened = false;
     $(function(){
