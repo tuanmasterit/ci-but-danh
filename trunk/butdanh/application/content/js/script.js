@@ -53,7 +53,7 @@ $(document).ready(function(){
     var isShowMonth = [];
     for (var i = 0; i<=12;i++) isShowMonth[i] = false;
     $(".ajaxmonth").click(function(){
-        var month = $(this).attr('month');
+        var month = $(this).attr('month');        
         var author_id = $(this).attr('id');            
         if (isFirst[month] == true )
         {
