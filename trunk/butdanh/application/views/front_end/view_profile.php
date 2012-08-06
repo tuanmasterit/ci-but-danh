@@ -20,10 +20,11 @@
 									if($this->Post_model->count_post_by_month($author_id,$i) > 0){
 										if($i!=$month){    
 										?>
-												<li><a class="ajaxmonth" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
-										 
+												<li><a class="ajaxmonth" month="<?php echo $i; ?>"id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
+										        <div id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
 										 <?php  } else { ?>
-												<li><a class="ajaxmonth active" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
+												<li><a class="ajaxmonth active" month="<?php echo $i; ?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
+                                                <div id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
 										<?php }?>                                        
                             <?php }} ?>
                         </ul>
