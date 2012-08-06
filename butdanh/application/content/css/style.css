@@ -421,7 +421,7 @@ select {
 }
 .item-toptic-new{
 	background: url('../images/bullet-arrow.png') no-repeat left center;
-	padding-left: 7px;
+	padding-left: 10px;
 	line-height:20px;
 }
 #suggestTopic {
@@ -467,4 +467,5 @@ select {
   border: 1px solid #CCCCCC;
   margin: 1em 0;
   overflow-y:auto; 
+  padding-left: 10px;
 }
