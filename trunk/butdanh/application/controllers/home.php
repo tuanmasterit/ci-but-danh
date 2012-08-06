@@ -4,6 +4,7 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Comment_model');
 		$this->load->model('Post_model');
 		$this->load->model('Author_model');
 		$this->load->model('User_model');
@@ -20,9 +21,13 @@ class Home extends CI_Controller {
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
 		$data['lstToppic_top'] = $lstToppic_top;
+		
+		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(5);
+		$data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', 0,'', 5, 0, 'DESC', 'post_date','publish');
 		//New topic
-		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
-		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
+		
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		$this->load->view('front_end/index_view',$data);		
@@ -130,6 +135,9 @@ class Home extends CI_Controller {
 		$data['image']=$cap['image'];
 		$data['word'] = $cap['word'];
 		//tranfer data
+		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(5);
 		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
 		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
 		$data['term_toptic'] =0;
@@ -155,7 +163,10 @@ class Home extends CI_Controller {
 	{
 		$check = $this->User_model->verify($user_id,$verify_code);
 		$data['check'] = $check;
-		//tranfer data		
+		//tranfer data	
+		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(5);	
 		$data['term_toptic'] =0;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');

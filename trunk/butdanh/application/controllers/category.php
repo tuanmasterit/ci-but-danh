@@ -14,6 +14,9 @@ class Category extends CI_Controller {
 	public function index($id=0)
 	{				
 		//tranfer data
+		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(5);
 		$data['term_toptic'] =$id;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$id);

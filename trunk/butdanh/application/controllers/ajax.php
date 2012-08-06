@@ -80,6 +80,35 @@
 			}
 		}
 		echo $html;
-	}	
+	}
+
+	function getLatestTopic()
+	{
+		$get_by = $this->input->post('get_by');
+		$html = '';
+		if($get_by=='publish')
+		{
+			$listTopic = $this->Post_model->get(0, 'topic', 0,'', 5, 0, 'DESC', 'post_date','publish');
+			foreach ($listTopic as $topic)
+			{
+				$html.= "<a href='".base_url()."threads/".$topic->id."'><span class='item-toptic-new'>".$topic->post_title."</span></a><br/>";
+			}
+		}
+		if($get_by=="pending")
+		{
+			$listTopic = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
+			foreach ($listTopic as $topic){
+				$html.= "<span class='item-toptic-new'>".$topic->post_title."</span><br/>";
+			}
+		}
+		if ($get_by=="reject")
+		{
+			$listTopic = $this->Post_model->get(0, 'topic', 0,'', 5, 0, 'DESC', 'post_date','reject');
+			foreach ($listTopic as $topic){
+				$html.= "<span class='item-toptic-new'>".$topic->post_title."</span><br/>";
+			}
+		}
+		echo $html;
+	}
 }
 ?>

@@ -15,6 +15,9 @@ class Threads extends CI_Controller {
 	public function index($id=0)
 	{				
 		//tranfer data
+		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(5);
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$term_id = $this->Post_model->get_term_id_by_id_post($id);
 		$data['term_toptic'] =$term_id;
