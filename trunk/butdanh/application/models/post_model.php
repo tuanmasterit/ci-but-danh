@@ -392,5 +392,27 @@ class Post_model extends CI_Model{
         $this->db->where('id', $post_id);
         $this->db->update('ci_posts', $data); 
     }
+    
+    function get_top_author_month($month='',$year='',$limit=0,$ofset=0)
+    {
+    	$this->db->select('post_author,post_title,user_nicename,user_activation_key,name, count(*) as count');
+    	$this->db->from('ci_posts');
+    	$this->db->join('ci_users', 'ci_users.ID = ci_posts.post_author');
+    	$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id = post_author');
+		$this->db->join('ci_term_taxonomy', 'ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
+		$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
+    	$this->db->where('post_type','post');
+    	$this->db->where('YEAR(post_date) = '.$year);
+    	$this->db->where('MONTH(post_date) = '.$month);
+    	$this->db->where('user_activation_key','butdanh');
+    	$this->db->group_by('post_author');
+    	$this->db->order_by('count','DESC');
+    	if($limit>0)
+    	{
+    		$this->db->limit($limit,$ofset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
 }
 ?>
