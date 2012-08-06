@@ -132,7 +132,27 @@ $(document).ready(function(){
         $(".topic-a").removeClass('active');
         $(this).addClass('active');
         return false;
-});	
+    });	
+    
+    $(".topic-a-top").click(function(){
+        var url = $(this).attr('href');		
+		var get_by = '';
+		if($(this).hasClass('publish')){
+			get_by='publish';
+		}
+		if($(this).hasClass('pending')){
+			get_by='pending';
+		}
+		if($(this).hasClass('reject')){
+			get_by='reject';
+		}
+		$.post(url,{get_by:get_by},function(data) {
+			$("#scroll_box-top").html(data);			
+		});
+        $(".topic-a-top").removeClass('active');
+        $(this).addClass('active');
+        return false;
+    });
     /************** Change Info **********************/
     /*Tiểu sử*/
     $("#tieusu-hidden").hide();
