@@ -85,12 +85,12 @@ class Posts extends CI_Controller {
 			$data['post_type'] = $post_type;		
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 			$this->load->view('back_end/view_add_post',$data);
-		}elseif($post_type == 'topic'){
+		}elseif($post_type == 'page'){
 			$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 			$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
-			$data['lstposts'] = $this->Post_model->get(0,'post');
+			$data['lstposts'] = $this->Post_model->get(0,'page');
 			$data['post_type'] = $post_type;			
-			$this->load->view('back_end/add_topic_view',$data);	
+			$this->load->view('back_end/view_add_page',$data);	
 		}
 	}
 	//------------------------------------------------------------------------
@@ -115,27 +115,27 @@ class Posts extends CI_Controller {
 		}
 		redirect('admin/posst/add/'.$l_post_type);									
 	}
-	public function save_topic(){
+	public function save_page(){
+		//$l_title = $this->input->post('txttitle');
+		//echo $l_title;
 		$flag=false;				
 		$l_butdanh = $this->session->userdata('user_id');
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
-		$l_post_id = $this->input->post('cbxbaiviet');
-		$l_featured_image = $this->input->post('hdffeatured_image');		
+		$l_featured_image = $this->input->post('hdffeatured_image');	
+		$l_post_type = 'page';	
 		if($l_title == ''){$flag = true;}
-		if($l_exerpt == ''){$flag = true;}
 		if($l_content == ''){$flag = true;}
-		if($l_post_id == ''){$flag = true;}
 		if($flag==false){
-			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
+			$l_arr_categories = '';	
 			//Insert posts			
-			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id);
+			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
 			if($last_id > 0){
-				redirect('admin/posts/lists/topic');							
+				redirect('admin/posts/lists/page');							
 			}
 		}
-		redirect('admin/posts/add/topic');
+		redirect('admin/posts/add/page');
 	}
 	//------------------------------------------------------------------------
 	//-- Update post
