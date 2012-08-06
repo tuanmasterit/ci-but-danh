@@ -9,7 +9,7 @@ class Post extends CI_Controller {
 		$this->load->model('Author_model');
 		$this->load->model('User_model');
 		$this->load->model('Term_model');
-        
+        $this->load->model('Comment_model');
 	
     }
     public function index($post_id=0)
