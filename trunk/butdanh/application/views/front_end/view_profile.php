@@ -28,18 +28,7 @@
 										<?php }?>                                        
                             <?php }} ?>
                         </ul>
-                        <div class="list-post-right">
-                            <h3>Danh sách các bài viết</h3>
-                            <div id="resultpostmonth">
-                                <?php 
-                                   
-                                    if (count($listPostByMonth)>0)
-                                    foreach($listPostByMonth as $post){
-                                ?>
-                                    <li><a class="bullet" href="<?php echo base_url().'post/index/'.$post->id;?>"><?php echo $post->post_title;?></a></li>
-                                <?php } else echo 'Không có bài viết nào !' ?>    
-                            </div>
-                        </div>                    	                                                
+                                         	                                                
                         <input type="hidden" id="urlLoading" value="<?php echo base_url(); ?>"/>                                                                         
                     </div>
                     <div class="topic-relation">
