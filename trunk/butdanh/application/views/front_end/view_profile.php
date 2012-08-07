@@ -10,6 +10,7 @@
                 <div class="info-butdanh">
                     <p>Đơn vị công tác: <span><?php echo $butdanh['name'];?></span></p>
                     <p>Lĩnh vực bài viết: <span><?php echo $butdanh['display_name'];?></span></p>
+                    <p>Danh sách bài viết:</p>
                 </div>    
                 <div class="box-content">                	
                 	<div class="list-post">
@@ -17,13 +18,14 @@
                             <?php								
                                 $month = date("m");                                 
                                 for($i=1;$i<=12;$i++){
-									if($this->Post_model->count_post_by_month($author_id,$i) > 0){
+                                    $numberPost = $this->Post_model->count_post_by_month($author_id,$i); 
+									if( $numberPost > 0){
 										if($i!=$month){    
 										?>
-												<li><a class="ajaxmonth" month="<?php echo $i; ?>"id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
+												<li><a class="ajaxmonth" month="<?php echo $i; ?>"id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i.'('.$numberPost.')' ;?></a></li>
 										        <div class="resultmonth" id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
 										 <?php  } else { ?>
-												<li><a class="ajaxmonth active" month="<?php echo $i; ?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
+												<li><a class="ajaxmonth active" month="<?php echo $i; ?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i.'('.$numberPost.')';?></a></li>
                                                 <div class="resultmonth" id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
 										<?php }?>                                        
                             <?php }} ?>
