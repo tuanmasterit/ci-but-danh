@@ -91,6 +91,6 @@
                     {
                         echo $ad->post_content;
                     }                
-                ?>   s    	
+                ?>      	
             </div>
         </div><!-- end middle-right -->
