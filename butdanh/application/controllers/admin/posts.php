@@ -85,12 +85,12 @@ class Posts extends CI_Controller {
 			$data['post_type'] = $post_type;		
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 			$this->load->view('back_end/view_add_post',$data);
-		}elseif($post_type == 'topic'){
+		}elseif($post_type == 'page'){
 			$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 			$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
-			$data['lstposts'] = $this->Post_model->get(0,'post');
+			$data['lstposts'] = $this->Post_model->get(0,'page');
 			$data['post_type'] = $post_type;			
-			$this->load->view('back_end/add_topic_view',$data);	
+			$this->load->view('back_end/view_add_page',$data);	
 		}
 	}
 	//------------------------------------------------------------------------
@@ -115,27 +115,27 @@ class Posts extends CI_Controller {
 		}
 		redirect('admin/posst/add/'.$l_post_type);									
 	}
-	public function save_topic(){
+	public function save_page(){
+		//$l_title = $this->input->post('txttitle');
+		//echo $l_title;
 		$flag=false;				
 		$l_butdanh = $this->session->userdata('user_id');
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
-		$l_post_id = $this->input->post('cbxbaiviet');
-		$l_featured_image = $this->input->post('hdffeatured_image');		
+		$l_featured_image = $this->input->post('hdffeatured_image');	
+		$l_post_type = 'page';	
 		if($l_title == ''){$flag = true;}
-		if($l_exerpt == ''){$flag = true;}
 		if($l_content == ''){$flag = true;}
-		if($l_post_id == ''){$flag = true;}
 		if($flag==false){
-			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
+			$l_arr_categories = '';	
 			//Insert posts			
-			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id);
+			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
 			if($last_id > 0){
-				redirect('admin/posts/lists/topic');							
+				redirect('admin/posts/lists/page');							
 			}
 		}
-		redirect('admin/posts/add/topic');
+		redirect('admin/posts/add/page');
 	}
 	//------------------------------------------------------------------------
 	//-- Update post
@@ -156,29 +156,29 @@ class Posts extends CI_Controller {
 		}		
 		redirect('admin/posts/lists/post/'.$l_id);
 	}
-	public function update_topic($id){		
+	public function update_page($id){		
 		$flag=false;				
 		$l_butdanh = $this->input->post('hdfauthor');
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
-		$l_post_id = $this->input->post('cbxbaiviet');
-		$l_featured_image = $this->input->post('hdffeatured_image');		
+		//$l_post_id = $this->input->post('cbxbaiviet');
+		//$l_featured_image = $this->input->post('hdffeatured_image');		
 		if($l_title == ''){$flag = true;}
-		if($l_exerpt == ''){$flag = true;}
+		//if($l_exerpt == ''){$flag = true;}
 		if($l_content == ''){$flag = true;}
-		if($l_post_id == ''){$flag = true;}
+		//if($l_post_id == ''){$flag = true;}
 		//if($l_featured_image == ''){$flag = true;}
 		if($flag==false){
-			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
+			$l_arr_categories = '';			
 			//print_r($l_arr_categories);
 			//Insert posts			
-			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,$l_post_id,'topic');
+			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'page');
 			if($last_id > 0){
-				redirect('admin/posts/edit/topic/'.$id);							
+				redirect('admin/posts/lists/page/');							
 			}
 		}
-		redirect('admin/posts/edit/topic/'.$id);
+		redirect('admin/posts/edit/page/'.$id);
 	}
 	public function edit($post_type='post', $id=0){
 		if($post_type == 'post'){
@@ -189,7 +189,7 @@ class Posts extends CI_Controller {
 			$data['featured_image'] = $this->Post_model->get_featured_image($id);
 			$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);
 			$this->load->view('back_end/view_edit_post',$data);	
-		}elseif($post_type == 'topic'){
+		}elseif($post_type == 'page'){
 			$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 			$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
 			$data['lstposts'] = $this->Post_model->get(0,'post');
@@ -199,7 +199,7 @@ class Posts extends CI_Controller {
 			$data['featured_image'] = $this->Post_model->get_featured_image($id);
 			$data['categories_of_topic'] = $this->Post_model->get_categories_of_post($id);
 			//print_r($data['categories_of_topic']);
-			$this->load->view('back_end/edit_topic_view',$data);
+			$this->load->view('back_end/edit_page_view',$data);
 		}
 	}
 	public function categories(){
