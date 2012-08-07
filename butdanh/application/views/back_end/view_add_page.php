@@ -65,7 +65,7 @@
                             <div class="widgetcontent" style="display: block;">                            	
                                 <p class="stdformbutton">
                                     <button class="submit radius2">Xuất bản</button>
-                                    <input type="reset" value="Hủy" class="reset radius2">
+                                    
                                 </p>
                             </div><!--widgetcontent-->
                         </div>                        
