@@ -1,3 +1,4 @@
+
 <?php $this->load->view('front_end/header');?>
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
@@ -30,12 +31,11 @@
             	</div>            	
             	<?php }?>
                 
-                
-                <div class="box-social-network">                   
-                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://butdanh.com/threads/<?php echo $thr->id; ?>" data-text="Bút danh" data-dnt="true">Tweet</a></li>
-                    <li><div class="fb-like" data-href="http://butdanh.com/threads/<?php echo $thr->id; ?>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div></li>                                        
+                <div class="box-social-network1"> 
+                    <div class="fb-like" data-href="http://butdanh.com/threads/<?php echo $thr->id; ?>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>                                  
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://butdanh.com/threads/<?php echo $thr->id; ?>" data-text="Bút danh" data-dnt="true">Tweet</a>                                                                            
+                    <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://butdanh.com/threads/<?php echo $thr->id; ?>"></div>
                 </div>
-                <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://butdanh.com/threads/<?php echo $thr->id; ?>"></div>
                 
             	<div class="box-item" style="margin-top:10px;margin-bottom:5px;">                                    
             		<div class="othernews-header-fb">                    
