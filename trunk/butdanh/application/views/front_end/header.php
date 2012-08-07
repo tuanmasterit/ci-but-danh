@@ -39,6 +39,7 @@
 </script>
 </head>
 <body>
+<div id="fb-root"></div>
 <div id="wr">
 <div id="wrap">
 	<div id="header">
