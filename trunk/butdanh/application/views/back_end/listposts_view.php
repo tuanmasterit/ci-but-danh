@@ -9,11 +9,12 @@
                 	<?php if($post_type == 'post'){?>
                 		<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
                     	<li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <?php }elseif($post_type == 'topic'){?>
-                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/topic">Tất cả chủ đề</a></li>
-                    	<li><a href="<?php echo base_url();?>admin/posts/add/topic">Thêm mới chủ đề</a></li>
+                        <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
+                    <?php }elseif($post_type == 'page'){?>
+                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/page">Tất cả trang</a></li>
+                    	<li><a href="<?php echo base_url();?>admin/posts/add/page">Thêm mới trang</a></li>
                     <?php }?>
-                    <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
+                    
                 </ul>                
                 <div class="content">
                 	<h1 id="ajaxtitle"></h1>                       	                            
@@ -23,7 +24,7 @@
                     <div class="tableoptions">
                         <form name="frmfilter" method="post" action="<?php echo base_url();?>admin/posts/lists/<?php echo $post_type;?>" >                        	
                         	<button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
-                            
+                            <?php if($post_type == 'post'){?>
                             <input type="text" class="txt" name="titlePost" value="<?php echo $titlePost; ?>" />
                             
                             <select class="category" name="slcategory">
@@ -37,6 +38,7 @@
                                 <?php }?>
                             </select> &nbsp;
                             <input type="submit" class="btn" value="Tìm kiếm"></button>
+                            <?php } ?>
                         </form>
                     </div><!--tableoptions-->	
                     <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
