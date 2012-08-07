@@ -472,3 +472,10 @@ select {
   overflow-y:auto; 
   padding-left: 10px;
 }
+.box-social-network{    
+    overflow: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.box-social-network li{float:left; width: 120px;
+}
