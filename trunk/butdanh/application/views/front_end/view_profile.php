@@ -21,10 +21,10 @@
 										if($i!=$month){    
 										?>
 												<li><a class="ajaxmonth" month="<?php echo $i; ?>"id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
-										        <div id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
+										        <div class="resultmonth" id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
 										 <?php  } else { ?>
 												<li><a class="ajaxmonth active" month="<?php echo $i; ?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i;?></a></li>
-                                                <div id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
+                                                <div class="resultmonth" id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
 										<?php }?>                                        
                             <?php }} ?>
                         </ul>
@@ -36,7 +36,7 @@
                         <ul>
                       
                             <?php foreach($listTopicRelation as $topic){?>
-                        	<li><a class="bullet" href="<?php echo base_url().'threads/'.$topic->id; ?>"><?php echo $topic->post_title; ?></a></li>
+                        	<li><a class="bullet resultmonth" href="<?php echo base_url().'threads/'.$topic->id; ?>"><?php echo $topic->post_title; ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>
