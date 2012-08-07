@@ -17,7 +17,13 @@
                 </ul>
             </div>
             <div class="ads-sidebar">
-            	<embed width="300" height="250" allowscriptaccess="always" wmode="transparent" loop="true" play="true" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="link=http%3A//180.148.142.153/clk.aspx%3Flg%3D-1%26t%3D5%26i%3D0%26b%3D23823%26s%3D1%26r%3D0%26c%3D1%26p%3D13%26n%3D0%26l%3Dhttp%253A//www.trananh.vn/%26uc%3D24%26uv%3Dundefined%26ud%3D1280x800%26rd%3D0.668235768181294%26ui%3DVNEVPLELMMAK&amp;zoneid=LargeLogo5&amp;actionTag=http%3A//180.148.142.153/act.aspx%3Ft%3D5%26i%3D0%26b%3D23823%26s%3D1%26r%3D0%26c%3D1%26p%3D13%26n%3D0%26uc%3D24%26uv%3Dundefined%26ud%3D1280x800%26rd%3D0.4535174713453032" src="http://st.polyad.net/AdImages/2012/07/12/TranAnh_300x250_120712(3).swf">
+                <?php 
+                    $listAD = $this->Post_model->get(80); 
+                    foreach($listAD as $ad)
+                    {
+                        echo $ad->post_content;
+                    }                
+                ?>            	
             </div>
             
         </div><!-- end middle-left -->
