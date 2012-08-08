@@ -29,7 +29,7 @@ class Author extends CI_Controller {
 		}else{redirect('admin/index/accesdenied');}		
     }
     
-	public function index($term=0,$butdanh='',$row=0)
+	public function index($term=0,$butdanh='~',$row=0)
 	{
         $data['keymagazine'] = $term;
 		if($this->input->post('slmagazine') != ''){
@@ -43,6 +43,7 @@ class Author extends CI_Controller {
         //echo $data['magazine'];
 		include('paging.php');		        
 		$config['base_url']= base_url()."/admin/author/index/".$data['keymagazine']."/".$data['butdanh']."/";
+        if  ($data['butdanh'] == '~' ) $data['butdanh'] = '';
 		$config['total_rows']= $this->User_model->getCount('butdanh',$data['keymagazine'],$data['butdanh']);		
 		$config['cur_page']= $row;	
 		$this->pagination->initialize($config);
