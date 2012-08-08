@@ -216,13 +216,13 @@ class Topic extends CI_Controller {
         }
 		//paging
 		include('paging.php');		
-		$config['base_url']= base_url()."/admin/topic/lists/".$post_type."/".$data['category']."/".$data['titleTopic']."/";
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','pending');		
+		$config['base_url']= base_url()."/admin/topic/approval/".$post_type."/".$data['category']."/".$data['titleTopic']."/";
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','pending',$data['titleTopic']);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer
-		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','pending');
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','pending',$data['titleTopic']);
 		$data['lstCategories'] = $this->Term_model->get();
 		$data['post_type'] = $post_type;
 		$this->load->view('back_end/view_approval_topic',$data);
@@ -244,13 +244,13 @@ class Topic extends CI_Controller {
         }
 		//paging
 		include('paging.php');		
-		$config['base_url']= base_url()."/admin/topic/reject/".$post_type."/".$data['category']."/";
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','reject');		
+		$config['base_url']= base_url()."/admin/topic/reject/".$post_type."/".$data['category']."/".$data['titleTopic']."/";
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','reject',$data['titleTopic']);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer
-		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','reject');
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','reject',$data['titleTopic']);
 		$data['lstCategories'] = $this->Term_model->get();
 		$data['post_type'] = $post_type;
 		$this->load->view('back_end/view_reject_topic',$data);
