@@ -51,10 +51,10 @@
             	<img src="<?php echo base_url();?>application/content/images/header-ads.png" />
             </div>
 
-            <form method="get" action="">
+            <form method="post" action="<?php echo base_url().'home/search'; ?>">
                 <div id="search-bar">
-                    <input type="text" value="Search" placeholder="Search" name="s">
-                    <input type="submit" value="">
+                    <input type="text" value="Search" placeholder="Search" name="search">
+                    <input type="submit" value="" name="submit">
                 </div>
             </form>
         </div><!-- end banner -->
