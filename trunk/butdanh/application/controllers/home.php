@@ -176,7 +176,53 @@ class Home extends CI_Controller {
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		$this->load->view('front_end/view_verify',$data);
+	}
+    public function search($post_type='topic',$term=0,$titleTopic='~',$row=0)
+	{
+	    $data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(5);
+		$data['term_toptic'] =0;
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+		$data['lstToppic_top'] = $lstToppic_top;
+		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
+		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
+		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
+		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
+       
+		// Get post type
+		$data['post_type'] = $post_type;
+		if($this->input->post('hdfposttype') != ''){
+			$data['post_type'] = $this->input->post('hdfposttype');	
+		}
+		// Get category
+		$data['category'] = $term;
+		if($this->input->post('slcategory') != ''){
+			$data['category'] = $this->input->post('slcategory');
+		}
+        
+        $data['titleTopic'] =  urldecode($titleTopic);
+        if ($this->input->post('titleTopic') != '')
+        {
+            $data['titleTopic'] = $this->input->post('titleTopic');
+        }
+                
+        //paging
+		include('admin/paging.php');		
+		$config['base_url']= base_url()."home/search/".$post_type."/".$data['category']."/".$data['titleTopic']."/";
+        if  ($data['titleTopic'] == '~' ) $data['titleTopic'] = '';
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);		
+		$config['cur_page']= $row;		
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();	
+		//data tranfer        
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);
+        $data['lstCategories'] = $this->Term_model->get();
+		$data['post_type'] = $post_type;
+		$this->load->view('front_end/search_view',$data);
 	}	
+    	
 	
 }
 
