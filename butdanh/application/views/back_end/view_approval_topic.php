@@ -22,8 +22,8 @@
                         <h2 class="table"><span>Table with Action</span></h2>
                     </div><!--contenttitle-->
                     <div class="tableoptions">
-                        <form name="frmfilter" method="post" action="<?php echo base_url();?>admin/topic/lists/<?php echo $post_type;?>" >                        	
-                        	<form name="frmfilter" method="post" action="<?php echo base_url();?>admin/topic/lists/<?php echo $post_type;?>" >                        	
+                                               	
+                        	<form name="frmfilter" method="post" action="<?php echo base_url();?>admin/topic/approval/<?php echo $post_type;?>" >                        	
                         	<button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
                             
                             <input type="text" class="txt" name="titleTopic" value="<?php echo $titleTopic; ?>" />
