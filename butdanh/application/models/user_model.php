@@ -9,7 +9,7 @@ class User_model extends CI_Model{
 		$this->load->helper('security');	
     }		
 	//List User
-	function get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC',$status=-1){
+	function get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC',$status=-1,$butdanh=''){
 		if($id==0)
 		{
 			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,user_status');
@@ -29,6 +29,10 @@ class User_model extends CI_Model{
 			{
 				$this->db->where('user_status',$status);
 			}
+            if ($butdanh != '')
+            {
+                $this->db->like('user_nicename',$butdanh);
+            }
 			$query = $this->db->get();
         
 			return $query->result();
@@ -211,11 +215,18 @@ class User_model extends CI_Model{
 		
 	}
 	
-	function getCount($user_activation_key)
+	function getCount($user_activation_key,$term_id=0,$butdanh='')
 	{
 		$this->db->from('ci_users');
 		$this->db->where('user_activation_key',$user_activation_key);	
-		
+		if ($butdanh != '')
+        {
+            $this->db->like('user_nicename',$butdanh);
+        }
+        if($term_id > 0){
+				$this->db->join('ci_term_relationships','id = object_id');
+				$this->db->where('term_taxonomy_id',$term_id);	
+			}
 		return $this->db->count_all_results();
 	}
 	
