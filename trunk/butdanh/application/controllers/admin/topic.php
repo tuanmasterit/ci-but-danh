@@ -25,7 +25,7 @@ class Topic extends CI_Controller {
 	{
 		redirect('admin/posts/lists/post');			
 	}
-	public function lists($post_type='post',$term=0,$row=0)
+	public function lists($post_type='post',$term=0,$titleTopic='',$row=0)
 	{
 		// Get post type
 		$data['post_type'] = $post_type;
@@ -37,14 +37,14 @@ class Topic extends CI_Controller {
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
-        $data['titleTopic'] = '';
+        $data['titleTopic'] = $titleTopic;
         if ($this->input->post('titleTopic') != '')
         {
             $data['titleTopic'] = $this->input->post('titleTopic');
         }
         //paging
 		include('paging.php');		
-		$config['base_url']= base_url()."/admin/topic/lists/".$post_type."/".$data['category']."/";
+		$config['base_url']= base_url()."/admin/topic/lists/".$post_type."/".$data['category']."/".$data['titleTopic']."/";
 		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
@@ -199,19 +199,24 @@ class Topic extends CI_Controller {
 		$data['Categories'] = $this->Post_model->list_categories(100,0);
 		$this->load->view('back_end/categories_view',$data);	
 	}
-    public function approval($post_type='post',$term=0,$row=0)
+    public function approval($post_type='post',$term=0,$titleTopic='',$row=0)
 	{
 		// Get post type
 		$data['post_type'] = $post_type;
 		
-		// Get category
-		$data['category'] = $term;
+		// Get category		
+        $data['category'] = $term;
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
+        $data['titleTopic'] = $titleTopic;
+        if ($this->input->post('titleTopic') != '')
+        {
+            $data['titleTopic'] = $this->input->post('titleTopic');
+        }
 		//paging
 		include('paging.php');		
-		$config['base_url']= base_url()."/admin/topic/approval/".$post_type."/".$data['category']."/";
+		$config['base_url']= base_url()."/admin/topic/lists/".$post_type."/".$data['category']."/".$data['titleTopic']."/";
 		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','pending');		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
@@ -222,7 +227,7 @@ class Topic extends CI_Controller {
 		$data['post_type'] = $post_type;
 		$this->load->view('back_end/view_approval_topic',$data);
 	}
-    public function reject($post_type='post',$term=0,$row=0)
+    public function reject($post_type='post',$term=0,$titleTopic='',$row=0)
 	{
 		// Get post type
 		$data['post_type'] = $post_type;
@@ -232,6 +237,11 @@ class Topic extends CI_Controller {
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
+        $data['titleTopic'] = $titleTopic;
+        if ($this->input->post('titleTopic') != '')
+        {
+            $data['titleTopic'] = $this->input->post('titleTopic');
+        }
 		//paging
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/topic/reject/".$post_type."/".$data['category']."/";
