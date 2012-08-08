@@ -55,16 +55,10 @@
                     </div>
                     <div class="list-right">
                     	<div class="contenttitle radiusbottom0">
-                            <h2 class="table"><span>Danh mục bài viết</span></h2>
+                            <h2 class="table"><span>Quản trị báo</span></h2>
                         </div><!--contenttitle-->
                         <div class="tableoptions">
-                            <button class="deletebutton radius3" name="delete_term" value="<?php echo base_url();?>admin/categories/delete" title="table2">Delete Selected</button> &nbsp;
-                            <select class="radius3">
-                                <option value="">Show All</option>
-                                <option value="">Rendering Engine</option>
-                                <option value="">Platform</option>
-                            </select> &nbsp;
-                            <button class="radius3">Apply Filter</button>
+                            <button class="deletebutton radius3" name="delete_term" value="<?php echo base_url();?>admin/categories/delete" title="table2">Delete Selected</button> &nbsp;                            
                         </div><!--tableoptions-->	
                         <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                             <colgroup>
