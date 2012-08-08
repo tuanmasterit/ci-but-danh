@@ -36,12 +36,12 @@ class Posts extends CI_Controller {
 		$data['category'] = $term;
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
-		}
-        $data['titlePost'] = $titlePost;
+		}                
+        $data['titlePost'] = urldecode($titlePost);        
         if ($this->input->post('titlePost') != '')
         {
             $data['titlePost'] = $this->input->post('titlePost');
-        }
+        }        
 		//paging
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/".$data['titlePost']."/";

@@ -29,16 +29,28 @@ class Author extends CI_Controller {
 		}else{redirect('admin/index/accesdenied');}		
     }
     
-	public function index($row=0)
+	public function index($term=0,$butdanh='',$row=0)
 	{
-		include('paging.php');		
-		$config['base_url']= base_url()."/admin/author/index/";
-		$config['total_rows']= $this->User_model->getCount('butdanh');		
+        $data['keymagazine'] = $term;
+		if($this->input->post('slmagazine') != ''){
+			$data['keymagazine'] = $this->input->post('slmagazine');
+		}
+        $data['butdanh'] = urldecode($butdanh);
+        if ($this->input->post('butdanh') != '')
+        {
+            $data['butdanh'] = $this->input->post('butdanh');
+        }
+        //echo $data['magazine'];
+		include('paging.php');		        
+		$config['base_url']= base_url()."/admin/author/index/".$data['keymagazine']."/".$data['butdanh']."/";
+		$config['total_rows']= $this->User_model->getCount('butdanh',$data['keymagazine'],$data['butdanh']);		
 		$config['cur_page']= $row;	
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();
-		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh');
+		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh',$data['keymagazine'],'user_registered','DESC',-1,$data['butdanh']);
+        //get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC',$status=-1,$butdanh=''){
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+        //print_r($data['lstmagazine']);
 		$this->load->view('back_end/author_view',$data);
 	}
 	

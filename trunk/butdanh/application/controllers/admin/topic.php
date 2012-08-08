@@ -37,7 +37,8 @@ class Topic extends CI_Controller {
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
-        $data['titleTopic'] = $titleTopic;
+        
+        $data['titleTopic'] =  urldecode($titleTopic);
         if ($this->input->post('titleTopic') != '')
         {
             $data['titleTopic'] = $this->input->post('titleTopic');
@@ -209,7 +210,8 @@ class Topic extends CI_Controller {
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
-        $data['titleTopic'] = $titleTopic;
+        
+        $data['titleTopic'] = urldecode($titleTopic);
         if ($this->input->post('titleTopic') != '')
         {
             $data['titleTopic'] = $this->input->post('titleTopic');
@@ -237,7 +239,7 @@ class Topic extends CI_Controller {
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
-        $data['titleTopic'] = $titleTopic;
+        $data['titleTopic'] = urldecode($titleTopic);
         if ($this->input->post('titleTopic') != '')
         {
             $data['titleTopic'] = $this->input->post('titleTopic');
