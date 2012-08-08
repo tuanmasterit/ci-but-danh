@@ -14,7 +14,7 @@ class Home extends CI_Controller {
 		$this->load->library('email');
 		$this->load->helper('security');
     }	
-	public function index($module='',$obj_id=0)
+	public function index()
 	{				
 		//tranfer data
 		$data['term_toptic'] =0;

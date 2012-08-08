@@ -3,35 +3,23 @@
         <div class="widgetbox">
             <div class="title"><h2 class="chart"><span>Visitors Overview</span></h2></div>
             <div class="chartbox widgetcontent">
+            	<input type="hidden" id="hdfview" value="<?php echo $arr_view;?>"/>
                 <div id="chartplace" class="chartplace"></div>
                 
                 <div class="one_half">
                     <div class="analytics analytics2">
-                        <small>Visitors For Today</small>
-                        <h1>23 321</h1>
-                        <small>18,222 unique</small>
+                        <small>Page Views For Today</small>
+                        <h1><?php echo $view_today;?></h1>
+                        
                     </div><!--visitoday-->
                 </div><!--one_half-->
                 
                 <div class="one_half last">
                     
-                    <div class="one_half">
-                        <div class="analytics">
-                            <small>bounce</small>
-                            <h3>23.2%</h3>
-                        </div><!--analytics-->
-                    </div><!--one_half-->
                     
-                    <div class="one_half last">
-                        <div class="analytics textright">
-                            <small class="block">visitors</small>
-                            <h3>56.8%</h3>
-                        </div><!--analytics-->
-                    </div><!--one_half last-->
-                    <br clear="all" />
                     
                     <div class="analytics average margintop10">
-                        Average <h3>87.44%</h3>
+                        <a href="https://www.google.com/analytics/">Thống kê chi tiết</a>
                     </div><!--analytics-->
                     
                 </div><!--one_half-->
