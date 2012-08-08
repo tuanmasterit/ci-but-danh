@@ -127,13 +127,25 @@
                             <h2 class="table"><span>Danh sách thành viên</span></h2>
                         </div><!--contenttitle-->
                         <div class="tableoptions">
-                            <button class="deletebutton radius3" name="delete" value="<?php echo base_url();?>admin/users/delete" title="table2">Delete Selected</button> &nbsp;
-                            <select class="radius3">
-                                <option value="">Show All</option>
-                                <option value="">Rendering Engine</option>
-                                <option value="">Platform</option>
-                            </select> &nbsp;
-                            <button class="radius3">Apply Filter</button>
+                            
+                            <form name="frmfilter" method="post" action="<?php echo base_url().'admin/author/index';?>" >                        	
+                        	<button class="deletebutton radius3" name="delete" value="<?php echo base_url();?>admin/users/delete" title="table2">Delete Selected</button> &nbsp;
+                            
+                            <input type="text" class="txt" name="butdanh" value="<?php if ($butdanh !=''){ echo $butdanh;} ?>" />
+                            
+                            <select class="category" name="slmagazine">
+                                <option value="">--- Tất cả ---</option>
+                                <?php foreach($lstmagazine as $temp){?>                                 
+                                	<?php if($temp->term_id == $keymagazine){?>
+                                    	<option selected="selected" value="<?php echo $temp->term_id;?>"><?php echo $temp->name;?></option>
+                                    <?php }else{?>
+                                    	<option value="<?php echo $temp->term_id;?>"><?php echo $temp->name;?></option>
+                                    <?php }?>
+                                <?php }?>
+                            </select> &nbsp;                                                                                   
+                            
+                            <input type="submit" class="btn" value="Tìm kiếm"></button>
+                        </form>
                         </div><!--tableoptions-->	
                         <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                             <colgroup>
