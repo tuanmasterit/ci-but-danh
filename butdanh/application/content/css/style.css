@@ -473,9 +473,10 @@ select {
   padding-left: 10px;
 }
 .box-social-network{    
-    overflow: hidden;
+    float: left;
     padding-left: 5px;
     padding-right: 5px;
 }
-.box-social-network li{float:left; width: 120px;
+.box-social-network li{float:left; width: 15//0px;
 }
+.box-item{min-height:200px;}
