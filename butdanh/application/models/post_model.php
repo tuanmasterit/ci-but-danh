@@ -145,9 +145,15 @@ class Post_model extends CI_Model{
             if ($titleTopic != '')
             {
                 $this->db->like('post_title',$titleTopic);
-            }		
-			$this->db->where('post_type',$post_type);
-			$this->db->order_by($order_by, $order);
+            }
+            if($post_type != '')
+            {		
+			     $this->db->where('post_type',$post_type);
+            }
+            if($order_by !='')
+            {
+			     $this->db->order_by($order_by, $order);
+            }
 			if($limit > 0){
 				$this->db->limit($limit,$offset);
 			}
