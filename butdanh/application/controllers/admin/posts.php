@@ -25,7 +25,7 @@ class Posts extends CI_Controller {
 	{
 		redirect('admin/posts/lists/post');			
 	}
-	public function lists($post_type='post',$term=0,$row=0)
+	public function lists($post_type='post',$term=0,$titlePost='',$row=0)
 	{
 		// Get post type
 		$data['post_type'] = $post_type;
@@ -37,14 +37,14 @@ class Posts extends CI_Controller {
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
 		}
-        $data['titlePost'] = '';
+        $data['titlePost'] = $titlePost;
         if ($this->input->post('titlePost') != '')
         {
             $data['titlePost'] = $this->input->post('titlePost');
         }
 		//paging
 		include('paging.php');		
-		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/";
+		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/".$data['titlePost']."/";
 		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','', $data['titlePost']);		
 	    $config['cur_page']= $row;		
 		$this->pagination->initialize($config);
