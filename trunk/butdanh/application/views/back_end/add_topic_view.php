@@ -90,7 +90,7 @@
                                         <?php }?>
                                     </select>                                    
                                 </p>
-                                </br>
+                                <br/>
                                 <p>
                                     Bài viết:   
                                     <div id='divpostajax'>
