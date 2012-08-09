@@ -25,7 +25,7 @@ class Posts extends CI_Controller {
 	{
 		redirect('admin/posts/lists/post');			
 	}
-	public function lists($post_type='post',$term=0,$titlePost='',$row=0)
+	public function lists($post_type='post',$term=0,$titlePost='~',$row=0)
 	{
 		// Get post type
 		$data['post_type'] = $post_type;
@@ -47,6 +47,7 @@ class Posts extends CI_Controller {
 		//paging
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/".$data['titlePost']."/";
+        if  ($data['titlePost'] == '~' ) $data['titlePost'] = '';
 		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','', $data['titlePost']);		
 	    $config['cur_page']= $row;		
 		$this->pagination->initialize($config);
@@ -231,11 +232,11 @@ class Posts extends CI_Controller {
     function get_link($str)
     {
                 
-        $max_length = 30;
+        $max_length = 100;
         if  (strlen($str)>$max_length)
         {
             $link = $this->truncateString_($str,$max_length);
-        }
+        } else $link = $str;
         $link =$this->common->removespace($link);
         $link = urlencode($link);
         if ($this->check_link($link)==false)
