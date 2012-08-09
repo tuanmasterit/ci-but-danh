@@ -36,7 +36,9 @@ class Posts extends CI_Controller {
 		$data['category'] = $term;
 		if($this->input->post('slcategory') != ''){
 			$data['category'] = $this->input->post('slcategory');
-		}                
+		}
+        //echo $this->check_link('Tieng_viet_co_dau1');
+        //echo $this->get_link('Tiếng việt có dấu');                
         $data['titlePost'] = urldecode($titlePost);        
         if ($this->input->post('titlePost') != '')
         {
@@ -98,7 +100,10 @@ class Posts extends CI_Controller {
 	//------------------------------------------------------------------------ 
 	public function save_add(){
 		$flag=false;		
-		$l_title = $this->input->post('txttitle');		
+		$l_title = $this->input->post('txttitle');
+        
+        $l_link = $this->get_link($l_title);
+        	
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
 		$l_butdanh = $this->input->post('txtAuthor');	
@@ -108,7 +113,8 @@ class Posts extends CI_Controller {
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		if($flag==false){			
 			//Insert posts			
-			$last_id = $this->Post_model->add($id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
+			$last_id = $this->Post_model->add($id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories,0,'',$l_link);
+            //add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category,$post_id=0,$post_status='',$post_link=''){
 			if($last_id > 0){
 				redirect('admin/posts/lists/post');							
 			}
@@ -206,7 +212,33 @@ class Posts extends CI_Controller {
 		$data['lstCategories'] = $this->Post_model->list_categories(10,0);
 		$data['Categories'] = $this->Post_model->list_categories(100,0);
 		$this->load->view('back_end/categories_view',$data);	
-	}		
+	}
+    function get_link($str)
+    {
+        $link = urlencode($this->common->removespace($str));
+        if ($this->check_link($link)==false)
+        {
+            return $link;
+        }
+        $i = 0;
+        while (1)
+        {	
+            $i++;
+            $link_temp = $link.'_'.$i;
+            if ($this->check_link($link_temp)==false) return $link_temp;
+        }
+        
+    }		
+    function check_link($link)
+    {
+        //co thi la true ko co là false
+        if (count($this->Post_model->get_seo($link))>0)
+        {
+            return true;
+        } else return false;
+        
+    }
+    
 }
 
 /* End of file welcome.php */
