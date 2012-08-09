@@ -57,7 +57,7 @@ class Post_model extends CI_Model{
 	}
 	
 	//Update posts
-	function update($id,$post_author,$post_modified,$post_content,$post_title,$post_excerpt,$featured_image,$arr_category,$post_parent=0,$post_type){		
+	function update($id,$post_author,$post_modified,$post_content,$post_title,$post_excerpt,$featured_image,$arr_category,$post_parent=0,$post_type,$post_link){		
 		$flag = true;
 		$arr=array(
 			'post_author'=>$post_author,
@@ -65,7 +65,8 @@ class Post_model extends CI_Model{
 			'post_content'=>$post_content,
 			'post_title'=>$post_title,
 			'post_excerpt'=>$post_excerpt,
-			'post_parent'=>$post_parent	
+			'post_parent'=>$post_parent,	
+            'guid'=>$post_link
 		);
 		//update post
 		$this->db->where('id',$id);
