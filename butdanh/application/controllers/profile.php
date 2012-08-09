@@ -24,8 +24,7 @@ class Profile extends CI_Controller {
 		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
-		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
-		
+		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');		
 		//data profile
 		$data['butdanh'] = $this->User_model->get_butdanh($author_id);
 		$data['author_id'] = $author_id;
