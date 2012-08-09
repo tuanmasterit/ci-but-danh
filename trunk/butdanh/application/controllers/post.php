@@ -129,7 +129,7 @@ class Post extends CI_Controller {
     	} else
     	$this->load->view('front_end/post_view',$data);
     }
-    public function test($post_term='')
+    public function detail($post_term='')
 	{				
 		//tranfer data
 		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
@@ -148,16 +148,14 @@ class Post extends CI_Controller {
         $data['post_id'] = $post_id;	
         //$data['post_term'] = $this->common->removesign(urldecode($post_term));
         $data['post_term'] = $post_term;
-        //echo $data['post_term'];
-		//data post
+        //data post
         $result = $this->Post_model->get_seo($data['post_term']);
-        //sprint_r($result);
         if (count($result) >0)
         foreach($result as $temp)
         {
            $data['post_detail'] = $temp; 
 	       $data['butdanh'] = $this->User_model->get_butdanh($temp->post_author); 
-		} else {redirect('home');}
+		} else {}//redirect('home');}
         
         //print_r($data['post_detail']);
         if($post_id != 0){
