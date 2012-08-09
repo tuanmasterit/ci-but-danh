@@ -293,23 +293,42 @@ class Topic extends CI_Controller {
     			$this->load->view('back_end/view_confirm_topic',$data);
             }		
 	}
+    function truncateString_($str, $len, $charset="UTF-8"){
+        $str = html_entity_decode($str, ENT_QUOTES, $charset);   
+        if(mb_strlen($str, $charset)> $len){
+            $arr = explode(' ', $str);
+            $str = mb_substr($str, 0, $len, $charset);
+            $arrRes = explode(' ', $str);
+            $last = $arr[count($arrRes)-1];
+            unset($arr);
+            if(strcasecmp($arrRes[count($arrRes)-1], $last))   unset($arrRes[count($arrRes)-1]);
+          return implode(' ', $arrRes);   
+       }
+        return $str;
+    }
+
     function get_link($str)
     {
-        if ($str !='')
+                
+        $max_length = 30;
+        if  (strlen($str)>$max_length)
         {
-            $link = urlencode($this->common->removespace($str));
-            if ($this->check_link($link)==false)
-            {
-                return $link;
-            }
-            $i = 0;
-            while (1)
-            {	
-                $i++;
-                $link_temp = $link.'_'.$i;
-                if ($this->check_link($link_temp)==false) return $link_temp;
-            }
-        } else return '';
+            $link = $this->truncateString_($str,$max_length);
+        }
+        $link =$this->common->removespace($link);
+        $link = urlencode($link);
+        if ($this->check_link($link)==false)
+        {
+            return $link;
+        }
+        $i = 0;
+        while (1)
+        {	
+            $i++;
+            $link_temp = $link.'_'.$i;
+            if ($this->check_link($link_temp)==false) return $link_temp;
+        }
+        
     }		
     function check_link($link)
     {
@@ -319,7 +338,7 @@ class Topic extends CI_Controller {
             return true;
         } else return false;
         
-    }		
+    }
 }
 
 /* End of file welcome.php */
