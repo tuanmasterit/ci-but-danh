@@ -61,7 +61,7 @@
 	}
 </style>
                     	<div class="widgetbox">
-                            <div class="title"><h2 class="general"><span>Chọn bài viết</span></h2></div>
+                            <div class="title"><h2 class="general"><span>Thao tác</span></h2></div>
                             <div class="widgetcontent" style="display: block;">                            	
                                 <p class="stdformbutton">
                                     <button class="submit radius2">Xuất bản</button>

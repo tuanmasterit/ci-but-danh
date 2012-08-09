@@ -23,7 +23,7 @@ class Topic extends CI_Controller {
 	//------------------------------------------------------------------------ 
 	public function index()
 	{
-		redirect('admin/posts/lists/post');			
+		redirect('admin/topic/lists/topic');			
 	}
 	public function lists($post_type='post',$term=0,$titleTopic='~',$row=0)
 	{
