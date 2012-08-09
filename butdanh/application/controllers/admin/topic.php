@@ -286,7 +286,32 @@ class Topic extends CI_Controller {
     			//print_r($data['categories_of_topic']);
     			$this->load->view('back_end/view_confirm_topic',$data);
             }		
-	}		
+	}
+    function get_link($str)
+    {
+        $link = urlencode($this->common->removespace($str));
+        if ($this->check_link($link)==false)
+        {
+            return $link;
+        }
+        $i = 0;
+        while (1)
+        {	
+            $i++;
+            $link_temp = $link.'_'.$i;
+            if ($this->check_link($link_temp)==false) return $link_temp;
+        }
+        
+    }		
+    function check_link($link)
+    {
+        //co thi la true ko co là false
+        if (count($this->Post_model->get_seo($link))>0)
+        {
+            return true;
+        } else return false;
+        
+    }		
 }
 
 /* End of file welcome.php */
