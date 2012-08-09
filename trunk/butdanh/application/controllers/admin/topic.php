@@ -175,10 +175,10 @@ class Topic extends CI_Controller {
 			//Insert posts			
 			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,$l_post_id,'topic',$l_link);
 			if($last_id > 0){
-				redirect('admin/posts/edit/topic/'.$id);							
+				redirect('admin/topic/lists/topic');							
 			}
 		}
-		redirect('admin/posts/edit/topic/'.$id);
+		redirect('admin/topic/edit/topic/'.$id);
 	}
 	public function edit($post_type='post', $id=0){
 		if($post_type == 'post'){
