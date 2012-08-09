@@ -2,14 +2,14 @@ jQuery(document).ready(function(){
 
 		var arr = jQuery("#hdfview").attr("value");
 		var str_arr = arr.split(',');
-		var max=0;
+		var max_view=0;
 		var flash = Array();
 		if(str_arr.length>0)
 		{
 			for(var i=1;i<str_arr.length;i++)
 			{
 				flash[i-1] = [i,str_arr[i]];
-				if(max<str_arr[i]){max=str_arr[i];}
+				if(max_view<parseInt(str_arr[i])){max_view=parseInt(str_arr[i]);}
 			}
 		}
 		else{
@@ -39,7 +39,7 @@ jQuery(document).ready(function(){
 				   },
 				   legend: { position: 'nw'},
 				   grid: { hoverable: true, clickable: true, labelMargin: 5, borderWidth: 1, borderColor: '#bbb' },
-				   yaxis: { show: false, min: 0, max: max*1.5 }
+				   yaxis: { show: false, min: 0, max: max_view*1.5 }
 				 });
 		
 		var previousPoint = null;
