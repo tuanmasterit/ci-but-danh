@@ -135,7 +135,16 @@ class Post extends CI_Controller {
 		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
 		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
 		$data['lstLatestComment'] = $this->Comment_model->get(5);
-        $post_id = 29;
+        $data['post_term'] = urlencode(urldecode($post_term));        
+        //data post       
+        $result = $this->Post_model->get_seo($data['post_term']);
+        if (count($result) >0)
+        foreach($result as $temp)
+        {
+           $data['post_detail'] = $temp; 
+	       $data['butdanh'] = $this->User_model->get_butdanh($temp->post_author); 
+		} else {redirect('home');}
+        $post_id = $data['post_detail']->id;
 		$term_id = $this->Post_model->get_term_id_by_id_post($post_id);
 		$data['term_toptic'] =$term_id;
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id);
@@ -147,15 +156,8 @@ class Post extends CI_Controller {
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');	
         $data['post_id'] = $post_id;	
         //$data['post_term'] = $this->common->removesign(urldecode($post_term));
-        $data['post_term'] = $post_term;
-        //data post
-        $result = $this->Post_model->get_seo($data['post_term']);
-        if (count($result) >0)
-        foreach($result as $temp)
-        {
-           $data['post_detail'] = $temp; 
-	       $data['butdanh'] = $this->User_model->get_butdanh($temp->post_author); 
-		} else {}//redirect('home');}
+        
+        
         
         //print_r($data['post_detail']);
         if($post_id != 0){
@@ -181,7 +183,7 @@ class Post extends CI_Controller {
     }		
     function check_link($link)
     {
-        //co thi la true ko co là false
+        //co thi la true ko co lÃ  false
         if (count($this->Post_model->get_seo($link))>0)
         {
             return true;
