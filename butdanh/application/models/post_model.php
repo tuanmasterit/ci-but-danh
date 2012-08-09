@@ -9,7 +9,7 @@ class Post_model extends CI_Model{
 		$this->load->database();		
     }
 	//Add posts
-	function add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category,$post_id=0,$post_status=''){		
+	function add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category,$post_id=0,$post_status='',$post_link=''){		
 		$arr=array(
 			'post_author'=>$post_author,
 			'post_date'=>$post_date,
@@ -18,7 +18,8 @@ class Post_model extends CI_Model{
 			'post_excerpt'=>$post_excerpt,			
 			'post_type'=>$post_type,
 			'post_parent'=>$post_id,
-            'post_status'=>$post_status	
+            'post_status'=>$post_status,
+            'guid'	=>$post_link
 		);
 		$this->db->insert('ci_posts',$arr);
 		$last_id = $this->get_id_last_row();
@@ -420,5 +421,29 @@ class Post_model extends CI_Model{
     	$query = $this->db->get();
     	return $query->result();
     }
+    function get_seo($post_term='')
+    {
+        if ($post_term != '')
+        {
+            $this->db->select('
+					ci_posts.id,
+					post_author,
+					user_nicename,
+					post_date,
+					post_title,
+					post_excerpt,
+					post_content,
+					post_type,
+					post_parent					
+				');
+            $this->db->from('ci_posts');
+            $this->db->join('ci_users','post_author=ci_users.id');
+            $this->db->where('ci_posts.guid',$post_term);
+            
+			$query = $this->db->get();
+			return $query->result();
+        }
+    }
+    
 }
 ?>
