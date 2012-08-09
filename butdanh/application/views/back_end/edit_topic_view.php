@@ -15,7 +15,7 @@
                 </ul>
                 <div class="content"> 
                 	<?php foreach($lsttopic as $l_topic){?>                                   	
-                	<form method="post" action="<?php echo base_url();?>admin/posts/update_topic/<?php echo $l_topic->id;?>" class="stdform">
+                	<form method="post" action="<?php echo base_url();?>admin/topic/update_topic/<?php echo $l_topic->id;?>" class="stdform">
                 	<div class="edit-main">     
                     		<input type="hidden" name="hdfauthor" value="<?php echo $l_topic->post_author;?>"  />
                             <p><label>Tiêu đề:</label></p>
