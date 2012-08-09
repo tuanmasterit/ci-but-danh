@@ -148,7 +148,8 @@ class Posts extends CI_Controller {
 	//------------------------------------------------------------------------ 
 	public function update(){		
 		$l_id = $this->input->post('post_id');
-		$l_title = $this->input->post('txttitle');		
+		$l_title = $this->input->post('txttitle');
+        $l_link = $this->get_link($l_title);		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
 		$l_butdanh = $this->input->post('txtAuthor');	
@@ -157,7 +158,7 @@ class Posts extends CI_Controller {
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		//Insert posts			
-		if($this->Post_model->update($l_id,$id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'post')){
+		if($this->Post_model->update($l_id,$id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'post',$l_link)){
 			redirect('admin/posts/lists/post');							
 		}		
 		redirect('admin/posts/lists/post/'.$l_id);
