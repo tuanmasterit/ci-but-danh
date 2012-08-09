@@ -114,7 +114,10 @@ class Topic extends CI_Controller {
 		$flag=false;				
 		$l_butdanh = $this->session->userdata('user_id');
 		$l_title = $this->input->post('txttitle');		
-		$l_exerpt = $this->input->post('txtexcerpt');		
+        
+        $l_link = $this->get_link($l_title);
+		
+        $l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
 		$l_post_id = $this->input->post('cbxbaiviet');
 		$l_featured_image = $this->input->post('hdffeatured_image');		
@@ -125,7 +128,7 @@ class Topic extends CI_Controller {
 		if($flag==false){
 			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
 			//Insert posts			
-			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id);
+			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id,'',$l_link);
 			if($last_id > 0){
 				redirect('admin/topic/lists/topic');							
 			}
@@ -153,7 +156,10 @@ class Topic extends CI_Controller {
 	public function update_topic($id){		
 		$flag=false;				
 		$l_butdanh = $this->input->post('hdfauthor');
-		$l_title = $this->input->post('txttitle');		
+        
+		$l_title = $this->input->post('txttitle');
+        $l_link = $this->get_link($l_title);
+        		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
 		$l_post_id = $this->input->post('cbxbaiviet');
@@ -167,7 +173,7 @@ class Topic extends CI_Controller {
 			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
 			//print_r($l_arr_categories);
 			//Insert posts			
-			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,$l_post_id,'topic');
+			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,$l_post_id,'topic',$l_link);
 			if($last_id > 0){
 				redirect('admin/posts/edit/topic/'.$id);							
 			}
@@ -289,19 +295,21 @@ class Topic extends CI_Controller {
 	}
     function get_link($str)
     {
-        $link = urlencode($this->common->removespace($str));
-        if ($this->check_link($link)==false)
+        if ($str !='')
         {
-            return $link;
-        }
-        $i = 0;
-        while (1)
-        {	
-            $i++;
-            $link_temp = $link.'_'.$i;
-            if ($this->check_link($link_temp)==false) return $link_temp;
-        }
-        
+            $link = urlencode($this->common->removespace($str));
+            if ($this->check_link($link)==false)
+            {
+                return $link;
+            }
+            $i = 0;
+            while (1)
+            {	
+                $i++;
+                $link_temp = $link.'_'.$i;
+                if ($this->check_link($link_temp)==false) return $link_temp;
+            }
+        } else return '';
     }		
     function check_link($link)
     {
