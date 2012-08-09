@@ -115,8 +115,7 @@ class Topic extends CI_Controller {
 		$l_butdanh = $this->session->userdata('user_id');
 		$l_title = $this->input->post('txttitle');		
         
-        $l_link = $this->get_link($l_title);
-		
+        $l_link = $this->get_link($l_title);		
         $l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
 		$l_post_id = $this->input->post('cbxbaiviet');
@@ -128,7 +127,7 @@ class Topic extends CI_Controller {
 		if($flag==false){
 			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
 			//Insert posts			
-			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id,'',$l_link);
+			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id,'',$l_link);            
 			if($last_id > 0){
 				redirect('admin/topic/lists/topic');							
 			}
@@ -310,11 +309,11 @@ class Topic extends CI_Controller {
     function get_link($str)
     {
                 
-        $max_length = 30;
+        $max_length = 100;
         if  (strlen($str)>$max_length)
         {
             $link = $this->truncateString_($str,$max_length);
-        }
+        } else $link = $str;
         $link =$this->common->removespace($link);
         $link = urlencode($link);
         if ($this->check_link($link)==false)
