@@ -1,6 +1,9 @@
 <?php $this->load->view('back_end/header'); ?>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckeditor/ckeditor.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckfinder/ckfinder.js"></script>
+<script>
+    
+</script>
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
@@ -15,11 +18,76 @@
                 <div class="content">     
                 	<?php //print_r($Post);?>           	                	
                 	<?php foreach($Post as $l_post){?>
-                	<form method="post" action="<?php echo base_url();?>admin/posts/update" class="stdform">                             
+                	<form id="formID" method="post" action="<?php echo base_url();?>admin/posts/update" class="stdform">                             
                 	<div class="edit-main">                    	                    	                            
                     		<input type="hidden" value="<?php echo $l_post->id;?>" name="post_id" />
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput" name="txttitle" value="<?php echo $l_post->post_title;?>"></span></p>
+                            </br>
+                            <script type="text/javascript">
+                                function check_link()
+                                {         
+                                    jQuery("#alert_link").hide();
+                                   var link = jQuery('#link_post').val();
+                                   var u = jQuery('#link_post').attr('url');
+                                   var confirm = jQuery('#link_confirm').attr('value');
+                                   if (confirm==link) 
+                                   {
+                                        jQuery("#alert_link").removeClass();
+                                        jQuery("#alert_link").addClass('standard_link');
+                                        jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_standard.gif" width="15" height="15" alt="" />  Bạn có thể dùng đường dẫn này!');
+                                        jQuery("#alert_link").show();
+                                        return;
+                                    }                                        
+                                   alert(confirm);
+                                   jQuery.ajax({
+                                      type:"POST",
+                                      url:u+'admin/posts/ajax_check_link', 
+                                      data:"link="+link, 
+                                      //dataType:"xml",                
+                                      success: function (data){ 
+                                        //alert(data);
+                                        
+                                        if (data=='Co')
+                                        {
+                                            jQuery("#alert_link").removeClass();
+                                            jQuery("#alert_link").addClass('error_link');
+                                            jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_error.png" width="15" height="15" alt="" />  đường dẫn đã tồn tại!');
+                                            jQuery("#alert_link").show();
+                                        }  
+                                        if (data=='KoChuan')
+                                        {
+                                            jQuery("#alert_link").removeClass();
+                                            jQuery("#alert_link").addClass('error_link');
+                                            jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_error.png" width="15" height="15" alt="" />  Đường dẫn không đúng!');
+                                            jQuery("#alert_link").show();
+                                        }                                       
+                                        if (data=='Dai')
+                                        {
+                                            jQuery("#alert_link").removeClass();
+                                            jQuery("#alert_link").addClass('error_link');
+                                            jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_error.png" width="15" height="15" alt="" />  Đường dẫn quá dài!');
+                                            jQuery("#alert_link").show();
+                                        }
+                                        if (data=='Duoc')
+                                        {
+                                            jQuery("#alert_link").removeClass();
+                                            jQuery("#alert_link").addClass('standard_link');
+                                            jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_standard.gif" width="15" height="15" alt="" />  Bạn có thể dùng đường dẫn này!');
+                                            jQuery("#alert_link").show();
+                                        }
+                                      }
+                                    });
+                                                                      
+                                }
+                            </script>
+                            <p><label>Đường dẫn:</label></p>
+                            <p><span class="field"><input type="text" url="<?php echo base_url();?>" class="longinput" id="link_post"  name="txtlink" value="<?php echo urldecode($l_post->guid);?>" onblur="check_link();"></span>
+                                <span id ="alert_link" class=""><img  src='<?php echo base_url();?>application/content/images/link_error.png' width="15" height="15" alt="" />Link quá dài!</span>
+                                <input type="hidden" id="link_confirm" value="<?php echo urldecode($l_post->guid);?>" />
+                                
+                            </p>
+                            
                             </br>
                             <p><label>Tóm tắt:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"><?php echo $l_post->post_excerpt;?></textarea></span></p>
