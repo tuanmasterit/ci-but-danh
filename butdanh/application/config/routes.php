@@ -44,6 +44,7 @@ $route['threads/(:num)'] = 'threads/index/$1';
 $route['category/(:num)'] = 'category/index/$1';
 $route['profile/(:num)'] = 'profile/index/$1';
 $route['admin'] = 'admin/login';
-
+$route['bai-viet/(:any)'] = 'post/detail/$1';
+$route['chu-de/(:any)'] = 'threads/detail/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
