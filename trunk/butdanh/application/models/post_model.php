@@ -330,7 +330,8 @@ class Post_model extends CI_Model{
     					post_excerpt,
     					post_content,
     					post_type,
-    					post_parent					
+    					post_parent,
+                        guid					
     				');
             $this->db->from('ci_posts');
             $this->db->where('post_type','topic');  
