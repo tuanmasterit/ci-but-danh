@@ -68,13 +68,12 @@
 			return $query->result();
 		}
 		
-		function checkExitUser($user_nicename,$bao_id)
+		function checkExitUser($user_nicename,$term_id)
 		{
 			$this->db->select('user_nicename');
 			$this->db->from('ci_users');
-			$this->db->join('ci_usermeta', 'ci_usermeta.user_id = ci_users.id');
-			$this->db->where('meta_key','magazine');
-			$this->db->where('meta_value',$bao_id);	
+			$this->db->join('ci_term_relationships','id = object_id');
+			$this->db->where('term_taxonomy_id',$term_id);			
 			$this->db->where("ENCODE(user_nicename,'key') = ENCODE('".$user_nicename."','key')");
 				
 			$query = $this->db->get();		
