@@ -83,7 +83,7 @@
                             </script>
                             <p><label>Đường dẫn:</label></p>
                             <p><span class="field"><input type="text" url="<?php echo base_url();?>" class="longinput" id="link_post"  name="txtlink" value="<?php echo urldecode($l_post->guid);?>" onblur="check_link();"></span>
-                                <span id ="alert_link" class=""><img  src='<?php echo base_url();?>application/content/images/link_error.png' width="15" height="15" alt="" />Link quá dài!</span>
+                                <span id ="alert_link" class=""><img  src='<?php echo base_url();?>application/content/images/link_error.png' width="15" height="15" alt="" /></span>
                                 <input type="hidden" id="link_confirm" value="<?php echo urldecode($l_post->guid);?>" />
                                 
                             </p>
