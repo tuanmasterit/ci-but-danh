@@ -83,7 +83,7 @@ class Author extends CI_Controller {
 				
 				$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,'butdanh');
 				$id = $this->User_model->get_id_last_row();
-				$this->Author_model->add_magazine_author($id,$term);
+				//$this->Author_model->add_magazine_author($id,$term);
 				$this->Term_model->add_term_relationship($id,$term);			
 						
 				redirect('admin/author','refresh');
@@ -135,12 +135,21 @@ class Author extends CI_Controller {
 		if($this->input->post('txtnicename'))
 		{
 			$user_id = $this->input->post('id');
-			$user_nicename = $this->input->post('txtnicename');
+			$user_nicename = trim($this->input->post('txtnicename'));
 			$user_email = $this->input->post('txtemail');			
 			$display_name = $this->input->post('txtdisplay');
-			$magazine = $this->input->post('slmagazine');		
-			$this->User_model->update_author($user_id,$user_nicename,$user_email,$display_name,$magazine);			
-			redirect('admin/author','refresh');
+			$magazine = $this->input->post('slmagazine');
+			$author_name = $this->input->post('author_name');
+			if($this->Author_model->checkExitUser($user_nicename,$magazine)==true)
+			{						
+				$this->session->set_flashdata('trang_thai','Exited');						
+				redirect('admin/author','refresh');
+			}
+			else 
+			{
+				$this->User_model->update_author($user_id,$user_nicename,$user_email,$display_name,$magazine);
+				redirect('admin/author','refresh');
+			}			
 		}
 		else 
 		{

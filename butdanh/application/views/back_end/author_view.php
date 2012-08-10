@@ -96,8 +96,16 @@
                 		?>
                 			<?php echo form_open('admin/author/edit',array('id'=>'formID','class'=>'stdform'));?>
                 			<input type="hidden" name="id" value="<?php echo $user['id'];?>">
+                			<input type="hidden" name="author_name" value="<?php echo $user['user_nicename'];?>">
                             <p><label>Tên bút danh:</label></p>                            
-                            <p><span class="field"><input type="text" value="<?php echo $user['user_nicename'];?>" class="longinput validate[required]" name="txtnicename" /></span></p>
+                            <p><span class="field"><input id="inputString" type="text" value="<?php echo $user['user_nicename'];?>" class="longinput validate[required]" name="txtnicename" AUTOCOMPLETE=OFF onkeyup="lookup(this.value);" /></span></p>
+                            <div class="suggestionsBox" id="suggestions" style="display: none;">
+								<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+								<div class="suggestionList" id="autoSuggestionsList">
+									&nbsp;
+								</div>
+							</div>
+							
                             <br />
                             <p><label>Thông tin:</label></p>                            
                             <p><span class="field"><textarea class="longinput" name="txtdescription"></textarea></span></p>
