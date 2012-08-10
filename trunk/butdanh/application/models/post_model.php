@@ -357,6 +357,7 @@ class Post_model extends CI_Model{
 					post_title,					
 					post_type,
 					post_date,
+					guid,
 					count(*) as count								
 				');
     	$this->db->from('ci_posts');

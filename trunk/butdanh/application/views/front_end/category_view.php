@@ -23,8 +23,8 @@
                 	<?php foreach($lsttopic as $topic){?>
                     	<div class="topic-item">
                             <div class="topic">                        
-                                <a href="<?php echo base_url();?>threads/<?php echo $topic->id;?>"><img src="<?php echo $this->Post_model->get_featured_image($topic->id); ?>" /></a>
-                                <a href="#"><h3><a href="<?php echo base_url();?>threads/<?php echo $topic->id;?>"><?php echo $topic->post_title;?></a></h3></a>
+                                <a href="<?php echo base_url();?>chu-de/<?php echo urldecode($topic->guid);?>"><img src="<?php echo $this->Post_model->get_featured_image($topic->id); ?>" /></a>
+                                <a href="#"><h3><a href="<?php echo base_url();?>chu-de/<?php echo urldecode($topic->guid);?>"><?php echo $topic->post_title;?></a></h3></a>
                                 <p><?php echo $topic->post_excerpt;?></p>
                             </div>
                             <div class="info">

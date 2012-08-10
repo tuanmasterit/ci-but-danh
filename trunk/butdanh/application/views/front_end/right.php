@@ -10,7 +10,7 @@
                 </div>
                 <ul id="list-topic-detail">	
                 	<?php foreach($lstToppic_top as $topic){?>
-                    	<li><a class="bullet" href="<?php echo base_url();?>threads/<?php echo $topic->id;?>"><?php echo $topic->post_title;?></a></li>
+                    	<li><a class="bullet" href="<?php echo base_url();?>chu-de/<?php echo urldecode($topic->guid);?>"><?php echo $topic->post_title;?></a></li>
 					<?php }?>                  
                 </ul>
             </div>

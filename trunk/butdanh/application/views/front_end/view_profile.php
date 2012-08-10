@@ -38,7 +38,7 @@
                         <ul>
                       
                             <?php foreach($listTopicRelation as $topic){?>
-                        	<li><a class="bullet resultmonth" href="<?php echo base_url().'threads/'.$topic->id; ?>"><?php echo $topic->post_title; ?></a></li>
+                        	<li><a class="bullet resultmonth" href="<?php echo base_url().'chu-de/'.urldecode($topic->guid); ?>"><?php echo $topic->post_title; ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>

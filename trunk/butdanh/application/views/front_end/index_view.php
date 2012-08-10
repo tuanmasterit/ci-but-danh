@@ -33,7 +33,7 @@
 					    	foreach ($lstLatesTopic as $new_topic)
 					    	{
 					    ?>
-					    <a href="<?php echo base_url().'threads/'.$new_topic->id;?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a><br/>
+					    <a href="<?php echo base_url().'chu-de/'.urldecode($new_topic->guid);?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a><br/>
 					    <?php
 					     	}
 					     ?>				    

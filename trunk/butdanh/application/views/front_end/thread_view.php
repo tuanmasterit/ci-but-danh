@@ -32,9 +32,9 @@
             	<?php }?>
                 
                 <ul class="box-social-network">
-                    <li><div class="fb-like" data-href="http://butdanh.com/threads/<?php echo $thr->id; ?>" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true"></div></li> 
-                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://butdanh.com/threads/<?php echo $thr->id; ?>" data-text="Bút danh" data-dnt="true">Tweet</a></li>                    
-                    <li><div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://butdanh.com/threads/<?php echo $thr->id; ?>"></div></li>
+                    <li><div class="fb-like" data-href="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true"></div></li> 
+                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>" data-text="Bút danh" data-dnt="true">Tweet</a></li>                    
+                    <li><div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>"></div></li>
                                                                                                                                                       
                     
                 </ul>
