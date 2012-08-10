@@ -68,12 +68,15 @@
 			return $query->result();
 		}
 		
-		function checkExitUser($user_nicename)
+		function checkExitUser($user_nicename,$bao_id)
 		{
 			$this->db->select('user_nicename');
-			//$this->db->where('user_nicename',$user_nicename);	
+			$this->db->from('ci_users');
+			$this->db->join('ci_usermeta', 'ci_usermeta.user_id = ci_users.id');
+			$this->db->where('meta_key','magazine');
+			$this->db->where('meta_value',$bao_id);	
 			$this->db->where("ENCODE(user_nicename,'key') = ENCODE('".$user_nicename."','key')");
-			$this->db->from('ci_users');	
+				
 			$query = $this->db->get();		
 			if($query->num_rows()>0)
 			{
@@ -102,6 +105,16 @@
 			{
 				return  $result[0]->id;
 			}
+		}
+		
+		function add_magazine_author($author_id,$magazine_id)
+		{
+			$arr = array(
+				'user_id'=>$author_id,
+				'meta_key'=>'magazine',
+				'meta_value'=>$magazine_id
+			);
+			$this->db->insert('ci_usermeta',$arr);
 		}
 	}
 ?>
