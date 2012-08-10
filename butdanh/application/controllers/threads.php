@@ -30,6 +30,7 @@ class Threads extends CI_Controller {
 		
 		$data['post_id'] = $id;
 		$data['thread'] = $this->Post_model->get($id);
+		
 		$data['lstComment'] = $this->Comment_model->getByPost($id,'approved');
 		
 		$vals = array(

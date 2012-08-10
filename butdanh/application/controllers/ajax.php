@@ -51,14 +51,14 @@
 				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
 				
 				foreach($lstToppic_top as $topic){
-                    $html.="<li><a class='bullet' href='".base_url()."'threads/".$topic->id."'>".$topic->post_title."</a></li>";
+                    $html.="<li><a class='bullet' href='".base_url()."'chu-de/".urldecode($topic->guid)."'>".$topic->post_title."</a></li>";
 				}
 			}
 			else 
 			{
 				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id,date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
 				foreach($lstToppic_top as $topic){
-                    $html.="<li><a class='bullet' href='".base_url()."'threads/".$topic->id."'>".$topic->post_title."</a></li>";
+                    $html.="<li><a class='bullet' href='".base_url()."'chu-de/".urldecode($topic->guid)."'>".$topic->post_title."</a></li>";
 				}
 			}
 		}
@@ -68,14 +68,14 @@
 			{
 				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-7 days')),date('Y-m-d h:i:s'));
 				foreach($lstToppic_top as $topic){
-                    $html.="<li><a class='bullet' href='".base_url()."'threads/".$topic->id."'>".$topic->post_title."</a></li>";
+                    $html.="<li><a class='bullet' href='".base_url()."'chu-de/".urldecode($topic->guid)."'>".$topic->post_title."</a></li>";
 				}
 			}
 			else 
 			{
 				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id,date('Y-m-d h:i:s',strtotime('-7 days')),date('Y-m-d h:i:s'));
 				foreach($lstToppic_top as $topic){
-                    $html.="<li><a class='bullet' href='".base_url()."'threads/".$topic->id."'>".$topic->post_title."</a></li>";
+                    $html.="<li><a class='bullet' href='".base_url()."'chu-de/".urldecode($topic->guid)."'>".$topic->post_title."</a></li>";
 				}
 			}
 		}
@@ -91,7 +91,7 @@
 			$listTopic = $this->Post_model->get(0, 'topic', 0,'', 5, 0, 'DESC', 'post_date','publish');
 			foreach ($listTopic as $topic)
 			{
-				$html.= "<a href='".base_url()."threads/".$topic->id."'><span class='item-toptic-new'>".$topic->post_title."</span></a><br/>";
+				$html.= "<a href='".base_url()."chu-de/".urldecode($topic->guid)."'><span class='item-toptic-new'>".$topic->post_title."</span></a><br/>";
 			}
 		}
 		if($get_by=="pending")
