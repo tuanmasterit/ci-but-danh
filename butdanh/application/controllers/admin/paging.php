@@ -1,6 +1,6 @@
 <?php 
 // config paging
-$config['per_page'] = 10;
+$config['per_page'] = 3;
 $config['num_links'] = 5;
 $config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
 $config['full_tag_close'] = "</div>";

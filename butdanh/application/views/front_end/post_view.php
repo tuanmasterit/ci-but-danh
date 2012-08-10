@@ -22,19 +22,19 @@
                         <label id="btSuggestTopic" >Hiện đề xuất chủ đề</label>                                                                            
                 </div> 
                 <div id="suggestTopic">                	
-                	<form method="post" action="<?php echo base_url().'post/suggest/'.$post_id;?>"  accept-charset="utf-8" enctype="multipart/form-data">        
+                	<form method="post" id="formID" action="<?php echo base_url().'post/suggest/'.$post_id;?>"  accept-charset="utf-8" enctype="multipart/form-data">        
                     	<div class="edit-main">   
                                 <p><label>Tiêu đề:</label></p>
-                                <p><span class="field"><input type="text" class="longinput" name="txttitle"></span></p>
+                                <p><span class="field "><input type="text" class="longinput validate[required]" name="txttitle"></span></p>
                                 <br/>                                
                                 <p><label>Ảnh đại diện:</label></p>
                                 <p><span class="field"><input type="file" name="userfile"   /></span></p>
                                 <br/>                            
                                 <p><label>Tóm tắt:</label></p>                            
-                                <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
+                                <p><span class="field"><textarea class="validate[required]" name="txtexcerpt"></textarea></span></p>
                                 <br/>
                                 <p><label>Nội dung:</label></p>                            
-                                <p><textarea name="txtcontent" id="editor_content"></textarea></p>                                
+                                <p><textarea class="validate[required]" name="txtcontent" id="editor_content"></textarea></p>                                
                                 <br/>
                                 <input id="btSubmit" type="submit" name="submit" value="Đề xuất"/>
                         </div>                    

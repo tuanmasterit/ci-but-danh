@@ -21,6 +21,13 @@
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput" value="<?php echo $l_topic->post_title;?>" name="txttitle"></span></p>
                             </br>
+                            <p><label>Đường dẫn:</label></p>
+                            <p><span class="field"><input type="text" url="<?php echo base_url();?>" class="longinput" id="link_post"  name="txtlink" value="<?php echo urldecode($l_topic->guid);?>" onblur="check_link();"></span>
+                                <span id ="alert_link" class=""><img  src='<?php echo base_url();?>application/content/images/link_error.png' width="15" height="15" alt="" /></span>
+                                <input type="hidden" id="link_confirm" value="<?php echo urldecode($l_topic->guid);?>" />
+                                
+                            </p>
+                            </br>
                             <p><label>Tóm tắt:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"><?php echo $l_topic->post_excerpt;?></textarea></span></p>
                             </br>
