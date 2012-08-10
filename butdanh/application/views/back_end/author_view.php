@@ -96,7 +96,7 @@
                 		?>
                 			<?php echo form_open('admin/author/edit',array('id'=>'formID','class'=>'stdform'));?>
                 			<input type="hidden" name="id" value="<?php echo $user['id'];?>">
-                			<input type="hidden" name="author_name" value="<?php echo $user['user_nicename'];?>">
+                			
                             <p><label>Tên bút danh:</label></p>                            
                             <p><span class="field"><input id="inputString" type="text" value="<?php echo $user['user_nicename'];?>" class="longinput validate[required]" name="txtnicename" AUTOCOMPLETE=OFF onkeyup="lookup(this.value);" /></span></p>
                             <div class="suggestionsBox" id="suggestions" style="display: none;">
