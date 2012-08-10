@@ -151,7 +151,7 @@ class Posts extends CI_Controller {
 		$l_id = $this->input->post('post_id');
 		$l_title = $this->input->post('txttitle');  
         $l_link = $this->input->post('txtlink');
-        if ($l_link != '') $l_link = $l_title;      
+        if ($l_link == '') $l_link = $l_title;      
         $l_link = $this->get_link($l_link);		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
