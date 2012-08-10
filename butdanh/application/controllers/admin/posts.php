@@ -149,8 +149,8 @@ class Posts extends CI_Controller {
 	//------------------------------------------------------------------------ 
 	public function update(){		
 		$l_id = $this->input->post('post_id');
-		$l_title = $this->input->post('txttitle');
-        $l_link = $this->get_link($l_title);		
+		$l_title = $this->input->post('txttitle');        
+        $l_link = $this->get_link($this->input->post('txtlink'));		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
 		$l_butdanh = $this->input->post('txtAuthor');	
@@ -255,10 +255,44 @@ class Posts extends CI_Controller {
     function check_link($link)
     {
         //co thi la true ko co là false
+        //return true;
+        
         if (count($this->Post_model->get_seo($link))>0)
         {
             return true;
         } else return false;
+        
+    }
+    function check_standard($link)
+    {
+        if (substr_count($link,' ')>0)
+        {
+            return true;
+        }
+        return false;
+    }
+    function ajax_check_link()
+    {
+        $link = $this->input->post('link');
+        if (strlen($link)>100)
+        {
+            echo 'Dai';
+            return;
+        }         
+        if ($this->check_standard($link))
+        {
+            echo 'KoChuan';
+            return;  
+        } 
+        $link =$this->common->removespace($link);
+        $link = urlencode($link);
+        if ($this->check_link($link))
+        {
+            echo 'Co';
+            return;
+        }
+        echo 'Duoc';
+           
         
     }
     
