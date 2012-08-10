@@ -66,7 +66,8 @@ class Author extends CI_Controller {
 		{
 			$user_nicename = $this->input->post('txtnicename');
 			$user_nicename = trim($user_nicename);
-			if($this->Author_model->checkExitUser($user_nicename)==true)
+			$term = $this->input->post('slmagazine');
+			if($this->Author_model->checkExitUser($user_nicename,$term)==true)
 			{	
 				
 				$this->session->set_flashdata('trang_thai','Exited');						
@@ -77,11 +78,12 @@ class Author extends CI_Controller {
 				
 				$user_regitered = date('Y-m-d h-i-s');
 				$display_name = $this->input->post('txtdescription');
-				$term = $this->input->post('slmagazine');
+				
 				
 				
 				$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,'butdanh');
 				$id = $this->User_model->get_id_last_row();
+				$this->Author_model->add_magazine_author($id,$term);
 				$this->Term_model->add_term_relationship($id,$term);			
 						
 				redirect('admin/author','refresh');
