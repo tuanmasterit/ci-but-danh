@@ -156,9 +156,10 @@ class Topic extends CI_Controller {
 		$flag=false;				
 		$l_butdanh = $this->input->post('hdfauthor');
         
-		$l_title = $this->input->post('txttitle');
-        $l_link = $this->get_link($l_title);
-        		
+        $l_link = $this->input->post('txtlink');
+        if ($l_link == '') $l_link = $l_title;      
+        $l_link = $this->get_link($l_link);
+        
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
 		$l_post_id = $this->input->post('cbxbaiviet');
