@@ -213,6 +213,10 @@ class User_model extends CI_Model{
 		//Delete User Meta		
 		$this->db->delete('ci_usermeta',array('user_id'=>$id));
 		
+		//Delete term_relationships
+		$query = "DELETE FROM ci_term_relationships WHERE object_id="+$id+" AND term_taxonomy_id IN(SELECT term_taxonomy_id FROM ci_term_taxonomy WHERE taxonomy='magazine')";
+		$this->db->query($query);
+		
 	}
 	
 	function getCount($user_activation_key,$term_id=0,$butdanh='')
