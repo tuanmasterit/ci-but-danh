@@ -198,6 +198,7 @@ class Topic extends CI_Controller {
 			$ofpost = $this->Post_model->get($data['lsttopic'][0]->post_parent);
 			//print_r($ofpost);
 			$data['ofpost'] = $ofpost[0];
+			$data['author'] = $this->Post_model->get_author_name($ofpost[0]->id);
 			$data['featured_image'] = $this->Post_model->get_featured_image($id);
 			$data['categories_of_topic'] = $this->Post_model->get_categories_of_post($id);
 			//print_r($data['categories_of_topic']);
