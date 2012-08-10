@@ -27,10 +27,14 @@ class Author extends CI_Controller {
 			$this->load->library('pagination');
 			$this->load->model('Author_model');
 		}else{redirect('admin/index/accesdenied');}		
+		$this->load->database();
+		$this->db->cache_delete($this->router->fetch_class(), $this->router->fetch_method());
+        $this->db->simple_query('SET NAMES \'utf-8\'');
     }
     
 	public function index($term=0,$butdanh='~',$row=0)
 	{
+		
         $data['keymagazine'] = $term;
 		if($this->input->post('slmagazine') != ''){
 			$data['keymagazine'] = $this->input->post('slmagazine');
@@ -57,35 +61,36 @@ class Author extends CI_Controller {
 	
 	public function add()
 	{
+		
 		if($this->input->post('txtnicename'))
 		{
 			$user_nicename = $this->input->post('txtnicename');
 			$user_nicename = trim($user_nicename);
-			if($this->Author_model->checkExitUser($user_nicename))
-			{
-				$this->session->set_flashdata('message',true);
-				$this->session->keep_flashdata('mesage');
+			if($this->Author_model->checkExitUser($user_nicename)==true)
+			{	
+				
+				$this->session->set_flashdata('trang_thai','Exited');						
 				redirect('admin/author','refresh');
 			}
 			else 
 			{
+				
 				$user_regitered = date('Y-m-d h-i-s');
 				$display_name = $this->input->post('txtdescription');
 				$term = $this->input->post('slmagazine');
-				$meta_value = 'butdanh';
 				
-				$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,$meta_value);
+				
+				$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,'butdanh');
 				$id = $this->User_model->get_id_last_row();
-				$this->Term_model->add_term_relationship($id,$term);
-				$this-> session-> set_flashdata('message','Thêm thành viên thành công!');
-							
-				redirect('admin/author','refresh');	
+				$this->Term_model->add_term_relationship($id,$term);			
+						
+				redirect('admin/author','refresh');
 			}
 			
 		}
 		else 
 		{
-			$this-> session-> set_flashdata('message','Lỗi!');
+			
 			redirect('admin/author','refresh');
 		}
 	}
