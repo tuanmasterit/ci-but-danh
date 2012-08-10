@@ -4,23 +4,19 @@
 		{
 			// Call the Model constructor
 			parent::__construct();
-			$this->load->database();		
+			$this->load->database();				
 		}
 		//add
 		function add($user_nicename,$user_regitered,$display_name){
 			$arr_data = array(
 							'user_nicename' => $user_nicename,
 							'user_registered' => $user_regitered,
-							'display_name' => $display_name
+							'display_name' => $display_name,
+							'user_activation_key'=>'butdanh'
 						);
 			$this->db->insert('ci_users',$arr_data);
-			$id = $this->get_id_last_row();
-			$arr_meta = array(
-							'user_id'=>$id,
-							'meta_key'=>'group',
-							'meta_value'=>'butdanh'
-						);
-			$this->db->insert('ci_usermeta',$arr_meta);
+			
+			
 		}
 		//update
 		function update($id,$user_nicename,$user_regitered,$display_name){
@@ -44,9 +40,8 @@
 			if($id == 0){
 				$this->db->select('id,user_nicename,display_name');
 				$this->db->from('ci_users');
-				$this->db->join('ci_usermeta', 'id = user_id');
-				$this->db->where('meta_key','group');
-				$this->db->where('meta_value','butdanh');
+				
+				$this->db->where('user_activation_key','butdanh');
 				if($magazine != '' and $magazine > 0){
 					$this->db->join('ci_term_relationships','id = object_id');
 					$this->db->where('term_taxonomy_id',$magazine);
@@ -76,15 +71,11 @@
 		function checkExitUser($user_nicename)
 		{
 			$this->db->select('user_nicename');
-			$this->db->from('ci_users');
-			$this->db->join('ci_usermeta', 'id = user_id');
-			$this->db->where('meta_key','group');
-			$this->db->where('meta_value','butdanh');	
-			$this->db->where('user_nicename',$user_nicename);
-			
-			$query = $this->db->get();			
-			$result =$query->result();
-			if(count($result)>0)
+			//$this->db->where('user_nicename',$user_nicename);	
+			$this->db->where("ENCODE(user_nicename,'key') = ENCODE('".$user_nicename."','key')");
+			$this->db->from('ci_users');	
+			$query = $this->db->get();		
+			if($query->num_rows()>0)
 			{
 				return true;
 			}
