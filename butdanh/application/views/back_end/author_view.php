@@ -43,7 +43,7 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">                	
-                    <li class="current"><a href="<?php echo base_url();?>admin/users">Quản trị bút danh</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>admin/author">Quản trị bút danh</a></li>
                     <li><a href="<?php echo base_url();?>admin/magazine">Quản trị báo</a></li>
                 </ul>
                 <div class="content">                	
@@ -54,7 +54,7 @@
                 		?>   
                 			<?php echo form_open('admin/author/add',array('id'=>'formID','class'=>'stdform'));?>
                 			<?php 
-                				if($this->session->flashdata('message')==true)
+                				if($this->session->flashdata('trang_thai'))
                 				{
                 			?>
                 				<div class="notification msgalert">
@@ -65,7 +65,7 @@
                 				}
                 			?>               		
                             <p><label>Tên bút danh:</label></p>                            
-                            <p><span class="field"><input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookup(this.value);" /></span></p>
+                            <p><span class="field"><input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" AUTOCOMPLETE=OFF onkeyup="lookup(this.value);" /></span></p>
                             <div class="suggestionsBox" id="suggestions" style="display: none;">
 								<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
 								<div class="suggestionList" id="autoSuggestionsList">
@@ -124,7 +124,7 @@
                     </div>
                     <div class="list-right">
                     	<div class="contenttitle radiusbottom0">
-                            <h2 class="table"><span>Danh sách thành viên</span></h2>
+                            <h2 class="table"><span>Danh sách bút danh</span></h2>
                         </div><!--contenttitle-->
                         <div class="tableoptions">
                             

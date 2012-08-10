@@ -2,7 +2,6 @@
 
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Bút Danh | Quản Trị</title>
 <link rel="stylesheet" href="<?php echo base_url();?>application/content-admin/css/style.css" type="text/css" />
@@ -109,7 +108,7 @@
 <!--[if lt IE 9]>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
-<meta charset="UTF-8"></head>
+</head>
 
 <body class="loggedin">
 	
