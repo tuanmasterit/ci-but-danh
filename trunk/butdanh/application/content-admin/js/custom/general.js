@@ -389,11 +389,19 @@ jQuery(document).ready(function(){
 });
 function check_link()
 {         
-    alert('sdjsj');
+   // alert('sdjsj');
     jQuery("#alert_link").hide();
    var link = jQuery('#link_post').val();
    var u = jQuery('#link_post').attr('url');
    var confirm = jQuery('#link_confirm').attr('value');
+   if (link == '' )
+   {
+        jQuery("#alert_link").removeClass();
+        jQuery("#alert_link").addClass('error_link');
+        jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_error.png" width="15" height="15" alt="" />  Đường dẫn rỗng!');
+        jQuery("#alert_link").show();
+        return;
+   }
    if (confirm==link) 
    {
         jQuery("#alert_link").removeClass();
@@ -402,7 +410,7 @@ function check_link()
         jQuery("#alert_link").show();
         return;
     }                                        
-   alert(confirm);
+   //alert(confirm);
    jQuery.ajax({
       type:"POST",
       url:u+'admin/posts/ajax_check_link', 
