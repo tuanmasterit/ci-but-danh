@@ -139,7 +139,7 @@ class Author extends CI_Controller {
 			$user_email = $this->input->post('txtemail');			
 			$display_name = $this->input->post('txtdisplay');
 			$magazine = $this->input->post('slmagazine');
-			$author_name = $this->input->post('author_name');
+			
 			if($this->Author_model->checkExitUser($user_nicename,$magazine)==true)
 			{						
 				$this->session->set_flashdata('trang_thai','Exited');						
