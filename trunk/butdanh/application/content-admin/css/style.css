@@ -1180,3 +1180,6 @@ a.btn_table { background-position: -82px -480px; }
 p.linkadd{text-align:right;margin-top:10px;}
 .thembutdanh{text-align:right;}
 .thembutdanh p{margin:5px; 0px;}
+#alert_link{ display: none;}
+.error_link{ color: red;}
+.standard_link{color: blue;}
