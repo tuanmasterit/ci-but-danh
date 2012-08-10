@@ -387,3 +387,59 @@ jQuery(document).ready(function(){
 	/*jQuery('body').append('<div class="theme"><h4>Color</h4><a href="darkblue/dashboard.html" class="darkblue"></a><a href="gray/dashboard.html" class="gray"></a></div>');*/
 	
 });
+function check_link()
+{         
+    alert('sdjsj');
+    jQuery("#alert_link").hide();
+   var link = jQuery('#link_post').val();
+   var u = jQuery('#link_post').attr('url');
+   var confirm = jQuery('#link_confirm').attr('value');
+   if (confirm==link) 
+   {
+        jQuery("#alert_link").removeClass();
+        jQuery("#alert_link").addClass('standard_link');
+        jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_standard.gif" width="15" height="15" alt="" />  Bạn có thể dùng đường dẫn này!');
+        jQuery("#alert_link").show();
+        return;
+    }                                        
+   alert(confirm);
+   jQuery.ajax({
+      type:"POST",
+      url:u+'admin/posts/ajax_check_link', 
+      data:"link="+link, 
+      //dataType:"xml",                
+      success: function (data){ 
+        //alert(data);
+        
+        if (data=='Co')
+        {
+            jQuery("#alert_link").removeClass();
+            jQuery("#alert_link").addClass('error_link');
+            jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_error.png" width="15" height="15" alt="" />  đường dẫn đã tồn tại!');
+            jQuery("#alert_link").show();
+        }  
+        if (data=='KoChuan')
+        {
+            jQuery("#alert_link").removeClass();
+            jQuery("#alert_link").addClass('error_link');
+            jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_error.png" width="15" height="15" alt="" />  Đường dẫn không đúng!');
+            jQuery("#alert_link").show();
+        }                                       
+        if (data=='Dai')
+        {
+            jQuery("#alert_link").removeClass();
+            jQuery("#alert_link").addClass('error_link');
+            jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_error.png" width="15" height="15" alt="" />  Đường dẫn quá dài!');
+            jQuery("#alert_link").show();
+        }
+        if (data=='Duoc')
+        {
+            jQuery("#alert_link").removeClass();
+            jQuery("#alert_link").addClass('standard_link');
+            jQuery("#alert_link").html('<img  src="'+u+'application/content/images/link_standard.gif" width="15" height="15" alt="" />  Bạn có thể dùng đường dẫn này!');
+            jQuery("#alert_link").show();
+        }
+      }
+    });
+                                      
+}
