@@ -23,7 +23,7 @@
                 	<div class="edit-main">                    	                    	                            
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txttitle"></span></p>
-                            <br/>
+                            <br/>                            
                             <p><label>Tóm tắt:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
                             <br/>
