@@ -88,8 +88,8 @@ class Post extends CI_Controller {
         $butdanh = $this->session->userdata('user_id');
     	$title = $this->input->post('txttitle');
         
-        $link = $this->get_link($l_title);		
-    	
+        $link = $this->get_link($title);		
+            	
         $exerpt = $this->input->post('txtexcerpt');		
     	$content = $this->input->post('txtcontent');    	    	
         
@@ -165,9 +165,30 @@ class Post extends CI_Controller {
 			
 		} else {redirect('home');}
 	}
+    function truncateString_($str, $len, $charset="UTF-8"){
+        $str = html_entity_decode($str, ENT_QUOTES, $charset);   
+        if(mb_strlen($str, $charset)> $len){
+            $arr = explode(' ', $str);
+            $str = mb_substr($str, 0, $len, $charset);
+            $arrRes = explode(' ', $str);
+            $last = $arr[count($arrRes)-1];
+            unset($arr);
+            if(strcasecmp($arrRes[count($arrRes)-1], $last))   unset($arrRes[count($arrRes)-1]);
+          return implode(' ', $arrRes);   
+       }
+        return $str;
+    }
+
     function get_link($str)
     {
-        $link = urlencode($this->common->removespace($str));
+                
+        $max_length = 100;
+        if  (strlen($str)>$max_length)
+        {
+            $link = $this->truncateString_($str,$max_length);
+        } else $link = $str;
+        $link =$this->common->removespace($link);
+        $link = urlencode($link);
         if ($this->check_link($link)==false)
         {
             return $link;
@@ -189,5 +210,5 @@ class Post extends CI_Controller {
             return true;
         } else return false;
         
-    }	
+    }
 }
