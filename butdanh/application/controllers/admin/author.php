@@ -147,6 +147,7 @@ class Author extends CI_Controller {
 			$data['user'] = $this->User_model->get_butdanh($id);
 			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh');
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+            $data['butdanh'] = '';
 			$this->load->view('back_end/author_view',$data);
 		}
 	}
