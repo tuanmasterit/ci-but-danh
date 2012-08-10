@@ -76,7 +76,7 @@
                             	<input type="hidden" id="hdurlajax" value="<?php echo base_url();?>/admin/posts/list_posts_ajax" />
                             	<p id="sl_butdanh_ajax">
                                     Tác giả:
-                                    <input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookupauthor(this.value);" onblur="fillauthor();" />
+                                    <input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookupauthor(this.value);" onblur="fillauthor();" value="<?php echo $author;?>" />
                                     <div class="suggestionsBox" id="suggestions" style="display: none;">
 										<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
 										<div class="suggestionList" id="autoSuggestionsList">
@@ -85,8 +85,8 @@
 									</div>                                    
                                 <p/>
                                 <div id="author_load_ajax">
-                                    <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red"><b>Chưa chọn tác giả</b></label></p>
-                                    <input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]">
+                                    <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red"><b><?php echo $author;?></b></label></p>
+                                    <input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]" value="<?php echo $author;?> ">
                                 </div>
                                 <br/>
                                 <p>
