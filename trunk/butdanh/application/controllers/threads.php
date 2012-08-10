@@ -86,7 +86,7 @@ class Threads extends CI_Controller {
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		
 		$data['post_id'] = $id;
-		//$data['thread'] = $this->Post_model->get($id);
+		$data['thread'] = $this->Post_model->get($id);
         
 		$data['lstComment'] = $this->Comment_model->getByPost($id,'approved');
 		
@@ -107,6 +107,7 @@ class Threads extends CI_Controller {
 		$this->load->view('front_end/thread_view',$data);
 				
 	}
+    
 }
 
 /* End of file welcome.php */

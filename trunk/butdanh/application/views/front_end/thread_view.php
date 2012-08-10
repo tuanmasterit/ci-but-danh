@@ -4,9 +4,11 @@
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">        	
         	<div class="box-center box-thread" id="thread">
-        		<?php        		
+        		<?php
+                //print_r($thread);        		
         		foreach ($thread as $thr)
         		{
+        		  
         		?>
         		<div>
 	            	<div class="date-title">
