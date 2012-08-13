@@ -35,8 +35,7 @@ $(document).ready(function(){
 	/********* Like *******/	
 	$(document).on("click",".link-like",function(){		
 		var url = $(this).attr('href');
-		var id = $(this).attr('id');
-		
+		var id = $(this).attr('id');		
 		$.post(url,{id:id},function(data) {
 			
 			$('#div-like').html(data.mess1);
@@ -62,7 +61,37 @@ $(document).ready(function(){
 		alert('Bạn cần đăng nhập để thực hiện chức năng này!');		
 		return false;
 	});
+	/********* Thanks *******/	
+	$(document).on("click",".link-thanks",function(){		
+		var url = $(this).attr('href');
+		var id = $(this).attr('id');
+		var threads_id = $(this).attr('threads_id');
+        //alert(threads_id);
+		$.post(url,{id:id,threads_id:threads_id},function(data) {
+			
+			$('#div-thanks').html(data.mess1);
+			$('#list-thanks').html(data.mess2);
+		},'json');
+		return false;
+	});
 	
+	/********* Disthanks *******/
+	$(document).on("click",".link-disthanks",function(){
+		var url = $(this).attr('href');
+		var id = $(this).attr('id');
+		var threads_id = $(this).attr('threads_id');
+		$.post(url,{id:id,threads_id:threads_id},function(data) {
+			$('#div-thanks').html(data.mess1);
+			$('#list-thanks').html(data.mess2);
+		},'json');
+		return false;
+	});
+	
+	/********* Check login to Thanks *******/
+	$('.link-login-thanks').click(function(){
+		alert('Bạn cần đăng nhập để thực hiện chức năng này!');		
+		return false;
+	});
 	/***********  Datetime picker  **************************/
 	
     var isFirst = [];
@@ -480,4 +509,4 @@ function ChangeImage(){
 	},'json');
 }
 
-
+    
