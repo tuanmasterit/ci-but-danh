@@ -15,7 +15,7 @@
 				$lstUser = $this->Author_model->getAjax($user_nicename);
 					if(count($lstUser)>0) {						
 						foreach ($lstUser as $User){							
-		         			echo '<li onClick="fill(\''.$User->user_nicename.'\');">'.$User->user_nicename.'</li>';
+		         			echo '<li onClick="fill(\''.$User->user_nicename.'\');">'.$User->user_nicename.' &nbsp; ('.$User->name.')</li>';
 		         		}
 					} else {
 						echo 'Không có bút danh nào.';
@@ -36,7 +36,7 @@
 				{						
 					foreach ($lstUser as $User)
 					{							
-         				echo '<li onClick="fillauthor(\''.$User->user_nicename.'\');">'.$User->user_nicename.'</li>';
+         				echo '<li onClick="fill(\''.$User->user_nicename.'\');">'.$User->user_nicename.' &nbsp; ('.$User->name.')</li>';
          			}
 				} else 
 				{
