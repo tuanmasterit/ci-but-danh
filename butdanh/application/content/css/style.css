@@ -382,9 +382,7 @@ select {
 .list-post .tab_month li a {text-decoration:none;}
 .list-post{margin-bottom:10px;border:1px solid #CCC;overflow:hidden;margin-top:10px;}
 .list-post h3{margin-bottom:10px;}
-.resultmonth{
-    margin-left: 20px;
-}
+
 /**
  * .list-post .tab_month{overflow:hidden;background:#191919;float:left;width:13%;}
  * .list-post .tab_month li{margin-bottom:5px;}
