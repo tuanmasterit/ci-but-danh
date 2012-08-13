@@ -82,7 +82,7 @@
 		
 				$this->load->library('upload', $config);
 				if(!$this->upload->do_upload()){
-					$this->session->set_flashdata('message','Lỗi upload ảnh');
+					//$this->session->set_flashdata('message','Lỗi upload ảnh');
 				}
 				else {
 					//$this->User_model->update_meta($member_id,'avatar','');
