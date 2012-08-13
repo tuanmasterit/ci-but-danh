@@ -68,7 +68,7 @@
                     	<?php 
                     	if(count($list_thanks)>0)
                     	{
-                    		echo "Có ".count($list_thanks)." người like bút danh này.";
+                    		echo "Thanked: ".count($list_thanks);
                     	}                  	
                     	?>
                     </div>
