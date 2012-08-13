@@ -318,6 +318,7 @@ class Topic extends CI_Controller {
         {
             $link = $this->truncateString_($str,$max_length);
         } else $link = $str;
+        $link =$this->common->remove_disallow($link);
         $link =$this->common->removespace($link);
         $link = urlencode($link);
         if ($this->check_link($link)==false)
