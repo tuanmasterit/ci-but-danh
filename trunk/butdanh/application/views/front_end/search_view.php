@@ -39,7 +39,7 @@
         	            		<img src="<?php echo base_url();?>/application/content/images/avatar1789_1.jpg">
         	            		<div class="author-info">
         	            			
-                                    <p><strong>Tiêu đề: <a href="<?php echo base_url().'post/index/'.$Post->id;?>"><?php echo $Post->post_title;?></a></strong></p>
+                                    <p><strong>Tiêu đề: <a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>"><?php echo $Post->post_title;?></a></strong></p>
                                     <br />
                                     <p>Người đề xuất:<a href="#"><span><?php echo $Post->user_nicename;?></span></a>
         	            			</p>
