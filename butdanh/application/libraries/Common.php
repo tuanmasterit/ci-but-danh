@@ -53,5 +53,12 @@ class Common{
         $khongSpace=array("_","_","_","_");
         return str_replace($coSpace,$khongSpace,$str);
     }
+    function remove_disallow($str)
+    {
+        $co=array("!","*","'","(",")",";",":","@","&","=","+","$",",","/","?","%","#","[","]");
+        $khong=array(" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ");
+        return str_replace($co,$khong,$str);
+    }
+    
         
 }
