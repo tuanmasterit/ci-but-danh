@@ -14,7 +14,7 @@ class User_model extends CI_Model{
 		{
 			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,user_status,name');
 			$this->db->from('ci_users');
-			$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id = id');
+			$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id = ci_users.id');
 			$this->db->join('ci_term_taxonomy', 'ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
 			$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
 			if($user_activation_key != ''){
@@ -22,7 +22,7 @@ class User_model extends CI_Model{
 			}
 			if($term_id > 0){
 				//$this->db->join('ci_term_relationships','id = object_id');
-				$this->db->where('term_taxonomy_id',$term_id);	
+				$this->db->where('ci_term_taxonomy.term_taxonomy_id',$term_id);	
 			}
 			if($limit > 0){
 				$this->db->limit($limit,$offset);
