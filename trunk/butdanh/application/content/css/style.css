@@ -393,8 +393,8 @@ select {
  */
 .list-post-right{float:right;width:87%;}
 .list-post-right h3{background:#CC0000;color:#FFF;padding:3px;}
-#resultpostmonth{padding-left:10px;}
-#resultpostmonth p{text-align:center;}
+.resultmonth{padding-left:10px;}
+.resultmonth p{text-align:center;}
 /* Meta post */
 .meta_post{padding:5px;}
 .meta_post p{margin-bottom:5px;}
