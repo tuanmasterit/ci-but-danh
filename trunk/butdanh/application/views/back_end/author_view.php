@@ -160,26 +160,30 @@
                                 <col class="con0" />
                                 <col class="con1" />
                                 <col class="con0" />
+                                <col class="con1" />
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
-                                    <th class="head0">Tên bút danh</th>                                  
-                                    <th class="head0" width="60">&nbsp;</th>
+                                    <th class="head1">Tên bút danh</th>    
+                                    <th class="head0">Tên báo</th>                                
+                                    <th class="head1" width="60">&nbsp;</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th class="head0"><input type="checkbox" class="checkall" /></th>
-                                    <th class="head0">Tên bút danh</th>                                  
-                                    <th class="head0" width="60">&nbsp;</th>
+                                    <th class="head1">Tên bút danh</th> 
+                                    <th class="head0">Tên báo</th>                                   
+                                    <th class="head1" width="60">&nbsp;</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 <?php foreach($lstthanhvien as $thanhvien){?>                            	
                                     <tr>
                                         <td class="center"><input value="<?php echo $thanhvien->id;?>" type="checkbox"></td>
-                                        <td><?php echo $thanhvien->user_nicename;?></td> 
+                                        <td><?php echo $thanhvien->user_nicename;?></td>
+                                        <td><?php echo $thanhvien->name;?></td> 
                                         <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/author/edit/<?php echo $thanhvien->id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $thanhvien->id;?>" title="Xóa thành viên" href="<?php echo base_url();?>admin/author/delete" name="delete" >Xóa</a></td>
                                     </tr>
                                 <?php }?>
