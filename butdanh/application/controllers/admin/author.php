@@ -113,7 +113,7 @@ class Author extends CI_Controller {
 						
 			$html = '<p>Tác giả đã chọn: <label id="lblAuthor" style="color:red">';
 			$html .='<b>'.$lstbutdanh['user_nicename'].'</b></label></p>';
-			$html .='<input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]" value="'.$lstbutdanh['id'].'">';				
+			$html .='<input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]" value="'.$user_nicename.'">';				
 
 			echo $html;	
 		}
