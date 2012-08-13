@@ -86,10 +86,30 @@ class Threads extends CI_Controller {
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		
 		$data['post_id'] = $id;
-		$data['thread'] = $this->Post_model->get($id);
+		//$data['thread'] = $this->Post_model->get($id);
         
 		$data['lstComment'] = $this->Comment_model->getByPost($id,'approved');
-		
+        
+        
+        // like --------------------------
+        $author_id = $temp->post_author;
+        //echo $author_id;
+        $data['author_id'] = $author_id;
+        $list_thanks = $this->User_model->list_thanks($author_id,$temp->id);		
+		$data['list_thanks'] =$list_thanks;
+		//check login
+		if($this->session->userdata('logged_in') != 1){
+			$data['check_login'] = false;
+		}
+		else {
+			$data['check_login'] = true;
+		}
+		//check like
+		$user_thanks = $this->session->userdata('username');
+		$check_thanks = $this->User_model->check_thanks($author_id,$user_thanks,$temp->id);
+		$data['check_thanks'] = $check_thanks;
+        
+        //end like ---------------------------------------------------
 		$vals = array(
 		    'word'		 => $this->rand_string(3),
 		    'img_path'	 => './captcha/',
