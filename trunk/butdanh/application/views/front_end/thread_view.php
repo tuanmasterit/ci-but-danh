@@ -40,6 +40,40 @@
                                                                                                                                                       
                     
                 </ul>
+                <div class="box-thanks">
+                    <input type="hidden" id="hdflike" value="<?php echo $check_thanks;?>" />
+                    <div class="like" id="div-thanks">
+                    
+                    <?php 
+                    	if($check_login==false)
+                    	{
+                    ?>
+                    	<a class="link-login-thanks" href="#"><img src="<?php echo base_url();?>application/content/images/thanks.jpg" /></a>
+                    <?php
+                    	}
+                    	else {
+                    	if($check_thanks==false)
+                    	{
+                    ?>
+                    <a class="link-thanks" threads_id="<?php echo $thr->id;?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>like/add_thanks"><img src="<?php echo base_url();?>application/content/images/thanks.jpg" /></a>
+                    <?php 
+                    	}else{                    	
+                    ?>
+                    <a class="link-disthanks" threads_id="<?php echo $thr->id;?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>like/dislike_thanks"><img src="<?php echo base_url();?>application/content/images/dislike-button.jpg" /></a>
+                    <?php }}?>                    	
+                    </div>
+                    <br/>
+                    <div id="list-thanks">
+                    
+                    	<?php 
+                    	if(count($list_thanks)>0)
+                    	{
+                    		echo "Có ".count($list_thanks)." người like bút danh này.";
+                    	}                  	
+                    	?>
+                    </div>
+                </div>
+                
                 
             	<div class="box-item" style="margin-top:10px;margin-bottom:5px; float: left;">                                    
             		<div class="othernews-header-fb">                    
