@@ -295,7 +295,7 @@ class User_model extends CI_Model{
 		
 		$this->db->delete('ci_usermeta',$like);
 	}
-	
+    
 	function check_like($user_be_liked,$user_liked)
 	{
 		
@@ -325,7 +325,63 @@ class User_model extends CI_Model{
 		$result = $query->result();		
 		return $result;
 	}
-	
+    function add_thanks($user_be_liked,$user_liked,$threads_id)
+	{
+		$like = array(
+			'user_id' 	=> $user_be_liked,
+			'meta_key'	=> 'thanks-'.$threads_id,
+			'meta_value'=> $user_liked
+		);
+		
+		$this->db->insert('ci_usermeta',$like);
+	}
+    function delete_thanks($user_be_liked,$user_liked,$threads_id)
+	{
+		$like = array(
+			'user_id' 	=> $user_be_liked,
+			'meta_key'	=> 'thanks-'.$threads_id,
+			'meta_value'=> $user_liked
+		);
+		
+		$this->db->delete('ci_usermeta',$like);
+	}
+	function list_thanks($user_be_liked,$threads_id=0)
+	{
+	    $temp = 'thanks-'.$threads_id;
+		$this->db->select('user_id,meta_value');
+		$this->db->from('ci_usermeta');
+		$this->db->where('user_id',$user_be_liked);		
+        if ($threads_id != 0 ) 
+            {$this->db->where('meta_key',$temp);}
+         else $this->db->like('meta_key','thanks');   
+		$query = $this->db->get();
+		
+		$result = $query->result();		
+		return $result;
+	}
+    function check_thanks($user_be_liked,$user_liked,$threads_id=0)
+	{
+		$temp = 'thanks-'.$threads_id;
+		$this->db->select('user_id,meta_value');
+		$this->db->from('ci_usermeta');
+		$this->db->where('user_id',$user_be_liked);
+        $this->db->where('meta_value',$user_liked);
+		$this->db->like('meta_key','thanks');
+        if ($threads_id != 0 ) 
+            {$this->db->where('meta_key',$temp);}
+         else $this->db->like('meta_key','thanks'); 
+		$query = $this->db->get();
+		
+		$result = $query->result();
+		if(count($result)>0)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
 	function check_user_exit($user_login)
 	{
 		$this->db->select('id');
