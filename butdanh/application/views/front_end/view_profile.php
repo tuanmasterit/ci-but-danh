@@ -9,7 +9,7 @@
                 </h2>
                 <div class="info-butdanh">
                     <p>Đơn vị công tác: <span><?php echo $butdanh['name'];?></span></p>
-                    <p>Lĩnh vực bài viết: <span><?php echo $butdanh['display_name'];?></span></p>
+                    <p>Lĩnh vực viết bài: <span><?php echo $butdanh['display_name'];?></span></p>
                     <p>Danh sách bài viết:</p>
                 </div>    
                 <div class="box-content">                	
@@ -25,7 +25,7 @@
 												<li><a class="ajaxmonth" month="<?php echo $i; ?>"id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i.'('.$numberPost.')' ;?></a></li>
 										        <div class="resultmonth" id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
 										 <?php  } else { ?>
-												<li><a class="ajaxmonth active" month="<?php echo $i; ?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i.'('.$numberPost.')';?></a></li>
+												<li><a class="ajaxmonth" month="<?php echo $i; ?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>profile/listpostbymonth/<?php echo $i;?>">Tháng <?php echo $i.'('.$numberPost.')';?></a></li>
                                                 <div class="resultmonth" id="resultpostmonth<?php echo $author_id.$i; ?>"></div>  
 										<?php }?>                                        
                             <?php }} ?>
@@ -42,6 +42,9 @@
                             <?php } ?>
                         </ul>
                     </div>
+                    
+                    
+                    
                     <input type="hidden" id="hdflike" value="<?php echo $check_like;?>" />
                     <div class="like" id="div-like">
                     
