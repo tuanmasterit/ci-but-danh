@@ -455,6 +455,22 @@ class Post_model extends CI_Model{
 			return $query->result();
         }
     }
+    function update_guid($post_id=0,$guid='')
+    {
+        $data = array(
+               'guid' => $guid               
+            );
+
+        $this->db->where('id', $post_id);
+        $this->db->update('ci_posts', $data); 
+    }
+    function get_id()
+    {
+        $this->db->select('ci_posts.id,post_title');
+        $this->db->from('ci_posts');
+        $query = $this->db->get();
+        return $query->result();
+    }
     
 }
 ?>
