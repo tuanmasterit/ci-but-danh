@@ -165,6 +165,7 @@ class Post extends CI_Controller {
 			
 		} else {redirect('home');}
 	}
+
     function truncateString_($str, $len, $charset="UTF-8"){
         $str = html_entity_decode($str, ENT_QUOTES, $charset);   
         if(mb_strlen($str, $charset)> $len){
@@ -187,6 +188,7 @@ class Post extends CI_Controller {
         {
             $link = $this->truncateString_($str,$max_length);
         } else $link = $str;
+        $link =$this->common->remove_disallow($link);
         $link =$this->common->removespace($link);
         $link = urlencode($link);
         if ($this->check_link($link)==false)
@@ -210,5 +212,14 @@ class Post extends CI_Controller {
             return true;
         } else return false;
         
+    }
+    function updateguid()
+    {
+        $list_post = $this->Post_model->get_id();
+        foreach($list_post as $temp)
+        {
+            $link = $this->get_link($temp->post_title);
+            $this->Post_model->update_guid($temp->id,$link);
+        }
     }
 }
