@@ -212,12 +212,12 @@ class Home extends CI_Controller {
 		include('admin/paging.php');		
 		$config['base_url']= base_url()."home/search/".$post_type."/".$data['category']."/".$data['titleTopic']."/";
         if  ($data['titleTopic'] == '~' ) $data['titleTopic'] = '';
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);		
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer        
-		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']);
         $data['lstCategories'] = $this->Term_model->get();
 		$data['post_type'] = $post_type;
 		$this->load->view('front_end/search_view',$data);
