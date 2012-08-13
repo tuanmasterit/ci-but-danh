@@ -1,6 +1,12 @@
 jQuery.noConflict();
 
 jQuery(document).ready(function(){
+	jQuery(window).keydown(function(event){
+	    if(event.keyCode == 13) {
+	      event.preventDefault();
+	      return false;
+	    }
+	  });
 	//Ajax load post by butdanh and category
 	jQuery("#cbxbutdanh").change(function(){		
 		var l_butdanh = jQuery('#cbxbutdanh option:selected').attr('value');
