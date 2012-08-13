@@ -54,7 +54,7 @@
 			$mess2='';
 			if(count($list_thanks)>0)
             {
-                $mess2= "Có ".count($list_thanks)." cảm ơn chủ đề này!";
+                $mess2= "Thanked: ".count($list_thanks);
             } 
             echo json_encode(array('mess1'=>$mess1,'mess2'=>$mess2));            
 		}
@@ -72,7 +72,7 @@
 			$mess2='';
 			if(count($list_thanks)>0)
             {
-                $mess2= "Có ".count($list_thanks)." người cảm ơn chủ đề này!";
+                $mess2= "Thanked: ".count($list_thanks);
             } 
             echo json_encode(array('mess1'=>$mess1,'mess2'=>$mess2)); 
 		}
