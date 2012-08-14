@@ -103,7 +103,7 @@ class Topic extends CI_Controller {
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		if($flag==false){			
 			//Insert posts			
-			$last_id = $this->Post_model->add($id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
+			$last_id = $this->Post_model->add($id_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
 			if($last_id > 0){
 				redirect('admin/posts/lists/post');							
 			}
@@ -127,7 +127,7 @@ class Topic extends CI_Controller {
 		if($flag==false){
 			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
 			//Insert posts			
-			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id,'',$l_link);            
+			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id,'',$l_link);            
 			if($last_id > 0){
 				redirect('admin/topic/lists/topic');							
 			}
@@ -147,7 +147,7 @@ class Topic extends CI_Controller {
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		//Insert posts			
-		if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'post')){
+		if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'post')){
 			redirect('admin/posts/lists/post');							
 		}		
 		redirect('admin/posts/lists/post/'.$l_id);
@@ -174,7 +174,7 @@ class Topic extends CI_Controller {
 			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
 			//print_r($l_arr_categories);
 			//Insert posts			
-			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,$l_post_id,'topic',$l_link);
+			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,$l_post_id,'topic',$l_link);
 			if($last_id > 0){
 				
 				redirect('admin/topic/lists/topic');							
