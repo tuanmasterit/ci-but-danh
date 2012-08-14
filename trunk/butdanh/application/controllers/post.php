@@ -52,8 +52,8 @@ class Post extends CI_Controller {
         'source_image' => $image_path,
         'new_image' => $gallery_path.$image_name ,
         'maintain_ration' => true,
-        'width' => 300,
-        'height' => 300
+        'width' => 500,
+        'height' => 500
         );
         
         $this->load->library('image_lib', $config);
