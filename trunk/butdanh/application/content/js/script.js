@@ -68,8 +68,9 @@ $(document).ready(function(){
 		var threads_id = $(this).attr('threads_id');
         //alert(threads_id);
 		$.post(url,{id:id,threads_id:threads_id},function(data) {
-			
-			$('#div-thanks').html(data.mess1);
+		  
+		    $('#div-thanks').html('');  	
+			$('#list-user-thanks').html(data.mess1);
 			$('#list-thanks').html(data.mess2);
 		},'json');
 		return false;
