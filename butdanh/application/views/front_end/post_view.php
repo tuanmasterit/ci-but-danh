@@ -1,3 +1,4 @@
+
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckeditor/ckeditor.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckfinder/ckfinder.js"></script>
 <?php $this->load->view('front_end/header');?>
