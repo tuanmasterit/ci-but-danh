@@ -10,14 +10,15 @@
 		
 		function add()
 		{
+		      
 			$comment_post_ID = $this->input->post('post_id');
 			$author_id = $this->session->userdata('user_id');
 			$comment_author = $this->session->userdata('username');
 			$author = $this->User_model->get($author_id);
 			$comment_author_email = $author['user_email'];
 			$comment_date = date('Y-m-d h-i-s');
-			$comment_content = $this->input->post('comment_content');
-			$comment_title = $this->input->post('comment_title');
+			$comment_content = $this->security->xss_clean($this->input->post('comment_content'));
+			$comment_title = $this->security->xss_clean($this->input->post('comment_title'));
 			$this->Comment_model->add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$comment_title,$author_id,'approved');
 			
 			$last_id =  $this->Comment_model->get_id_last_row();
