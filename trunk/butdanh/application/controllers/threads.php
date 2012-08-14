@@ -105,7 +105,7 @@ class Threads extends CI_Controller {
 			$data['check_login'] = true;
 		}
 		//check like
-		$user_thanks = $this->session->userdata('username');
+		$user_thanks = $this->session->userdata('user_id');
 		$check_thanks = $this->User_model->check_thanks($author_id,$user_thanks,$temp->id);
 		$data['check_thanks'] = $check_thanks;
         
