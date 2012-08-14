@@ -45,16 +45,28 @@
 		{
 			$id = $this->input->post('id');
             $threads_id = $this->input->post('threads_id');
-			$user_liked = $this->session->userdata('username');
+			$user_liked = $this->session->userdata('user_id');
 			$this->User_model->add_thanks($id,$user_liked,$threads_id);
-			$mess1=  "<a id='".$id."' threads_id='".$threads_id."' class='link-disthanks' href='".base_url()."like/dislike_thanks'>
-						<img src='".base_url()."application/content/images/dislike-button.jpg'>
-				   </a>";
+			$mess1=  '';
 			$list_thanks = $this->User_model->list_thanks($id,$threads_id);
-			$mess2='';
-			if(count($list_thanks)>0)
+			$mess2='<br />';
+            $total_thanks = count($list_thanks);
+			if($total_thanks>0)
             {
-                $mess2= "Thanked: ".count($list_thanks);
+                $mess2.= "<b>Có ".$total_thanks.' thành viên cảm ơn chủ đề này:</b>';
+                $i = 0;
+                foreach( $list_thanks as $thanks)
+                  {
+                    $i++;
+                    $name =  $this->User_model->getById($thanks->meta_value);
+                    if ($i!=$total_thanks)
+                    {
+                        $mess1 .= '<a href="'.base_url().'profile/'.$thanks->meta_value.'">'.$name['user_nicename'].'</a>,';
+                    } else
+                    {
+                        $mess1 .= '<a href="'.base_url().'profile/'.$thanks->meta_value.'">'.$name['user_nicename'].'</a>';
+                    }                  
+                  }
             } 
             echo json_encode(array('mess1'=>$mess1,'mess2'=>$mess2));            
 		}
@@ -63,7 +75,7 @@
 		{
 			$id = $this->input->post('id');
             $threads_id = $this->input->post('threads_id');
-			$user_liked = $this->session->userdata('username');
+			$user_liked = $this->session->userdata('user_id');
 			$this->User_model->delete_thanks($id,$user_liked,$threads_id);
 			$mess1=  "<a id='".$id."' threads_id='".$threads_id."' class='link-thanks' href='".base_url()."like/add_thanks'>
 						<img src='".base_url()."application/content/images/thanks.jpg'>
