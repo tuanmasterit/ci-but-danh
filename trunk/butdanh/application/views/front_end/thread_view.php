@@ -45,33 +45,42 @@
                     <div class="like" id="div-thanks">
                     
                     <?php 
-                    	if($check_login==false)
-                    	{
+                    	if(($check_login)&&($check_thanks==false))
+                    	{                    	
                     ?>
-                    	<a class="link-login-thanks" href="#"><img src="<?php echo base_url();?>application/content/images/thanks.jpg" /></a>
-                    <?php
-                    	}
-                    	else {
-                    	if($check_thanks==false)
-                    	{
-                    ?>
-                    <a class="link-thanks" threads_id="<?php echo $thr->id;?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>like/add_thanks"><img src="<?php echo base_url();?>application/content/images/thanks.jpg" /></a>
-                    <?php 
-                    	}else{                    	
-                    ?>
-                    <a class="link-disthanks" threads_id="<?php echo $thr->id;?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>like/dislike_thanks"><img src="<?php echo base_url();?>application/content/images/dislike-button.jpg" /></a>
-                    <?php }}?>                    	
+                        <a class="link-thanks" threads_id="<?php echo $thr->id;?>" id="<?php echo $author_id;?>" href="<?php echo base_url();?>like/add_thanks"><img src="<?php echo base_url();?>application/content/images/thanks.png" /></a>
+                    <?php }?>                    	
                     </div>
                     <br/>
                     <div id="list-thanks">
-                    
+                        <br />                        
+                        <b>
                     	<?php 
-                    	if(count($list_thanks)>0)
+                        $total_thanks = count($list_thanks);
+                    	if($total_thanks>0)
                     	{
-                    		echo "Thanked: ".count($list_thanks);
+                    		echo "Có ".$total_thanks." thành viên cảm ơn chủ đề này:";
                     	}                  	
                     	?>
+                        </b>
+                     </div>   
+                    <div id="list-user-thanks">
+                        <?php      
+                            $i = 0;                           
+                            foreach( $list_thanks as $thanks){
+                                $i++;
+                                if ($i!=$total_thanks)
+                                 {        
+                        ?>
+                                    <a href="<?php echo base_url()."profile/".$thanks->meta_value;?>"><?php $name =  $this->User_model->getById($thanks->meta_value); echo $name['user_nicename'].','; ?></a>
+                            <?php } else 
+                                  {                             
+                            ?> 
+                                    <a href="<?php echo base_url()."profile/".$thanks->meta_value;?>"><?php $name =  $this->User_model->getById($thanks->meta_value); echo $name['user_nicename']; ?></a>
+                        <?php }}?>
                     </div>
+                        
+                    
                 </div>
                 
                 
