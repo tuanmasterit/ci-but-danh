@@ -61,32 +61,21 @@ class Post extends CI_Controller {
         return $gallery_path.$image_name;
 
     }
-    public function suggest()
+    public function suggest($post_id=0)
     {    
         $this->load->helper('security');
         
         if($this->session->userdata('logged_in') == 0 ) redirect('home');        
-        $data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
-    	$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
-    	$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
-        
         $this->load->helper('url');        
     	$flag=false;			        	
     	$post_id = $this->uri->segment(3);
-        $data['post_id'] = $post_id;        
-        $result = $this->Post_model->get($post_id);
+        $data['post_id'] = $post_id;                
         $featured_image = '';
-        //$featured_image = $this->Post_model->get_featured_image($post_id);         
+        $featured_image = $this->Post_model->get_featured_image($post_id);         
         //default image
-        //if ($featured_image == '') $featured_image = '/butdanh/application/content/images/SuggestTopic/484028_363931040346350_2004736770_n4.jpg';
-        //$data['featured_image'] = $featured_image;    
-        if (count($result) >0)
-        foreach($result as $temp)
-        {
-           $data['post_detail'] = $temp; 
-	       $data['butdanh'] = $this->User_model->get_butdanh($temp->post_author); 
-		} else {redirect('home');}
-
+        if ($featured_image == '') $featured_image = '/butdanh/application/content/images/SuggestTopic/484028_363931040346350_2004736770_n4.jpg';
+        $data['featured_image'] = $featured_image;    
+        
         $butdanh = $this->session->userdata('user_id');
     	$title = $this->security->xss_clean($this->input->post('txttitle'));
         
@@ -129,7 +118,16 @@ class Post extends CI_Controller {
     			redirect('home');							
     		}
     	} else
-    	$this->load->view('front_end/post_view',$data);
+    	{
+    	   $result = $this->Post_model->get($post_id);
+            //sprint_r($result);
+            if (count($result) >0)
+            foreach($result as $temp)
+            {
+               redirect('bai-viet/'.$temp->guid); 
+    		} else {redirect('home');}
+	   	   
+    	}
     }
     public function detail($post_term='')
 	{				
