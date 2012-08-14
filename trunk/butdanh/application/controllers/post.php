@@ -63,7 +63,9 @@ class Post extends CI_Controller {
     }
     public function suggest()
     {    
-        if($this->session->userdata('logged_in') == 0 ) redirect('home');
+        $this->load->helper('security');
+        
+        if($this->session->userdata('logged_in') == 0 ) redirect('home');        
         $data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
     	$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
     	$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
@@ -86,12 +88,12 @@ class Post extends CI_Controller {
 		} else {redirect('home');}
 
         $butdanh = $this->session->userdata('user_id');
-    	$title = $this->input->post('txttitle');
+    	$title = $this->security->xss_clean($this->input->post('txttitle'));
         
         $link = $this->get_link($title);		
             	
-        $exerpt = $this->input->post('txtexcerpt');		
-    	$content = $this->input->post('txtcontent');    	    	
+        $exerpt = $this->security->xss_clean($this->input->post('txtexcerpt'));		
+    	$content = $this->security->xss_clean($this->input->post('txtcontent'));    	    	
         
         
         $config['upload_path'] = './application/content/images/SuggestTopic/';
