@@ -113,7 +113,7 @@ class Post extends CI_Controller {
     	if($flag==false){
     		$arr_categories = $this->Post_model->get_categories_of_post($post_id);			
     		//Insert posts			
-    		$last_id = $this->Post_model->add($butdanh,date('Y-m-d h-i-s'),$content,$title,$exerpt,'topic',$featured_image,$arr_categories,$post_id,'pending',$link);
+    		$last_id = $this->Post_model->add($butdanh,date('Y-m-d H-i-s'),$content,$title,$exerpt,'topic',$featured_image,$arr_categories,$post_id,'pending',$link);
             if($last_id > 0){
     			redirect('home');							
     		}
