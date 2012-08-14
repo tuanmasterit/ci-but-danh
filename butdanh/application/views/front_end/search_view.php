@@ -44,7 +44,7 @@
                                     <p>Người đề xuất:<a href="#"><span><?php echo $Post->user_nicename;?></span></a>
         	            			</p>
                                     <div class="date-title">
-        	            		     <?php echo $Post->post_date;?>
+        	            		     <?php echo date_format(date_create($Post->post_date),'d-m-Y');?>
  	            	                </div>
         	            		</div>
         	            	</div>
