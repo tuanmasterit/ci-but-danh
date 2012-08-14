@@ -44,6 +44,7 @@ class Post extends CI_Controller {
 			
 		} else {redirect('home');}
 	}
+    
     function imageResize($image_path,$image_name)
     {
         
