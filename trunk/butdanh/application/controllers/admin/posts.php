@@ -114,7 +114,7 @@ class Posts extends CI_Controller {
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		if($flag==false){			
 			//Insert posts			
-			$last_id = $this->Post_model->add($id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories,0,'',$l_link);
+			$last_id = $this->Post_model->add($id_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories,0,'',$l_link);
             //add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category,$post_id=0,$post_status='',$post_link=''){
 			if($last_id > 0){
 				redirect('admin/posts/lists/post');							
@@ -137,7 +137,7 @@ class Posts extends CI_Controller {
 		if($flag==false){
 			$l_arr_categories = '';	
 			//Insert posts			
-			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
+			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
 			if($last_id > 0){
 				redirect('admin/posts/lists/page');							
 			}
@@ -161,7 +161,7 @@ class Posts extends CI_Controller {
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		//Insert posts			
-		if($this->Post_model->update($l_id,$id_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'post',$l_link)){
+		if($this->Post_model->update($l_id,$id_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'post',$l_link)){
 			redirect('admin/posts/lists/post');							
 		}		
 		redirect('admin/posts/lists/post/'.$l_id);
@@ -183,7 +183,7 @@ class Posts extends CI_Controller {
 			$l_arr_categories = '';			
 			//print_r($l_arr_categories);
 			//Insert posts			
-			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'page');
+			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,0,'page');
 			if($last_id > 0){
 				redirect('admin/posts/lists/page/');							
 			}
