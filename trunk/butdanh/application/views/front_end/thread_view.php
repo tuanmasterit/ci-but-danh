@@ -12,7 +12,7 @@
         		?>
         		<div>
 	            	<div class="date-title">
-	            		<?php echo $thr->post_date;?>
+	            		<?php echo date_format(date_create($thr->post_date),'d-m-Y');?>
 	            	</div>
 	            	<div class="post-author">
 	            		<img src="<?php echo base_url();?>/application/content/images/avatar1789_1.jpg">
