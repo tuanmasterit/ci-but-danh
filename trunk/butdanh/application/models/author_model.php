@@ -64,7 +64,8 @@
 			$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id = ci_users.id');
 			$this->db->join('ci_term_taxonomy', 'ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
 			$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
-			$this->db->where('user_activation_key','butdanh');				
+			$this->db->where('user_activation_key','butdanh');	
+			$this->db->where('taxonomy','magazine');			
 			$this->db->like('user_nicename',$user_nicename);
 			
 			$query = $this->db->get();			
