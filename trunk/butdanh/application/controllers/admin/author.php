@@ -48,11 +48,11 @@ class Author extends CI_Controller {
 		include('paging.php');		        
 		$config['base_url']= base_url()."/admin/author/index/".$data['keymagazine']."/".$data['butdanh']."/";
         if  ($data['butdanh'] == '~' ) $data['butdanh'] = '';
-		$config['total_rows']= $this->User_model->getCount('butdanh',$data['keymagazine'],$data['butdanh']);		
+		$config['total_rows']= $this->User_model->getCount('butdanh',$data['keymagazine'],$data['butdanh'],'magazine');		
 		$config['cur_page']= $row;	
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();
-		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh',$data['keymagazine'],'user_registered','DESC',-1,$data['butdanh']);
+		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh',$data['keymagazine'],'user_registered','DESC',-1,$data['butdanh'],'magazine');
         //get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC',$status=-1,$butdanh=''){
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
         //print_r($data['lstmagazine']);
@@ -82,7 +82,8 @@ class Author extends CI_Controller {
 				
 				
 				$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,'butdanh');
-				$id = $this->User_model->get_id_last_row();
+				//$id = $this->User_model->get_id_last_row();
+				$id = $this->Author_model->get_by_user_nicename($user_nicename);
 				//$this->Author_model->add_magazine_author($id,$term);
 				$this->Term_model->add_term_relationship($id,$term);			
 						
