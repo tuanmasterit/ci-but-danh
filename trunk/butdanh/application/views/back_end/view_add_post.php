@@ -82,7 +82,7 @@
                                 <p/>
                                 <div id="author_load_ajax">
                                     <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red"><b>Chưa chọn tác giả</b></label></p>
-                                    <input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]">
+                                    <input type="hidden" name="txtAuthor" id="txtAuthor">
                                 </div>
                                 <p class="linkadd"><a href="javascript: return false;" id="link-add">Thêm mới</a></p>
                                 <div class="thembutdanh" style="display:none;">
