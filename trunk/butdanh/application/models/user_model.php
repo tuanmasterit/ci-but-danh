@@ -78,11 +78,13 @@ class User_model extends CI_Model{
 		}
 		elseif ($id>0)
 		{
-			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,term_taxonomy_id,name');
+			$this->db->select('ci_users.id,user_login,user_nicename,user_email,display_name,user_activation_key,ci_terms.term_id,name');
 			$this->db->from('ci_users');
-			$this->db->join('ci_term_relationships','id = object_id');
-			$this->db->join('ci_terms','term_taxonomy_id = term_id');
-			$this->db->where('id',$id);
+			$this->db->join('ci_term_relationships','ci_users.id = object_id');
+			$this->db->join('ci_term_taxonomy','ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
+			$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
+			$this->db->where('ci_users.id',$id);
+			$this->db->where('ci_term_taxonomy.taxonomy','magazine');
 			$query = $this->db->get();
         	$data = array();
         	$data = $query->row_array();
