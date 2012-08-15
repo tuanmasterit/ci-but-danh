@@ -36,7 +36,7 @@
                         <div>
         	            	
         	            	<div class="post-author">
-        	            		<img src="<?php echo base_url();?>/application/content/images/avatar1789_1.jpg">
+        	            		<img src="<?php echo base_url().$this->Post_model->get_featured_image($Post->id);?>">
         	            		<div class="author-info">
         	            			
                                     <p><strong>Tiêu đề: <a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>"><?php echo $Post->post_title;?></a></strong></p>
