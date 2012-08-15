@@ -48,7 +48,8 @@ class Author extends CI_Controller {
 		include('paging.php');		        
 		$config['base_url']= base_url()."/admin/author/index/".$data['keymagazine']."/".$data['butdanh']."/";
         if  ($data['butdanh'] == '~' ) $data['butdanh'] = '';
-		$config['total_rows']= $this->User_model->getCount('butdanh',$data['keymagazine'],$data['butdanh'],'magazine');		
+        $listAll = $this->User_model->get(0,0,0,'butdanh',$data['keymagazine'],'user_registered','DESC',-1,$data['butdanh'],'magazine');
+		$config['total_rows']= count($listAll);		
 		$config['cur_page']= $row;	
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();
@@ -129,7 +130,9 @@ class Author extends CI_Controller {
 	{
 		include('paging.php');		
 		$config['base_url']= base_url()."/admin/author/edit/".$id."/";
-		$config['total_rows']= $this->User_model->getCount('butdanh');		
+		$listAll = $this->User_model->get(0,0,0,'butdanh',0,'user_registered','DESC',-1,'','magazine');
+		$config['total_rows']= count($listAll);
+				
 		$config['cur_page']= $row;	
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();
@@ -155,7 +158,7 @@ class Author extends CI_Controller {
 		else 
 		{
 			$data['user'] = $this->User_model->get_butdanh($id);
-			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh');
+			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'butdanh',0,'user_registered','DESC',-1,'','magazine');
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
             $data['butdanh'] = '';
 			$this->load->view('back_end/author_view',$data);

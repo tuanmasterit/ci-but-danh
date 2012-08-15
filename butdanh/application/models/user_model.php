@@ -206,11 +206,14 @@ class User_model extends CI_Model{
 		$this->db->update('ci_users',$user);
 		
 		//update magazine
-		$arr_magazine = array(
-			'term_taxonomy_id' => $magazine_id
-		);
-		$this->db->where('object_id',$id);
-		$this->db->update('ci_term_relationships',$arr_magazine);
+		//$arr_magazine = array(
+		//	'term_taxonomy_id' => $magazine_id
+		//);
+		$this->db->set('a.term_taxonomy_id',$magazine_id);
+		$this->db->where('a.term_taxonomy_id = b.term_taxonomy_id');
+		$this->db->where('b.taxonomy','magazine');
+		$this->db->where('a.object_id',$id);
+		$this->db->update('ci_term_relationships as a, ci_term_taxonomy as b');
 	}
 	function delete($id)
 	{
