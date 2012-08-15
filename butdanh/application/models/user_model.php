@@ -9,7 +9,7 @@ class User_model extends CI_Model{
 		$this->load->helper('security');	
     }		
 	//List User
-	function get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC',$status=-1,$butdanh=''){
+	function get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC',$status=-1,$butdanh='',$taxonomy=''){
 		if($id==0)
 		{
 			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,user_status,name');
@@ -35,6 +35,10 @@ class User_model extends CI_Model{
             if ($butdanh != '')
             {
                 $this->db->like('user_nicename',$butdanh);
+            }
+            if($taxonomy!='')
+            {
+            	$this->db->where('taxonomy',$taxonomy);            	
             }
 			$query = $this->db->get();
         
