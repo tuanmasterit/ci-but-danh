@@ -44,7 +44,6 @@ class Post extends CI_Controller {
 			
 		} else {redirect('home');}
 	}
-    
     function imageResize($image_path,$image_name)
     {
         
@@ -59,7 +58,7 @@ class Post extends CI_Controller {
         
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
-        return $gallery_path.$image_name;
+        return substr($gallery_path.$image_name,1);
 
     }
     public function suggest($post_id=0)
