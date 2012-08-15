@@ -113,8 +113,10 @@
                             <p><label>Thuộc báo:</label></p>
                             <p>
                             <select name="slmagazine">
-                            	<?php foreach($lstmagazine as $magazine){?>
-                                	<?php if($magazine->term_id == $user['term_taxonomy_id']){?>
+                            	<?php 
+                            	
+                            	foreach($lstmagazine as $magazine){?>
+                                	<?php if($magazine->term_id == $user['term_id']){?>
                             			<option selected="selected" value="<?php echo $magazine->term_id;?>"><?php echo $magazine->name;?></option>
                                     <?php }else{?>
                                     	<option value="<?php echo $magazine->term_id;?>"><?php echo $magazine->name;?></option>
