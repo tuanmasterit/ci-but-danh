@@ -1,11 +1,93 @@
 <div id="middle-left">
+
+<!-- top left -->
+		<div id="top-left">
+                    <div id="logo">
+                        <a href="<?php echo base_url()?>"><img src="<?php echo base_url()?>application/content/images/logo.png"></a>
+                    </div> 
+                    <p class="time">
+                    <?php
+						//$today =  mktime(date("h"),date("m"),0,date("m"),date("d")+1,date("Y"));
+						date_default_timezone_set('Asia/Ho_Chi_Minh');
+						$ngay=date("d");
+						$thang=date("m");
+						$nam=date("Y");
+						
+						$jd=cal_to_jd(CAL_GREGORIAN,$thang,$ngay,$nam);
+						$day=jddayofweek($jd,0);
+						switch($day)
+						{
+						case 0:
+							$thu="Chủ Nhật";
+						break;
+						case 1:
+							$thu="Thứ Hai";
+						break;
+						case 2:
+							$thu="Thứ Ba";
+						break;
+						case 3:
+							$thu="Thứ Tư";
+						break;
+						case 4:
+							$thu="Thứ Năm";
+						break;
+						case 5:
+							$thu="Thứ Sáu";
+						break;
+						case 6:
+							$thu="Thứ 7";
+						break;
+						//Vì mod bằng 0
+						}
+						$gio=date("H");
+						$phut=date("i");
+						$xuat_thu="$thu, $ngay / $thang / $nam  | $gio:$phut";
+						echo $xuat_thu;
+					?> 
+                    
+                    </p>   
+                </div>
+<!-- end top left -->
+<!-- search form  -->
+			<form  class="frm-search" name="frmsearch" method="post" action="<?php echo base_url().'home/search'; ?>">
+                
+                    <input type="text" class="txt" value="Search" placeholder="Search" name="search">
+                   
+                    	<input type="submit" class="btn-search" value="" name="submit">
+             
+            </form>
+<!--  end form search -->
+<!-- form login -->
+		  <div class="frm-login">
+                		<form id="login" action="<?php echo base_url();?>home/authentication" method="post">                        
+                            <div class="frm-left">
+                            <p>
+                                <input type="text" id="username" name="txtuser" class="txt" />
+                            </p>
+                            <p>
+                                <input type="password" id="password" name="txtpassword" class="txt" />
+                            </p>
+                            <p><input type="checkbox" value="" name="rememberme">Ghi nhớ&nbsp;|&nbsp;<a href="#">Quên mật khẩu</a></p>
+                            </div>
+                       		 <div class="frm-right">
+                            <p>
+                                <input type="submit" class="btnlogin" value="Đăng nhập"  />
+                            </p>
+                            <p>
+                            	<a id="link-login" href="<?php echo base_url();?>home/register">Đăng ký </a>
+                            </p>
+                            </div>
+                         </form>
+                    </div>
+<!-- end form login -->
+
         	<div class="box-sidebar" id="box-butdanh">
-                <h2>Bút danh</h2>
                 <ul class="lst-bao">                	
                     <?php $lstbutdanh='';?>
                 	<?php foreach($lstmagazine as $magazine){?>
-                    <li>
-                    	<a class="bullet" href="#"><?php echo $magazine->name;?></a> 
+                    <li class="name-butdanh">
+                    	<h3 class="tamgiac"><a class="bullet" href="#"><?php echo $magazine->name;?></a></h3> 
                         <?php $lstbutdanh = $this->User_model->get(0,-1,0,'butdanh',$magazine->term_id);?>                       
                     	<div class="lst-butdanh">
                         	<?php foreach($lstbutdanh as $butdanh){?>
@@ -16,14 +98,6 @@
                     <?php }?>                    	                    
                 </ul>
             </div>
-            <div class="ads-sidebar">
-                <?php 
-                    $listAD = $this->Post_model->get(80); 
-                    foreach($listAD as $ad)
-                    {
-                        echo $ad->post_content;
-                    }                
-                ?>            	
-            </div>
+            
             
         </div><!-- end middle-left -->
