@@ -113,6 +113,432 @@ ul li{list-style-type:none;}
 	.description{float:right;}
 	.group{overflow:hidden;}
 /*end register*/
+
+#postlist {
+    margin: 0;
+    padding: 0;
+    clear: both;
+    position: relative;
+}
+.forumbitBody {
+    clear: both;
+    padding-right: 2px;
+}
+.posts, .postlist, #postlist {
+    margin: 0;
+    padding: 0;
+}
+.postbit, .postbitlegacy, .eventbit {
+    margin-bottom: 0;
+}
+.postbit, .postbitlegacy, .eventbit {
+    border: 1px solid #DEDEDE;
+    clear: both;
+    color: #4D5153;
+    display: block;
+    float: left;
+    
+    position: relative;
+    width: 100%;
+}
+.postbit .postdetails_noavatar .posthead, .postbit .postdetails_noavatar .userinfo .contact {
+    margin-left: 0;
+}
+.postbit .posthead, .postbitlegacy .posthead, .eventbit .eventhead {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: url("../images/theadBG.gif") repeat-x scroll left top #2A2A2A;
+    border-color: -moz-use-text-color -moz-use-text-color #2A2A2A;
+    border-style: none none solid;
+    border-width: 0 0 1px;
+    clear: both;
+    color: #B6B6B6;
+    display: block;
+    float: left;
+    font: 11px arial,helvetica,sans-serif;
+    margin: -1px -1px 0;
+    padding: 6px 0;
+    width: 100%;
+}
+.postbit .posthead .postdate.old, .postbitlegacy .posthead .postdate.old {
+    background: url("../images/post_old.png") no-repeat scroll left center transparent;
+}
+.postbit .posthead .postdate, .postbitlegacy .posthead .postdate {
+    clear: right;
+    display: block;
+    float: left;
+    font: 12px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    margin-left: 10px;
+    padding-left: 15px;
+    width: 49%;
+}
+#posts .posthead .time2, #posts .nodecontrols {
+    color: #B6B6B6;
+}
+.postbit .postdate .time2 {    
+    margin-left: 10px;
+}
+#posts .posthead .time, #posts .nodecontrols {
+    color: #B6B6B6;
+}
+.postbit .posthead .nodecontrols, .postbitlegacy .posthead .nodecontrols, .eventbit .eventhead .nodecontrols {
+    font: 12px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    padding: 4px 10px 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    vertical-align: middle;
+    width: 50%;
+}
+#posts .posthead a:link, #posts .posthead a:visited {
+    color: #B6B6B6;
+}
+#postlist .userinfo {
+    padding-top: 10px;
+}
+.postbit .userinfo, .postbit .userinfo_noavatar {
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-bottom: 1px solid #DEDEDE;
+    clear: both;
+    float: left;
+    height: auto !important;
+    padding: 0.5em 0;
+    width: 100%;
+}
+.postbit .postdetails_noavatar .posthead, .postbit .postdetails_noavatar .userinfo .contact {
+    margin-left: 0;
+}
+.postbit .userinfo .contact, .userinfo .userinfo_extra, .postbit .userinfo_noavatar .contact {
+    display: inline-block;
+    height: auto !important;
+}
+.postbit .userinfo .contact, .postbit .userinfo_noavatar .contact {
+    clear: right;
+    display: block;
+    float: left;
+    position: relative;
+    width: 60%;
+}
+.postbit .username_container {
+    clear: right;
+    display: block;
+    float: left;
+    margin-left: 10px;
+}
+.username_container {
+    padding: 2px 0;
+    text-align: center;
+}
+.postbit .userinfo .username_container .memberaction, .postbit .userinfo_noavatar .username_container .memberaction {
+    display: inline;
+}
+.memberaction.popupmenu {    
+    position: relative;
+    top: 0;
+}
+.postbit .userinfo .popupmenu a.popupctrl, .postbit .userinfo_noavatar .popupmenu a.popupctrl {
+    background: none repeat scroll 0 0 transparent;
+    display: inline-block;
+    font-size: 12px;
+    padding: 0;
+    color: #00A1C3;
+}
+.username_container .username strong {
+    font-size: 12pt;
+    font-weight: 400;
+}
+.postbit .postuseravatarlink {
+    clear: right;
+    display: block;
+    float: left;
+    margin-left: 15px;
+    position: relative;
+    text-align: center;
+    top: 0;
+}
+.postbit .postuseravatarlink img {
+	height: 80px;
+	width: 80px;
+}
+.username_container {
+    text-align: center;
+}
+.postbit .userinfo .userinfo_extra, .postbit .userinfo_noavatar .userinfo_extra {
+    float: right;
+    font-size: 11px;
+    text-align: right;
+    width: 180px;
+}
+.postbit .userinfo .userinfo_extra dl, .postbit .userinfo_noavatar .userinfo_extra dl {
+    float: right;
+    margin-right: 10px;
+    width: 150px;
+}
+.postbit .userinfo_extra dl dt:after {
+    content: ":";
+}
+.postbit .userinfo_extra dl dt {
+    display: block;
+    float: left;
+    margin-right: 5px;
+}
+.userinfo_extra dt {
+    color: #E12B00;
+    font-weight: normal;
+    margin: 0;
+    padding: 6px 3px 0 10px;
+}
+.postbit .userinfo_extra dl dd {
+    display: block;
+}
+.userinfo_extra dd {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px dotted #DEDEDE;
+    color: #242424;
+    margin: 2px 0 0;
+    padding: 3px 0;
+}
+.postbit .postbody {
+    background: none repeat scroll 0 0 #FFFFFF;
+    clear: both;
+    color: #333333;
+}
+.postbit .postrow {
+    font: 13px Verdana,Arial,Tahoma,Calibri,Geneva,sans-serif;
+    
+    overflow: auto;
+}
+.postbit .posttitle, .postbitlegacy .title {
+    border-bottom: 1px solid #C8C8C8;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+.postbit .posttitle {
+    display: block;
+    font: bold 12px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    margin: 0;    
+    padding: 6px;
+}
+.postcontent {
+    word-wrap: break-word;
+    font-size: 12px;
+}
+blockquote {
+    overflow: hidden;
+}
+.bbcode_container div.bbcode_quote {
+    background: none repeat scroll 0 0 #F3F3F3;
+    border: 1px solid #D3D3D3;
+    border-radius: 5px 5px 5px 5px;
+    font: italic 13px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    margin: 0 10px 10px;
+    position: relative;
+    top: 0;
+}
+.postbit .postfoot, .postbitlegacy .postfoot, .eventbit .eventfoot {
+    background: none repeat scroll 0 0 transparent;
+    clear: both;
+    display: block;
+    float: left;
+    font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    position: relative;
+    right: 0;
+    width: 100%;
+}
+.postfoot {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #DEDEDE -moz-use-text-color -moz-use-text-color #DEDEDE;
+    border-style: solid none none solid;
+    border-width: 1px 0 0 1px;
+}
+.floatcontainer:after, .formcontrols .blockrow:after, dl.stats:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.postbit .postfoot .textcontrols, .postbitlegacy .postfoot .textcontrols, .eventbit .eventfoot .eventcontrols {
+    background: none repeat scroll 0 0 #DDDCDC;
+    display: block;
+    font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    margin-right: 10px;
+    padding: 6px 0 4px;
+    width: 100%;
+}
+.postbitlegacy .postfoot .postcontrols, .postbit .postfoot .postcontrols {
+    float: right;
+    padding-right: 10px;
+    text-align: right;
+    width: 70%;
+}
+.postbitlegacy .postfoot .textcontrols a.quickreply, .postbit .postfoot .textcontrols a.quickreply, .postbitlegacy .postfoot .textcontrols a.forwardpost, .postbit .postfoot .textcontrols a.forwardpost {
+    background: url("../images/reply_40b.png") no-repeat scroll left center #DDDCDC;
+    border: 0 solid #A8A8A8;
+    padding: 0 0 0 20px;
+}
+.postbitlegacy .postfoot .textcontrols a, .postbit .postfoot .textcontrols a, .eventbit .eventfoot .eventcontrols a, .postbitlegacy .postfoot .textcontrols span.mobile, .postbit .postfoot .textcontrols span.mobile {
+    background: none repeat scroll 0 0 #DDDCDC;
+    border: 0 solid #A8A8A8;
+    border-radius: 0 0 0 0;
+    color: #4E4E4E;
+    display: inline-block;
+    font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    margin-left: 5px;
+    padding: 0 0 0 23px;
+}
+.postbitlegacy .postfoot .textcontrols a img, .postbit .postfoot .textcontrols a img {
+    left: 3px;
+    position: absolute;
+    top: 2px;
+}
+.postbitlegacy .postfoot .textcontrols span.seperator, .postbit .postfoot .textcontrols span.seperator {
+    border-right: medium solid #BBC2C7;
+    display: inline;
+    margin: 0 5px;
+}
+.postbitlegacy .postfoot .textcontrols a.newreply, .postbit .postfoot .textcontrols a.newreply {
+    background: url("../images/quote_40b.png") no-repeat scroll left center #DDDCDC;
+    border: 0 solid #A8A8A8;
+    padding: 0 0 0 20px;
+}
+.postbitlegacy .postfoot .textcontrols a.multiquote, .postbit .postfoot .textcontrols a.multiquote {
+    background: url("../images/multiquote-back_40b.png") no-repeat scroll left center #DDDCDC;
+    border: 0 solid #A8A8A8;
+    padding: 0 0 1px 20px;
+}
+.postbit .postbody {
+    background: none repeat scroll 0 0 #FFFFFF;
+    clear: both;
+    color: #333333;
+}
+.restore a:link, .restore a:visited {
+    color: #E12B00;
+    font-weight: normal;
+}
+.postbitlegacy .postfoot .textcontrols a.quickreply:hover, .postbit .postfoot .textcontrols a.quickreply:hover, .postbitlegacy .postfoot .textcontrols a.forwardpost:hover, .postbit .postfoot .textcontrols a.forwardpost:hover {
+    background: url("../images/reply_40b-hover.png") no-repeat scroll left center transparent;
+    border: 0 none;
+    padding: 0 0 0 20px;
+}
+.postbitlegacy .postfoot .textcontrols a:hover, .postbit .postfoot .textcontrols a:hover {
+    color: #00A1C3;
+}
+.postbitlegacy .postfoot .textcontrols a.newreply:hover, .postbit .postfoot .textcontrols a.newreply:hover {
+    background: url("../images/quote_40b-hover.png") no-repeat scroll left center transparent;
+    border: 0 none;
+    padding: 0 0 0 20px;
+}
+.postbitlegacy .postfoot .textcontrols a.multiquote:hover, .postbit .postfoot .textcontrols a.multiquote:hover {
+    background: url("../images/multiquote_40b-hover.png") no-repeat scroll left center transparent;
+}
+form#quick_reply {
+    max-width: 100%;
+}
+.vbform {
+    clear: both;
+    margin: 0 auto 2em;
+    max-width: 100%;
+    width: auto;
+}
+.vbform .blockhead:first-child {
+    margin-top: 0;
+}
+.blockhead {
+    background: url("../images/newbtn_middle.png") repeat-x scroll 0 0 #181818;
+    border: 1px solid #070707;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #FFFFFF;
+    font: 12px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    padding: 4px 10px;
+}
+.wysiwyg_block {
+    margin-bottom: 10px;
+}
+.formcontrols {
+    border-bottom: 1px solid #D5D5D5;
+    border-left: 1px solid #D5D5D5;
+    border-right: 1px solid #D5D5D5;
+}
+.blockbody {
+    background: none no-repeat scroll 0 0 #FFFFFF;
+    padding-left: 0;
+    padding-right: 0;
+}
+.formcontrols input.button, .actionbuttons {
+    max-width: 100%;
+}
+.blockfoot, .blocksubfoot {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 0 none #66CC00;
+    clear: both;
+    display: block;
+    padding: 5px 0;
+}
+form#quick_reply .actionbuttons .group {
+    max-width: 100%;
+}
+.vbform .actionbuttons .group {
+    margin: 0 auto;
+    max-width: 100%;
+    width: auto;
+}
+.actionbuttons .group {
+    float: none;
+    padding: 0 10px;
+    text-align: right;
+}
+.actionbuttons .group .button {
+    background: url("../images/generic_button.png") repeat-x scroll left top #E9E9E9;
+    border: 1px solid #A8A8A8;
+    color: #424242;
+    cursor: pointer;
+    font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    padding: 2.5px 5px;
+}
+.formcontrols .blockrow label.full {
+    float: none;
+    font-weight: bold;
+    width: auto;
+}
+
+.formcontrols .blockrow label, .formcontrols .blockrow .group.multifield label, .formcontrols .blockrow .groupoption label {
+    display: block;
+    margin-bottom: 2px;
+}
+.formcontrols .blockrow input.textbox:focus, .formcontrols .blockrow textarea:focus {
+    background: none repeat scroll 0 0 #F3F3F3;
+}
+.formcontrols .blockrow .primary.full {
+    float: left;
+    max-width: 100%;
+    width: 300px;
+    margin: 5px;
+}
+.formcontrols input.textbox {
+    height: 25px;
+}
+.formcontrols input, select, textarea {
+    -moz-box-sizing: border-box;
+}
+.textbox, textarea, select {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CDC9BF;
+    border-radius: 3px 3px 3px 3px;
+    color: #000000;
+    font: 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    outline: 0 none;
+    padding: 4px;
+}
 /* profile*/
 .panel-col-first {
     min-height: 1px;
