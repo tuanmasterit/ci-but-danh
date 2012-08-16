@@ -445,7 +445,8 @@ class Post_model extends CI_Model{
 					post_content,
 					post_type,
 					post_parent,
-                    guid               				
+                    guid,
+                    user_registered               				
 				');
             $this->db->from('ci_posts');
             $this->db->join('ci_users','post_author=ci_users.id');
