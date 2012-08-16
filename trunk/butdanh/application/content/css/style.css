@@ -283,8 +283,76 @@ ul li{list-style-type:none;}
 .btsubmit input:hover {
     color: #00A1C3;
 }
+
 /**
  * .btsubmit input{background:#AC0000;border:none;color:#FFF;cursor:pointer;padding:2px;box-shadow:1px 2px #333;}
  * .btsubmit input:hover{background:#333;}
  */
 /*end post-view*/
+/**
+ * search
+ */
+ .dataTables_paginate { text-align: right; line-height: 16px; }
+.dataTables_paginate span { display: inline-block; }
+.dataTables_paginate .paginate_button { 
+	border: 1px solid #ccc; margin-left: 5px; font-weight: bold; background: #fcfcfc; 
+	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;  font-size: 11px;
+	-moz-box-shadow: 1px 1px 2px #ddd; -webkit-box-shadow: 1px 1px 2px #ddd; box-shadow: 1px 1px 2px #ddd; 
+}
+.dataTables_paginate .paginate_button a{padding:5px 7px;display:block;}
+.dataTables_paginate .paginate_active { 
+	border: 1px solid #222; background: #333;  color: #fff; padding: 5px 7px; margin-left: 5px; font-weight: bold; 
+	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; font-size: 11px;
+}
+.dataTables_paginate .paginate_button:hover { background: #ddd; border: 1px solid #ccc; cursor: pointer; color: #333; }
+.txt {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #CCCCCC;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 1px 1px 2px #DDDDDD inset;
+    color: #666666;
+    padding: 8px 5px;
+    margin: 6px;    
+    width: 290px;
+}
+.btn {
+    background: url("../images/titlebg.png") repeat-x scroll left top #FCFCFC;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 1px 1px 2px #DDDDDD;
+    color: #666666;
+    font-size: 11px;
+    margin: 0;
+    outline: medium none;
+    padding: 7px 10px;
+}
+.btn:hover{
+    cursor: pointer;
+} 
+.category {
+    background: url("../images/titlebg.png") repeat-x scroll left top #FCFCFC;
+    border: 1px solid #BBBBBB;
+    box-shadow: 1px 1px 2px #DDDDDD;
+    color: #666666;
+    font-size: 13px;
+    margin: 0;
+    outline: medium none;
+    padding: 6px 5px 7px;
+}
+.post-author
+{
+	margin-top: 10px;
+	height: 80px;
+}
+.post-author img
+{
+	float: left;
+	height: 80px;
+	width: 80px;
+}
+.author-info
+{
+	margin-left: 10px;
+    padding-left: 80px;
+}
+ /*end search*/
