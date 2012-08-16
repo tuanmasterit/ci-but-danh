@@ -44,51 +44,7 @@
 <div id="wrap">
 	<div id="header">
     	<div id="banner">
-        	<div id="logo">
-            	<a href="/butdanh/index.html"><img src="<?php echo base_url();?>application/content/images/logo2.png" /></a>                                
-            </div>
-            <div class="ads-banner">
-            	<img src="<?php echo base_url();?>application/content/images/header-ads.png" />
-            </div>
-
-            <form method="post" action="<?php echo base_url().'home/search'; ?>">
-                <div id="search-bar">
-                    <input type="text" value="Search" placeholder="Search" name="search">
-                    <input type="submit" value="" name="submit">
-                </div>
-            </form>
+            
         </div><!-- end banner -->
-        <div id="menu-top">
-        	<ul class="nav-top">
-            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
-				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
-                <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
-                <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
-                <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
-                <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
-            </ul>
-            <div class="user">
-            	<?php if($this->session->userdata('username') != ''){?>
-                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
-                <?php }else{?>
-            		<a id="link-login" href="javascript:return false;">Đăng nhập</a>
-            		<a id="link-login" href="<?php echo base_url();?>home/register">Đăng ký |</a>
-                    <div class="frm-login">
-                		<form id="login" action="<?php echo base_url();?>home/authentication" method="post">                        
-                            <p>
-                                <label for="username" class="lbllogin">Tài khoản:</label>
-                                <input type="text" id="username" name="txtuser" class="text" />
-                            </p>
-                            <p>
-                                <label for="password" class="lbllogin">Mật khẩu:</label>
-                                <input type="password" id="password" name="txtpassword" class="text" />
-                            </p>
-                            <p>
-                                <input type="submit" class="btnlogin" value="Đăng nhập"  />
-                            </p>
-                        </form>
-                    </div>
-                <?php }?>                
-            </div>
-        </div><!-- end menu-top -->
+
     </div><!-- end header -->
