@@ -124,7 +124,7 @@ class Threads extends CI_Controller {
 		$data['image']=$cap['image'];
 		$data['word'] = $cap['word'];	
 		
-		$this->load->view('front_end/thread_view',$data);
+		$this->load->view('front_end/thread_view2',$data);
 				
 	}
     

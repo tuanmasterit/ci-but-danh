@@ -25,7 +25,7 @@
         </div><!-- end menu-top -->	
         	<div class="box-center box-thread" id="thread">
         		<?php
-                //print_r($thread);        		
+                	
         		foreach ($thread as $thr)
         		{
         		  
