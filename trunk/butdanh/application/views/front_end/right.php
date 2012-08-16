@@ -1,11 +1,11 @@
 <div id="middle-right">
-        	<div class="box-sidebar" id="box-topichot">
-                <h2>Thảo luận nóng</h2>
-                <div id="div-topic">
+        	<div class="box-center" id="box-topichot">
+        	<h3 >Thảo luận nóng</h3>
+                <div class="content-box-right">
                 	<input type="hidden" id="hdfCat" value="<?php echo $term_toptic;?>">
-	                <ul class="top-topic">
-	                	<li class="topic-list"><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a month active">Top tháng</a></li>
-	                	<li class="topic-list"><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a week">Top tuần</a></li>
+	                <ul id="topthang">
+	                	<li ><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a month active">Top tháng</a></li>
+	                	<li ><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a week">Top tuần</a></li>
 	                </ul>
                 </div>
                 <ul id="list-topic-detail">	
@@ -14,10 +14,9 @@
 					<?php }?>                  
                 </ul>
             </div>
-            <div class="box-sidebar" id="box-topichot">
-                <h2>Bút danh được yêu thích</h2>
-                <p>&nbsp;</p>
-                <div class="lst-butdanh">
+            <div class="box-center" id="box-topichot">
+            	<h3>Bút danh được yêu thích</h3>
+                <div class="content-box-right">
                     <?php 
                     	$lstTopLike = $this->Like_model->listTopLike();
                     	$num = 1;
@@ -32,10 +31,9 @@
                     	?>
                 </div>    
             </div>
-            <div class="box-sidebar" id="box-topichot">
-                <h2>Bút danh có nhiều bài viết</h2>                
-                <p>&nbsp;</p>
-                <div class="lst-butdanh">
+            <div class="box-center" id="box-topichot">
+                <h3>Bút danh có nhiều bài viết</h3>
+                <div class="content-box-right">
                     <?php 
                     	
                     	$num = 1;
@@ -50,10 +48,9 @@
                     	?>
                 </div>  
             </div>
-            <div class="box-sidebar" id="box-topichot">
-                <h2>Bút danh mới nhất</h2>                
-                <p>&nbsp;</p>
-                <div class="lst-butdanh">
+            <div class="box-center" id="box-topichot">
+                <h3>Bút danh mới nhất</h3>
+                <div class="content-box-right">
                     <?php                     	
                     	$num = 1;
                     	foreach ($lstLatestAuthor as $LatestAuthor){
@@ -67,30 +64,6 @@
                     	?>
                 </div>  
             </div>
-            <div class="box-sidebar" id="box-topichot">
-                <h2>Bình luận mới nhất</h2>                
-                <p>&nbsp;</p>
-                <div class="lst-butdanh">
-                    <?php                     	
-                    	$num = 1;
-                    	foreach ($lstLatestComment as $LatestComment){
-                    ?>
-                    <ul>
-                    	<li><?php echo $num;?>.&nbsp;<?php echo $LatestComment->comment_agent;?></li>
-                    </ul>
-                    <?php 
-                    	$num++;
-                    	}
-                    	?>
-                </div>  
-            </div>
-            <div class="ads-sidebar">
-                <?php 
-                    $listAD = $this->Post_model->get(81); 
-                    foreach($listAD as $ad)
-                    {
-                        echo $ad->post_content;
-                    }                
-                ?>      	
-            </div>
+            
+           
         </div><!-- end middle-right -->
