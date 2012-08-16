@@ -165,33 +165,14 @@ $(document).ready(function(){
     
     /****************list but danh - bao************************/
     
-    var isOpened = false;
-    $(function(){
-        $("#btSuggestBao").click(function(){
-           //alert('ajsb'); 
-           
-           if (!isOpened)
-           {
-                 $("#suggestButdanh").slideDown(900);
-                // $("#btSuggestBao").text('Ẩn đề xuất chủ đề');
-                 $imageHidden = $("#imageHidden").attr("value");                 
-                 $("#imgShow").attr("src",$imageHidden); 
-                 isOpened = true;
-                 
-           } else
-           {
-                $("#suggestButdanh").slideUp(500);
-               // $("#btSuggestTopic").text('Hiện đề xuất chủ đề');
-                $imageShow = $("#imageShow").attr("value");
-                $("#imgShow").attr("src",$imageShow);
-                isOpened = false; 
-                
-           }
-        });
-    });
-    
-    
-    
+   var isOpened1 = false;
+  
+   $(document).ready(function(){ 
+	   $('.tamgiac').click(function() {
+		   $(this).next().slideToggle("slow");
+		   
+	});
+   });
     
     /**************   Topic Top    ******************************/
     $(".topic-a").click(function(){
