@@ -4,6 +4,7 @@ body{margin:0px;text-align:center; font-family:Tahoma, Geneva, sans-serif; font-
 /* common */
 a{text-decoration:none;color:#333;}
 a:hover{text-decoration:underline;}
+a:hover{color:#3399CC;text-decoration:underline;}
 p{line-height:20px;color:#000;margin:0px;}
 h1,h2,h3{padding:0px;margin:0px; font-weight:normal}
 ul{padding:0px;margin:0px;}
@@ -209,6 +210,10 @@ ul li{list-style-type:none;}
 .list-post-right h3{background:#CC0000;color:#FFF;padding:3px;}
 .resultmonth{padding-left:10px;}
 .resultmonth p{text-align:center;}
+.resultmonth li a.bullet1{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px;font-size: 12px}
+.pane-content ul li a.bullet1{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px; font-size: 12px }
+.topic_relation{padding-left: 10px;}
+
 /* end profile*/
 
 /*post-view*/
@@ -401,6 +406,12 @@ ul li{list-style-type:none;}
     margin: 0 2px 0 0;
     width: 250px;
 }
+.InputSearch1 {
+    float: left;
+    height: 35px;
+    margin: 0 25px 0 0;
+    width: 100px;
+}
 .inputS-left {
     background: url("../images/searchBg.gif") no-repeat scroll 0 0 transparent;
     float: left;
@@ -432,7 +443,7 @@ ul li{list-style-type:none;}
     float: left;
     font: 13px arial;
     margin: 0;
-    width: 603px;
+    width: 450px;
 }
 .analyticResult label {
     font-weight: bold;
@@ -451,7 +462,7 @@ ul li{list-style-type:none;}
     float: left;
     margin: 0 10px;
     overflow: hidden;
-    width: 649px;
+    width: 469px;
 }
 
 .ulTag {
@@ -459,7 +470,15 @@ ul li{list-style-type:none;}
     list-style-type: none;
     overflow: hidden;
     padding: 10px 0 0;
-    width: 649px;
+    width: 469px;
+}
+.ulTag li {
+    background: url("../images/litagBottom.png") repeat-x scroll left bottom transparent;
+    float: left;
+    margin: 0 0 10px;
+    overflow: hidden;
+    padding: 10px 0 10px;
+    width: 469px;
 }
 .wrapSearch ul {
     margin: 0;
@@ -477,7 +496,7 @@ ul li{list-style-type:none;}
     position: relative;
     width: 100px;
 }
-.divTagLeft a {
+a {
     text-decoration: none;
 }
 
@@ -489,7 +508,7 @@ ul li{list-style-type:none;}
     border: medium none;
 }
 .frame100 {
-    background: url("/Images/bg/frame100.png") no-repeat scroll 0 0 transparent;
+    background: url("../images/frame100.png") no-repeat scroll 0 0 transparent;
     cursor: pointer;
     height: 75px;
     left: 0;
@@ -500,7 +519,7 @@ ul li{list-style-type:none;}
 }
 .divTagRight {
     float: left;
-    width: 539px;
+    width: 350px;
 }
 .aTitleTag {
     color: #000000;
