@@ -1,5 +1,5 @@
 <div id="user-online">
-	<h3>Danh sách thành viên</h3>
+	<h2 id="icon-human">Danh sách thành viên</h2>
 	
     <div class="ctn">
     	Online: <?php echo $this->Count_access->countOnline();?>
@@ -18,10 +18,10 @@
     
    
 </div>
-<div id="footer">
-    	<p class="copyright">&copy; ButDanh.com</p>
-        <p>Địa chỉ: 401, 31 Truong Han Sieu, Hoan Kiem, Hanoi, VIETNAM</p>
-        <p>Tel/Fax: 04.62631763 Email: center@red.org.vn</p>
+<div id="lien-he">
+    	<h3 id="mau2">© ButDanh.com</h3>
+<p class="mau">Địa chỉ: 401, 31 Truong Han Sieu, Hoan Kiem, Hanoi, VIETNAM</p>
+<p class="mau">Tel/Fax: 04.62631763 Email: center@red.org.vn</p>
 </div><!-- end footer -->
 </div><!-- end wrap -->
 </div><!-- end wr -->
