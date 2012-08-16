@@ -4,9 +4,7 @@
 <?php $this->load->view('front_end/header');?>
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
-        <div id="middle-center">        	
-         <!-- menu-top -->
-                <div id="menu-top">
+        <div id="menu-top">
         	<ul class="nav-top">
             	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
 				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
@@ -25,6 +23,9 @@
                 <?php }?>                
             </div>
         </div><!-- end menu-top -->
+        <div id="middle-center">        	
+         <!-- menu-top -->
+         
         	<div class="box-center" id="box-newtopic">
                 <h2><p> <?php echo $post_detail->post_title;?></p></h2>            	
                 <div class="box-content">              	     
