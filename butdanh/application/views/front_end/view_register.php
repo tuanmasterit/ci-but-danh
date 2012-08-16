@@ -35,24 +35,26 @@
 							<div class="blockrow">
 								<ul class="group">
 									<li>
-										<label for="txtpassword">Mật Khẩu:</label>
+										<label for="txtpassword">Mật Khẩu: </label><br>
 										<input id="txtpassword" class="textbox validate[required]" type="password" tabindex="1" value="" maxlength="50" name="txtpassword">
+									<p class="description">Nhập Mật khẩu cho tài khoản của bạn. </p>
 									</li>
 									<li>
-										<label for="passwordconfirm">Nhập lại Mật Khẩu:</label>
+										<label for="passwordconfirm">Nhập lại Mật Khẩu:</label><br>
 										<input id="passwordconfirm" class="textbox validate[required,equals[txtpassword]]" type="password" tabindex="1" value="" maxlength="50" name="passwordconfirm">
+									<p class="description">Chú ý: Mật khẩu phân biệt chữ HOA và chữ thường.</p>
 									</li>
 								</ul>
-								<p class="description">Nhập Mật khẩu cho tài khoản của bạn. Chú ý: Mật khẩu phân biệt chữ HOA và chữ thường.</p>
+								
 							</div>
 							<div class="blockrow">
 								<ul class="group">
 									<li>
-										<label for="email">Địa chỉ Email:</label>
+										<label for="email">Địa chỉ Email:</label><br>
 										<input id="email" class="textbox validate[required,custom[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="email">
 									</li>
 									<li>
-										<label for="emailconfirm">Nhập lại Email:</label>
+										<label for="emailconfirm">Nhập lại Email:</label><br>
 										<input id="emailconfirm" class="textbox validate[required,custom[email],equals[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="emailconfirm">
 									</li>
 								</ul>
