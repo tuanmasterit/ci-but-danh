@@ -5,6 +5,26 @@
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">        	
+         <!-- menu-top -->
+                <div id="menu-top">
+        	<ul class="nav-top">
+            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
+				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
+                <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
+                <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
+                <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
+                <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
+            </ul>
+            <div class="user">
+            	<?php if($this->session->userdata('username') != ''){?>
+                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
+                <?php }else{?>
+            		
+            		
+                  
+                <?php }?>                
+            </div>
+        </div><!-- end menu-top -->
         	<div class="box-center" id="box-newtopic">
                 <h2><p> <?php echo $post_detail->post_title;?></p></h2>            	
                 <div class="box-content">              	     

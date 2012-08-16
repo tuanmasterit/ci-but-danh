@@ -87,9 +87,9 @@
                     <?php $lstbutdanh='';?>
                 	<?php foreach($lstmagazine as $magazine){?>
                     <li class="name-butdanh">
-                    	<h3 class="tamgiac"><a class="bullet" href="#"><?php echo $magazine->name;?></a></h3> 
+                    	<h3 class="tamgiac" id="btSuggestBao"><a class="bullet" href="#"><?php echo $magazine->name;?></a></h3> 
                         <?php $lstbutdanh = $this->User_model->get(0,-1,0,'butdanh',$magazine->term_id);?>                       
-                    	<div class="lst-butdanh">
+                    	<div class="lst-butdanh" id="suggestButdanh">
                         	<?php foreach($lstbutdanh as $butdanh){?>
                         		<a href="<?php echo base_url();?>profile/<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></a>,&nbsp;
 							<?php }?>
