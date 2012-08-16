@@ -212,6 +212,31 @@ ul li{list-style-type:none;}
 /* end profile*/
 
 /*post-view*/
+#box_post_detail{}
+#title_post{ 
+    color: #004175;
+    font: 700 24px/23px "Times New Roman";
+    font-size: 14pt;
+    margin: 0;
+    padding: 2px 5px 2px 2px;
+    
+}
+#post_content{    
+    margin-right: 10px;   
+    margin-left: 10px;       
+    margin-top: 10px !important;
+}
+.fon p {
+    font-family: Times New Roman;
+    font-size: 12pt;
+    line-height: 20px !important;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+#post_meta{}
+#post_meta p{}
+#post_meta span{}
+
 #suggestTopic {
     overflow: hidden;
     display: none;
