@@ -112,3 +112,84 @@ ul li{list-style-type:none;}
 	.description{float:right;}
 	.group{overflow:hidden;}
 /*end register*/
+/* profile*/
+.panel-col-first {
+    min-height: 1px;
+    padding: 0 10px 0 5px;
+    width:  476px;
+    float: left;
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    font-size: 100%;
+    margin: 0;
+    outline: 0 none;   
+    vertical-align: baseline;
+    color: #000000;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;    
+    line-height: 1.5;
+}
+
+.panel-panel .inside {
+    margin: 0;
+}
+.pane-left-top .pane-title {
+    background: url("../images/dot.png") repeat-x scroll 0 9px transparent;
+    color: #CC0000;
+    font-size: 16px;
+    margin: 0;
+}
+
+.pane-left-top .pane-title span {
+    background-color: #EAEAEA;
+    padding-right: 10px;
+}
+.clear-block:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.profile {
+    clear: both;
+    margin: 1em 0;
+     
+}
+.clear-block {
+    display: block;
+}
+.user-title-block .picture {
+    border: 1px solid #CCCCCC;
+    float: left;
+    line-height: 0;
+}
+.profile .picture {   
+    margin: 0 1em 1em 0;
+}
+
+.user-title-block .profile-about {
+    padding-left: 75px;
+}
+.user-title-block .userpoints {
+    background-color: #666666;
+    color: #FFFFFF;
+    float: right;
+    font-size: 120%;
+    margin-left: 10px;
+    padding: 0 5px;
+}
+.user-title-block p {
+    margin: 0 0 5px;
+}
+.user-main-block {
+    margin-bottom: 15px;
+}
+.user-main-block .pane-title {
+    background: url("../images/dot.png") repeat-x scroll 0 bottom transparent;
+    color: #333333;
+}
+.pane-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+/* end profile*/
