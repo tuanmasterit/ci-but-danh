@@ -315,20 +315,8 @@ ul li{list-style-type:none;}
     margin: 6px;    
     width: 290px;
 }
-.btn {
-    background: url("../images/titlebg.png") repeat-x scroll left top #FCFCFC;
-    border: 1px solid #BBBBBB;
-    border-radius: 3px 3px 3px 3px;
-    box-shadow: 1px 1px 2px #DDDDDD;
-    color: #666666;
-    font-size: 11px;
-    margin: 0;
-    outline: medium none;
-    padding: 7px 10px;
-}
-.btn:hover{
-    cursor: pointer;
-} 
+
+
 .category {
     background: url("../images/titlebg.png") repeat-x scroll left top #FCFCFC;
     border: 1px solid #BBBBBB;
@@ -354,5 +342,184 @@ ul li{list-style-type:none;}
 {
 	margin-left: 10px;
     padding-left: 80px;
+}
+.bttSearch {
+    background: url("../images/searchBtt.gif") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font: bold 11px tahoma;
+    height: 35px;
+    margin: 0;
+    text-align: center;
+    width: 83px;
+}
+.bttSearch:hover{
+    cursor: pointer;
+} 
+.navTagnSearch {
+    background: url("../images/detailSep.gif") repeat-x scroll left bottom #FFFFFF;
+    float: left;
+    height: 20px;
+    overflow: hidden;
+    padding: 10px 10px 5px;
+    width: 460px;
+}
+
+.tagHeader {
+    color: #3F3F3F;
+    float: left;
+    font: bold 12px arial;
+    padding: 0 8px 0 0;
+    text-transform: uppercase;
+}
+.navTagnSearch a {
+    text-decoration: none;
+}
+.tagHeader label {
+    font-size: 14px;
+}
+
+.divSearch {
+    background: none repeat scroll 0 0 #E4E4E4;
+    float: left;
+    margin: 0 0 2px;
+    overflow: hidden;
+    padding: 20px 3px;
+    width:  474px;
+}
+
+.upSearch {
+    float: left;
+    margin: 0 0 8px;
+    width: 460px;
+}
+.InputSearch {
+    float: left;
+    height: 35px;
+    margin: 0 2px 0 0;
+    width: 250px;
+}
+.inputS-left {
+    background: url("../images/searchBg.gif") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 35px;
+    width: 3px;
+}
+
+.txtS {
+    background: url("../Images/1w.png") repeat-x scroll 0 -1601px transparent;
+    border: medium none;
+    color: #6F6F6F;
+    float: left;
+    font: bold 13px arial;
+    height: 32px;
+    width: 240px;
+}
+
+
+.inputS-right {
+    background: url("../images/searchBg.gif") no-repeat scroll -3px 0 transparent;
+    float: left;
+    height: 35px;
+    width: 3px;
+}
+
+
+.analyticResult {
+    color: #3F3F3F;
+    float: left;
+    font: 13px arial;
+    margin: 0;
+    width: 603px;
+}
+.analyticResult label {
+    font-weight: bold;
+}
+.aHotWord {
+    color: #2589BC;
+    font: bold 13px arial;
+}
+.analyticResult a {
+    text-decoration: none;
+}
+
+.wrapSearch {
+    background: url("../images/topBgSearch.gif") repeat-x scroll 0 0 transparent;
+    display: inline;
+    float: left;
+    margin: 0 10px;
+    overflow: hidden;
+    width: 649px;
+}
+
+.ulTag {
+    float: left;
+    list-style-type: none;
+    overflow: hidden;
+    padding: 10px 0 0;
+    width: 649px;
+}
+.wrapSearch ul {
+    margin: 0;
+    padding: 0;
+}
+.divTagLeft {
+    float: left;
+    width: 110px;
+}
+
+.img100 {
+    float: left;
+    height: 75px;
+    margin: 0 10px 0 0;
+    position: relative;
+    width: 100px;
+}
+.divTagLeft a {
+    text-decoration: none;
+}
+
+.img100 img {
+    height: 75px;
+    width: 100px;
+}
+.divTagLeft a img {
+    border: medium none;
+}
+.frame100 {
+    background: url("/Images/bg/frame100.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 75px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100px;
+    z-index: 2;
+}
+.divTagRight {
+    float: left;
+    width: 539px;
+}
+.aTitleTag {
+    color: #000000;
+    font: bold 12px tahoma;
+}
+.aTitleTag a {
+    text-decoration: none;
+}
+.mark {
+    background: none repeat scroll 0 0 #2589BC;
+    color: #FFFFFF;
+    font: bold 13px arial;
+    margin: 0;
+    padding: 2px;
+}
+.tagLead {
+    color: #3F3F3F;
+    font: 12px arial;
+    margin: 0 0 5px;
+    width: 100%;
 }
  /*end search*/
