@@ -10,38 +10,80 @@
             </div>
         </div>-->
     	<?php $this->load->view('front_end/left');?>
-        <div id="middle-center">        	
+        <div id="middle-center">   
+        <!-- menu-top -->
+                <div id="menu-top">
+        	<ul class="nav-top">
+            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
+				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
+                <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
+                <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
+                <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
+                <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
+            </ul>
+            <div class="user">
+            	<?php if($this->session->userdata('username') != ''){?>
+                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
+                <?php }else{?>
+            		
+            		
+                  
+                <?php }?>                
+            </div>
+        </div><!-- end menu-top -->
+        <!-- end menu top -->
+             	
         	<div class="box-center" id="box-newtopic">
-            	<h2>
-                	<span>Chủ đề mới</span>                	
-                    <div class="arrow">
-                    	<a href="#" class="arrow-left">&nbsp;</a>
-                        <a href="#" class="arrow-right">&nbsp;</a>
-                    </div>
-                </h2>
+            	
                 <div id="div-topic-top">                	
 	                <ul class="top-topic-top">
-	                	<li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish active">Chủ đề mới lên trang</a></li>
+	                	<li class="topic-list-top"><a  href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish active">Chủ đề mới lên trang</a></li>
 	                	<li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top pending">Chủ đề mới đề xuất</a></li>
 	                	<li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Chủ đề mới bị từ chối</a></li>
 	                </ul>
                 </div>
                 <div class="box-content">
-               		<div id="scroll_box-top">
-					  <p style="margin-left:7px; color:#174775">
+               		<div class ="box1" id="scroll_box-top">
+					  <ul>
 					    <?php 
 					    	foreach ($lstLatesTopic as $new_topic)
 					    	{
 					    ?>
-					    <a href="<?php echo base_url().'chu-de/'.urldecode($new_topic->guid);?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a><br/>
+					    <li>
+					    <a href="<?php echo base_url().'chu-de/'.urldecode($new_topic->guid);?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a>&nbsp;<span class="date-time"><?php echo date_format(date_create($new_topic->post_date),'d-m-Y H:i:s');?></span><br>
+					    </li>
 					    <?php
 					     	}
 					     ?>				    
-					  </p>
+					  </ul>
 					</div>                                       
                 </div><!-- end box-content -->
-            </div><!-- end newtopic -->           
+            </div><!-- end newtopic -->       
+            <!-- binh luan moi nhat -->
+            <div class="box-center" id="box-topichot">
+            <ul class="top-topic-top">
+            <li >
+                			<a class="tab-active" href=""  >Thảo luận mới nhất</a>   
+            </li>
+            </ul>
+                <div class="lst-butdanh">
+                    <?php                     	
+                    	$num = 1;
+                    	foreach ($lstLatestComment as $LatestComment){
+                    ?>
+                    <ul>
+                    	<li><?php echo $LatestComment->comment_agent;?></li>
+                    </ul>
+                    <?php 
+                    	$num++;
+                    	}
+                    	?>
+                </div>  
+            </div>    <!-- end binh luan moi nhat -->
         </div><!-- end middle-center -->
+        
+        
+        
         <?php $this->load->view('front_end/right');?>
     </div><!-- end middle -->
 <?php $this->load->view('front_end/footer');?>    
