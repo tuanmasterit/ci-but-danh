@@ -212,12 +212,16 @@ ul li{list-style-type:none;}
 /* end profile*/
 
 /*post-view*/
-#box_post_detail{}
+#box_post_detail{
+     
+}
 #title_post{ 
+    margin-right: 5px;   
+    margin-left: 5px;       
+    margin-top: 10px !important;
     color: #004175;
     font: 700 24px/23px "Times New Roman";
-    font-size: 14pt;
-    margin: 0;
+    font-size: 14pt;    
     padding: 2px 5px 2px 2px;
     
 }
@@ -233,7 +237,14 @@ ul li{list-style-type:none;}
     margin-bottom: 3%;
     margin-top: 3%;
 }
-#post_meta{}
+#post_meta{
+    text-align: right;
+    font-family: Times New Roman;
+    font-size: 10pt;
+    line-height: 20px !important;
+    font-weight: bold;
+    margin-right: 10px;
+}
 #post_meta p{}
 #post_meta span{}
 
@@ -242,7 +253,7 @@ ul li{list-style-type:none;}
     display: none;
 }
 #btSuggestTopic {cursor: pointer; font-size: 12px; color: #2E3192; font-weight: bold; text-decoration: none;}
-#showSuggestTopic { background: #DBEAF9 ;}
+#showSuggestTopic { background: url("../images/dot_post.png") repeat-x scroll 0 bottom transparent;margin-top: 5px;}
 .edit-main{
     margin-left: 5px;
     margin-top: 15px;
@@ -257,8 +268,23 @@ ul li{list-style-type:none;}
     width: 100%;
     position: relative;
 }
-#btsubmit{
-    margin-left: 220px;
+.btsubmit{
+    text-align: center;
 	
 }
+.btsubmit input {
+    background: url("../images/generic_button.png") repeat-x scroll left top #E9E9E9;
+    border: 1px solid #A8A8A8;
+    color: #424242;
+    cursor: pointer;
+    font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    padding: 2.5px 5px;
+}
+.btsubmit input:hover {
+    color: #00A1C3;
+}
+/**
+ * .btsubmit input{background:#AC0000;border:none;color:#FFF;cursor:pointer;padding:2px;box-shadow:1px 2px #333;}
+ * .btsubmit input:hover{background:#333;}
+ */
 /*end post-view*/
