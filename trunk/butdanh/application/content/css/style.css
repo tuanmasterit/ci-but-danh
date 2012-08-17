@@ -26,7 +26,7 @@ ul li{list-style-type:none;}
 .lst-bao{padding-left:5px;padding-bottom:10px;}
 .lst-bao h3{margin-bottom:5px;}
 .tamgiac{background:url("../images/icon-tamgiac.png") no-repeat scroll left center transparent; padding-left:10px;}
-.lst-butdanh{padding-right:5px;}
+.lst-butdanh{padding-right:5px;display:none;}
 .lst-butdanh a{font-size:10px;}
 .lst-butdanh ul li{margin-left:20px;list-style-type: circle;}
 .txt{background:#FFF;border:1px solid #CCC;padding:3px;}
@@ -35,7 +35,7 @@ ul li{list-style-type:none;}
 .frm-search{overflow:hidden;padding:5px;}
 .frm-search input{float:left;}
 .frm-search .txt{width:235px;}
-.frm-login{overflow:hidden;padding:5px;}
+.frm-login{overflow:hidden;padding:5px;display:none;}
 .frm-login p{margin-bottom:5px;}
 .frm-left{float:left;}
 #username{width:180px;}
@@ -60,9 +60,13 @@ ul li{list-style-type:none;}
 .box-center .top-topic-top li{float:left;}
 .box-center .top-topic-top li a{padding:3px 10px;display:block;font-size:13px;}
 .box-center .top-topic-top li a:hover,.box-center .top-topic-top li a.tab-active{background:#CC0000;color:#FFF;}
+.box-center .top-topic-top li a:focus{background:#CC0000;color:#FFF;}
+.box-center .top-topic-top li.tab-active a{background:#CC0000;color:#FFF; font-color:#FFF;}
+.dangki{background:#CC0000;color:#FFF; font-color:#FFF;}
 .box-center .content-box{padding-left:5px;}
 .box-center .content-box ul li{list-style-type:circle;list-style-position:inside;margin-bottom:5px;}
 .box-center .content-box ul li a{}
+.box-center .box-content .topic-item .topic h3 a{ color: #FFFFFF;}
 .item-toptic-new{list-style-position: inside;
     list-style-type: circle;
     margin-bottom: 5px;}
@@ -73,7 +77,8 @@ ul li{list-style-type:none;}
 .clear{}
 .thanh-right{}
 .box-center{}
-.bullet{font-size:10px !important;}
+.bullet{font-size:14px;}
+.bullet1{font-size:10px !important;}
 .box-center h3{padding:3px 5px;background:#CC0000;color:#FFF;font-size:11px;font-weight:bold;}
 .box-center .content-box-right{padding:5px}
 .box-center .content-box-right ul li{list-style-position:inside;margin-bottom:5px;}
