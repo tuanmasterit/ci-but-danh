@@ -26,4 +26,13 @@
                 </div><!--content-->
                 
             </div><!--maincontentinner-->            
-<?php $this->load->view('back_end/footer');?> 
+            <div class="footer">
+            	<p>&copy; 2012 ButDanh.com. All Rights Reserved. Designed by: <a href="http://tasvis.com.vn">TasVis</a></p>
+            </div><!--footer-->            
+        </div><!--maincontent-->        
+        <?php include('sidebar-right.php');?>                
+     	</div><!--mainwrapperinner-->
+    </div><!--mainwrapper-->
+	<!-- END OF MAIN CONTENT -->    
+</body>
+</html>
