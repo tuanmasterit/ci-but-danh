@@ -55,11 +55,7 @@
                 	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
                 <?php }else{?>
             		
-            		 <center><p class="dangki">Đăng Nhập</p></center> 
-                  
-                <?php }?>                
-            </div>
-		  <div class="frm-login">
+            		  <div class="frm-login">
                 		<form id="login" action="<?php echo base_url();?>home/authentication" method="post">                        
                             <div class="frm-left">
                             <p>
@@ -82,6 +78,10 @@
                     </div>
                   
 <!-- end form login -->
+                  
+                <?php }?>                
+            </div>
+		 
 <!-- search form  -->
 			<form  class="frm-search" name="frmsearch" method="post" action="<?php echo base_url().'home/search'; ?>">
                 
@@ -97,20 +97,32 @@
                 <ul class="lst-bao">                	
                     <?php 
                     	$lstbutdanh='';
-                    	
+                    	$num_bao=count($lstmagazine);
+                    	$jj=0;
                     ?>
-                	<?php foreach($lstmagazine as $magazine){?>
+                	<?php foreach($lstmagazine as $magazine){
+                		?>
+                	
                     <li class="name-butdanh">
-                    	<h3 class="tamgiac" id="btSuggestBao"><a class="bullet" href="#"><?php echo $magazine->name;?></a></h3> 
+                    	<h3 class="tamgiac" id="btSuggestBao<?php echo $jj;?>"><a class="bullet" ><?php echo $magazine->name;?></a></h3> 
                         <?php $lstbutdanh = $this->User_model->get(0,-1,0,'butdanh',$magazine->term_id);?>                       
-                    	<div class="lst-butdanh" id="suggestButdanh">
-                        	<?php foreach($lstbutdanh as $butdanh){?>
+                    	<div class="lst-butdanh" id="suggestButdanh<?php echo $jj;?>">
+                        	<?php 
+                        	$count1=count($lstbutdanh);
+                        	$i=0;
+                        	foreach($lstbutdanh as $butdanh)
+                        	{
+                        		$i++;
+                        		if($i==$count1)
+                        		{?>
+                        		<a href="<?php echo base_url();?>profile/<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></a>&nbsp;
+          						<?php continue;}?>
                         		<a href="<?php echo base_url();?>profile/<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></a>,&nbsp;
 							<?php }?>
                         </div>
                     </li>
                     
-                    <?php  }?>                    	                    
+                    <?php $jj++;  }?>                    	                    
                 </ul>
             </div>
             
