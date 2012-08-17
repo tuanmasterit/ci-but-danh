@@ -58,7 +58,7 @@
                 			<a class="tab-active" href=""  >Thảo luận mới nhất</a>   
             </li>
             </ul>
-                <div class="lst-butdanh">
+                <div class="lst-butdanh1">
                     <?php                     	
                     	$num = 1;
                     	foreach ($lstLatestComment as $LatestComment){
