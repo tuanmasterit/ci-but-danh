@@ -32,15 +32,15 @@ class Home extends CI_Controller {
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		$this->load->view('front_end/index_view',$data);		
 	}	
-	public function authentication(){		
+	public function authentication(){
 		if(!is_null($_REQUEST['txtuser']) && !is_null($_REQUEST['txtpassword'])){
 			$user_name =	$_REQUEST['txtuser'];
 			$password = $_REQUEST['txtpassword'];
 			$this->User_model->authentication($user_name,$password);
-			redirect('home');				
+			redirect('home');
 		}else{
-			redirect('home');	
-		}	
+			redirect('home');
+		}
 	}
 	function logout(){
 		$this->db->where('user_login',$this->session->userdata('username'));
