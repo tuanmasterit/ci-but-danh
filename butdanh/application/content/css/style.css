@@ -22,11 +22,13 @@ ul li{list-style-type:none;}
 #box-butdanh{}
 #top-left{overflow:hidden;padding:5px;}
 #logo{ padding:3px 0px 0px 0px;float:left}
-.time{float:right;font-size:11px;color:#CC0000;padding-top:13px;}
+.time{float:right;font-size:10px;color:#CC0000;padding-top:13px;}
 .lst-bao{padding-left:5px;padding-bottom:10px;}
 .lst-bao h3{margin-bottom:5px;}
 .tamgiac{background:url("../images/icon-tamgiac.png") no-repeat scroll left center transparent; padding-left:10px;}
 .lst-butdanh{padding-right:5px;display:none;}
+#suggestButdanh0{display:block ;}
+.tamgiac:HOVER{cursor: pointer;}
 .lst-butdanh a{font-size:10px;}
 .lst-butdanh ul li{margin-left:20px;list-style-type: circle;}
 .txt{background:#FFF;border:1px solid #CCC;padding:3px;}
@@ -35,7 +37,7 @@ ul li{list-style-type:none;}
 .frm-search{overflow:hidden;padding:5px;}
 .frm-search input{float:left;}
 .frm-search .txt{width:235px;}
-.frm-login{overflow:hidden;padding:5px;display:none;}
+.frm-login{overflow:hidden;padding:5px;}
 .frm-login p{margin-bottom:5px;}
 .frm-left{float:left;}
 #username{width:180px;}
@@ -747,8 +749,7 @@ form#quick_reply .actionbuttons .group {
     border-radius: 2px 2px 2px 2px;
     box-shadow: 1px 1px 2px #DDDDDD inset;
     color: #666666;
-    padding: 8px 5px;
-    margin: 6px;    
+    
     width: 290px;
 }
 
