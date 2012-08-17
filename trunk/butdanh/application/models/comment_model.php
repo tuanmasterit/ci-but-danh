@@ -25,7 +25,7 @@
 		
 		function get($limit=0,$offset=0,$order_by='comment_date',$order='DESC',$comment_approved='')
 		{
-			$this->db->select('comment_ID,comment_post_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,user_id,comment_approved');
+			$this->db->select('comment_ID,comment_post_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,user_id,comment_approved,guid');
 			$this->db->from('ci_comments');	
 			if($comment_approved!='')
 			{		
@@ -36,6 +36,7 @@
 			{
 				$this->db->limit($limit,$offset);
 			}
+			$this->db->join('ci_posts', 'ci_posts.id = ci_comments.comment_post_ID');
 			$query = $this->db->get();
 			return  $query->result();
 		}
