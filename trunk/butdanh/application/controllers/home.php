@@ -217,6 +217,10 @@ class Home extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer        
+        $data['total_rows'] = $config['total_rows'];
+        if ($row+10 <= $data['total_rows'] )
+         {$data['row']  = 10;} 
+         else {$data['row']  =$data['total_rows'] - $row;}
 		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']);
         $data['lstCategories'] = $this->Term_model->get();
 		$data['post_type'] = $post_type;
