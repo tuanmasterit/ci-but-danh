@@ -296,6 +296,7 @@ class Topic extends CI_Controller {
     			$this->load->view('back_end/view_confirm_topic',$data);
             }		
 	}
+    
     function truncateString_($str, $len, $charset="UTF-8"){
         $str = html_entity_decode($str, ENT_QUOTES, $charset);   
         if(mb_strlen($str, $charset)> $len){

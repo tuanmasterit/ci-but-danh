@@ -61,7 +61,7 @@ class Profile extends CI_Controller {
         {
             foreach($listPostByMonth as $post)
             {
-                $result .= '<li><a class="bullet" href="'.base_url().'bai-viet/'.urldecode($post->guid).'">'.$post->post_title.'</a></li>';
+                $result .= '<li><a class="bullet1" href="'.base_url().'bai-viet/'.urldecode($post->guid).'">'.$post->post_title.'</a></li>';
             }
         } else $result = 'Không có bài viết nào!';
         echo $result;
