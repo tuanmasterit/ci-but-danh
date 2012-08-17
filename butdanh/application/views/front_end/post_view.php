@@ -72,17 +72,5 @@
     </div><!-- end middle -->
 <?php $this->load->view('front_end/footer');?>    
 <script type="text/javascript">
-	var editor = CKEDITOR.replace( 'editor_content',
-	{			
-		filebrowserBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=file',
-		filebrowserImageBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
-		filebrowserFlashBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
-		filebrowserImageUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
-		filebrowserFlashUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
-		filebrowserImageWindowWidth : '950',
-		filebrowserImageWindowHeight : '490',
-		filebrowserWindowWidth : '950',
-		filebrowserWindowHeight : '490'
-	});
-
+	bindckeditor('editor_content','BasicToolbar');
 </script>
