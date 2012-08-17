@@ -29,11 +29,12 @@ ul li{list-style-type:none;}
 .arrow-up{background:url("../images/icon-tamgiac.png") no-repeat scroll left center transparent;}
 .arrow-down{background:url("../images/icon-tamgiac2.png") no-repeat scroll left center transparent;}
 .lst-butdanh{padding-right:5px;display:none;}
-
+.lst-butdanh1{display:block;padding-right:5px}
 .display-user{margin-left:7px;}
 .tamgiac:HOVER{cursor: pointer;}
 .lst-butdanh a{font-size:10px;}
 .lst-butdanh ul li{margin-left:20px;list-style-type: circle;}
+.lst-butdanh1 ul li{margin-left:20px;list-style-type: circle;}
 .txt{background:#FFF;border:1px solid #CCC;padding:3px;}
 .text{background:#FFF;border:1px solid #CCC;padding:3px;}
 .btn-search{background:url('../images/btn_search.png') no-repeat;width:24px;height:24px;border:none;cursor:pointer;}
@@ -91,6 +92,8 @@ ul li{list-style-type:none;}
 .box-center ul li a {font-size:12px;}
 #list-topic-detail{padding-left: 17px;font-weight:bold;}
 #topthang{font-size:14px !important;padding-left: 10px;font-weight:bold;}
+.topic-a{float:left;}
+.topic-b{float:right;}
 /* end right */
 /* footer */
 #footer{background:#FFF;width:960px;margin:0 auto;text-align:justify;}
