@@ -170,10 +170,16 @@ $(document).ready(function(){
    $(document).ready(function(){ 
 	   $('.tamgiac').click(function() {
 		   $(this).next().slideToggle("slow");
-		   
 	});
    });
-    
+   
+   $(document).ready(function(){
+	  $(".dangki").click(function(){
+		  $(".frm-login").slideToggle("fast");
+	  } );
+   });
+  
+   
     /**************   Topic Top    ******************************/
     $(".topic-a").click(function(){
         var url = $(this).attr('href');
@@ -208,8 +214,8 @@ $(document).ready(function(){
 		$.post(url,{get_by:get_by},function(data) {
 			$("#scroll_box-top").html(data);			
 		});
-        $(".topic-a-top").removeClass('active');
-        $(this).addClass('active');
+        $(".topic-a-top").removeClass('tab-active');
+        $(this).addClass('tab-active');
         return false;
     });
     /************** Change Info **********************/
