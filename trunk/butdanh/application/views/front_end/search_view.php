@@ -34,15 +34,14 @@
         	<div class="box-center" id="box-newtopic">  
                 <div class="detailLeft">
         			<div class="navTagnSearch" >
-        				<a class="tagHeader"><label>T</label>ìm kiếm</a>								
+        				<a class="tagHeader"><label>Tìm kiếm</label></a>								
         			</div>
-        			<div class="divSearch">
-        				<form method="POST" name="frmSearch" id="frmSearch">
+        			<div class="divSearch">        				
+                        <form name="frmfilter" method="post" action="<?php echo base_url();?>home/search/<?php echo $post_type;?>" >
         					<div class="upSearch">
         						<div class="InputSearch">
         							<div class="inputS-left"></div>
-        							<input onkeyup="javascript:KeyCode(event);" type="text" class="txtS" name="txtSearch" id="txtSearch" value="" />
-        							<input onkeyup="javascript:KeyCode(event);" name="t1" style="display:none;">
+        						    <input type="text" class="txtS"  id="txtSearch" name="titleTopic" value="<?php echo $titleTopic; ?>"  />
         							<div class="inputS-right"></div>
         						</div>
                                 <select class="InputSearch1" name="slcategory">
@@ -55,92 +54,50 @@
                                     <?php }?>
                                 <?php }?>
                                 </select>
-        						<input type="button" class="bttSearch" value="Tìm kiếm" onclick='doSubmit();'/>
+        						<input type="submit" class="bttSearch" value="Tìm kiếm"/>
         						<input type="hidden" name="searchAction" id="searchAction" value="0" style="float:left;">
         					</div>
         				</form>
-        				
-        						<script language="JavaScript">
-        							document.getElementById("txtSearch").value = "ng";
-        						</script>
-        						
         				<div class="analyticResult">
         					
-        							Đang hiển thị <label>10</label> kết quả trong tổng số <label>42</label> kết quả tìm kiếm cho "<a href="#" class="aHotWord">ng</a>"
+        							Đang hiển thị <label><?php echo $row; ?></label> kết quả trong tổng số <label><?php echo $total_rows; ?></label> kết quả tìm kiếm cho "<a href="#" class="aHotWord"><?php echo $titleTopic; ?></a>"
         						
         				</div>
         				
         			</div>
-        			<div class="wrapSearch" id="wrapSearch">
-        				
+        			<div class="wrapSearch" id="wrapSearch">    
+                        				
         					<ul class="ulTag">
-        					
-        					
-        					
+                                <?php foreach($lstPosts as $Post){?>          					        					        					
         						<li>
         							<div class="divTagLeft">
-        								<a href="/tin-tuc/showbiz-viet/2012/06/la-thanh-huyen-tuoi-tan-ben-nguoi-yeu-mai-phuong-thuy-203147/" class="img100">
-        									<img src='http://localhost/butdanh/application/content/images/SuggestTopic/thumbs/Desert3.jpg' alt=''>
+        								<a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>" class="img100">
+        									<img src="<?php echo base_url().$this->Post_model->get_featured_image($Post->id);?>" alt=''>
         									<div class="frame100"></div>
         								</a>
         							</div>
         							<div class="divTagRight">
         								<h2 class="tagTitle">
-        									<a href="/tin-tuc/showbiz-viet/2012/06/la-thanh-huyen-tuoi-tan-ben-nguoi-yeu-mai-phuong-thuy-203147/" class="aTitleTag">Lã Thanh Huyền tươi tắn bên người yêu Mai Phương Thúy</a>
+        									<a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>" class="aTitleTag"><?php echo $Post->post_title;?></a>
         								</h2>
         								<h2 class="tagLead">
-        									Diễn viên 'Blog nàng dâu' vui vẻ tạo dáng bên doanh nhân Benny Ng khi cả hai có dịp gặp gỡ trong một event.
-        										<img class="imgHTicon" src="/Images/icon/general_photo.gif" alt="">
+        									<p>Người đề xuất : <a href="#"><b><?php echo $Post->user_nicename;?></b></a>
+                	            			</p>
+                                            <div class="date-title">
+                	            		     <p>Ngày : <?php echo date_format(date_create($Post->post_date),'d-m-Y');?></p>
+         	            	                </div>
+        										
         									
         								</h2>
         								
         							</div>
         						</li>
+                                <?php }?>                           
+                                <?php echo $list_link;?> 
                            </ul>
                         </div>  
-                        </div>      
-                <div class="tableoptions">
-                        <form name="frmfilter" method="post" action="<?php echo base_url();?>home/search/<?php echo $post_type;?>" >                        	                        	                            
-                            <input type="text" class="txt" name="titleTopic" value="<?php echo $titleTopic; ?>" />
-                            
-                            <select class="category" name="slcategory">
-                                <option value="">--- Tất cả ---</option>
-                                <?php foreach($lstCategories as $l_category){?>                                 
-                                	<?php if($l_category->term_id == $category){?>
-                                    	<option selected="selected" value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
-                                    <?php }else{?>
-                                    	<option value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
-                                    <?php }?>
-                                <?php }?>
-                            </select> &nbsp;                                                                                   
-                            
-                            <input type="submit" class="bttSearch" value="Tìm kiếm"></button>
-                        </form>
-                </div><!--tableoptions-->      	
-                <div class="box-content">
-               	     <?php foreach($lstPosts as $Post){?>                            	
-                            	                                	                        
-                        <div>
-        	            	
-        	            	<div class="post-author">
-        	            		<img src="<?php echo base_url().$this->Post_model->get_featured_image($Post->id);?>">
-        	            		<div class="author-info">
-        	            			
-                                    <p><strong>Tiêu đề: <a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>"><?php echo $Post->post_title;?></a></strong></p>
-                                    <br />
-                                    <p>Người đề xuất:<a href="#"><span><?php echo $Post->user_nicename;?></span></a>
-        	            			</p>
-                                    <div class="date-title">
-        	            		     <?php echo date_format(date_create($Post->post_date),'d-m-Y');?>
- 	            	                </div>
-        	            		</div>
-        	            	</div>
-        	            	
-                    	</div>     
-                                            
-                     <?php }?>                           
-                     <?php echo $list_link;?>                                  
-                </div><!-- end box-content -->
+                </div>  
+                
             </div><!-- end newtopic -->           
         </div><!-- end middle-center -->
         <?php $this->load->view('front_end/right');?>
