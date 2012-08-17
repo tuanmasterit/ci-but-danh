@@ -157,7 +157,12 @@ class Post extends CI_Controller {
         $data['post_id'] = $post_id;	
         //$data['post_term'] = $this->common->removesign(urldecode($post_term));
         
-        
+        if($this->session->userdata('logged_in') != 1){
+			$data['check_login'] = false;
+		}
+		else {
+			$data['check_login'] = true;
+		}
         
         //print_r($data['post_detail']);
         if($post_id != 0){
