@@ -192,10 +192,12 @@ class Home extends CI_Controller {
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
        
 		// Get post type
+        if ($this->input->post('post_type') != '') $post_type = $this->input->post('post_type');
 		$data['post_type'] = $post_type;
 		if($this->input->post('hdfposttype') != ''){
 			$data['post_type'] = $this->input->post('hdfposttype');	
 		}
+        $data['post_type'] = $post_type;
 		// Get category
 		$data['category'] = $term;
 		if($this->input->post('slcategory') != ''){
@@ -210,9 +212,12 @@ class Home extends CI_Controller {
                 
         //paging
 		include('admin/paging.php');		
-		$config['base_url']= base_url()."home/search/".$post_type."/".$data['category']."/".$data['titleTopic']."/";
+		$config['base_url']= base_url()."home/search/".$data['post_type']."/".$data['category']."/".$data['titleTopic']."/";
         if  ($data['titleTopic'] == '~' ) $data['titleTopic'] = '';
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);		
+        if ($post_type == 'topic') {$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);}
+        else $config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);
+        
+         		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
@@ -221,9 +226,13 @@ class Home extends CI_Controller {
         if ($row+10 <= $data['total_rows'] )
          {$data['row']  = 10;} 
          else {$data['row']  =$data['total_rows'] - $row;}
-		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']);
+         
+		if ($post_type == 'topic') $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']); 
+        else $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);
+        
+        
         $data['lstCategories'] = $this->Term_model->get();
-		$data['post_type'] = $post_type;
+		
 		$this->load->view('front_end/search_view',$data);
 	}	
     	
