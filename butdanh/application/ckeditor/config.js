@@ -23,8 +23,8 @@ CKEDITOR.editorConfig = function( config )
 	];
 	config.toolbar_BasicToolbar =
 	[		
-		{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','Iframe' ] },
+		{ name: 'insert', items : [ 'Image','Table','HorizontalRule','Smiley','Iframe' ] },
 		{ name: 'styles', items : [ 'Styles','Format' ] },
-		{ name: 'basicstyles', items : [ 'Bold','Italic','Strike' ] }
+		{ name: 'basicstyles', items : [ 'Bold','Italic','Strike','Blockquote' ] }
 	];
 };
