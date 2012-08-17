@@ -21,15 +21,7 @@
                 <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
                 <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
             </ul>
-            <div class="user">
-            	<?php if($this->session->userdata('username') != ''){?>
-                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
-                <?php }else{?>
-            		
-            		
-                  
-                <?php }?>                
-            </div>
+           
         </div><!-- end menu-top -->
         <!-- end menu top -->
              	
@@ -37,7 +29,7 @@
             	
                 <div id="div-topic-top">                	
 	                <ul class="top-topic-top">
-	                	<li class="topic-list-top"><a  href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish active">Chủ đề mới lên trang</a></li>
+	                	<li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish tab-active">Chủ đề mới lên trang</a></li>
 	                	<li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top pending">Chủ đề mới đề xuất</a></li>
 	                	<li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Chủ đề mới bị từ chối</a></li>
 	                </ul>
