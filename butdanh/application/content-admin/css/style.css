@@ -328,8 +328,9 @@ button,input,select,textarea { font-size: 12px; font-family: Arial, Helvetica, s
 
 .contenttitle { background: #222; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 .contenttitle h2 { 
-	font-size: 18px; letter-spacing: 0.8px; font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif; font-weight: normal; padding: 0 0 0 10px; 
+	font-size: 18px; letter-spacing: 0.8px; font-family: 'Tahoma', Arial, Helvetica, sans-serif; font-weight: normal; padding: 0 0 0 10px; 
 	background-repeat: no-repeat; background-image: url(../images/icons/default/sprites.png); background-position: -154px -443px; color: #fff; 
+	text-transform:uppercase;
 }
 .contenttitle h2 span { 
 	display: block; padding: 6px 0 6px 10px; margin-left: 25px; border-left: 1px solid #444; background: #333; 

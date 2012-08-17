@@ -663,6 +663,9 @@ form#quick_reply .actionbuttons .group {
 #box_post_detail{
      
 }
+#box_post_detail img{
+	max-width:460px;
+}
 #title_post{ 
     margin-right: 5px;   
     margin-left: 5px;       
