@@ -25,11 +25,12 @@ ul li{list-style-type:none;}
 .time{float:right;font-size:10px;color:#CC0000;padding-top:13px;}
 .lst-bao{padding-left:5px;padding-bottom:10px;}
 .lst-bao h3{margin-bottom:5px;}
-.tamgiac{background:url("../images/icon-tamgiac.png") no-repeat scroll left center transparent; padding-left:10px;}
-.tamgiac1{background:url("../images/icon-tamgiac2.png") no-repeat scroll left center transparent; padding-left:10px;}
+.tamgiac{ padding-left:10px;}
+.arrow-up{background:url("../images/icon-tamgiac.png") no-repeat scroll left center transparent;}
+.arrow-down{background:url("../images/icon-tamgiac2.png") no-repeat scroll left center transparent;}
 .lst-butdanh{padding-right:5px;display:none;}
-#suggestButdanh0{display:block;}
-#btSuggestBao0{background:url("../images/icon-tamgiac2.png") no-repeat scroll left center transparent; padding-left:10px;}
+
+.display-user{margin-left:7px;}
 .tamgiac:HOVER{cursor: pointer;}
 .lst-butdanh a{font-size:10px;}
 .lst-butdanh ul li{margin-left:20px;list-style-type: circle;}

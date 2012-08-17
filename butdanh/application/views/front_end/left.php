@@ -104,7 +104,7 @@
                 		?>
                 	
                     <li class="name-butdanh">
-                    	<h3 class="tamgiac" id="btSuggestBao<?php echo $jj;?>"><a class="bullet" ><?php echo $magazine->name;?></a></h3> 
+                    	<h3 class="tamgiac arrow-up" id="btSuggestBao<?php echo $jj;?>"><a class="bullet" ><?php echo $magazine->name;?></a></h3> 
                         <?php $lstbutdanh = $this->User_model->get(0,-1,0,'butdanh',$magazine->term_id);?>                       
                     	<div class="lst-butdanh" id="suggestButdanh<?php echo $jj;?>">
                         	<?php 
