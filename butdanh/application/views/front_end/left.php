@@ -49,16 +49,16 @@
                     </p>   
                 </div>
 <!-- end top left -->
-<!-- search form  -->
-			<form  class="frm-search" name="frmsearch" method="post" action="<?php echo base_url().'home/search'; ?>">
-                
-                    <input type="text" class="txt" value="Search" placeholder="Search" name="search">
-                   
-                    	<input type="submit" class="btn-search" value="" name="submit">
-             
-            </form>
-<!--  end form search -->
 <!-- form login -->
+ 				<div class="user">
+            	<?php if($this->session->userdata('username') != ''){?>
+                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
+                <?php }else{?>
+            		
+            		 <center><p class="dangki">Đăng Nhập</p></center> 
+                  
+                <?php }?>                
+            </div>
 		  <div class="frm-login">
                 		<form id="login" action="<?php echo base_url();?>home/authentication" method="post">                        
                             <div class="frm-left">
@@ -75,16 +75,30 @@
                                 <input type="submit" class="btnlogin" value="Đăng nhập"  />
                             </p>
                             <p>
-                            	<a id="link-login" href="<?php echo base_url();?>home/register">Đăng ký </a>
+                            	<a  onclick="return $(this).slideToggle(1000)" id="link-login" href="<?php echo base_url();?>home/register">Đăng ký </a>
                             </p>
                             </div>
                          </form>
                     </div>
+                  
 <!-- end form login -->
+<!-- search form  -->
+			<form  class="frm-search" name="frmsearch" method="post" action="<?php echo base_url().'home/search'; ?>">
+                
+                    <input type="text" class="txt" value="Search" placeholder="Search" name="search">
+                   
+                    	<input type="submit" class="btn-search" value="" name="submit">
+             
+            </form>
+<!--  end form search -->
+
 
         	<div class="box-sidebar" id="box-butdanh">
                 <ul class="lst-bao">                	
-                    <?php $lstbutdanh='';?>
+                    <?php 
+                    	$lstbutdanh='';
+                    	
+                    ?>
                 	<?php foreach($lstmagazine as $magazine){?>
                     <li class="name-butdanh">
                     	<h3 class="tamgiac" id="btSuggestBao"><a class="bullet" href="#"><?php echo $magazine->name;?></a></h3> 
@@ -95,7 +109,8 @@
 							<?php }?>
                         </div>
                     </li>
-                    <?php }?>                    	                    
+                    
+                    <?php  }?>                    	                    
                 </ul>
             </div>
             
