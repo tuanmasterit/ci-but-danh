@@ -19,7 +19,7 @@
                 <div class="content">
                 	<h1 id="ajaxtitle"></h1>                       	                            
                     <div class="contenttitle radiusbottom0">
-                        <h2 class="table"><span>Table with Action</span></h2>
+                        <h2 class="table"><span>Danh sách chủ đề</span></h2>
                     </div><!--contenttitle-->
                     <div class="tableoptions">
                         <form name="frmfilter" method="post" action="<?php echo base_url();?>admin/topic/lists/<?php echo $post_type;?>" >                        	
