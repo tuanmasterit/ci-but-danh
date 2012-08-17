@@ -34,11 +34,11 @@
 							<div class="pane-content">
 								<div class="user-title-block profile clear-block">
 									<div class="picture">
-										<img src="https://vtcdn.com/sites/default/files/imagecache/profile/pictures/picture-2586.jpg" alt=""  class="imagecache imagecache-profile" width="64" height="64" /></div>
+										<img src="<?php echo base_url().'application/content/images/butdanh_logo.png'; ?>" alt=""  class="imagecache imagecache-profile" width="60" height="60" /></div>                                        
 									<div class="profile-about">
 									
-										<p>Đơn vị công tác: <span><?php echo $butdanh['name'];?></span></p>
-										<div class="expertise">Lĩnh vực viết bài: <span><?php echo $butdanh['display_name'];?></span></div>
+										<p>Đơn vị công tác: <b><span><?php echo $butdanh['name'];?></span></b></p>
+										<div class="expertise">Lĩnh vực viết bài: <b><span><?php echo $butdanh['display_name'];?></span></b></div>
 										<input type="hidden" id="hdflike" value="<?php echo $check_like;?>" />
                                         <div class="like" id="div-like">
                                         
@@ -65,7 +65,7 @@
                                         	<?php 
                                         	if(count($list_like)>0)
                                         	{
-                                        		echo "Có ".count($list_like)." người like bút danh này.";
+                                        		echo "<b>Có ".count($list_like)." người like bút danh này.</b>";
                                         	}                  	
                                         	?>
                                         </div>
@@ -106,7 +106,7 @@
 							<div class="pane-content">
 								<ul>                      
                                     <?php foreach($listTopicRelation as $topic){?>
-                                	<li><a class="bullet resultmonth" href="<?php echo base_url().'chu-de/'.urldecode($topic->guid); ?>"><?php echo $topic->post_title; ?></a></li>
+                                	<li class="topic_relation"><a class="bullet1" href="<?php echo base_url().'chu-de/'.urldecode($topic->guid); ?>"><?php echo $topic->post_title; ?></a></li>
                                     <?php } ?>
                                 </ul>
 							</div>				 
