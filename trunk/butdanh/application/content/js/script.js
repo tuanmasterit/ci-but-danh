@@ -210,15 +210,33 @@ $(document).ready(function(){
     });
     
     /****************list but danh - bao************************/
-    
+   $(".name-butdanh:first-child .lst-butdanh").show();
+   $(".name-butdanh:first-child h3").removeClass("arrow-up");
+   $(".name-butdanh:first-child h3").addClass("arrow-down");
    var isOpened1 = false;
-  
-   $(document).ready(function(){ 
-	   $('.tamgiac').click(function() {
-		   $(this).next().slideToggle("slow");
+   $('.tamgiac').toggle(function() {
+	   if($(this).attr("class")=="tamgiac arrow-up"){
+		   $(this).removeClass("arrow-up");
+		   $(this).addClass("arrow-down");
+	   }else{
+		   $(this).removeClass("arrow-down");
+		   $(this).addClass("arrow-up");
+	   }
+		   $(this).next().slideToggle("500");
+	},function(){
+		if($(this).attr("class")=="tamgiac arrow-up"){
+			   $(this).removeClass("arrow-up");
+			   $(this).addClass("arrow-down");
+		   }else{
+			   $(this).removeClass("arrow-down");
+			   $(this).addClass("arrow-up");
+		   }
+		   $(this).next().slideToggle("500");
+		
 	});
-   });
   
+   
+
    
     /**************   Topic Top    ******************************/
     $(".topic-a").click(function(){

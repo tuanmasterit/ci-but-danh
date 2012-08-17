@@ -21,7 +21,7 @@
                 <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
                 <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
             </ul>
-            
+
             </div><!-- end menu-top -->      	
         	<div class="box-center" id="box-newtopic">  
                 <div class="detailLeft">
