@@ -4,7 +4,10 @@
 <?php $this->load->view('front_end/header');?>
     <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
-        <div id="menu-top">
+        
+        <div id="middle-center">        	
+         <!-- menu-top -->
+            <div id="menu-top">
         	<ul class="nav-top">
             	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
 				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
@@ -22,16 +25,13 @@
                   
                 <?php }?>                
             </div>
-        </div><!-- end menu-top -->
-        <div id="middle-center">        	
-         <!-- menu-top -->
-         
-        	<div class="box-center" id="box-newtopic">
-                <h2><p> <?php echo $post_detail->post_title;?></p></h2>            	
-                <div class="box-content">              	     
+            </div><!-- end menu-top -->
+        	<div id="box_post_detail">
+                <h2 id="title_post"><?php echo $post_detail->post_title;?></h2>            	
+                <div id="post_content" class="fon">              	     
                      <p><?php echo $post_detail->post_content ;?></p>                                      
                 </div><!-- end box-content -->
-                <div class="meta_post">
+                <div id="post_meta">
                 	<p>Bút danh: <span><?php echo $butdanh['user_nicename'];?></span></p>
                     <p>Đơn vị công tác: <span><?php echo $butdanh['name'] ;?></span></p>                                                                 
                 </div>
@@ -58,7 +58,7 @@
                                 <p><label>Nội dung:</label></p>                            
                                 <p><textarea class="validate[required]" name="txtcontent" id="editor_content"></textarea></p>                                
                                 <br/>
-                                <input id="btSubmit" type="submit" name="submit" value="Đề xuất"/>
+                                <p class="btSubmit"><input type="submit" name="submit" value="Đề xuất"/></p>
                         </div>                    
                     </form>              
             </div><!--suggusetTopic-->
