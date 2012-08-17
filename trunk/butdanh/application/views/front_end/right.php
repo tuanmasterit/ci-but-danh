@@ -5,7 +5,7 @@
                 	<input type="hidden" id="hdfCat" value="<?php echo $term_toptic;?>">
 	                <ul id="topthang">
 	                	<li ><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a month active">Top tháng</a></li>
-	                	<li ><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a week">Top tuần</a></li>
+	                	<li ><a href="<?php echo base_url();?>ajax/getTopicTop" class="topic-a topic-b week">Top tuần</a></li>
 	                </ul>
                 </div>
                 <ul id="list-topic-detail">	
