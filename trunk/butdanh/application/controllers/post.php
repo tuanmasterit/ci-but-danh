@@ -218,13 +218,15 @@ class Post extends CI_Controller {
         } else return false;
         
     }
-    function updateguid()
-    {
-        $list_post = $this->Post_model->get_id();
-        foreach($list_post as $temp)
-        {
-            $link = $this->get_link($temp->post_title);
-            $this->Post_model->update_guid($temp->id,$link);
-        }
-    }
+    /**
+ * function updateguid()
+ *     {
+ *         $list_post = $this->Post_model->get_id();
+ *         foreach($list_post as $temp)
+ *         {
+ *             $link = $this->get_link($temp->post_title);
+ *             $this->Post_model->update_guid($temp->id,$link);
+ *         }
+ *     }
+ */
 }
