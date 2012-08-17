@@ -85,7 +85,7 @@
 <!-- search form  -->
 			<form  class="frm-search" name="frmsearch" method="post" action="<?php echo base_url().'home/search'; ?>">
                 
-                    <input type="text" class="txt" value="Search" placeholder="Search" name="search">
+                    <input type="text" class="txt" value="" placeholder="Search" name="titleTopic">
                    
                     	<input type="submit" class="btn-search" value="" name="submit">
              
