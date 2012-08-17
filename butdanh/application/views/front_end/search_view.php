@@ -42,10 +42,10 @@
         						<div class="InputSearch">
         							<div class="inputS-left"></div>
         						    <input type="text" class="txtS"  id="txtSearch" name="titleTopic" value="<?php echo $titleTopic; ?>"  />
-        							<div class="inputS-right"></div>
+        							
         						</div>
                                 <select class="InputSearch1" name="slcategory">
-                                <option value="">--- Tất cả ---</option>
+                                <option value="">Tất cả</option>
                                 <?php foreach($lstCategories as $l_category){?>                                 
                                 	<?php if($l_category->term_id == $category){?>
                                     	<option selected="selected" value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
@@ -53,6 +53,16 @@
                                     	<option value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
                                     <?php }?>
                                 <?php }?>
+                                </select>
+                                <select class="InputSearch1" name="post_type">                                                                                              
+                                	<?php if($post_type == 'topic'){?>
+                                    	<option selected="selected" value="topic">Chủ đề</option>
+                                        <option value="post">bài viết</option>
+                                    <?php }else{?>
+                                    	<option  value="topic">Chủ đề</option>
+                                        <option selected="selected" value="post">bài viết</option>
+                                    <?php }?>
+                                
                                 </select>
         						<input type="submit" class="bttSearch" value="Tìm kiếm"/>
         						<input type="hidden" name="searchAction" id="searchAction" value="0" style="float:left;">
@@ -71,14 +81,23 @@
                                 <?php foreach($lstPosts as $Post){?>          					        					        					
         						<li>
         							<div class="divTagLeft">
-        								<a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>" class="img100">
+                                        <?php if($post_type == 'topic'){?>
+        								    <a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>" class="img100">
+                                        <?php }else{?>
+                                            <a href="<?php echo base_url().'bai-viet/'.urldecode($Post->guid);?>" class="img100">
+                                        <?php }?>
         									<img src="<?php echo base_url().$this->Post_model->get_featured_image($Post->id);?>" alt=''>
         									<div class="frame100"></div>
         								</a>
         							</div>
         							<div class="divTagRight">
         								<h2 class="tagTitle">
-        									<a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>" class="aTitleTag"><?php echo $Post->post_title;?></a>
+                                            <?php if($post_type == 'topic'){?>
+        								        <a href="<?php echo base_url().'chu-de/'.urldecode($Post->guid);?>" class="aTitleTag"><?php echo $Post->post_title;?></a>
+                                            <?php }else{?>
+                                                <a href="<?php echo base_url().'bai-viet/'.urldecode($Post->guid);?>" class="aTitleTag"><?php echo $Post->post_title;?></a>
+                                            <?php }?>
+        									
         								</h2>
         								<h2 class="tagLead">
         									<p>Người đề xuất : <a href="#"><b><?php echo $Post->user_nicename;?></b></a>
