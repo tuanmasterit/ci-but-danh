@@ -649,8 +649,8 @@ form#quick_reply .actionbuttons .group {
 .list-post-right h3{background:#CC0000;color:#FFF;padding:3px;}
 .resultmonth{padding-left:10px;}
 .resultmonth p{text-align:center;}
-.resultmonth li a.bullet1{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px;font-size: 12px}
-.pane-content ul li a.bullet1{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px; font-size: 12px }
+.resultmonth li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px;font-size: 12px}
+.pane-content ul li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px; font-size: 12px }
 .topic_relation{padding-left: 10px;}
 
 /* end profile*/
