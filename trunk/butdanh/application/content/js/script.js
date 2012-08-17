@@ -522,4 +522,18 @@ function ChangeImage(){
 	},'json');
 }
 
-    
+function bindckeditor(elementid,toolbar){
+	var editor = CKEDITOR.replace( elementid,
+	{			
+		toolbar : toolbar,
+		filebrowserBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=file',
+		filebrowserImageBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
+		filebrowserFlashBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
+		filebrowserImageUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
+		filebrowserFlashUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
+		filebrowserImageWindowWidth : '950',
+		filebrowserImageWindowHeight : '490',
+		filebrowserWindowWidth : '950',
+		filebrowserWindowHeight : '490'
+	});	
+}
