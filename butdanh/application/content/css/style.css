@@ -830,13 +830,23 @@ form#quick_reply .actionbuttons .group {
     float: left;
     height: 35px;
     margin: 0 2px 0 0;
-    width: 250px;
+    width: 245px;
 }
 .InputSearch1 {
     float: left;
-    height: 35px;
-    margin: 0 25px 0 0;
-    width: 100px;
+    height: 34px;
+    margin: 0 5px 0 0;
+    width: 60px;
+}
+.InputSearch1 {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CDC9BF;
+    border-radius: 3px 3px 3px 3px;
+    color: #000000;
+    font: 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    outline: 0 none;
+    padding-left:0px;
+    padding-top: 6px;
 }
 .inputS-left {
     background: url("../images/searchBg.gif") no-repeat scroll 0 0 transparent;
