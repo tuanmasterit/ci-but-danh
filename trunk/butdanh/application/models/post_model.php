@@ -173,15 +173,17 @@ class Post_model extends CI_Model{
 			return $query->result();	
 		}
 	}	
-	function getCount($post_type='post', $term_id=0, $author='',$post_status='',$titleTopic=''){		
+	function getCount($post_type='post', $term_id=0, $author='',$post_status='',$titleTopic=''){
+	   //($id, $post_type='post', $term_id=0,$author='', $limit=-1, $offset=0, $order='DESC', $order_by='post_date',$post_status='',$titleTopic=''){
 		$this->db->from('ci_posts');
 		$this->db->where('post_type',$post_type);
+        $this->db->join('ci_users','post_author=ci_users.id');
         if($post_status!='')
 			{
 				$this->db->where('post_status',$post_status);
 			}
 		if($author != ''){
-			$this->db->join('ci_users','post_author=ci_users.id');
+			//$this->db->join('ci_users','post_author=ci_users.id');
 			$this->db->where('ci_users.id',$author);
 		}
 		if($term_id != '' and $term_id > 0 ){
