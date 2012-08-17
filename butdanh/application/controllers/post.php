@@ -143,7 +143,7 @@ class Post extends CI_Controller {
         {
            $data['post_detail'] = $temp; 
 	       $data['butdanh'] = $this->User_model->get_butdanh($temp->post_author); 
-		} else {redirect('home');}
+		} else {show_404();}
         $post_id = $data['post_detail']->id;
 		$term_id = $this->Post_model->get_term_id_by_id_post($post_id);
 		$data['term_toptic'] =$term_id;
@@ -168,7 +168,7 @@ class Post extends CI_Controller {
         if($post_id != 0){
 			$this->load->view('front_end/post_view',$data);
 			
-		} else {redirect('home');}
+		} else {show_404();}
 	}
 
     function truncateString_($str, $len, $charset="UTF-8"){
