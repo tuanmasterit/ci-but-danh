@@ -8,13 +8,17 @@
 		}	
 		
 		// Get Comments By Post ID
-		function getByPost($post_id,$comment_approved)
+		function getByPost($post_id,$comment_approved,$limit=0,$offset=0)
 		{
 			$this->db->select('comment_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,user_id,comment_approved,id,user_registered');
 			$this->db->from('ci_comments');	
 			$this->db->join('ci_users', 'ci_users.user_login = comment_author');		
 			$this->db->where('ci_comments.comment_post_ID',$post_id);
 			$this->db->where('comment_approved',$comment_approved);
+			if($limit>0)
+			{
+				$this->db->limit($limit,$offset);
+			}
 			$query = $this->db->get();
 			return  $query->result();
 		}

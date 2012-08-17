@@ -6,7 +6,10 @@
         <div id="middle-center">        	
         	<div id="postlist" class="postlist restrain">
 				<div class="forumbitBody">
-					<ol id="posts" class="posts" start="1">
+					<input type="hidden" id="hdfCount" value="<?php echo count($lstComment);?>">
+					<input id="post_id" type="hidden" name="post_id" value="<?php echo $post_id;?>">
+					<input type="hidden" id="hdfurl" value="<?php echo base_url();?>/comments/add">
+					<ul id="posts" class="posts">
 					<?php                	
 	        		foreach ($thread as $thr)
 	        		{
@@ -72,19 +75,16 @@
 									<h2 class="posttitle icon">
 										<img alt="Post" src="<?php echo base_url();?>application/content/images/icon1.png" title="Post">
 										<?php echo $thr->post_title;?>
-									</h2>
-									<div class="content">
-										<div id="post_message_13234602">
-											<blockquote class="postcontent restore">
-												<?php echo $thr->post_content;?> 
-											</blockquote>
-										</div>
-									</div>
-									<blockquote class="signature restore">
-										
-									</blockquote>
+									</h2>									
+									<div class="postcontent restore">
+										<?php echo $thr->post_content;?> 
+									</div>									
 								</div>
 							</div>
+							<?php 
+							if($check_login)
+							{
+							?>
 							<div class="postfoot">
 								<div class="textcontrols floatcontainer">
 									<span class="postcontrols">
@@ -96,16 +96,22 @@
 									 	<a id="qrwq_13234602" class="newreply" href="" rel="nofollow" title="Trả Lời Với Trích Dẫn">
 									 		<img title="Trả Lời Với Trích Dẫn" id="quoteimg_13234602" src="<?php echo base_url();?>application/content/images/clear.gif" alt="Trả Lời Với Trích Dẫn">  Trả Lời Với Trích Dẫn
 							 			</a> 
-							 			<span class="seperator">&nbsp;</span> 
-							 			<a class="multiquote" href="" rel="nofollow" onclick="return false;" id="mq_13234602" title="Multi-Quote This Message">
+							 			<?php 
+					                    	if(($check_login)&&($check_thanks==false))
+					                    	{                    	
+					                    ?>
+							 			<span class="seperator">&nbsp;</span> 							 			
+							 			<a class="multiquote link-thanks" threads_id="<?php echo $thr->id;?>" href="<?php echo base_url();?>like/add_thanks" rel="nofollow"  id="<?php echo $author_id;?>" title="Thanks This Message">
 							 				&nbsp;
 						 				</a> 
+						 				<?php }?>
 									</span>									
 								</div>
 							</div>
+							<?php }?>
 						</li>
-						<li>
-							<form id="formID" class="vbform" onsubmit="return qr_prepare_submit(this, 10);" action="http://www.vn-zoom.com/newreply.php?do=postreply&t=2202838" method="post" name="quick_reply">
+						<li class="comment-form">
+							<form id="formID" class="vbform" method="post" name="quick_reply">
 								<div class="fullwidth">
 									<h3 id="quickreply_title" class="blockhead">
 										<img style="float:left;padding-right:10px" alt="Trả lời nhanh" src="<?php echo base_url();?>application/content/images/reply_40b.png" title="Trả lời nhanh">
@@ -116,30 +122,37 @@
 									<div class="blockbody formcontrols">
 										<div class="blockrow">
 											<label class="full" for="title">Tiêu đề:</label>
-											<input id="title"  class="primary textbox full validate[required]" type="text" title="nếu muốn" tabindex="1" maxlength="200" value="" name="title">											
+											<input id="title"  class="primary textbox full" type="text" title="nếu muốn" tabindex="1" maxlength="200" value="" name="title">											
 										</div>
 										<div class="blockrow">
-											<textarea id="editor_content" name="txtcontent">
+											<textarea id="editor_content0" name="txtcontent" class="editor_content">
 												
 											</textarea>
 										</div>
 									</div>
 									<div class="blockfoot actionbuttons">
 										<div class="group">											
-											<input id="qr_submit" class="button" type="submit" onclick="clickedelm = this.value" tabindex="1" name="sbutton" title="(Alt + S)" accesskey="s" value="Gửi Trả Lời">											
-											<input id="qr_cancelbutton" class="button" type="reset" onclick="qr_reset();" tabindex="4" name="cancel" title="(Alt + Shirt +C)" accesskey="c" value="Hủy bỏ" style="">
+											<input id="qr_submit qr_submit" class="button qr_submit" type="submit" tabindex="1" name="sbutton" title="Gửi trả lời" accesskey="s" value="Gửi Trả Lời">											
+											<input id="qr_cancelbutton" class="button qr_cancelbutton" type="reset"  tabindex="4" name="cancel" title="Hủy bỏ" accesskey="c" value="Hủy bỏ" style="">
 										</div>
 									</div>
 								</div>
 							</form>
 						</li>
+						<li>
+							<ul class="box-social-network">
+			                    <li><div class="fb-like" data-href="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true"></div></li> 
+			                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>" data-text="Bút danh" data-dnt="true">Tweet</a></li>                    
+			                    <li><div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>"></div></li>		                    
+		                	</ul>
+						</li>
 						<li id="post_thanks_box_13234602" class="postbit postbitim">
 							<div class="postbody">
 								<div class="postrow">
-									<h2 class="posttitle"> Có <span style="color:red;"><?php  $total_thanks = count($list_thanks); echo $total_thanks;?></span> thành viên cảm ơn <span style="color:red;"><?php echo $thr->user_nicename;?></span> cho bài viết này: </h2>
+									<h2 class="posttitle"> Có <span id="totalThanks" style="color:red;"><?php  $total_thanks = count($list_thanks); echo $total_thanks;?></span> thành viên cảm ơn <span style="color:red;"><?php echo $thr->user_nicename;?></span> cho bài viết này: </h2>
 									<div class="content">
 										<div id="post_thanks_bit_13234602">
-											<blockquote class="postcontent restore">
+											<blockquote class="postcontent restore" id="list-user-thanks">
 											<?php      
 					                            $i = 0;                           
 					                            foreach( $list_thanks as $thanks){
@@ -202,7 +215,7 @@
 										</a>
 										<div class="username_container">
 											<div id="yui-gen23" class="popupmenu memberaction">
-												<a id="yui-gen25" class="username offline popupctrl" title="<?php echo $Comment->comment_author;?>vẫn chưa có mặt trong diễn đàn" href="http://www.vn-zoom.com/1166099-kissmy890/" rel="nofollow">
+												<a class="username offline popupctrl" title="<?php echo $Comment->comment_author;?>vẫn chưa có mặt trong diễn đàn" href="<?php echo base_url().'member/profile/'.$Comment->id;?>" rel="nofollow">
 												<strong>Thành viên:</strong><br/>
 												<strong><?php echo $Comment->comment_author;?></strong>
 												</a>												
@@ -227,19 +240,16 @@
 									<h2 class="posttitle icon">
 										<img alt="Post" src="<?php echo base_url();?>application/content/images/icon1.png" title="Post">
 										<?php echo $Comment->comment_agent;?>
-									</h2>
-									<div class="content">
-										<div id="post_message_13234602">
-											<blockquote class="postcontent restore">
-												<?php echo $Comment->comment_content;?>												  
-											</blockquote>
-										</div>
-									</div>
-									<blockquote class="signature restore">
-										
-									</blockquote>
+									</h2>									
+									<div class="postcontent restore">
+										<?php echo $Comment->comment_content;?>												  
+									</div>								
 								</div>
 							</div>
+							<?php 
+							if($check_login)
+							{
+							?>
 							<div class="postfoot">
 								<div class="textcontrols floatcontainer">
 									<span class="postcontrols">
@@ -250,20 +260,49 @@
 									 	<span class="seperator">&nbsp;</span> 
 									 	<a id="qrwq_13234602" class="newreply" href="" rel="nofollow" title="Trả Lời Với Trích Dẫn">
 									 		<img title="Trả Lời Với Trích Dẫn" id="quoteimg_13234602" src="<?php echo base_url();?>application/content/images/clear.gif" alt="Trả Lời Với Trích Dẫn">  Trả Lời Với Trích Dẫn
-							 			</a> 
-							 			<span class="seperator">&nbsp;</span> 
-							 			<a class="multiquote" href="" rel="nofollow" onclick="return false;" id="mq_13234602" title="Multi-Quote This Message">
-							 				&nbsp;
-						 				</a> 
+							 			</a> 							 			
 									</span>								
 								</div>
 							</div>
+							<?php }?>
 						</li>
-						<?php }?>
-					</ol>
+						<li class="comment-form">
+							<form id="formID" class="vbform" method="post" name="quick_reply">
+								<div class="fullwidth">
+									<h3 id="quickreply_title" class="blockhead">
+										<img style="float:left;padding-right:10px" alt="Trả lời nhanh" src="<?php echo base_url();?>application/content/images/reply_40b.png" title="Trả lời nhanh">
+										Trả lời nhanh										
+									</h3>
+								</div>
+								<div class="wysiwyg_block">
+									<div class="blockbody formcontrols">
+										<div class="blockrow">
+											<label class="full" for="title">Tiêu đề:</label>
+											<input id="title"  class="primary textbox full validate[required]" type="text" title="nếu muốn" tabindex="1" maxlength="200" value="" name="title">											
+										</div>
+										<div class="blockrow">
+											<textarea id="editor_content<?php echo ($i-1);?>" class="editor_content" name="txtcontent">
+												
+											</textarea>
+										</div>
+									</div>
+									<div class="blockfoot actionbuttons">
+										<div class="group">											
+											<input id="qr_submit" class="button qr_submit" type="submit"  tabindex="1" name="sbutton" title="Gửi trả lời" accesskey="s" value="Gửi Trả Lời">											
+											<input id="qr_cancelbutton" class="button qr_cancelbutton" type="reset"  tabindex="4" name="cancel" title="Hủy bỏ" accesskey="c" value="Hủy bỏ" style="">
+										</div>
+									</div>
+								</div>
+							</form>
+						</li>
+						<?php $i++;}?>
+						<li id="last-comment">
+							
+						</li>
+					</ul>
 				</div>
-				<div class="bottomBar">
-					
+				<div class="bottomBar">					
+					<?php echo $list_link;?>
 				</div>
 				<br>
 				<div class="separator"></div>
@@ -274,17 +313,20 @@
     </div><!-- end middle -->
 <?php $this->load->view('front_end/footer');?>    
 <script type="text/javascript">
-	var editor = CKEDITOR.replace( 'editor_content',
-	{			
-		filebrowserBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=file',
-		filebrowserImageBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
-		filebrowserFlashBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
-		filebrowserImageUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
-		filebrowserFlashUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
-		filebrowserImageWindowWidth : '950',
-		filebrowserImageWindowHeight : '490',
-		filebrowserWindowWidth : '950',
-		filebrowserWindowHeight : '490'
-	});
-
+	var count = $('#hdfCount').attr('value');
+	for(var i=0;i<=count;i++)
+	{
+		CKEDITOR.replace( 'editor_content'+i,
+		{			
+			filebrowserBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=file',
+			filebrowserImageBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
+			filebrowserFlashBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
+			filebrowserImageUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
+			filebrowserFlashUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
+			filebrowserImageWindowWidth : '950',
+			filebrowserImageWindowHeight : '490',
+			filebrowserWindowWidth : '950',
+			filebrowserWindowHeight : '490'
+		});
+	}
 </script>

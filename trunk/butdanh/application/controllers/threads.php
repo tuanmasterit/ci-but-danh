@@ -61,7 +61,7 @@ class Threads extends CI_Controller {
 		
 		return $str;
 	}
-    public function detail($post_term='')
+    public function detail($post_term='',$row=0)
 	{				
 		//tranfer data
 		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
@@ -69,6 +69,9 @@ class Threads extends CI_Controller {
 		$data['lstLatestComment'] = $this->Comment_model->get(5);
         $data['post_term'] = $post_term;
         //data post
+        include('paging.php');
+        $config['base_url']= base_url().'chu-de/'.$post_term.'/';
+        $config['cur_page']= $row;
         $data['thread'] = $this->Post_model->get_seo($data['post_term']);
         foreach ($data['thread'] as $temp)
         {
@@ -87,8 +90,11 @@ class Threads extends CI_Controller {
 		
 		$data['post_id'] = $id;
 		//$data['thread'] = $this->Post_model->get($id);
-        
-		$data['lstComment'] = $this->Comment_model->getByPost($id,'approved');
+        $lstComment = $this->Comment_model->getByPost($id,'approved');
+        $config['total_rows'] = count($lstComment);
+        $this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();	
+		$data['lstComment'] = $this->Comment_model->getByPost($id,'approved',$config['per_page'],$row);
         
         
         // like --------------------------

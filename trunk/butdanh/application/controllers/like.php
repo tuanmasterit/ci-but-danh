@@ -53,18 +53,18 @@
             $total_thanks = count($list_thanks);
 			if($total_thanks>0)
             {
-                $mess2.= "<b>Có ".$total_thanks.' thành viên cảm ơn chủ đề này:</b>';
+                $mess2.= $total_thanks;
                 $i = 0;
                 foreach( $list_thanks as $thanks)
                   {
                     $i++;
                     $name =  $this->User_model->getById($thanks->meta_value);
                     if ($i!=$total_thanks)
-                    {
-                        $mess1 .= '<a href="'.base_url().'profile/'.$thanks->meta_value.'">'.$name['user_nicename'].'</a>,';
+                    {                        
+                        $mess1.="<a rel='nofollow' href='".base_url()."member/profile/".$thanks->meta_value."'>".$name['user_nicename']."</a>&nbsp; ,";
                     } else
                     {
-                        $mess1 .= '<a href="'.base_url().'profile/'.$thanks->meta_value.'">'.$name['user_nicename'].'</a>';
+                        $mess1.="<a rel='nofollow' href='".base_url()."member/profile/".$thanks->meta_value."'>".$name['user_nicename']."</a>";
                     }                  
                   }
             } 

@@ -132,6 +132,7 @@ ul li{list-style-type:none;}
 .forumbitBody {
     clear: both;
     padding-right: 2px;
+    overflow: hidden;
 }
 .posts, .postlist, #postlist {
     margin: 0;
@@ -335,6 +336,7 @@ ul li{list-style-type:none;}
 .postcontent {
     word-wrap: break-word;
     font-size: 12px;
+    padding: 10px;
 }
 blockquote {
     overflow: hidden;
@@ -367,6 +369,8 @@ blockquote {
     border-color: #DEDEDE -moz-use-text-color -moz-use-text-color #DEDEDE;
     border-style: solid none none solid;
     border-width: 1px 0 0 1px;
+    padding-bottom: 10px;
+    overflow: hidden;
 }
 .floatcontainer:after, .formcontrols .blockrow:after, dl.stats:after {
     clear: both;
@@ -420,7 +424,7 @@ blockquote {
     padding: 0 0 0 20px;
 }
 .postbitlegacy .postfoot .textcontrols a.multiquote, .postbit .postfoot .textcontrols a.multiquote {
-    background: url("../images/multiquote-back_40b.png") no-repeat scroll left center #DDDCDC;
+    background: url("../images/THX_Icon_by_kincoyotes.png") no-repeat scroll left center #DDDCDC;
     border: 0 solid #A8A8A8;
     padding: 0 0 1px 20px;
 }
@@ -986,3 +990,17 @@ a {
     width: 100%;
 }
  /*end search*/
+.qoute-comment { 
+	background: none repeat scroll 0 0 #F3F3F3;
+    border: 1px solid #D3D3D3;
+    border-radius: 5px 5px 5px 5px;
+    font: 13px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    margin:10px;
+    position: relative;
+    top: 0;
+    padding: 10px;
+    }
+.bottomBar{padding-top: 10px;}
+.box-social-network{width: 100%;padding: 10px;
+}
+.box-social-network li{float: left;}
