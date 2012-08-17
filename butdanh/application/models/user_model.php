@@ -46,7 +46,7 @@ class User_model extends CI_Model{
 		}
 		elseif ($id>0)
 		{
-			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key');
+			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key,user_registered');
 			$this->db->from('ci_users');
 			$this->db->where('id',$id);
 			$query = $this->db->get();

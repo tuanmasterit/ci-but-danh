@@ -56,6 +56,52 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	/************ Quick Reply   ************************/
+	$(".vbform").hide();
+	$(".quickreply").click(function(){
+		$(this).parent().parent().parent().parent().next().find('.vbform').show();
+		
+		return false;
+	});
+	$(".qr_cancelbutton").click(function(){
+		$(this).parent().parent().parent().parent().hide();
+	});
+	
+	$(document).on("click",".qr_submit",function(){
+		var title = $(this).parent().parent().prev().find('#title').attr('value');
+		
+		var editor = $(this).parent().parent().prev().find('.editor_content').attr('id');
+		var content = (CKEDITOR.instances[editor].getData());
+		
+		var url = $('#hdfurl').attr('value');
+		var post_id = $("#post_id").attr('value');		
+		$.post(url,{post_id:post_id,comment_content:content,comment_title:title},function(data) {
+			/*$('#last-comment').html(data.mess1);
+			CKEDITOR.replace( 'editor_content'+data.mess2,
+					{			
+						filebrowserBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=file',
+						filebrowserImageBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
+						filebrowserFlashBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
+						filebrowserImageUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
+						filebrowserFlashUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
+						filebrowserImageWindowWidth : '950',
+						filebrowserImageWindowHeight : '490',
+						filebrowserWindowWidth : '950',
+						filebrowserWindowHeight : '490'
+					});*/
+		});
+		/*$(".vbform").hide();*/		
+	});
+	
+	$('.newreply').click(function(){		
+		var editor = $(this).parent().parent().parent().parent().next().find('.vbform').find('.editor_content').attr('id');
+		$(this).parent().parent().parent().parent().next().find('.vbform').show();
+		var content =  $(this).parent().parent().parent().prev().find('.postcontent').html();
+		content = "<blockquote class='qoute-comment'>"+content+"</blockquote><br/>";		
+		CKEDITOR.instances[editor].setData(content);
+		
+		return false;
+	});
 	/********* Check login to like *******/
 	$('.link-login-like').click(function(){
 		alert('Bạn cần đăng nhập để thực hiện chức năng này!');		
@@ -69,9 +115,9 @@ $(document).ready(function(){
         //alert(threads_id);
 		$.post(url,{id:id,threads_id:threads_id},function(data) {
 		  
-		    $('#div-thanks').html('');  	
+		    $('.link-thanks').html('');  	
 			$('#list-user-thanks').html(data.mess1);
-			$('#list-thanks').html(data.mess2);
+			$('#totalThanks').html(data.mess2);
 		},'json');
 		return false;
 	});
