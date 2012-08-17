@@ -58,7 +58,11 @@
                                 <p><label>Nội dung:</label></p>                            
                                 <p><textarea class="validate[required]" name="txtcontent" id="editor_content"></textarea></p>                                
                                 <br/>
+                                <?php if ($check_login == 1) { ?>
                                 <p class="btSubmit"><input type="submit" name="submit" value="Đề xuất"/></p>
+                                <?php } else { ?>
+                                    <p class="btSubmit link-login-like"><input type="submit" name="submit" value="Đề xuất"/></p>
+                                <?php } ?>
                         </div>                    
                     </form>              
             </div><!--suggusetTopic-->
