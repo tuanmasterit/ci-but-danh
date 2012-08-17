@@ -21,4 +21,10 @@ CKEDITOR.editorConfig = function( config )
 		{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
 		{ name: 'tools', items : [ 'Maximize','-','About' ] }
 	];
+	config.toolbar_BasicToolbar =
+	[		
+		{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','Iframe' ] },
+		{ name: 'styles', items : [ 'Styles','Format' ] },
+		{ name: 'basicstyles', items : [ 'Bold','Italic','Strike' ] }
+	];
 };
