@@ -1005,3 +1005,5 @@ a {
 .box-social-network{width: 100%;padding: 10px;
 }
 .box-social-network li{float: left;}
+.info-member{float: left;}
+.info-member-detail{padding-left: 150px;}

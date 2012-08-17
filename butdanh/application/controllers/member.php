@@ -49,7 +49,7 @@
 			$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 			$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 			$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
-			$this->load->view('front_end/view_member_profile', $data);
+			$this->load->view('front_end/view_member_profile_2', $data);
 		}
 		
 		function updateProfile()
