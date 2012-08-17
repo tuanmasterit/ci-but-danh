@@ -172,12 +172,6 @@ $(document).ready(function(){
 		   $(this).next().slideToggle("slow");
 	});
    });
-   
-   $(document).ready(function(){
-	  $(".dangki").click(function(){
-		  $(".frm-login").slideToggle("fast");
-	  } );
-   });
   
    
     /**************   Topic Top    ******************************/
