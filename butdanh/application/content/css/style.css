@@ -84,15 +84,15 @@ ul li{list-style-type:none;}
 .thanh-right{}
 .box-center{}
 .bullet{font-size:14px;}
-.bullet1{font-size:10px !important;}
+.bullet1{font-size:10px !important; margin-top:20px;}
 .box-center h3{padding:3px 5px;background:#CC0000;color:#FFF;font-size:11px;font-weight:bold;}
 .box-center .content-box-right{padding:5px}
 .box-center .content-box-right ul li{list-style-position:inside;margin-bottom:5px;}
 .box-center .content-box-right ul li a{font-size:10px;}
 .box-center ul li a {font-size:12px;}
-#list-topic-detail{padding-left: 17px;font-weight:bold;}
+#list-topic-detail{padding-left: 10px;font-weight:bold;padding-top:27px;}
 #topthang{font-size:14px !important;padding-left: 10px;font-weight:bold;}
-.topic-a{float:left;}
+.topic-a{float:left;margin-bottom: 20px;}
 .topic-b{float:right;}
 /* end right */
 /* footer */
