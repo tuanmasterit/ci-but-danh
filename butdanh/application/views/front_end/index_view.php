@@ -64,7 +64,7 @@
                     	foreach ($lstLatestComment as $LatestComment){
                     ?>
                     <ul>
-                    	<li><?php echo $LatestComment->comment_agent;?></li>
+                    	<li><a href="<?php echo base_url().'chu-de/'.$LatestComment->guid;?>"><?php echo $LatestComment->comment_agent;?></a></li>
                     </ul>
                     <?php 
                     	$num++;
