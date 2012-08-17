@@ -6,7 +6,24 @@
         	$(function(){
         		$('#txtBirthday').datepicker({ dateFormat: 'dd/mm/yy' });
             	});
-        </script>               	
+        </script> 
+	        <div id="menu-top">
+	        	<ul class="nav-top">
+	            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
+					<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
+	                <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
+	                <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
+	                <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
+	                <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
+	            </ul>
+	            <div class="user">
+	            	<?php if($this->session->userdata('username') != ''){?>
+	                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
+	                <?php }else{?>
+	                <?php }?>                
+	            </div>
+	        </div><!-- end menu-top -->    
+	         <!-- menu-top -->              	
         	<div id="box-newtopic" class="box-center">
 				<h2>Thông tin thành viên</h2>
 				<div class="profile_content">
@@ -57,12 +74,16 @@
 						</div>
 						<div class="item-section">
 							<div class="about-left">
-								Đến từ &nbsp;
-								<?php 
-									if($check_duplicate==true){
-								?>
-								<a href="#" id="link-address"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
-								<?php }?>
+								<div class="info-member">Đến từ &nbsp;
+									<?php 
+										if($check_duplicate==true){
+									?>
+									<a href="#" id="link-address"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
+									<?php }?>
+								</div>
+								<div class="info-member-detail">
+									
+								</div>
 							</div>
 							<div class="about-right" id="div-address">
 								<label id="address-show"><?php if($address=='') {echo 'N/A';} else{echo $address;}?></label>
