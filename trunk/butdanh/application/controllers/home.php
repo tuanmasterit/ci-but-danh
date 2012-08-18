@@ -215,7 +215,7 @@ class Home extends CI_Controller {
 		$config['base_url']= base_url()."home/search/".$data['post_type']."/".$data['category']."/".$data['titleTopic']."/";
         if  ($data['titleTopic'] == '~' ) $data['titleTopic'] = '';
         if ($post_type == 'topic') {$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);}
-        else $config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);
+        else $config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);
         
          		
 		$config['cur_page']= $row;		
