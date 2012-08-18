@@ -105,10 +105,10 @@
         								</h2>
         								<h2 class="tagLead">
                	                        <?php if($post_type == 'topic'){?>
-        									<p>Người đề xuất : <a href="#"><b><?php echo $Post->user_nicename;?></b></a>
+        									<p>Người đề xuất : <a href="<?php echo base_url().'member/profile/'.$Post->post_author;?>"><b><?php echo $Post->user_nicename;?></b></a>
                 	            			</p>
                                         <?php } else {?>
-                                            <p>Bút danh : <a href="#"><b><?php echo $Post->user_nicename;?></b></a>
+                                            <p>Bút danh : <a href="<?php echo base_url().'profile/'.$Post->post_author;?>"><b><?php echo $Post->user_nicename;?></b></a>
                 	            			</p>
                                         <?php } ?>    
                                             <div class="date-title">
