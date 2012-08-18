@@ -37,7 +37,7 @@
         							
         						</div>
                                 <select class="InputSearch1" name="slcategory">
-                                <option value="">Tất cả</option>
+                                <option value=""> Tất cả</option>
                                 <?php foreach($lstCategories as $l_category){?>                                 
                                 	<?php if($l_category->term_id == $category){?>
                                     	<option selected="selected" value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
@@ -48,11 +48,11 @@
                                 </select>
                                 <select class="InputSearch1" name="post_type">                                                                                              
                                 	<?php if($post_type == 'topic'){?>
-                                    	<option selected="selected" value="topic">Chủ đề</option>
-                                        <option value="post">bài viết</option>
+                                    	<option selected="selected" value="topic"> Chủ đề</option>
+                                        <option value="post"> Bài viết</option>
                                     <?php }else{?>
                                     	<option  value="topic">Chủ đề</option>
-                                        <option selected="selected" value="post">bài viết</option>
+                                        <option selected="selected" value="post"> Bài viết</option>
                                     <?php }?>
                                 
                                 </select>
