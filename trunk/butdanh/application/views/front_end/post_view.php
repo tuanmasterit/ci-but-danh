@@ -32,16 +32,16 @@
                         <input type="hidden" id="imageHidden" value="<?php echo base_url();?>application/content/images/hidden.png" />
                         <input type="hidden" id="imageShow" value="<?php echo base_url();?>application/content/images/show.png" />
                                                                     
-                        <label id="btSuggestTopic" >Hiện đề xuất chủ đề</label>                                                                            
+                        <label id="btSuggestTopic" >Đề xuất chủ đề</label>                                                                            
                 </div> 
                 <div id="suggestTopic">                	
                 	<form method="post" id="formID" action="<?php echo base_url().'post/suggest/'.$post_id;?>"  accept-charset="utf-8" enctype="multipart/form-data">        
                     	<div class="edit-main">   
                                 <p><label>Tiêu đề:</label></p>
-                                <p><span class="field "><input type="text" class="longinput validate[required]" name="txttitle"></span></p>
+                                <p><span class="field "><input type="text" class=" textbox longinput validate[required]" name="txttitle" size="40"></span></p>
                                 <br/>                                
                                 <p><label>Ảnh đại diện:</label></p>
-                                <p><span class="field"><input type="file" name="userfile"   /></span></p>
+                                <p><span class="field"><input class="textbox" type="file" name="userfile" size="40"  /></span></p>
                                 <br/>                            
                                 <p><label>Tóm tắt:</label></p>                            
                                 <p><span class="field"><textarea class="validate[required]" name="txtexcerpt"></textarea></span></p>
