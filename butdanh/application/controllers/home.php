@@ -218,7 +218,8 @@ class Home extends CI_Controller {
         else $config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);
         
          		
-		$config['cur_page']= $row;		
+		$config['cur_page']= $row;
+        $config['num_links'] = 3;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer        
