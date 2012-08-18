@@ -235,8 +235,8 @@ class Post_model extends CI_Model{
 	function delete_post($id){
 		//Delete postmeta
 		$this->db->delete('ci_postmeta',array('post_id'=>$id));
-		//Delete term_relationships
-		$query = "DELETE FROM ci_term_relationships WHERE object_id="+$id+" AND term_taxonomy_id IN(SELECT term_taxonomy_id FROM ci_term_taxonomy WHERE taxonomy='category')";
+		//elete term_relationships
+		$query = "DELETE FROM ci_term_relationships WHERE object_id=".$id." AND term_taxonomy_id IN(SELECT term_taxonomy_id FROM ci_term_taxonomy WHERE taxonomy='category')";
 		$this->db->query($query);
 		//Delete comment
 		$this->db->delete('ci_comments',array('comment_post_ID'=>$id));	
