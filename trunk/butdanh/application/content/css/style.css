@@ -804,7 +804,7 @@ form#quick_reply .actionbuttons .group {
     height: 35px;
     margin: 0;
     text-align: center;
-    width: 83px;
+    width: 65px;
 }
 .bttSearch:hover{
     cursor: pointer;
@@ -844,7 +844,7 @@ form#quick_reply .actionbuttons .group {
 .upSearch {
     float: left;
     margin: 0 0 8px;
-    width: 460px;
+    width: 476px;
 }
 .InputSearch {
     float: left;
@@ -856,7 +856,7 @@ form#quick_reply .actionbuttons .group {
     float: left;
     height: 34px;
     margin: 0 5px 0 0;
-    width: 60px;
+    width: 70px;
 }
 .InputSearch1 {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -867,6 +867,7 @@ form#quick_reply .actionbuttons .group {
     outline: 0 none;
     padding-left:0px;
     padding-top: 6px;
+    text-align: center;
 }
 .inputS-left {
     background: url("../images/searchBg.gif") no-repeat scroll 0 0 transparent;
