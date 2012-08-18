@@ -680,6 +680,7 @@ form#quick_reply .actionbuttons .group {
     margin-right: 10px;   
     margin-left: 10px;       
     margin-top: 10px !important;
+    overflow: hidden;
 }
 .fon p {
     font-family: Times New Roman;
@@ -941,7 +942,7 @@ form#quick_reply .actionbuttons .group {
 }
 .divTagLeft {
     float: left;
-    width: 110px;
+    width: 80px;
 }
 
 .img100 {
@@ -949,7 +950,7 @@ form#quick_reply .actionbuttons .group {
     height: 75px;
     margin: 0 10px 0 0;
     position: relative;
-    width: 100px;
+    width: 75px;
 }
 a {
     text-decoration: none;
@@ -957,7 +958,7 @@ a {
 
 .img100 img {
     height: 75px;
-    width: 100px;
+    width: 75px;
 }
 .divTagLeft a img {
     border: medium none;
@@ -969,7 +970,7 @@ a {
     left: 0;
     position: absolute;
     top: 0;
-    width: 100px;
+    width: 75px;
     z-index: 2;
 }
 .divTagRight {
