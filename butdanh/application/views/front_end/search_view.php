@@ -78,7 +78,19 @@
                                         <?php }else{?>
                                             <a href="<?php echo base_url().'bai-viet/'.urldecode($Post->guid);?>" class="img100">
                                         <?php }?>
-        									<img src="<?php echo base_url().$this->Post_model->get_featured_image($Post->id);?>" alt=''>
+        									<img src="<?php 
+                                            
+                                                $avatar =  $this->Post_model->get_featured_image($Post->id);
+                                                if ($avatar != '')
+                                                {
+                                                    $avatar = base_url().$avatar;
+                                                }                                
+                                                else
+                                                {
+                                                    $avatar = base_url().'application/content/images/noavatar.png';
+                                                }                
+                                                echo $avatar;
+                                            ?>" alt=''>
         									<div class="frame100"></div>
         								</a>
         							</div>
@@ -92,8 +104,13 @@
         									
         								</h2>
         								<h2 class="tagLead">
+               	                        <?php if($post_type == 'topic'){?>
         									<p>Người đề xuất : <a href="#"><b><?php echo $Post->user_nicename;?></b></a>
                 	            			</p>
+                                        <?php } else {?>
+                                            <p>Bút danh : <a href="#"><b><?php echo $Post->user_nicename;?></b></a>
+                	            			</p>
+                                        <?php } ?>    
                                             <div class="date-title">
                 	            		     <p>Ngày : <?php echo date_format(date_create($Post->post_date),'d-m-Y');?></p>
          	            	                </div>
