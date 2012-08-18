@@ -73,7 +73,7 @@ class Post extends CI_Controller {
         $featured_image = '';
         $featured_image = $this->Post_model->get_featured_image($post_id);         
         //default image
-        if ($featured_image == '') $featured_image = '/butdanh/application/content/images/SuggestTopic/484028_363931040346350_2004736770_n4.jpg';
+        if ($featured_image == '') $featured_image = 'application/content/images/noavatar.png';
         $data['featured_image'] = $featured_image;    
         
         $butdanh = $this->session->userdata('user_id');
