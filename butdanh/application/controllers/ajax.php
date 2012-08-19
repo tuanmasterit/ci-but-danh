@@ -68,14 +68,14 @@
 			{
 				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-7 days')),date('Y-m-d h:i:s'));
 				foreach($lstToppic_top as $topic){
-                    $html.="<li><a class='bullet' href='".base_url()."'chu-de/".urldecode($topic->guid)."'>".$topic->post_title."</a></li>";
+                    $html.="<li><a class='bullet1' href='".base_url()."'chu-de/".urldecode($topic->guid)."'>".$topic->post_title."</a></li>";
 				}
 			}
 			else 
 			{
 				$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id,date('Y-m-d h:i:s',strtotime('-7 days')),date('Y-m-d h:i:s'));
 				foreach($lstToppic_top as $topic){
-                    $html.="<li><a class='bullet' href='".base_url()."'chu-de/".urldecode($topic->guid)."'>".$topic->post_title."</a></li>";
+                    $html.="<li><a class='bullet1' href='".base_url()."'chu-de/".urldecode($topic->guid)."'>".$topic->post_title."</a></li>";
 				}
 			}
 		}
