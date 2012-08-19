@@ -25,8 +25,9 @@
 					<?php                	
 	        		foreach ($thread as $thr)
 	        		{
-	        		  
+	        			
 	        		?>
+	        		
 						<li id="thread-li" class="postbit postbitim postcontainer old">
 							<div class="postdetails_noavatar">
 								<div class="posthead">
