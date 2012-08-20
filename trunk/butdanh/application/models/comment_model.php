@@ -25,18 +25,20 @@
 		
 		function get($limit=0,$offset=0,$order_by='comment_date',$order='DESC',$comment_approved='',$term_id=0)
 		{
-			$this->db->select('comment_ID,comment_post_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,user_id,comment_approved,guid');
+			$this->db->select('comment_ID,comment_post_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,ci_comments.user_id,comment_approved,guid,post_title,post_date,user_login,post_author');
 			$this->db->from('ci_comments');	
 			if($comment_approved!='')
 			{		
 				$this->db->where('comment_approved',$comment_approved);
 			}
+                        $this->db->group_by('comment_post_ID');
 			$this->db->order_by($order_by,$order);
 			if($limit>0)
 			{
 				$this->db->limit($limit,$offset);
 			}
 			$this->db->join('ci_posts', 'ci_posts.id = ci_comments.comment_post_ID');
+                        $this->db->join('ci_users','ci_users.id = ci_posts.post_author');
                         if($term_id != '' and $term_id > 0 ){
                             $this->db->join('ci_term_relationships','ci_posts.id=object_id');
                             $this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	

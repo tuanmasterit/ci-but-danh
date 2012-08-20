@@ -35,7 +35,7 @@ ul li{list-style-type:none;}
 .tamgiac:HOVER{cursor: pointer;}
 .lst-butdanh a{font-size:10px;}
 .lst-butdanh ul li{margin-left:20px;list-style-type: circle;}
-.lst-butdanh1 ul li{margin-left:10px;}
+.lst-butdanh1 ul li{margin-left:10px; min-height: 60px;border-bottom: 1px #777777 dotted;padding: 5px;}
 .txt{background:#FFF;border:1px solid #CCC;padding:3px;}
 .text{background:#FFF;border:1px solid #CCC;padding:3px;}
 .btn-search{background:url('../images/btn_search.png') no-repeat;width:24px;height:24px;border:none;cursor:pointer;}
@@ -1210,3 +1210,13 @@ select {
     font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
     padding: 2.5px 5px;
 }
+
+
+.left-comment{float: left;width: 65%;}
+.left-comment .item-toptic-new{color: #CC0000;font-weight: bold;}
+.right-comment{float: right;width: 30%;padding-left: 5px;}
+.right-comment img{
+    width: 50px;height: 50px;float: left;padding: 1px;margin-right: 10px;
+   border:1px solid #021a40;   
+}
+.right-comment .info-comment{}

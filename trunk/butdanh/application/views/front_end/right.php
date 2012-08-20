@@ -64,6 +64,31 @@
                     	?>
                 </div>  
             </div>
-            
+            <div class="box-center">
+                <h3>Comment mới nhất</h3>
+                <div class="content-box-right">
+                    <?php                     	
+                    	$num = 1;
+                    	foreach ($lstLatestComment as $LatestComment){
+                    ?>
+                    <ul>
+                        <li><?php echo $num;?>.&nbsp;<a href="<?php echo base_url().'chu-de/'.$LatestComment->guid;?>">
+                            <?php 
+                            if(strlen($LatestComment->comment_agent)<60)
+                            {
+                                echo $LatestComment->comment_agent;
+                            }
+                            else
+                            {
+                                echo substr($LatestComment->comment_agent,0,57).'...';
+                            }
+                            ?></a></li>
+                    </ul>
+                    <?php 
+                        $num++;
+                        }
+                    ?>
+                </div>  
+            </div>
            
         </div><!-- end middle-right -->
