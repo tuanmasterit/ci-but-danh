@@ -14,7 +14,7 @@
             <!-- menu-top -->
             <div id="menu-top">
                 <ul class="nav-top">
-            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
+            	<li><a href="<?php echo base_url();?>" class="current_menutop">Trang chủ</a></li>
 				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
                 <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
                 <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
