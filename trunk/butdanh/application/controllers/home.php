@@ -213,10 +213,14 @@ class Home extends CI_Controller {
         //paging
 		include('admin/paging.php');		
 		$config['base_url']= base_url()."home/search/".$data['post_type']."/".$data['category']."/".$data['titleTopic']."/";
-        if  ($data['titleTopic'] == '~' ) $data['titleTopic'] = '';
-        if ($post_type == 'topic') {$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);}
-        else $config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);
-        
+        if  ($data['titleTopic'] != '~' )
+        {
+            if ($post_type == 'topic') {$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);}
+            else $config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);
+        } else
+        {
+            $config['total_rows'] = 0;
+        }
          		
 		$config['cur_page']= $row;
         $config['num_links'] = 3;		
@@ -227,11 +231,15 @@ class Home extends CI_Controller {
         if ($row+10 <= $data['total_rows'] )
          {$data['row']  = 10;} 
          else {$data['row']  =$data['total_rows'] - $row;}
-         
-		if ($post_type == 'topic') $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']); 
-        else $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);
-        
-        
+        if  ($data['titleTopic'] != '~' )
+        { 
+    		if ($post_type == 'topic') $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']); 
+            else $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);
+        } else
+        {
+            $data['lstPosts'] = array();
+        }
+        if  ($data['titleTopic'] == '~' ) $data['titleTopic'] = '';
         $data['lstCategories'] = $this->Term_model->get();
 		
 		$this->load->view('front_end/search_view',$data);
