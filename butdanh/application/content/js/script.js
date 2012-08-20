@@ -259,19 +259,21 @@ $(document).ready(function(){
     
     $(".topic-a-top").click(function(){
         var url = $(this).attr('href');		
-		var get_by = '';
-		if($(this).hasClass('publish')){
-			get_by='publish';
-		}
-		if($(this).hasClass('pending')){
-			get_by='pending';
-		}
-		if($(this).hasClass('reject')){
-			get_by='reject';
-		}
-		$.post(url,{get_by:get_by},function(data) {
-			$("#scroll_box-top").html(data);			
-		});
+        var get_by = '';
+        if($(this).hasClass('publish')){
+                get_by='publish';
+        }
+        if($(this).hasClass('pending')){
+                get_by='pending';
+        }
+        if($(this).hasClass('reject')){
+                get_by='reject';
+        }
+        var term_id = $("#hdfCat").attr("value");
+        $.post(url,{get_by:get_by,term_id:term_id},function(data) {
+                $("#scroll_box-top").html(data);			
+        });
+        
         $(".topic-a-top").removeClass('tab-active');
         $(this).addClass('tab-active');
         return false;

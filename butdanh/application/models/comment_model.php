@@ -23,7 +23,7 @@
 			return  $query->result();
 		}
 		
-		function get($limit=0,$offset=0,$order_by='comment_date',$order='DESC',$comment_approved='')
+		function get($limit=0,$offset=0,$order_by='comment_date',$order='DESC',$comment_approved='',$term_id=0)
 		{
 			$this->db->select('comment_ID,comment_post_ID,comment_author,comment_author_email,comment_date,comment_content,comment_agent,user_id,comment_approved,guid');
 			$this->db->from('ci_comments');	
@@ -37,6 +37,11 @@
 				$this->db->limit($limit,$offset);
 			}
 			$this->db->join('ci_posts', 'ci_posts.id = ci_comments.comment_post_ID');
+                        if($term_id != '' and $term_id > 0 ){
+                            $this->db->join('ci_term_relationships','ci_posts.id=object_id');
+                            $this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
+                            $this->db->where('ci_term_taxonomy.term_id',$term_id);	
+			}
 			$query = $this->db->get();
 			return  $query->result();
 		}
