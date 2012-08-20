@@ -88,8 +88,10 @@ background:#333333;
 }
 .nav-top li a.current_menutop{
     background: url("../images/cat_bg.jpg") repeat-x scroll left top transparent;
-    border-left: 1px solid #262626;
-    border-right: 1px solid #262626;
+   /**
+ *  border-left: 1px solid #262626;
+ *     border-right: 1px solid #262626;
+ */
     color: #626262;
     text-shadow: none;
 }
