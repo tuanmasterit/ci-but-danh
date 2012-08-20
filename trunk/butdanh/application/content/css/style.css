@@ -52,11 +52,47 @@ ul li{list-style-type:none;}
 /* end left */
 /* middle */
 #middle-center{background:#EAEAEA;width:482px;float:left;margin-right:8px;}
-#menu-top{overflow:hidden;border-bottom:1px solid #CCC;margin-bottom:10px;}
+
+#menu-top{
+    background: none repeat scroll 0 0 #333333;
+    border-bottom: 1px solid #CCCCCC;
+    margin-bottom: 10px;
+    overflow: hidden;
+    height: 21px;
+    }
+
 .name-butdanh{border-top: 1px solid #CCCCCC;}
-.nav-top{float:right;}
-.nav-top li{float:left;padding:5px 0px;}
-.nav-top li a{color:#333;border-right:1px solid #CCC;padding:0px 8px;}
+
+.nav-top{float:right;
+background:#333333;
+}
+
+.nav-top li{float:left;padding:0px 0px;}
+
+.nav-top li a{color: #EDEDED;
+    display: block;
+    float: left;
+    font-size: 12px;
+    height: 15px;
+    padding: 3px 5px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #333333;
+    text-transform: capitalize;
+}
+.nav-top li a:hover {
+    background: url("../images/cat_bg.jpg") repeat-x scroll left top transparent;
+    border-left: 1px solid #262626;
+    border-right: 1px solid #262626;
+    color: #626262;
+    text-shadow: none;
+}
+.nav-top li a.current_menutop{
+    background: url("../images/cat_bg.jpg") repeat-x scroll left top transparent;
+    border-left: 1px solid #262626;
+    border-right: 1px solid #262626;
+    color: #626262;
+    text-shadow: none;
+}
 #butdanh li a{font-size:9px;}
 #chude{}
 .box-center{margin-bottom:10px;}
@@ -737,6 +773,10 @@ form#quick_reply .actionbuttons .group {
 .btsubmit{
     text-align: center;
 	
+}
+.field 
+{
+    width: 200px;
 }
 .btsubmit input {
     background: url("../images/generic_button.png") repeat-x scroll left top #E9E9E9;
