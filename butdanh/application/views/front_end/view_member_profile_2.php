@@ -17,15 +17,7 @@
                 <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
                 <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
             </ul>
-            <div class="user">
-            	<?php if($this->session->userdata('username') != ''){?>
-                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
-                <?php }else{?>
-            		
-            		
-                  
-                <?php }?>                
-            </div>
+         
         </div><!-- end menu-top -->    
          <!-- menu-top -->
        	<div class="box-center" id="box-newtopic">            
