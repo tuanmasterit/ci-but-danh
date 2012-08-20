@@ -14,7 +14,7 @@
 <script src="<?php echo base_url();?>application/content/js/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>application/content/js/jquery-ui-sliderAccess.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>application/content/js/ajaxfileupload.js" type="text/javascript"></script>
-<title>Bút danh</title>
+<title>Diễn Đàn Nghiên Cứu Báo Chí</title>
 <script>
 		jQuery(document).ready(function(){
 			// binds form submission and fields to the validation engine

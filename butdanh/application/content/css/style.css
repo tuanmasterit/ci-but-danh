@@ -1,5 +1,5 @@
 /* CSS Document */
-html{}
+html{background:#F1F1F1;}
 body{margin:0px;text-align:center; font-family:Tahoma, Geneva, sans-serif; font-size:12px;color:#333;}
 /* common */
 a{text-decoration:none;color:#333;}
@@ -10,11 +10,12 @@ h1,h2,h3{padding:0px;margin:0px; font-weight:normal}
 ul{padding:0px;margin:0px;}
 ul li{list-style-type:none;}
 /* end common */
-#wr{width:970px;margin:0 auto;}
+#wr{width:970px;margin:0 auto;background:#FFF;}
 #wrap{width:960px;margin:0 auto;text-align:left;overflow:hidden;}
 #middle{overflow:hidden;border:1px solid #CCC;border-top:none;margin-bottom:10px;}
 /* left */
-#middle-left{float:left; margin-right:8px;width:29%;background:#EAEAEA;}
+#middle-left{float:left; margin-right:8px;width:29%;background:#DC143C;color:#FFF;}
+#middle-left a{color:#FFF;}
 #left-t form
 #thanh-left{}
 #left-t{}
@@ -22,7 +23,7 @@ ul li{list-style-type:none;}
 #box-butdanh{}
 #top-left{overflow:hidden;padding:5px;}
 #logo{ padding:3px 0px 0px 0px;float:left}
-.time{float:right;font-size:10px;color:#CC0000;padding-top:13px;}
+.time{float:right;font-size:10px;color:#FFF;padding-top:13px;}
 .lst-bao{padding-left:5px;padding-bottom:10px;}
 .lst-bao h3{margin-bottom:5px;}
 .tamgiac{ padding-left:10px;}
@@ -51,10 +52,11 @@ ul li{list-style-type:none;}
 .btnlogin:hover{background:#CC0000;}
 /* end left */
 /* middle */
-#middle-center{background:#EAEAEA;width:482px;float:left;margin-right:8px;}
+#middle-center{background:#DC143C;width:482px;float:left;margin-right:8px;color:#FFF;}
+#middle-center a{color:#FFF;}
 
 #menu-top{
-    background: none repeat scroll 0 0 #333333;
+    background: none repeat scroll 0 0 #464646;
     border-bottom: 1px solid #CCCCCC;
     margin-bottom: 10px;
     overflow: hidden;
@@ -103,7 +105,7 @@ background:#333333;
 .box-content .box1 ul li{margin-left:10px;}
 .box-center .top-topic-top li{float:left;}
 .box-center .top-topic-top li a{padding:3px 10px;display:block;font-size:13px;}
-.box-center .top-topic-top li a:hover,.box-center .top-topic-top li a.tab-active{background:#CC0000;color:#FFF;}
+.box-center .top-topic-top li a:hover,.box-center .top-topic-top li a.tab-active{background:#464646;color:#FFF;}
 .box-center .top-topic-top li a:focus{background:#CC0000;color:#FFF;}
 .box-center .top-topic-top li.tab-active a{background:#CC0000;color:#FFF; font-color:#FFF;}
 .dangki{background:#CC0000;color:#FFF; font-color:#FFF;}
@@ -117,7 +119,8 @@ background:#333333;
 .date-time{font-size:10px;color:#AC0000;font-style:italic;padding-left:10px;}
 /* end middle*/
 /* right */
-#middle-right{float:right;background:#EAEAEA; width:19%;}
+#middle-right{float:right;background:#DC143C; width:19%;color:#FFF;}
+#middle-right a{color:#FFF;}
 .clear{}
 .thanh-right{}
 .box-center{}
@@ -126,7 +129,7 @@ background:#333333;
     font-size: 10px !important;
     margin-top: 20px;
     padding-left: 20px;}
-.box-center h3{padding:3px 5px;background:#CC0000;color:#FFF;font-size:11px;font-weight:bold;}
+.box-center h3{padding:3px 5px;background:#464646;color:#FFF;font-size:11px;font-weight:bold;}
 .box-center .content-box-right{padding:5px}
 .box-center .content-box-right ul li{list-style-position:inside;margin-bottom:5px;}
 .box-center .content-box-right ul li a{font-size:10px;padding: 5px;}
