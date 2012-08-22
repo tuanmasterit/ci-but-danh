@@ -19,7 +19,7 @@
                     </div>   
                                                          
 					<div id="profile_detail_more">									
-						<p>Báo: <span><?php echo $butdanh['name'];?></span></p>
+						<p><span>Báo: <?php echo $butdanh['name'];?></span></p>
 						<?php//linh vuc viet bai echo $butdanh['display_name'];?>
 						<input type="hidden" id="hdflike" value="<?php echo $check_like;?>" />
                         <div class="like" id="div-like">
