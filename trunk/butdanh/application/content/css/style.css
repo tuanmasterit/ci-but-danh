@@ -721,15 +721,15 @@ form#quick_reply .actionbuttons .group {
     line-height:20px;
     font-size: 12px;
 }
-.list-post .tab_month li a {text-decoration:none;font-size: 12px;}
+.list-post .tab_month li a {text-decoration:none;font-size: 13px;}
 .list-post{margin-bottom:10px;overflow:hidden;margin-top:3px;}
 .list-post h3{margin-bottom:10px;}
 .list-post-right{float:right;width:87%;}
 .list-post-right h3{background:#CC0000;color:#FFF;padding:3px;}
 .resultmonth{padding-left:10px;}
 .resultmonth p{text-align:center;}
-.resultmonth li a.bullet2{background:url('../images/bullet-arrow1.png') no-repeat left center;padding-left:10px;font-size: 10px}
-#profile_topic ul li a.bullet2{background:url('../images/bullet-arrow1.png') no-repeat left center;padding-left:10px; font-size: 10px }
+.resultmonth li a.bullet2{background:url('../images/bullet-arrow1.png') no-repeat left center;padding-left:10px;font-size: 11px}
+#profile_topic ul li a.bullet2{background:url('../images/bullet-arrow1.png') no-repeat left center;padding-left:10px; font-size: 12px }
 .topic_relation{padding-left: 10px;margin-bottom: 10px;}
 #box_content_profile
 {
@@ -739,7 +739,7 @@ form#quick_reply .actionbuttons .group {
 {
     background: none repeat scroll 0 0 #333333;
     color: white;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
     height: 21px;
     padding-left: 3px;
@@ -759,11 +759,12 @@ form#quick_reply .actionbuttons .group {
 }
 #profile_detail_more p
 {
-    font-size: 11px;
+    font-size: 12px;
 }
 #profile_detail_more span
 {
     color:#CC0000;
+    font-weight: bold;
 }
 #avatar_profile
 {
@@ -780,16 +781,17 @@ form#quick_reply .actionbuttons .group {
 {
     text-align: center;
 }
-#list-like p{font-size: 10px; font-weight: bold;}
+#list-like p{font-size: 11px; font-weight: normal;}
 #avatar_profile h2
 {
-    font-size: 14px;
+    font-size: 15px;
     background: #333333;
     color: white;
     text-align: center;
     border-top: solid;
     border-top-width: 1px;
     border-top-color: white ;
+    font-weight: bold;
 }
 .profile_info
 {
@@ -804,11 +806,11 @@ form#quick_reply .actionbuttons .group {
 }
 #profile_article h2
 {
-    font-size: 12px;
+    font-size: 13px;
 }
 #profile_topic h2
 {
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 5px;
 }
 /* end profile*/
@@ -1012,13 +1014,13 @@ form#quick_reply .actionbuttons .group {
 
 .upSearch {
     float: left;
-   
+    margin-bottom: 8px;
     width: 100%;
 }
 .InputSearch {
     float: left;
     height: 35px;
-    margin: 0 2px 0 0;
+    margin: 0 2px 0 3px;
     width: 265px;
 }
 .InputSearch1 {
@@ -1037,6 +1039,7 @@ form#quick_reply .actionbuttons .group {
     padding-top: 6px;
     text-align: center;
     float:left;
+    margin-right: 3px;
 }
 .inputS-left {
     background: url("../images/searchBg.gif") no-repeat scroll 0 0 transparent;
@@ -1068,7 +1071,8 @@ form#quick_reply .actionbuttons .group {
     color: #3F3F3F;
     float: left;
     font: 13px arial;
-    margin: 0;
+    margin-bottom: 8px;
+    margin-left: 3px;
     width: 450px;
 }
 .analyticResult label {
