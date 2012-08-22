@@ -755,6 +755,10 @@ form#quick_reply .actionbuttons .group {
 {
     font-size: 11px;
 }
+#profile_detail_more span
+{
+    color:#CC0000;
+}
 #avatar_profile
 {
     width: 97%;
@@ -949,8 +953,7 @@ form#quick_reply .actionbuttons .group {
     cursor: pointer;
     float: left;
     font: bold 11px tahoma;
-    height: 35px;
-    margin: 0;
+    height: 35px;   
     text-align: center;
     width: 65px;
 }
@@ -958,52 +961,63 @@ form#quick_reply .actionbuttons .group {
     cursor: pointer;
 } 
 .navTagnSearch {
-    background: url("../images/detailSep.gif") repeat-x scroll left bottom #FFFFFF;
+    background: url("../images/detailSep.gif") repeat-x scroll left bottom #333333;
     float: left;
-    height: 20px;
+    height: 25px;
     overflow: hidden;
-    padding: 10px 10px 5px;
-    width: 460px;
+   /**
+ *  padding: 10px 10px 5px;
+ */
+    width: 100%;
 }
 
 .tagHeader {
-    color: #3F3F3F;
+    color: #FFFFFF;
     float: left;
     font: bold 12px arial;
     padding: 0 8px 0 0;
-    text-transform: uppercase;
+    
 }
 .navTagnSearch a {
     text-decoration: none;
 }
 .tagHeader label {
-    font-size: 14px;
+    float: left;
+    font-size: 12px;
+    margin-left: 3px;
+    margin-top: 3px;
 }
-
+.detailLeft
+{
+    float:left;
+}
 .divSearch {
     background: none repeat scroll 0 0 #E4E4E4;
     float: left;
     margin: 0 0 2px;
-    overflow: hidden;
-    padding: 20px 3px;
-    width:  474px;
+    /**
+ * overflow: hidden;
+ *     padding: 20px 3px;
+ */
+    padding-top: 10px;
+    
+    width:  100%;
 }
 
 .upSearch {
     float: left;
-    margin: 0 0 8px;
-    width: 476px;
+   
+    width: 100%;
 }
 .InputSearch {
     float: left;
     height: 35px;
     margin: 0 2px 0 0;
-    width: 245px;
+    width: 265px;
 }
 .InputSearch1 {
     float: left;
     height: 34px;
-    margin: 0 5px 0 0;
     width: 70px;
 }
 .InputSearch1 {
@@ -1016,6 +1030,7 @@ form#quick_reply .actionbuttons .group {
     padding-left:0px;
     padding-top: 6px;
     text-align: center;
+    float:left;
 }
 .inputS-left {
     background: url("../images/searchBg.gif") no-repeat scroll 0 0 transparent;
@@ -1031,7 +1046,7 @@ form#quick_reply .actionbuttons .group {
     float: left;
     font: bold 13px arial;
     height: 32px;
-    width: 240px;
+    width: 255px;
 }
 
 
