@@ -720,7 +720,57 @@ form#quick_reply .actionbuttons .group {
 .resultmonth li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px;font-size: 12px}
 .pane-content ul li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px; font-size: 12px }
 .topic_relation{padding-left: 10px;}
-
+#box_content_profile
+{
+    padding-left: 3px;
+}
+.profile_detail
+{
+    float:left;
+    width: 24%;
+    border-right: solid;
+    border-right-color: #808080;
+    border-right-width: 1.5px;
+}
+#profile_detail_more
+{
+    
+}
+#profile_detail_more p
+{
+    font-size: 10pt;
+}
+#avatar_profile
+{
+    width: 97%;
+    
+}
+.link-like img
+{
+    width: 50px;
+    height: 50px;
+    
+}
+.link-like
+{
+    text-align: center;
+}
+#avatar_profile h2
+{
+    font-size: 14pt;
+    background: #333333;
+    color: white;
+    text-align: center;
+    border-top: solid;
+    border-top-width: 1px;
+    border-top-color: white ;
+}
+.profile_info
+{
+    float:left;
+    width: 74.7%;
+    margin-left: 5px;
+}
 /* end profile*/
 
 /*post-view*/
@@ -734,7 +784,7 @@ form#quick_reply .actionbuttons .group {
     margin-right: 5px;   
     margin-left: 5px;       
     margin-top: 10px !important;
-    color: #004175;
+    color: #CC0000;
     font: 700 24px/23px "Times New Roman";
     font-size: 14pt;    
     padding: 2px 5px 2px 2px;
@@ -768,7 +818,7 @@ form#quick_reply .actionbuttons .group {
     overflow: hidden;
     display: none;
 }
-#btSuggestTopic {cursor: pointer; font-size: 12px; color: #2E3192; font-weight: bold; text-decoration: none;}
+#btSuggestTopic {cursor: pointer; font-size: 12px; color: #CC0000; font-weight: bold; text-decoration: none;}
 #showSuggestTopic { background: url("../images/dot_post.png") repeat-x scroll 0 bottom transparent;margin-top: 5px;}
 .edit-main{
     margin-left: 5px;
