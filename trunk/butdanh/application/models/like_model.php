@@ -15,6 +15,7 @@
 			$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id=user_id');
 			$this->db->join('ci_term_taxonomy', 'ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
 			$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
+			$this->db->where('taxonomy','magazine');  
 			$this->db->where('meta_key','like');
 			$this->db->group_by('user_id');
 			$this->db->order_by('count_like','DESC');
