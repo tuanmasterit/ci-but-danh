@@ -265,7 +265,7 @@ class Post_model extends CI_Model{
 			
 	}
     
-    function get_post_by_month($author='',$month=-1, $limit=-1, $offset=0, $order='DESC', $order_by='post_date'){
+    function get_post_by_month($author='',$month=-1, $limit=-1, $offset=0, $order='DESC', $order_by='post_date',$post_type = 'post'){
 		$this->db->select('
 					ci_posts.id,
 					post_author,
@@ -288,7 +288,7 @@ class Post_model extends CI_Model{
             $this->db->where("YEAR(post_date)",date("Y"));
             $this->db->where("MONTH(post_date)",$month);
 		}			
-		$this->db->where('post_type','post');
+		$this->db->where('post_type',$post_type);
 		$this->db->order_by($order_by, $order);
 		if($limit > 0){
 			$this->db->limit($limit,$offset);
