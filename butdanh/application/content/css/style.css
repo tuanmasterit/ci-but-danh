@@ -740,7 +740,7 @@ form#quick_reply .actionbuttons .group {
 }
 #profile_detail_more p
 {
-    font-size: 10pt;
+    font-size: 12px;
 }
 #avatar_profile
 {
@@ -787,20 +787,21 @@ form#quick_reply .actionbuttons .group {
     margin-left: 5px;       
     margin-top: 10px !important;
     color: #CC0000;
-    font: 700 24px/13px "arial";
+    font: 700 14px/20px "arial";
     font-size: 14pt;    
-    padding: 2px 5px 2px 2px;
+    padding: 2px 5px 0px 2px;
+    
     
 }
 #post_content{    
     margin-right: 10px;   
     margin-left: 10px;       
-    margin-top: 2px !important;
+    margin-top: 0px !important;
     overflow: hidden;
 }
 .fon p {
     font-family: arial;
-    font-size: 12pt;
+    font: 10pt/20px "arial";
     line-height: 20px !important;
     margin-bottom: 3%;
     margin-top: 3%;
