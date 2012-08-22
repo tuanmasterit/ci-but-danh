@@ -32,7 +32,7 @@
                         <input type="hidden" id="imageHidden" value="<?php echo base_url();?>application/content/images/hidden.png" />
                         <input type="hidden" id="imageShow" value="<?php echo base_url();?>application/content/images/show.png" />
                                                                     
-                        <label id="btSuggestTopic" >Đề xuất chủ đề</label>                                                                            
+                        <label id="btSuggestTopic" >Đề xuất thảo luận</label>                                                                            
                 </div> 
                 <div id="suggestTopic">                	
                 	<form method="post" id="formID" action="<?php echo base_url().'post/suggest/'.$post_id;?>"  accept-charset="utf-8" enctype="multipart/form-data">        
