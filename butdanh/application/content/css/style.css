@@ -716,30 +716,40 @@ form#quick_reply .actionbuttons .group {
     font-size: 12px;
 }
 .list-post .tab_month li a {text-decoration:none;font-size: 12px;}
-.list-post{margin-bottom:10px;overflow:hidden;margin-top:10px;}
+.list-post{margin-bottom:10px;overflow:hidden;margin-top:3px;}
 .list-post h3{margin-bottom:10px;}
 .list-post-right{float:right;width:87%;}
 .list-post-right h3{background:#CC0000;color:#FFF;padding:3px;}
 .resultmonth{padding-left:10px;}
 .resultmonth p{text-align:center;}
-.resultmonth li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px;font-size: 13px}
-.pane-content ul li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px; font-size: 11px }
-.topic_relation{padding-left: 10px;}
+.resultmonth li a.bullet2{background:url('../images/bullet-arrow1.png') no-repeat left center;padding-left:10px;font-size: 10px}
+#profile_topic ul li a.bullet2{background:url('../images/bullet-arrow1.png') no-repeat left center;padding-left:10px; font-size: 10px }
+.topic_relation{padding-left: 10px;margin-bottom: 10px;}
 #box_content_profile
 {
     padding-left: 3px;
+}
+#profile_title p
+{
+    background: none repeat scroll 0 0 #333333;
+    color: white;
+    font-size: 12px;
+    font-weight: normal;
+    height: 21px;
+    padding-left: 3px;
+    padding-top: 2px;
 }
 .profile_detail
 {
     float:left;
     width: 24%;
-    border-right: solid;
-    border-right-color: #808080;
-    border-right-width: 1.5px;
+    
 }
+
+
 #profile_detail_more
 {
-    
+    text-align: center;
 }
 #profile_detail_more p
 {
@@ -760,6 +770,7 @@ form#quick_reply .actionbuttons .group {
 {
     text-align: center;
 }
+#list-like p{font-size: 10px; font-weight: bold;}
 #avatar_profile h2
 {
     font-size: 14px;
@@ -774,7 +785,20 @@ form#quick_reply .actionbuttons .group {
 {
     float:left;
     width: 74.7%;
-    margin-left: 5px;
+    padding-left: 5px;
+    padding-top: 3px;
+    border-left: solid;
+    border-left-color: #808080;
+    border-left-width: 1.5px;
+    min-height: 194px;
+}
+#profile_article h2
+{
+    font-size: 12px;
+}
+#profile_topic h2
+{
+    font-size: 12px;
 }
 /* end profile*/
 
@@ -811,8 +835,8 @@ form#quick_reply .actionbuttons .group {
 }
 #post_meta{
     text-align: right;
-    font-family: Times New Roman;
-    font-size: 10pt;
+    font-family: arial;
+    font-size: 12px;
     line-height: 20px !important;
     font-weight: bold;
     margin-right: 10px;
