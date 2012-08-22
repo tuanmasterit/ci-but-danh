@@ -111,7 +111,7 @@ background:#333333;
 #box-topichot{}
 .box-content .box1 ul li{margin-left:10px;}
 .box-center .top-topic-top li{float:left;}
-.box-center .top-topic-top li a{padding:3px 10px;display:block;font-size:13px;}
+.box-center .top-topic-top li a{padding:3px 10px;display:block;font-size:13px;color: #fff;}
 .box-center .top-topic-top li a:hover,.box-center .top-topic-top li a.tab-active{background:#808080;color:#FFF;}
 .box-center .top-topic-top li a:focus{background:#CC0000;color:#FFF;}
 .box-center .top-topic-top li.tab-active a{background:#CC0000;color:#FFF; font-color:#FFF;}
