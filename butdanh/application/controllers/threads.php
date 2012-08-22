@@ -72,6 +72,7 @@ class Threads extends CI_Controller {
         include('paging.php');
         $config['base_url']= base_url().'chu-de/'.$post_term.'/';
         $config['cur_page']= $row;
+        
         $data['thread'] = $this->Post_model->get_seo($data['post_term']);
         foreach ($data['thread'] as $temp)
         {
