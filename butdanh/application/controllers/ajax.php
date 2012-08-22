@@ -93,7 +93,7 @@
                 }
 		if($get_by=='publish')
 		{
-                    $listTopic = $this->Post_model->get(0, 'topic',$term_id ,'', 5, 0, 'DESC', 'post_date','publish');
+                    $listTopic = $this->Post_model->get(0, 'topic',$term_id ,'', 10, 0, 'DESC', 'post_date','publish');
                     foreach ($listTopic as $topic)
                     {
                         $html.= "<ul><li><a href='".base_url()."chu-de/".urldecode($topic->guid)."'><span class='item-toptic-new'>".$topic->post_title."</span></a><span class='date-time'>".date_format(date_create($topic->post_date),'d-m-Y H:i:s')."</span></li></ul>";
@@ -101,14 +101,14 @@
 		}
 		if($get_by=="pending")
 		{
-                    $listTopic = $this->Post_model->get(0, 'topic', $term_id,'', -1, 0, 'DESC', 'post_date','pending');
+                    $listTopic = $this->Post_model->get(0, 'topic', $term_id,'', 10, 0, 'DESC', 'post_date','pending');
                     foreach ($listTopic as $topic){
                         $html.= "<ul><li><span class='item-toptic-new'>".$topic->post_title."</span><span class='date-time'>".date_format(date_create($topic->post_date),'d-m-Y H:i:s')."</span></li></ul>";
                     }
 		}
 		if ($get_by=="reject")
 		{
-                    $listTopic = $this->Post_model->get(0, 'topic', $term_id,'', 5, 0, 'DESC', 'post_date','reject');
+                    $listTopic = $this->Post_model->get(0, 'topic', $term_id,'', 10, 0, 'DESC', 'post_date','reject');
                     foreach ($listTopic as $topic){
                         $html.= "<ul><li><span class='item-toptic-new'>".$topic->post_title."</span><span class='date-time'>".date_format(date_create($topic->post_date),'d-m-Y H:i:s')."</span></li></ul>";
                     }

@@ -11,11 +11,11 @@
 			$this->load->model('Upload_model');
 			$this->load->model('Comment_model');
 			$gallery_path = realpath(APPPATH . '../uploads');
+			$this->load->helper('cookie');
 		}
 		
 		function profile($id)
-		{
-			
+		{					
 			$member = $this->User_model->get($id);	
 			$data['member_id'] = $id;		
 			$data['address'] = $this->User_model->get_usermeta($id,'address');
