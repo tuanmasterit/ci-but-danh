@@ -8,6 +8,16 @@ class User_model extends CI_Model{
 		$this->load->database();	
 		$this->load->helper('security');	
     }		
+    
+ //Order by name
+ 
+    function get_by_name($term_id)
+    {
+    	$this->db->select('ci_users.id, ci_users.user_nicename FROM ci_users inner join ci_term_relationships on ci_term_relationships.object_id='.$term_id);
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    
 	//List User
 	function get($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC',$status=-1,$butdanh='',$taxonomy=''){
 		if($id==0)
@@ -55,6 +65,16 @@ class User_model extends CI_Model{
 			return $data;
 		}		
 		
+	}
+	function get_butdanh_order($term_id){
+		$sql="select id,user_login,user_nicename,user_email,display_name,user_activation_key,user_status,name from ci_users 
+				join ci_term_relationships on ci_term_relationships.object_id = ci_users.id 
+				join ci_term_taxonomy on ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id
+				join ci_terms on ci_terms.term_id = ci_term_taxonomy.term_id
+				where user_activation_key='butdanh' and ci_term_taxonomy.term_taxonomy_id=".$term_id."
+				order by convert(replace(user_nicename,'Đ','D') USING utf8) asc";
+		$query = $this->db->query($sql);
+		return  $query->result();
 	}
 	function get_butdanh($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC'){
 		if($id==0)
