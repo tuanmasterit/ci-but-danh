@@ -19,7 +19,7 @@
 			$mess2='';
 			if(count($list_like)>0)
             {
-                $mess2= "<b>Có ".count($list_like)." người like bút danh này.</b>";
+                $mess2= "<b>".count($list_like)." người đã vote</b>";
             } 
             echo json_encode(array('mess1'=>$mess1,'mess2'=>$mess2));            
 		}
@@ -36,7 +36,7 @@
 			$mess2='';
 			if(count($list_like)>0)
             {
-                $mess2= "<b>Có ".count($list_like)." người like bút danh này.</b>";
+                $mess2= "<b>".count($list_like)." người đã vote</b>";
             } 
             echo json_encode(array('mess1'=>$mess1,'mess2'=>$mess2)); 
 		}
