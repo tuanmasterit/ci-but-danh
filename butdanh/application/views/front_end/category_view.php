@@ -11,24 +11,14 @@
         </div>-->
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">        	
-           <!-- menu-top -->
-            <div id="menu-top">
-                <ul class="nav-top">
-            	<li><a href="<?php echo base_url();?>" >Trang chủ</a></li>
-				<li><a  class="<?php if ($term_toptic == 1 ) echo 'current_menutop';?> " href="<?php echo base_url();?>category/1">Chính trị</a></li>
-                <li><a class="<?php if ($term_toptic == 5 ) echo 'current_menutop';?>" href="<?php echo base_url();?>category/5">Văn hóa</a></li>
-                <li><a class="<?php if ($term_toptic == 3 ) echo 'current_menutop';?>" href="<?php echo base_url();?>category/3">Xã hội</a></li>
-                <li><a class="<?php if ($term_toptic == 4 ) echo 'current_menutop';?>" href="<?php echo base_url();?>category/4">Kinh tế</a></li>
-                <li><a class="<?php if ($term_toptic == 10 ) echo 'current_menutop';?>" href="<?php echo base_url();?>category/10">Khoa học</a></li>
-                </ul>           
-            </div><!-- end menu-top -->
+           <?php $this->load->view('front_end/menu-top');?>
             <!-- end menu top -->
             <div class="box-center" id="box-newtopic">            	
                 <div id="div-topic-top">                	
                     <ul class="top-topic-top">                            
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish tab-active">Chủ đề mới lên trang</a></li>
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top pending">Chủ đề mới đề xuất</a></li>
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Chủ đề mới bị từ chối</a></li>
+                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish tab-active">Thảo luận mới</a></li>
+                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top pending">Thảo luận mới đề xuất</a></li>
+                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Thảo luận mới từ chối</a></li>
                     </ul>
                 </div>
                 <div class="box-content">

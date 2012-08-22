@@ -20,7 +20,7 @@
         </div><!-- end banner -->
         <div id="menu-top">
         	<ul class="nav-top">
-            	<li><a href="/butdanh/index.html" class="current">Trang chủ</a></li>
+            	<li><a href="/butdanh/index.html" class="home current"><img src="application/content/images/icon-home.png" /></a></li>
 				<li><a href="#">Chính trị</a></li>
                 <li><a href="#">Xã hội</a></li>
                 <li><a href="#">Giáo dục</a></li>

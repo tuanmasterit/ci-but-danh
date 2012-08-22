@@ -1,6 +1,6 @@
 <div id="middle-right">
         	<div class="box-center" id="box-topichot">
-        	<h3 >Thảo luận nóng</h3>
+        	<h3 >Top 10 thảo luận nóng</h3>
                 <div class="content-box-right">
                 	<input type="hidden" id="hdfCat" value="<?php echo $term_toptic;?>">
 	                <ul id="topthang">
