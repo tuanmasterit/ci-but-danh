@@ -767,7 +767,7 @@ form#quick_reply .actionbuttons .group {
 .link-like img
 {
     width: 50px;
-    height: 50px;
+    height: 22px;
     
 }
 .link-like
@@ -803,6 +803,7 @@ form#quick_reply .actionbuttons .group {
 #profile_topic h2
 {
     font-size: 12px;
+    margin-bottom: 5px;
 }
 /* end profile*/
 
@@ -818,8 +819,7 @@ form#quick_reply .actionbuttons .group {
     margin-left: 5px;       
     margin-top: 10px !important;
     color: #CC0000;
-    font: 700 14px/20px "arial";
-    font-size: 14pt;    
+    font: 700 16px/20px "arial";      
     padding: 2px 5px 0px 2px;
     
     
@@ -832,7 +832,7 @@ form#quick_reply .actionbuttons .group {
 }
 .fon p {
     font-family: arial;
-    font: 10pt/20px "arial";
+    font: 12px/20px "arial";
     line-height: 20px !important;
     margin-bottom: 3%;
     margin-top: 3%;
