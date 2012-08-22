@@ -1,6 +1,7 @@
 <?php $this->load->view('front_end/header');?>
+   <?php $this->load->view('front_end/left');?>
     <div id="middle">    	
-    	<?php $this->load->view('front_end/left');?>
+    	
         <div id="middle-center">
         <script type="text/javascript">
         	$(function(){
