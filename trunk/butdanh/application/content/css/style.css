@@ -75,7 +75,7 @@ background:#333333;
 }
 
 .nav-top li{float:left;padding:0px 0px;}
-#middle-center .nav-top li:first-child a{text-indent:-9999;}
+#middle-center .nav-top li:first-child a{}
 .nav-top li a{color: #EDEDED;
     display: block;
     float: left;
@@ -698,27 +698,29 @@ form#quick_reply .actionbuttons .group {
 }
 .pane-title {
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 12pt;
 }
 
 .ajaxmonth {
     background: url("../images/carrot-right.png") no-repeat scroll left center;
     padding-left: 16px;
 }
+
 .list-post .tab_month li a.active {    
     background: url('../images/carrot-down.png') no-repeat left center;
     padding-left: 16px;
     line-height:20px;
+    font-size: 12pt;
 }
-.list-post .tab_month li a {text-decoration:none;}
+.list-post .tab_month li a {text-decoration:none;font-size: 12pt;}
 .list-post{margin-bottom:10px;overflow:hidden;margin-top:10px;}
 .list-post h3{margin-bottom:10px;}
 .list-post-right{float:right;width:87%;}
 .list-post-right h3{background:#CC0000;color:#FFF;padding:3px;}
 .resultmonth{padding-left:10px;}
 .resultmonth p{text-align:center;}
-.resultmonth li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px;font-size: 12px}
-.pane-content ul li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px; font-size: 12px }
+.resultmonth li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px;font-size: 14pt}
+.pane-content ul li a.bullet2{background:url('../images/bullet-arrow.png') no-repeat left center;padding-left:10px; font-size: 10pt }
 .topic_relation{padding-left: 10px;}
 #box_content_profile
 {
@@ -793,7 +795,7 @@ form#quick_reply .actionbuttons .group {
 #post_content{    
     margin-right: 10px;   
     margin-left: 10px;       
-    margin-top: 10px !important;
+    margin-top: 2px !important;
     overflow: hidden;
 }
 .fon p {
