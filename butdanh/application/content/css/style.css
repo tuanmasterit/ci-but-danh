@@ -187,7 +187,7 @@ background:#333333;
 	.blockrow{overflow:hidden;;}
 	.primary textbox{float:left;}
 
-	.description{float:right;width: 100%;}
+	.description{width: 100%;}
 
 	.group{overflow:hidden;}
 	#txtUserName{margin-right:0px;}
