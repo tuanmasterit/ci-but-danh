@@ -175,7 +175,7 @@ $(document).ready(function(){
            if (!isOpened)
            {
                  $("#suggestTopic").slideDown(900);
-                 $("#btSuggestTopic").text('Đề xuất chủ đề');
+                 $("#btSuggestTopic").text('Đề xuất thảo luận');
                  $imageHidden = $("#imageHidden").attr("value");                 
                  $("#imgShow").attr("src",$imageHidden); 
                  isOpened = true;
@@ -183,7 +183,7 @@ $(document).ready(function(){
            } else
            {
                 $("#suggestTopic").slideUp(500);
-                $("#btSuggestTopic").text('Đề xuất chủ đề');
+                $("#btSuggestTopic").text('Đề xuất thảo luận');
                 $imageShow = $("#imageShow").attr("value");
                 $("#imgShow").attr("src",$imageShow);
                 isOpened = false; 
