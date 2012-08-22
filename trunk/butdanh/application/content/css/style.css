@@ -185,7 +185,7 @@ background:#333333;
 /* register*/
 	.blockrow{overflow:hidden;;}
 	.primary textbox{float:left;}
-	.description{float:right;}
+	.description{float:right;width: 100%;}
 	.group{overflow:hidden;}
 /*end register*/
 
@@ -620,9 +620,8 @@ form#quick_reply .actionbuttons .group {
 }
 /* profile*/
 .panel-col-first {
-    min-height: 1px;
-    padding: 0 10px 0 5px;
-    width:  476px;
+    min-height: 1px;    
+    width:  100%;
     float: left;
     background: none repeat scroll 0 0 transparent;
     border: 0 none;
@@ -657,8 +656,7 @@ form#quick_reply .actionbuttons .group {
     visibility: hidden;
 }
 .profile {
-    clear: both;
-    margin: 1em 0;
+    clear: both;    
 	float: left;     
 	width: 120px;
 }
@@ -1285,6 +1283,6 @@ select {
 }
 .right-comment .info-comment{}
 .imagecache-profile{float: left;padding-bottom: 5px;}
-.profile-about{float: right;width: 355px;padding-top: 15px;}
+.profile-about{float: right;width: 355px;}
 .pane-content {overflow: hidden;}
 .info-member-images{padding-left: 0px !important;}
