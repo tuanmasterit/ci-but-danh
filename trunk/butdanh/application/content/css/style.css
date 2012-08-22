@@ -740,7 +740,7 @@ form#quick_reply .actionbuttons .group {
 }
 #profile_detail_more p
 {
-    font-size: 12px;
+    font-size: 11px;
 }
 #avatar_profile
 {
@@ -759,7 +759,7 @@ form#quick_reply .actionbuttons .group {
 }
 #avatar_profile h2
 {
-    font-size: 16px;
+    font-size: 14px;
     background: #333333;
     color: white;
     text-align: center;
