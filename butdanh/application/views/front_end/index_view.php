@@ -17,9 +17,9 @@
             <div class="box-center" id="box-newtopic">            	
                 <div id="div-topic-top">                	
                     <ul class="top-topic-top">                            
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish tab-active">Chủ đề mới lên trang</a></li>
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top pending">Chủ đề mới đề xuất</a></li>
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Chủ đề mới bị từ chối</a></li>
+                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish tab-active">Thảo luận mới</a></li>
+                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top pending">Thảo luận mới đề xuất</a></li>
+                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Thảo luận mới từ chối</a></li>
                     </ul>
                 </div>
                 <div class="box-content">
@@ -53,13 +53,13 @@
                     ?>
                     <ul>
                         <li>
-                            <div class="left-comment">
+                            <div class="left-comment">                            	
                                 <p><a href="<?php echo base_url().'chu-de/'.$LatestComment->guid;?>"><span class="item-toptic-new"><?php echo $LatestComment->post_title;?></span></a></p>
                                 <p>Được đăng bởi <a href="<?php echo base_url().'member/profile/'.$LatestComment->post_author;?>"><b><?php echo $LatestComment->user_login;?></b></a>, <?php echo date_format(date_create($LatestComment->post_date),'d-m-Y');?></p>                                
                             </div>
                             <div class="right-comment">
                                 <img src="<?php 
-                                    if($this->User_model->get_usermeta($LatestComment->post_author,'avatar')=='')
+                                    if($this->User_model->get_usermeta($LatestComment->user_id,'avatar')=='')
                                     {
                                         echo base_url().'application/content/images/avatars/no_avatar.gif';
                                     }
@@ -71,6 +71,7 @@
                                     <a href="<?php echo base_url().'member/profile/'.$LatestComment->user_id;?>"><?php echo $LatestComment->comment_author;?></a>
                                 </p>
                                 <p><?php echo date_format(date_create($LatestComment->comment_date),'d-m-Y H:s:i ');?></p>
+                                
                             </div>
                         </li>
                     </ul>
@@ -78,6 +79,7 @@
                         $num++;
                         }
                     ?>
+                    
                 </div>  
             </div>    <!-- end binh luan moi nhat -->
         </div><!-- end middle-center -->

@@ -6,7 +6,7 @@
         	$(function(){
         		$('#txtBirthday').datepicker({ dateFormat: 'dd/mm/yy' });
             	});
-        </script> 
+        </script>        
         <div id="middle-center">
         <div id="menu-top">
         	<ul class="nav-top">
@@ -31,42 +31,32 @@
 							<div class="pane-content">
 								<div class="user-title-block profile clear-block">
 									<div class="picture">
-										<img src="<?php echo base_url().'application/content/images/avatars/'.$avatar;?>" alt=""  class="imagecache imagecache-profile" width="60" height="60" /></div>                                        
-									<div class="profile-about">
-									
-										<p>Tên hiển thị: <b><span><?php echo $member['user_nicename'];?></span></b></p>
-										<div class="expertise">Email: <b><span><?php echo $member['user_email'];?></span></b></div>
-										                    	
-                                    </div>                                       
-                                        
-									</div>
-								</div>  
-							</div>				 
-						</div>
-						<div class="panel-region-separator"></div>
-						<div class="panel-pane pane-views pane-istar-latest-articles-by-author user-main-block" >
-				  
-							<h2 class="pane-title">Thông tin cơ bản</h2>				  				 
-							<div class="pane-content">
-								<div class="list-post">	                                                
-                                      <ul class="tab_month">
-                                      	<?php 
+										<img src="<?php echo base_url().'application/content/images/avatars/'.$avatar;?>" alt=""  class="imagecache imagecache-profile" width="80" height="80" />
+										<?php 
 											if($check_duplicate==true){
-										?>
-                                      	<li>
+										?>                                      	
                                       		<div class="info-member">
-	                                      		Đổi ảnh đại diện &nbsp;
+	                                      		Change Avatar &nbsp;
 												<?php 
 													if($check_duplicate==true){
 												?>
 												<a href="#" id="link-avatar"><img alt="change-info" title="Edit Value" src="<?php echo base_url();?>application/content/images/userfield_edit.gif"></a>
 												<?php }?>
-											</div>
-											<div class="info-member-detail">
+											</div>											                                    	
+                                      	<?php }?>                      	
+                                    </div>      
+									</div>
+										                                      
+									<div class="profile-about">																		
+										<p>Tên hiển thị: <b><span><?php echo $member['user_nicename'];?></span></b></p>
+										<div class="expertise">Ngày tham gia: <b><span><?php echo date_format(date_create($member['user_registered']),'d/m/Y');?></span></b></div>							                                 
+                                        <?php 
+											if($check_duplicate==true){
+										?>
+										<div class="info-member-detail info-member-images">
 												<?php 
 													if($avatar=='') {echo "N/A";} else{
-												?>
-													<img width="150" height="100" src="<?php echo base_url().'application/content/images/avatars/'.$avatar;?>">
+												?>													
 													<?php }?>
 													<div id="avatar-hidden">
 														<br/>
@@ -83,9 +73,19 @@
 															</div>
 														<?php echo form_close();?>
 													</div>
-											</div>
-                                      	</li>
-                                      	<?php }?>
+											</div>  
+										<?php }?>
+									</div>
+								</div>  
+							</div>				 
+						</div>
+						<div class="panel-region-separator"></div>
+						<div class="panel-pane pane-views pane-istar-latest-articles-by-author user-main-block" >
+				  
+							<h2 class="pane-title">Thông tin cơ bản</h2>				  				 
+							<div class="pane-content">
+								<div class="list-post">	                                                
+                                      <ul class="tab_month">                                      	
                                       	<li>
                                       		<div class="info-member">
 	                                      		Đến từ &nbsp;
