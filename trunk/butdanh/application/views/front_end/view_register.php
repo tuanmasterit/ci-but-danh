@@ -9,18 +9,7 @@
             	});
         </script>        	
         	<div id="box-newtopic" class="box-center">
-        	 <!-- menu-top -->
-                <div id="menu-top">
-        	<ul class="nav-top">
-            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
-				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
-                <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
-                <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
-                <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
-                <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
-            </ul>
-           
-        </div><!-- end menu-top -->
+        	 <?php $this->load->view('front_end/menu-top');?>
 				<h2>Đăng ký thành viên</h2>
 				<div class="box-content">
 					<?php 
