@@ -25,7 +25,7 @@ class Home extends CI_Controller {
 		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
 		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
 		$data['lstLatestComment'] = $this->Comment_model->get(15);
-		$data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', 0,'', 5, 0, 'DESC', 'post_date','publish');
+		$data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', 0,'', 10, 0, 'DESC', 'post_date','publish');
 		//New topic
 		
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
