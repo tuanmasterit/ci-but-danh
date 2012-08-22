@@ -12,7 +12,7 @@ ul li{list-style-type:none;}
 /* end common */
 #wr{width:970px;margin:0 auto;background:#FFF;}
 #wrap{width:960px;margin:0 auto;text-align:left;overflow:hidden;}
-#middle{overflow:hidden;border:1px solid #CCC;border-top:none;margin-bottom:10px;}
+#middle{overflow:hidden;border:1px solid #CCC;border-top:none;margin-bottom:3px;}
 /* left */
 #middle-left{float:left; margin-right:2px;width:29%;background:#CC0000;color:#333;}
 #middle-left a{color:#FFF;}
@@ -159,13 +159,13 @@ background:#333333;
 /* end right */
 /* footer */
 #footer{background:#FFF;width:960px;margin:0 auto;text-align:justify;}
-#lien-he{background:#333;padding:10px;}
+#lien-he{background:#CC0000;padding:10px;}
 .mau{color:#FFF}
 #mau2{color:#FFF}
 #user-online {
     background: none repeat scroll 0 0 #EEEEEE;
     border: 1px solid #CCCCCC;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
 }
 #user-online h2 {
     background: none repeat scroll 0 0 #333;
@@ -659,16 +659,18 @@ form#quick_reply .actionbuttons .group {
 .profile {
     clear: both;
     margin: 1em 0;
-     
+	float: left;     
+	width: 120px;
 }
 .clear-block {
     display: block;
 }
-.user-title-block .picture {
-    border: 1px solid #CCCCCC;
+.user-title-block .picture {    
     float: left;
     line-height: 0;
+    width: 120px;
 }
+.user-title-block .picture img{}
 .profile .picture {   
     margin: 0 1em 1em 0;
 }
@@ -1229,3 +1231,7 @@ select {
    border:1px solid #021a40;   
 }
 .right-comment .info-comment{}
+.imagecache-profile{float: left;padding-bottom: 5px;}
+.profile-about{float: right;width: 355px;padding-top: 15px;}
+.pane-content {overflow: hidden;}
+.info-member-images{padding-left: 0px !important;}
