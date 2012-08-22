@@ -56,7 +56,9 @@ ul li{list-style-type:none;}
 /* end left */
 /* middle */
 #middle-center{background:#EAEAEA;width:494px;float:left;color:#333;}
-#middle-center a{color:#FFF;}
+/**
+ * #middle-center a{color:#FFF;}
+ */
 
 #menu-top{
     background: none repeat scroll 0 0 #CC0000;
@@ -87,7 +89,7 @@ background:#333333;
 	background:#CC0000;
 }
 .nav-top li a:hover {
-    background: url("../images/cat_bg.jpg") repeat-x scroll left top transparent;
+    background: url("../images/cat_bg1.jpg") repeat-x scroll left top transparent;
     border-left: 1px solid #262626;
     border-right: 1px solid #262626;
     color: #626262;
