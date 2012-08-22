@@ -10,20 +10,21 @@
         </script>        	
         	<div id="box-newtopic" class="box-center">
         	 <?php $this->load->view('front_end/menu-top');?>
-				<h2>Đăng ký thành viên</h2>
+        
+				<h2  class="top-topic-top" ><a class="tab-active1" href="<?php echo base_url();?>home/register">Đăng ký thành viên</a></h2>
 				<div class="box-content">
 					<?php 
 					if($check_success==false)
 					{
 					?>					
 					<div class="blockbody formcontrols">
-						<h3 class="blocksubhead">Thông Tin cần phải nhập</h3>
+						<br><br>
 						<div class="section">
 							<div class="blockrow">
-								<label for="regusername">Tên tài khoản:</label>
+								<label for="regusername">Tên tài khoản: </label>
 								<div class="rightcol">
 									<input type="hidden" name="hdfCheckExit" id="hdfCheckExit">
-									<input id="txtUserName" class="primary textbox validate[required]" type="text" tabindex="1" value="" maxlength="25" name="txtUserName"/>
+									<input id="txtUserName" class="primary textbox validate[required]" type="text" tabindex="1" value="" maxlength="25" name="txtUserName"/><span style="color: red;"> ( * )</span>
 									<?php 
 										if($check_exit==true)
 										{
@@ -36,13 +37,13 @@
 							<div class="blockrow">
 								<ul class="group">
 									<li>
-										<label for="txtpassword">Mật Khẩu: </label><br>
-										<input id="txtpassword" class="textbox validate[required]" type="password" tabindex="1" value="" maxlength="50" name="txtpassword">
+										<label for="txtpassword">Mật Khẩu:</label>
+										<input id="txtpassword" class="textbox validate[required]" type="password" tabindex="1" value="" maxlength="50" name="txtpassword"><span style="color: red;"> ( * )</span> 
 									<p class="description">Nhập Mật khẩu cho tài khoản của bạn. </p>
 									</li>
 									<li>
-										<label for="passwordconfirm">Nhập lại Mật Khẩu:</label><br>
-										<input id="passwordconfirm" class="textbox validate[required,equals[txtpassword]]" type="password" tabindex="1" value="" maxlength="50" name="passwordconfirm">
+										<label for="passwordconfirm">Nhập lại Mật Khẩu:</label>
+										<input id="passwordconfirm" class="textbox validate[required,equals[txtpassword]]" type="password" tabindex="1" value="" maxlength="50" name="passwordconfirm"><span style="color: red;"> ( * )</span>
 									<p class="description">Chú ý: Mật khẩu phân biệt chữ HOA và chữ thường.</p>
 									</li>
 								</ul>
@@ -51,12 +52,13 @@
 							<div class="blockrow">
 								<ul class="group">
 									<li>
-										<label for="email">Địa chỉ Email:</label><br>
-										<input id="email" class="textbox validate[required,custom[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="email">
+										<label for="email">Địa chỉ Email:</label>
+										<input id="email" class="textbox validate[required,custom[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="email"><span style="color: red;"> ( * )</span>
 									</li>
 									<li>
-										<label for="emailconfirm">Nhập lại Email:</label><br>
-										<input id="emailconfirm" class="textbox validate[required,custom[email],equals[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="emailconfirm">
+									<br>
+										<label for="emailconfirm">Nhập lại Email:</label>
+										<input id="emailconfirm" class="textbox validate[required,custom[email],equals[email]]" type="text" tabindex="1" dir="ltr" value="" maxlength="50" name="emailconfirm"><span style="color: red;"> ( * )</span>
 									</li>
 								</ul>
 								<?php 
@@ -68,7 +70,7 @@
 								<p class="description">Xin mời nhập địa chỉ Email của bạn.</p>
 							</div>							
 						</div>
-						<h3 class="blocksubhead">Thông Tin cần thêm (Hồ sơ)</h3>
+						
 						<div class="section">
 							<div class="blockrow">
 								<label>Họ và tên:</label>
@@ -103,7 +105,7 @@
 								</div>
 							</div>
 						</div>
-						<h3 class="blocksubhead">Thông Tin Bổ Sung</h3>
+						
 						<div class="section">
 							<div class="blockrow">
 								<label>Số điện thoại:</label>
@@ -117,7 +119,7 @@
 							<div class="blockrow">
 								<label>Ảnh đại diện:</label>
 								<div class="rightcol">
-									<input id="userfile" class="primary textbox" type="file" tabindex="1" maxlength="100" value="" name="userfile">
+									<input style="font-size: 11px !important;" id="userfile" class="primary textbox addclass" type="file" tabindex="1" maxlength="100" value="" name="userfile">
 									<p class="description">Hãy chọn ảnh đại diện của bạn ?</p>									
 								</div>
 							</div>
@@ -139,7 +141,7 @@
 								<label></label>
 								<div class="rightcol">
 									<input class="button" type="submit" accesskey="s" tabindex="1" value="Hoàn tất đăng ký">
-							<input class="button" type="reset" value="Nhập lại thông tin" tabindex="1" name="Reset">									
+							<input class="buttonreset" type="reset" value="Nhập lại thông tin" tabindex="1" name="Reset">									
 								</div>
 							</div>
 						</div>
