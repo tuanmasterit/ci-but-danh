@@ -73,7 +73,7 @@
 										<div class="username_container">
 											<div class="popupmenu memberaction">
 												<a class="username offline popupctrl" title="<?php echo $thr->user_nicename;?>" href="<?php echo base_url().'member/profile/'.$thr->post_author;?>" rel="nofollow">
-												<strong>Thành viên:</strong><br/>
+												
 												<strong><?php echo $thr->user_nicename;?></strong>
 												</a>												
 											</div>																						
@@ -171,10 +171,10 @@
 						<li id="post_thanks_box_13234602" class="postbit postbitim">
 							<div class="postbody">
 								<div class="postrow">
-									<h2 class="posttitle"> Có <span id="totalThanks" style="color:red;"><?php  $total_thanks = count($list_thanks); echo $total_thanks;?></span> thành viên cảm ơn <span style="color:red;"><?php echo $thr->user_nicename;?></span> cho bài viết này: </h2>
+									<h2 class="posttitle posttitle2"><i> Có <span id="totalThanks" style="color:red;"><?php  $total_thanks = count($list_thanks); echo $total_thanks;?></span> thành viên cảm ơn <span style="color:red;"><?php echo $thr->user_nicename;?></span> cho bài viết này: </i></h2>
 									<div class="content">
 										<div id="post_thanks_bit_13234602">
-											<blockquote class="postcontent restore" id="list-user-thanks">
+											<div class="postcontent restore" id="list-user-thanks">
 											<?php      
 					                            $i = 0;                           
 					                            foreach( $list_thanks as $thanks){
@@ -188,7 +188,7 @@
 				                            ?>
  												<a rel="nofollow" href='<?php echo base_url()."member/profile/".$thanks->meta_value;?>'><?php $name =  $this->User_model->getById($thanks->meta_value); echo $name['user_nicename']?></a> 												
  											<?php }}?>
-											</blockquote>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -238,7 +238,7 @@
 										<div class="username_container">
 											<div id="yui-gen23" class="popupmenu memberaction">
 												<a class="username offline popupctrl" title="<?php echo $Comment->comment_author;?>vẫn chưa có mặt trong diễn đàn" href="<?php echo base_url().'member/profile/'.$Comment->id;?>" rel="nofollow">
-												<strong>Thành viên:</strong><br/>
+												
 												<strong><?php echo $Comment->comment_author;?></strong>
 												</a>												
 											</div>																						

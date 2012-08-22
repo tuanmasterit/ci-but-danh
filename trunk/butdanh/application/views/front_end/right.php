@@ -17,7 +17,7 @@
                 </ul>
             </div>
             <div class="box-center" id="box-topichot">
-            	<h3>Top 10 bút danh được yêu thích</h3>
+            	<h3>Top 10 bút danh Trách nhiệm</h3>
                 <div class="content-box-right">
                     <?php 
                     	$lstTopLike = $this->Like_model->listTopLike();
