@@ -71,7 +71,7 @@
                                 <input type="submit" class="btnlogin" value="Đăng nhập"  />
                             </p>
                             <p>
-                            	<a  onclick="return $(this).slideToggle(1000)" id="link-login" href="<?php echo base_url();?>home/register">Đăng ký </a>
+                            	<a   id="link-login" href="<?php echo base_url();?>home/register">Đăng ký </a>
                             </p>
                             </div>
                          </form>
@@ -105,7 +105,7 @@
                 	
                     <li class="name-butdanh">
                     	<h3 class="tamgiac arrow-up" id="btSuggestBao<?php echo $jj;?>"><a class="bullet" ><?php echo $magazine->name;?></a></h3> 
-                        <?php $lstbutdanh = $this->User_model->get(0,-1,0,'butdanh',$magazine->term_id);?>                       
+                        <?php $lstbutdanh = $this->User_model->get(0,-1,0,'butdanh',$magazine->term_id,'user_nicename','ASC');?>                       
                     	<div class="lst-butdanh" id="suggestButdanh<?php echo $jj;?>">
                         	<?php 
                         	$count1=count($lstbutdanh);
