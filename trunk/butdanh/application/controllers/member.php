@@ -10,22 +10,28 @@
 			$this->load->model('Term_model');
 			$this->load->model('Upload_model');
 			$this->load->model('Comment_model');
+			$this->load->library('pagination');
 			$gallery_path = realpath(APPPATH . '../uploads');
 			$this->load->helper('cookie');
 		}
 		
-		function profile($id)
-		{					
+		function profile($id,$row=0)
+		{						
 			$member = $this->User_model->get($id);	
 			$data['member_id'] = $id;		
 			$data['address'] = $this->User_model->get_usermeta($id,'address');
 			$data['birthday'] = $this->User_model->get_usermeta($id,'birthday');
 			$data['gender'] = $this->User_model->get_usermeta($id,'gender');
-			$data['phone'] = $this->User_model->get_usermeta($id,'phone_number');
-			$data['tieusu']=$this->User_model->get_usermeta($id,'tieu_su');
-			$data['sothich'] = $this->User_model->get_usermeta($id,'so_thich');
-			$lstPost = $this->Post_model->get_post_by_month($id);
-			$data['count_post'] = count($lstPost);
+			//$data['phone'] = $this->User_model->get_usermeta($id,'phone_number');
+			//$data['tieusu']=$this->User_model->get_usermeta($id,'tieu_su');
+			//$data['sothich'] = $this->User_model->get_usermeta($id,'so_thich');
+			$lstPost = $this->Post_model->get_post_by_month($id,-1, -1, 0, 'DESC', 'post_date','topic');
+			$data['count_post'] = count($lstPost);			
+		
+			$lstTopicMember = $this->Post_model->get_post_by_month($id,-1, 10, 0, 'DESC', 'post_date','topic');
+			$data['lstTopicMember'] = $lstTopicMember;
+			$lstCommentMember = $this->Comment_model->get(5,0,'comment_date','DESC','',0,$id);
+			$data['lstCommentMember'] = $lstCommentMember;
 			$data['avatar'] = $this->User_model->get_usermeta($id,'avatar');
 			//tranfer data
 			$member_id = $this->session->userdata('user_id');
