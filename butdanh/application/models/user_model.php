@@ -511,6 +511,7 @@ class User_model extends CI_Model{
 		$this->db->join('ci_term_taxonomy', 'ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
 		$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
 		$this->db->where('user_activation_key','butdanh');
+		$this->db->where('taxonomy','magazine');  
 		$this->db->limit($limit,$ofset);
 		$this->db->order_by('user_registered','DESC');
 		$query = $this->db->get();
