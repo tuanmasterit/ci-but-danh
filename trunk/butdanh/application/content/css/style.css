@@ -785,7 +785,7 @@ form#quick_reply .actionbuttons .group {
     margin-left: 5px;       
     margin-top: 10px !important;
     color: #CC0000;
-    font: 700 24px/13px "Times New Roman";
+    font: 700 24px/13px "arial";
     font-size: 14pt;    
     padding: 2px 5px 2px 2px;
     
@@ -797,7 +797,7 @@ form#quick_reply .actionbuttons .group {
     overflow: hidden;
 }
 .fon p {
-    font-family: Times New Roman;
+    font-family: arial;
     font-size: 12pt;
     line-height: 20px !important;
     margin-bottom: 3%;
