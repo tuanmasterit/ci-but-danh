@@ -39,11 +39,17 @@
                                 </select>
                                 <select class="InputSearch1" name="post_type">                                                                                              
                                 	<?php if($post_type == 'topic'){?>
-                                    	<option selected="selected" value="topic"> Chủ đề</option>
+                                        <option value="all"> Tất cả</option>
+                                    	<option selected="selected" value="topic"> Chủ đề</option>                                        
                                         <option value="post"> Bài viết</option>
-                                    <?php }else{?>
+                                    <?php }elseif ($post_type == 'post') {?>
+                                        <option value="all"> Tất cả</option>
                                     	<option  value="topic">Chủ đề</option>
                                         <option selected="selected" value="post"> Bài viết</option>
+                                    <?php }else {?>
+                                        <option selected="selected" value="all"> Tất cả</option>
+                                    	<option  value="topic">Chủ đề</option>
+                                        <option  value="post"> Bài viết</option>
                                     <?php }?>
                                 
                                 </select>
