@@ -81,7 +81,7 @@ class Post extends CI_Controller {
         
         $link = $this->get_link($title);		
             	
-        $exerpt = $this->security->xss_clean($this->input->post('txtexcerpt'));		
+        //$exerpt = $this->security->xss_clean($this->input->post('txtexcerpt'));		
     	$content = $this->security->xss_clean($this->input->post('txtcontent'));    	    	
         
         
@@ -106,14 +106,14 @@ class Post extends CI_Controller {
         }
         
         if($title == ''){$flag = true;}
-    	if($exerpt == ''){$flag = true;}
+    	//if($exerpt == ''){$flag = true;}
     	if($content == ''){$flag = true;}
     	if($post_id == ''){$flag = true;}
         		
     	if($flag==false){
     		$arr_categories = $this->Post_model->get_categories_of_post($post_id);			
     		//Insert posts			
-    		$last_id = $this->Post_model->add($butdanh,date('Y-m-d H-i-s'),$content,$title,$exerpt,'topic',$featured_image,$arr_categories,$post_id,'pending',$link);
+    		$last_id = $this->Post_model->add($butdanh,date('Y-m-d H-i-s'),$content,$title,'','topic',$featured_image,$arr_categories,$post_id,'pending',$link);
             if($last_id > 0){
     			redirect('home');							
     		}
