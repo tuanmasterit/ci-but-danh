@@ -107,7 +107,7 @@ background:#333333;
 #butdanh li a{font-size:9px;}
 #chude{}
 .box-center{margin-bottom:5px;}
-.box-center .top-topic-top{overflow:hidden;margin-bottom:0px;background:#333;padding:3px;}
+.box-center .top-topic-top{overflow:hidden;margin-bottom:0px;background:#333;}
 #box-topichot{}
 .box-content .box1 ul li{margin-left:10px;}
 .box-center .top-topic-top li{float:left;}
@@ -1348,7 +1348,7 @@ select {
 .right-comment .info-comment{}
 .imagecache-profile{float: left;padding-bottom: 5px;}
 .profile-about{float: right;width: 355px;}
-.pane-content {overflow: hidden;}
+.pane-content {overflow: hidden;margin-top: 5px;}
 .info-member-images{padding-left: 0px !important;}
 .panel-pane .top-topic-top{height: 22px;}
 .box1 ul li {
