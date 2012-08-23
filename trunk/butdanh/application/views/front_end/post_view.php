@@ -14,7 +14,7 @@
                      <p><?php echo $post_detail->post_content ;?></p>                                      
                 </div><!-- end box-content -->
                 <div id="post_meta">
-                	<p>Bút danh: <span><?php echo $butdanh['user_nicename'];?></span></p>
+                	<p>Bút danh: <span><a href="<?php echo base_url().'profile/'.$butdanh['id']; ?>"><?php echo $butdanh['user_nicename'];?></a></span></p>
                     <p>Đơn vị công tác: <span><?php echo $butdanh['name'] ;?></span></p>                                                                 
                 </div>
                 <div id="showSuggestTopic">                        
@@ -34,9 +34,11 @@
                                 <p><label>Ảnh đại diện:</label></p>
                                 <p><span class="field"><input class="textbox" type="file" name="userfile" size="40"  /></span></p>
                                 <br/>                            
-                                <p><label>Tóm tắt:</label></p>                            
+                                <!--
+                                <p><label>Tóm t?t:</label></p>                            
                                 <p><span class="field"><textarea class="validate[required]" name="txtexcerpt"></textarea></span></p>
                                 <br/>
+                                -->
                                 <p><label>Nội dung:</label></p>                            
                                 <p><textarea class="validate[required]" name="txtcontent" id="editor_content"></textarea></p>                                
                                 <br/>
