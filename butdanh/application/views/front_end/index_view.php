@@ -70,7 +70,7 @@
                                 <p class="info-comment">
                                     <a href="<?php echo base_url().'member/profile/'.$LatestComment->user_id;?>"><?php echo $LatestComment->comment_author;?></a>
                                 </p>
-                                <p><?php echo date_format(date_create($LatestComment->comment_date),'d-m-Y H:s:i ');?></p>
+                                <p class="comment-date"><?php echo date_format(date_create($LatestComment->comment_date),'d-m-Y H:s:i ');?></p>
                                 
                             </div>
                         </li>
