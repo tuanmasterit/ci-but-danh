@@ -161,12 +161,12 @@ class Topic extends CI_Controller {
         if ($l_link == '') $l_link = $l_title;      
         $l_link = $this->get_link($l_link);
         
-		$l_exerpt = $this->input->post('txtexcerpt');		
+		//$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
 		$l_post_id = $this->input->post('cbxbaiviet');
 		$l_featured_image = $this->input->post('hdffeatured_image');		
 		if($l_title == ''){$flag = true;}
-		if($l_exerpt == ''){$flag = true;}
+		//if($l_exerpt == ''){$flag = true;}
 		if($l_content == ''){$flag = true;}
 		if($l_post_id == ''){$flag = true;}
 		//if($l_featured_image == ''){$flag = true;}
@@ -174,7 +174,7 @@ class Topic extends CI_Controller {
 			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
 			//print_r($l_arr_categories);
 			//Insert posts			
-			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,$l_post_id,'topic',$l_link);
+			$last_id = $this->Post_model->update($id,$l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,'',$l_featured_image,$l_arr_categories,$l_post_id,'topic',$l_link);
 			if($last_id > 0){
 				
 				redirect('admin/topic/lists/topic');							
