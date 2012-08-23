@@ -177,7 +177,7 @@ class Home extends CI_Controller {
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		$this->load->view('front_end/view_verify',$data);
 	}
-    public function search($post_type='topic',$term=0,$titleTopic='~',$row=0)
+    public function search($post_type='all',$term=0,$titleTopic='~',$row=0)
 	{
 	    $data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
 		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
@@ -197,7 +197,9 @@ class Home extends CI_Controller {
 		if($this->input->post('hdfposttype') != ''){
 			$data['post_type'] = $this->input->post('hdfposttype');	
 		}
+        
         $data['post_type'] = $post_type;
+        echo $post_type;
 		// Get category
 		$data['category'] = $term;
 		if($this->input->post('slcategory') != ''){
@@ -216,12 +218,13 @@ class Home extends CI_Controller {
         if  ($data['titleTopic'] != '~' )
         {
             if ($post_type == 'topic') {$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);}
-            else $config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);
+            elseif ($post_type == 'post') {$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);}
+            else $config['total_rows']=$this->Post_model->getCount('',$data['category'],'','all',$data['titleTopic']);
         } else
         {
             $config['total_rows'] = 0;
         }
-         		
+        echo   $config['total_rows'];		
 		$config['cur_page']= $row;
         $config['num_links'] = 3;		
 		$this->pagination->initialize($config);
@@ -234,7 +237,8 @@ class Home extends CI_Controller {
         if  ($data['titleTopic'] != '~' )
         { 
     		if ($post_type == 'topic') $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']); 
-            else $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);
+            elseif ($post_type == 'post') {$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);}
+            else $data['lstPosts'] = $this->Post_model->get(0,'',$data['category'],'',$config['per_page'],$row,'DESC','post_date','all',$data['titleTopic']);
         } else
         {
             $data['lstPosts'] = array();
