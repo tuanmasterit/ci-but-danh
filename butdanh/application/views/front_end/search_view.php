@@ -11,18 +11,9 @@
         </div>-->
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">  
-         <!-- menu-top -->
-            <div id="menu-top">
-        	<ul class="nav-top">
-            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
-				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
-                <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
-                <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
-                <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
-                <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
-            </ul>
-
-            </div><!-- end menu-top -->      	
+            <!-- end menu-top -->
+            <?php $this->load->view('front_end/menu-top');?>    
+            <!-- menu-top -->   	
         	<div class="box-center" id="box-newtopic">  
                 <div class="detailLeft">
         			<div class="navTagnSearch" >
