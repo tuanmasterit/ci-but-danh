@@ -854,7 +854,9 @@ form#quick_reply .actionbuttons .group {
     margin-right: 10px;
 }
 #post_meta p{}
-#post_meta span{}
+#post_meta a{
+    color:red;
+}
 
 #suggestTopic {
     overflow: hidden;
