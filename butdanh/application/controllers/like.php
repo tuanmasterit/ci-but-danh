@@ -49,7 +49,7 @@
 			$this->User_model->add_thanks($id,$user_liked,$threads_id);
 			$mess1=  '';
 			$list_thanks = $this->User_model->list_thanks($id,$threads_id);
-			$mess2='<br />';
+			$mess2='';
             $total_thanks = count($list_thanks);
 			if($total_thanks>0)
             {
