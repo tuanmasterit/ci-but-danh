@@ -98,7 +98,7 @@ $(document).ready(function(){
         //alert(threads_id);
 		$.post(url,{id:id,threads_id:threads_id},function(data) {
 		  
-		    $('.link-thanks').html('');  	
+		    $('.link-thanks').hide();  	
 			$('#list-user-thanks').html(data.mess1);
 			$('#totalThanks').html(data.mess2);
 		},'json');
