@@ -126,7 +126,7 @@ class Topic extends CI_Controller {
 		if($l_content == ''){$flag = true;}
 		if($l_post_id == ''){$flag = true;}		
 		if($flag==false){
-			$l_arr_categories = $this->Post_model->get_categories_of_post($l_post_id);			
+			$l_arr_categories = $this->input->post('cbcategory');			
 			//Insert posts			
 			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,'','topic',$l_featured_image,$l_arr_categories,$l_post_id,'public',$l_link);            
 			if($last_id > 0){
