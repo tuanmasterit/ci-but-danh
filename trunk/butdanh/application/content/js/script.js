@@ -218,9 +218,30 @@ $(document).ready(function(){
 		
 	});
   
-   
+   /***************************view member profile***********************************/
 
-   
+   	$('.profile_member1').toggle(function (){
+   		
+   		if($(this).attr("class")=="pane-title profile_member1 arrow-up1"){
+   			$(this).removeClass("arrow-up1");
+ 		   $(this).addClass("arrow-down1");
+ 	   }else{
+ 		   $(this).removeClass("arrow-down1");
+ 		   $(this).addClass("arrow-up1");
+ 	   }
+ 		   $(this).next().slideToggle("500");
+ 	},function(){
+ 		if($(this).attr("class")=="pane-title profile_member1 arrow-up1"){
+ 			   $(this).removeClass("arrow-up1");
+ 			   $(this).addClass("arrow-down1");
+ 		   }else{
+ 			   $(this).removeClass("arrow-down1");
+ 			   $(this).addClass("arrow-up1");
+ 		   }
+ 		   $(this).next().slideToggle("500");
+ 		
+ 	});
+   	
     /**************   Topic Top    ******************************/
     $(".topic-a").click(function(){
         var url = $(this).attr('href');
