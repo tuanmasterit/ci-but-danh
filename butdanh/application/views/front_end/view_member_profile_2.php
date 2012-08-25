@@ -8,21 +8,12 @@
             	});
         </script>        
         <div id="middle-center">
-        <div id="menu-top">
-        	<ul class="nav-top">
-            	<li><a href="<?php echo base_url();?>" class="current">Trang chủ</a></li>
-				<li><a href="<?php echo base_url();?>category/1">Chính trị</a></li>
-                <li><a href="<?php echo base_url();?>category/5">Văn hóa</a></li>
-                <li><a href="<?php echo base_url();?>category/3">Xã hội</a></li>
-                <li><a href="<?php echo base_url();?>category/4">Kinh tế</a></li>
-                <li><a href="<?php echo base_url();?>category/10">Khoa học</a></li>
-            </ul>
-         
-        </div><!-- end menu-top -->    
+        <?php $term_toptic=0;?>
+            <?php $this->load->view('front_end/menu-top');?>    
          <!-- menu-top -->
        	<div class="box-center" id="box-newtopic">            
             <div class="box-content">                	
-
+			
             <div class="panel-panel panel-col-first">
 					<div class="inside">
 						<input type="hidden" name="hdfID" value="<?php echo $member['id'];?>" id="hdfID">

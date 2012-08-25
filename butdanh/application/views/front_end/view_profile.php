@@ -81,7 +81,7 @@
                 
 				
 					<div id="profile_topic" >				  
-						<h2><b>Chủ đề bình luận liên quan:</b></h2>				  				  
+						<h2><b>Chủ đề thảo luận liên quan:</b></h2>				  				  
 						<div class="">
 							<ul>                      
                                 <?php foreach($listTopicRelation as $topic){?>
