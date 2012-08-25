@@ -174,8 +174,8 @@
 						</div>						
 						<div class="panel-region-separator"></div>
 						<div class="panel-pane pane-views pane-istar-top-voting user-main-block" >				  
-							<h2 class="pane-title">Những chủ đề đã tạo:</h2>				  				  
-							<div class ="box1" id="scroll_box-top">
+							<h2 class="pane-title profile_member1 arrow-up1"><a >Những chủ đề đã tạo:</a></h2>	  				  
+							<div class ="box1 list_bai"  id="scroll_box-top">
 		                        <ul>
 		                          <?php 
 		                              foreach ($lstTopicMember as $topicmember)
@@ -192,8 +192,8 @@
 						</div>
 						<div class="panel-region-separator"></div>
 						<div class="panel-pane pane-views pane-istar-top-voting user-main-block" >				  
-							<h2 class="pane-title">Những bài mới đăng:</h2>				  				  
-							<div  class="box1">
+							<h2 class="pane-title profile_member1 arrow-up1">Những bài mới đăng:</h2>				  				  
+							<div  class="box1 list_bai">
 								<ul>	
 			                    <?php                     	
 			                    	$num = 1;
