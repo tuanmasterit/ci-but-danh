@@ -24,9 +24,7 @@
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txttitle"></span></p>
                             <br/>                            
-                            <p><label>Tóm tắt:</label></p>                            
-                            <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
-                            <br/>
+                            
                             <p><label>Nội dung:</label></p>                            
                             <p><textarea name="txtcontent" id="editor_content"></textarea></p>
                             <input type="hidden" value="<?php echo $post_type;?>" name="hdfposttype"  />

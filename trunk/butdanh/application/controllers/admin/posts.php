@@ -105,7 +105,7 @@ class Posts extends CI_Controller {
         
         $l_link = $this->get_link($l_title);
         	
-		$l_exerpt = $this->input->post('txtexcerpt');		
+		$l_exerpt = '';		
 		$l_content = $this->input->post('txtcontent');		
 		$l_butdanh = $this->input->post('txtAuthor');	
 		$id_butdanh = $this->Author_model->get_by_user_nicename($l_butdanh);	
