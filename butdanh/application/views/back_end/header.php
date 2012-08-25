@@ -61,12 +61,7 @@
 			jQuery('#lblAuthor').html('<b>'+thisValue+'</b>');
 			jQuery('#txtAuthor').val(thisValue);
 			setTimeout("jQuery('#suggestions').hide();", 200);
-			var l_butdanh = thisValue;
-			var l_category = jQuery('#cbxcategory option:selected').attr('value');
-			var url = jQuery('#hdurlajax').attr('value');
-			jQuery.post(url,{butdanh:l_butdanh,category:l_category},function(data) {
-				jQuery('#divpostajax').html(data);
-			});
+			
 		}
 	}
 </script>
