@@ -30,6 +30,10 @@ ul li{list-style-type:none;}
 .tamgiac{ padding-left:10px;}
 .arrow-up{background:url("../images/icon-tamgiac.png") no-repeat scroll left center transparent;}
 .arrow-down{background:url("../images/icon-tamgiac2.png") no-repeat scroll left center transparent;}
+.arrow-up1{background:url("../images/icon-tamgiac11.png") no-repeat scroll left center transparent;}
+.arrow-down1{background:url("../images/icon-tamgiac22.png") no-repeat scroll left center transparent;}
+
+
 .lst-butdanh{padding-right:5px;display:none;text-align: justify;}
 .lst-butdanh1{display:block;padding-right:5px}
 .display-user{margin-left:7px;}
@@ -56,6 +60,8 @@ ul li{list-style-type:none;}
 /* end left */
 /* middle */
 #middle-center{background:#EAEAEA;width:494px;float:left;color:#333;}
+.profile_member1:hover{cursor: pointer;}
+
 /**
  * #middle-center a{color:#FFF;}
  */
@@ -702,10 +708,11 @@ form#quick_reply .actionbuttons .group {
     /*background: url("../images/dot.png") repeat-x scroll 0 bottom transparent;
     color: #333333;
     */
-    background: url("../images/pen.png") no-repeat scroll left center transparent;
+   	
     font-weight: bold;
-    padding-left: 20px;
+    padding-left: 15px;
 }
+.list_bai{display:none;}
 .pane-title {
     margin-bottom: 3px;
     font-size: 12px;
