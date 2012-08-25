@@ -14,7 +14,7 @@
                    	<li><a href="<?php echo base_url();?>admin/topic/reject/topic">Chủ đề từ chối</a></li>
                 </ul>
                 <div class="content">                	
-                	<form method="post" action="<?php echo base_url();?>admin/topic/save_topic" class="stdform">
+                	<form method="post" action="<?php echo base_url();?>admin/topic/save_topic" class="stdform" id="formID">
                 	<div class="edit-main">                    	                    	                            
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput" name="txttitle"></span></p>
@@ -86,24 +86,14 @@
                                 <p>
                                     Danh mục bài viết:                                       
                                     <select name="cbxcategory" style="width:100%;" id="cbxcategory">
-                                    	<option value="">-- Tất cả --</option>
+                                    	
                                     	<?php foreach($lstCategories as $category){?>                                        	
                                         	<option value="<?php echo $category->term_id;?>"><?php echo $category->name;?></option>
                                         <?php }?>
                                     </select>                                    
                                 </p>
                                 <br/>
-                                <p>
-                                    Bài viết:   
-                                    <div id='divpostajax'>
-                                    <select name="cbxbaiviet" style="width:100%;" id="cbxbaiviet">
-                                    	<?php foreach($lstposts as $post){?>                                        	
-                                        	<option value="<?php echo $post->id;?>"><?php echo $post->post_title;?></option>
-                                        <?php }?>
-                                    </select>
-                                    </div>
-                                <p/>
-                                <br/>
+                                
                                 <p class="stdformbutton">
                                     <button class="submit radius2">Xuất bản</button>
                                     <input type="reset" value="Hủy" class="reset radius2">
