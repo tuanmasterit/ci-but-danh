@@ -101,7 +101,7 @@
         									
         								</h2>
         								<h2 class="tagLead">
-               	                        <?php if($post_type == 'topic'){?>
+               	                        <?php if($Post->post_type == 'topic'){?>
         									<p>Người đề xuất : <a href="<?php echo base_url().'member/profile/'.$Post->post_author;?>"><b><?php echo $Post->user_nicename;?></b></a>
                 	            			</p>
                                         <?php } else {?>
