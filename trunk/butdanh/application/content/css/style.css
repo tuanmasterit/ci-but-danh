@@ -868,7 +868,7 @@ form#quick_reply .actionbuttons .group {
 
 #suggestTopic {
     overflow: hidden;
-    display: none;
+    
 }
 #btSuggestTopic {cursor: pointer; font-size: 12px; color: #CC0000; font-weight: bold; text-decoration: none;}
 #showSuggestTopic { background: url("../images/dot_post.png") repeat-x scroll 0 bottom transparent;margin-top: 5px;}
@@ -1366,3 +1366,37 @@ select {
 }
 .postbit .posttitle2{font-weight: normal !important;}
 .right-comment p {font-size: 10px;line-height: 18px;}
+/**
+ * suggest topic
+ */
+ .suggestionsBox {
+    background-color: #212427;
+    border: 2px solid #000000;
+    color: #FFFFFF;
+    left: 0;
+    margin: 10px 0 0;
+    position: relative;
+    width: 95%;
+}
+.suggestionList {
+    margin: 0;
+    padding: 0;
+}
+.suggestionList li {
+    cursor: pointer;
+    margin: 0 0 3px;
+    padding: 3px;
+    list-style-type: none;
+}
+.suggestionList li:hover {
+    background-color: #659CD8;
+}
+#suggest_category
+{
+    width:250px;    
+    margin-bottom: 15px;
+}
+#cbxcategory option
+{
+    margin-left: 3px;
+}
