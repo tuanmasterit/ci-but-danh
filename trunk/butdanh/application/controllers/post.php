@@ -63,18 +63,18 @@ class Post extends CI_Controller {
     }
     public function suggest($post_id=0)
     {    
-        $this->load->helper('security');
-        
+        $this->load->helper('security');        
         if($this->session->userdata('logged_in') == 0 ) redirect('home');        
         $this->load->helper('url');        
-    	$flag=false;			        	
-    	$post_id = $this->uri->segment(3);
-        $data['post_id'] = $post_id;                
-        $featured_image = '';
-        $featured_image = $this->Post_model->get_featured_image($post_id);         
+    	$flag=false;	
+        $butdanh = $this->input->post('txtAuthor');	
+		$post_id = $this->Author_model->get_by_user_nicename($butdanh);		        	
+    	                
+        //$featured_image = '';
+        //$featured_image = $this->Post_model->get_featured_image($post_id);         
         //default image
-        if ($featured_image == '') $featured_image = 'application/content/images/noavatar.png';
-        $data['featured_image'] = $featured_image;    
+         $featured_image = 'application/content/images/noavatar.png';
+        //$data['featured_image'] = $featured_image;    
         
         $butdanh = $this->session->userdata('user_id');
     	$title = $this->security->xss_clean($this->input->post('txttitle'));
@@ -111,22 +111,41 @@ class Post extends CI_Controller {
     	if($post_id == ''){$flag = true;}
         		
     	if($flag==false){
-    		$arr_categories = $this->Post_model->get_categories_of_post($post_id);			
+    		$arr_categories = $this->input->post('cbcategory');			
     		//Insert posts			
-    		$last_id = $this->Post_model->add($butdanh,date('Y-m-d H-i-s'),$content,$title,'','topic',$featured_image,$arr_categories,$post_id,'pending',$link);
+            $last_id =$last_id = $this->Post_model->add($butdanh,date('Y-m-d H-i-s'),$content,$title,'','topic',$featured_image,$arr_categories,$post_id,'pending',$link);
+            //$this->Post_model->add($l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,'','topic',$l_featured_image,$l_arr_categories,$l_post_id,'public',$l_link);
             if($last_id > 0){
     			redirect('home');							
     		}
     	} else
     	{
-    	   $result = $this->Post_model->get($post_id);
-            //sprint_r($result);
-            if (count($result) >0)
-            foreach($result as $temp)
-            {
-               redirect('bai-viet/'.$temp->guid); 
-    		} else {redirect('home');}
-	   	   
+    	  // $result = $this->Post_model->get($post_id);
+//            //sprint_r($result);
+//            if (count($result) >0)
+//            foreach($result as $temp)
+//            {
+//               redirect('bai-viet/'.$temp->guid); 
+//    		} else {redirect('home');}
+            $data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+    		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+    		$data['lstLatestComment'] = $this->Comment_model->get(5);
+    		$data['term_toptic'] =0;
+    		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+    		$data['lstToppic_top'] = $lstToppic_top;
+    		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
+    		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
+    		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
+    		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+    		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
+            $data['lstCategories'] = $this->Term_model->get(0,100,0,'category');	
+            if($this->session->userdata('logged_in') != 1){
+			$data['check_login'] = false;
+    		}
+    		else {
+    			$data['check_login'] = true;
+    		}
+  	         $this->load->view('front_end/suggest_view',$data);
     	}
     }
     public function detail($post_term='')
@@ -157,12 +176,7 @@ class Post extends CI_Controller {
         $data['post_id'] = $post_id;	
         //$data['post_term'] = $this->common->removesign(urldecode($post_term));
         
-        if($this->session->userdata('logged_in') != 1){
-			$data['check_login'] = false;
-		}
-		else {
-			$data['check_login'] = true;
-		}
+        
         
         //print_r($data['post_detail']);
         if($post_id != 0){
