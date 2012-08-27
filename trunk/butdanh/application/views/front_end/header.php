@@ -37,6 +37,54 @@
 			}
 		}
 </script>
+<script type="text/javascript">
+	function lookup(inputString) {
+		if(inputString.length == 0) {
+			// Hide the suggestion box.
+			jQuery('#suggestions').hide();
+		} else {
+			jQuery.post("<?php echo base_url();?>admin/rpc", {queryString: ""+inputString+""}, function(data){
+				if(data.length >0) {
+					jQuery('#suggestions').show();
+					jQuery('#autoSuggestionsList').html(data);
+				}
+			});
+		}
+	} // lookup
+	
+	function fill(thisValue) {
+		if(thisValue != null){
+			jQuery('#inputString').val(thisValue);
+			jQuery('#lblAuthor').html(thisValue);
+			jQuery('#txtAuthor').val(thisValue);
+			setTimeout("jQuery('#suggestions').hide();", 200);
+		}
+	}
+
+	function lookupauthor(inputString) {
+		if(inputString.length == 0) {
+			// Hide the suggestion box.
+			jQuery('#suggestions').hide();
+		} else {
+			jQuery.post("<?php echo base_url();?>admin/rpc/fill", {queryString: ""+inputString+""}, function(data){
+				if(data.length >0) {
+					jQuery('#suggestions').show();
+					jQuery('#autoSuggestionsList').html(data);
+				}
+			});
+		}
+	} // lookup
+	
+	function fillauthor(thisValue) {
+		if(thisValue != null){
+			jQuery('#inputString').val(thisValue);
+			jQuery('#lblAuthor').html('<b>'+thisValue+'</b>');
+			jQuery('#txtAuthor').val(thisValue);
+			setTimeout("jQuery('#suggestions').hide();", 200);
+			
+		}
+	}
+</script>
 </head>
 <body>
 <div id="fb-root"></div>
