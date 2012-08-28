@@ -20,8 +20,8 @@ class Post extends CI_Controller {
 		$data['lstLatestComment'] = $this->Comment_model->get(5);
 		$term_id = $this->Post_model->get_term_id_by_id_post($post_id);
 		$data['term_toptic'] =$term_id;
-		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id);
-		$data['lstToppic_top'] = $lstToppic_top;
+		//$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id);
+		//$data['lstToppic_top'] = $lstToppic_top;
 		$data['new_topics'] = $this->Post_model->get(0, 'topic', $term_id,'', -1, 0, 'DESC', 'post_date','pending');
 		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', $term_id,'', -1, 0, 'DESC', 'post_date','reject');
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
@@ -131,8 +131,8 @@ class Post extends CI_Controller {
     		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
     		$data['lstLatestComment'] = $this->Comment_model->get(5);
     		$data['term_toptic'] =0;
-    		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
-    		$data['lstToppic_top'] = $lstToppic_top;
+    		//$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+    		//$data['lstToppic_top'] = $lstToppic_top;
     		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
     		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
     		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
@@ -166,8 +166,8 @@ class Post extends CI_Controller {
         $post_id = $data['post_detail']->id;
 		$term_id = $this->Post_model->get_term_id_by_id_post($post_id);
 		$data['term_toptic'] =$term_id;
-		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id);
-		$data['lstToppic_top'] = $lstToppic_top;
+		//$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$term_id);
+		//$data['lstToppic_top'] = $lstToppic_top;
 		$data['new_topics'] = $this->Post_model->get(0, 'topic', $term_id,'', -1, 0, 'DESC', 'post_date','pending');
 		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', $term_id,'', -1, 0, 'DESC', 'post_date','reject');
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
