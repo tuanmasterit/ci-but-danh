@@ -118,8 +118,8 @@ class Topic extends CI_Controller {
         $l_link = $this->get_link($l_title);		
         //$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
-		$l_butdanh = $this->input->post('txtAuthor');	
-		$l_post_id = $this->Author_model->get_by_user_nicename($l_butdanh);	
+		$l_butdanh2 = $this->input->post('txtAuthor');	
+		$l_post_id = $this->Author_model->get_by_user_nicename($l_butdanh2);	
 		$l_featured_image = $this->input->post('hdffeatured_image');		
 		if($l_title == ''){$flag = true;}
 		//if($l_exerpt == ''){$flag = true;}
