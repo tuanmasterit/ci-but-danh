@@ -20,7 +20,9 @@
                 	<div class="edit-main">     
                     		<input type="hidden" name="hdfauthor" value="<?php echo $l_topic->post_author;?>"  />
                             <p><label>Tiêu đề:</label></p>
-                            <p><span class="field"><input type="text" class="longinput" value="<?php echo htmlentities($l_topic->post_title);?>" name="txttitle"></span></p>
+
+                            <p><span class="field"><input type="text" class="longinput" value="<?php echo htmlspecialchars(stripslashes($l_topic->post_title));?>" name="txttitle"></span></p>
+
                             </br>
                             <p><label>Đường dẫn:</label></p>
                             <p><span class="field"><input type="text" url="<?php echo base_url();?>" class="longinput" id="link_post"  name="txtlink" value="<?php echo urldecode($l_topic->guid);?>" onblur="check_link();" /></span>
