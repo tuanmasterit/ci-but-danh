@@ -13,21 +13,23 @@
                     <li><a href="<?php echo base_url();?>admin/topic/approval/topic">Chủ đề cần phê duyệt</a></li>
                    	<li><a href="<?php echo base_url();?>admin/topic/reject/topic">Chủ đề từ chối</a></li>
                 </ul>
-                <div class="content"> 
-                	<?php foreach($lsttopic as $l_topic){?>                                   	
+                <div class="content">
+                
+                	<?php foreach($lsttopic as $l_topic){ ?>                                   	
                 	<form method="post" action="<?php echo base_url();?>admin/topic/update_topic/<?php echo $l_topic->id;?>" class="stdform">
                 	<div class="edit-main">     
                     		<input type="hidden" name="hdfauthor" value="<?php echo $l_topic->post_author;?>"  />
                             <p><label>Tiêu đề:</label></p>
-                            <p><span class="field"><input type="text" class="longinput" value="<?php echo $l_topic->post_title;?>" name="txttitle"></span></p>
+                            <p><span class="field"><input type="text" class="longinput" value="<?php echo htmlentities($l_topic->post_title);?>" name="txttitle"></span></p>
                             </br>
                             <p><label>Đường dẫn:</label></p>
-                            <p><span class="field"><input type="text" url="<?php echo base_url();?>" class="longinput" id="link_post"  name="txtlink" value="<?php echo urldecode($l_topic->guid);?>" onblur="check_link();"></span>
+                            <p><span class="field"><input type="text" url="<?php echo base_url();?>" class="longinput" id="link_post"  name="txtlink" value="<?php echo urldecode($l_topic->guid);?>" onblur="check_link();" /></span>
                                 <span id ="alert_link" class=""><img  src='<?php echo base_url();?>application/content/images/link_error.png' width="15" height="15" alt="" /></span>
                                 <input type="hidden" id="link_confirm" value="<?php echo urldecode($l_topic->guid);?>" />
                                 
                             </p>
                             </br>
+                           
                             <!--
 <p><label>Tóm t?t:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"><?php echo $l_topic->post_excerpt;?></textarea></span></p>
