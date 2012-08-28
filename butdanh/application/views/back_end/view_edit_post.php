@@ -22,7 +22,7 @@
                 	<div class="edit-main">                    	                    	                            
                     		<input type="hidden" value="<?php echo $l_post->id;?>" name="post_id" />
                             <p><label>Tiêu đề:</label></p>
-                            <p><span class="field"><input type="text" class="longinput" name="txttitle" value="<?php echo $l_post->post_title;?>"></span></p>
+                            <p><span class="field"><input type="text" class="longinput" name="txttitle" value="<?php echo htmlentities($l_post->post_title);?>"></span></p>
                             </br>
                             
                             <p><label>Đường dẫn:</label></p>
