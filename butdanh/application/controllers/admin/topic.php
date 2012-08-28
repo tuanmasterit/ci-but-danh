@@ -94,7 +94,7 @@ class Topic extends CI_Controller {
 	public function save_add(){
 		$flag=false;		
 		$l_title = $this->input->post('txttitle');		
-		$l_exerpt = $this->input->post('txtexcerpt');		
+		$l_exerpt = '';		
 		$l_content = $this->input->post('txtcontent');		
 		$l_butdanh = $this->input->post('txtAuthor');	
 		$id_butdanh = $this->Author_model->get_by_user_nicename($l_butdanh);	

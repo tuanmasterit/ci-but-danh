@@ -45,7 +45,8 @@ class Posts extends CI_Controller {
             $data['titlePost'] = $this->input->post('titlePost');
         }        
 		//paging
-		include('paging.php');		
+		include('paging.php');
+		$config['per_page'] = 20;		
 		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/".$data['titlePost']."/";
         if  ($data['titlePost'] == '~' ) $data['titlePost'] = '';
 		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','', $data['titlePost']);		
