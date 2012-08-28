@@ -1,5 +1,5 @@
 <div id="middle-right">
-        	<div class="box-center" id="box-topichot">
+        	<!-- <div class="box-center" id="box-topichot">
 
         	<h3>Top 10 thảo luận nóng</h3>
                 <div class="content-box-right tap-right">
@@ -15,7 +15,7 @@
                     	<li><a class="bullet1" href="<?php echo base_url();?>chu-de/<?php echo urldecode($topic->guid);?>"><?php echo $topic->post_title;?></a></li>
 					<?php }?>                  
                 </ul>
-            </div>
+            </div> -->
             <div class="box-center" id="box-topichot">
             	<h3>Top 10 bút danh Trách nhiệm</h3>
                 <div class="content-box-right">
@@ -34,7 +34,7 @@
                 </div>    
             </div>
             <div class="box-center" id="box-topichot">
-                <h3>Top 10 bút danh nhiều bài viết</h3>
+                <h3>Top 10 bút danh viết nhiều</h3>
                 <div class="content-box-right">
                     <?php 
                     	
@@ -51,7 +51,7 @@
                 </div>  
             </div>
             <div class="box-center" id="box-topichot">
-                <h3>Bút danh mới nhất</h3>
+                <h3>Bút danh mới</h3>
                 <div class="content-box-right">
                     <?php                     	
                     	$num = 1;
@@ -67,7 +67,7 @@
                 </div>  
             </div>
             <div class="box-center">
-                <h3>Comment mới nhất</h3>
+                <h3>Comment mới </h3>
                 <div class="content-box-right">
                     <?php                     	
                     	$num = 1;
