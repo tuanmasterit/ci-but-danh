@@ -63,8 +63,7 @@ class Post extends CI_Controller {
     }
     public function suggest($post_id=0)
     {    
-        $this->load->helper('security');        
-        if($this->session->userdata('logged_in') == 0 ) redirect('home');        
+        $this->load->helper('security');                        
         $this->load->helper('url');        
     	$flag=false;	
         $butdanh = $this->input->post('txtAuthor');	
@@ -111,6 +110,7 @@ class Post extends CI_Controller {
     	if($post_id == ''){$flag = true;}
         		
     	if($flag==false){
+            if($this->session->userdata('logged_in') == 0 ) redirect('home');
     		$arr_categories = $this->input->post('cbcategory');			
     		//Insert posts			
             $last_id =$last_id = $this->Post_model->add($butdanh,date('Y-m-d H-i-s'),$content,$title,'','topic',$featured_image,$arr_categories,$post_id,'pending',$link);
