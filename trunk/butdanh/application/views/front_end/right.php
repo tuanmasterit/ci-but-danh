@@ -16,6 +16,7 @@
 					<?php }?>                  
                 </ul>
             </div> -->
+            <div id="suggest_topic"><a href="<?php echo base_url().'post/suggest' ?>">Đề xuất thảo luận</a></div>
             <div class="box-center" id="box-topichot">
             	<h3>Top 10 bút danh Trách nhiệm</h3>
                 <div class="content-box-right">
