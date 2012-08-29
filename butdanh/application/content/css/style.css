@@ -749,7 +749,7 @@ form#quick_reply .actionbuttons .group {
     color: white;
     font-size: 13px;
     font-weight: normal;
-    height: 21px;
+    height: 18px;
     padding-left: 3px;
     padding-top: 2px;
 }
@@ -1399,4 +1399,17 @@ select {
 #cbxcategory option
 {
     margin-left: 3px;
+}
+#suggest_topic {
+    background: url("../images/new_suggest_topic.png") no-repeat left center #CC0000;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    padding: 3px 5px 4px;
+}    
+#suggest_topic a
+{
+    color: #FFFFFF;
+    margin-left: 20px;
 }
