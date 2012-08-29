@@ -2,7 +2,7 @@
 	<h2 id="icon-human">Danh sách thành viên</h2>
 	
     <div class="ctn">
-    	Online: <?php echo $this->Count_access->countOnline();?>
+    	Online: <?php echo ($this->Count_access->countOnline()+$this->Count_access->countMemberOnline());?>
 		&nbsp;&nbsp;&nbsp;
 		Thành viên:  <?php echo $this->Count_access->countMemberOnline();?>
 		<br/>
