@@ -16,7 +16,7 @@
                         <li><a href="<?php echo base_url();?>admin/posts/add/page"><span>Thêm mới trang</span></a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo base_url();?>admin/posts/lists/topic" class="tables menudrop"><span>Chủ đề</span></a>
+                <li><a href="<?php echo base_url();?>admin/topic/lists/topic" class="tables menudrop"><span>Chủ đề</span></a>
                     <ul>
                         <li><a href="<?php echo base_url();?>admin/topic/lists/topic"><span>Tất cả chủ đề</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/topic/add/topic"><span>Thêm mới chủ đề</span></a></li>
