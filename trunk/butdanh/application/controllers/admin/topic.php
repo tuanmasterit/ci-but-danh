@@ -194,7 +194,7 @@ class Topic extends CI_Controller {
 		}elseif($post_type == 'topic'){
 			$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 			$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
-			$data['lstposts'] = $this->Post_model->get(0,'post');			
+			//$data['lstposts'] = $this->Post_model->get(0,'post');			
 			$data['lsttopic'] = $this->Post_model->get($id);			
 			$ofpost = $this->Post_model->get($data['lsttopic'][0]->post_parent);
 			//print_r($ofpost);
