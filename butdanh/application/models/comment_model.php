@@ -105,5 +105,26 @@
 		{			
 			$this->db->delete('ci_comments',array('comment_ID'=>$id));
 		}
+		
+		function getTopAuthorComment()
+		{
+			$this->db->select('post_parent,user_nicename,name,Count(*) as count_comment');			
+			$this->db->from('ci_users');
+			$this->db->join('ci_posts', 'ci_posts.post_parent = ci_users.id');
+			$this->db->join('ci_comments', 'ci_comments.comment_post_ID = ci_posts.id');
+			$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id=ci_users.id');
+			$this->db->join('ci_term_taxonomy', 'ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
+			$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
+			$this->db->where('taxonomy','magazine');
+			$this->db->where('post_type','topic');
+			$this->db->group_by('post_parent');
+			$this->db->order_by('count_comment','DESC');
+			$this->db->limit(10,0);
+			
+			$query = $this->db->get();
+			$result = $query->result();
+			
+			return  $result;
+		}
 	}	
 ?>

@@ -14,6 +14,8 @@ class Author extends CI_Controller {
 	{
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 		$this->load->view('back_end/author_view',$data);
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
+		$data['lstToppic_top'] = $lstToppic_top;
 	}
 	public function save()
 	{

@@ -52,7 +52,7 @@
 <!-- form login -->
  				<div class="user">
             	<?php if($this->session->userdata('username') != ''){?>
-                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><?php echo $this->session->userdata('username');?></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
+                	<p class="display-user">Xin chào: <a href="<?php echo base_url().'member/profile/'.$this->session->userdata('user_id');?>"><span class="span_user"><?php echo $this->session->userdata('username');?></span></a>&nbsp;|&nbsp;<a href="<?php echo base_url();?>home/logout">Thoát</a></p>
                 <?php }else{?>
             		
             		  <div class="frm-login">
@@ -124,7 +124,6 @@
                     
                     <?php $jj++;  }?>                    	                    
                 </ul>
-            </div>
-            
+            </div>            
             
         </div><!-- end middle-left -->
