@@ -315,55 +315,84 @@ class Post_model extends CI_Model{
         $this->db->where("MONTH(post_date)",$month);		
 		return $this->db->count_all_results();
 	}
+    /**
+	 * function get_relation_topic($author_id,$post_status='',$limit=5, $offset=0, $order='DESC', $order_by='post_date' )
+	 *     {
+	 *         $this->db->select('ci_posts.id');
+	 *         $this->db->from('ci_posts');
+	 *         $this->db->join('ci_users','post_author=ci_users.id');
+	 *         if ($author_id != '')
+	 *         {
+	 *             $this->db->where('ci_users.id',$author_id);
+	 *         }
+	 *         
+	 *         $query = $this->db->get();
+	 *         $result = $query->result();
+	 *         //return $result;
+	 *         $listPost = array();
+	 *         foreach($result as $topic)
+	 *         {
+	 *             $listPost[] = $topic->id;
+	 *         }
+	 *         if (count($listPost) >0 )
+	 *         {        
+	 *             $this->db->select('
+	 *     					ci_posts.id,
+	 *     					post_author,					
+	 *     					post_date,
+	 *     					post_title,
+	 *     					post_excerpt,
+	 *     					post_content,
+	 *     					post_type,
+	 *     					post_parent,
+	 *                         guid					
+	 *     				');
+	 *             $this->db->from('ci_posts');
+	 *             $this->db->where('post_type','topic');  
+	 *            	if($post_status!='')
+	 * 			{
+	 * 				$this->db->where('post_status',$post_status);
+	 * 			}         	
+	 *             $this->db->where_in('post_parent',$listPost);
+	 *             $this->db->order_by($order_by, $order);
+	 *             if($limit > 0)
+	 *             {
+	 *                 $this->db->limit($limit,$offset);
+	 *             }
+	 *             $query = $this->db->get();
+	 *             return $query->result();
+	 *          } 
+	 *          return array();  
+	 *     }
+	 */	
     function get_relation_topic($author_id,$post_status='',$limit=5, $offset=0, $order='DESC', $order_by='post_date' )
-    {
-        $this->db->select('ci_posts.id');
+    {        
+        $this->db->select('
+					ci_posts.id,
+					post_author,					
+					post_date,
+					post_title,
+					post_excerpt,
+					post_content,
+					post_type,
+					post_parent,
+                    guid					
+				');
         $this->db->from('ci_posts');
-        $this->db->join('ci_users','post_author=ci_users.id');
-        if ($author_id != '')
+        $this->db->where('post_type','topic');  
+       	if($post_status!='')
+		{
+			$this->db->where('post_status',$post_status);
+		}         	
+        $this->db->where('post_parent',$author_id);
+        $this->db->order_by($order_by, $order);
+        if($limit > 0)
         {
-            $this->db->where('ci_users.id',$author_id);
+            $this->db->limit($limit,$offset);
         }
-        
         $query = $this->db->get();
-        $result = $query->result();
-        //return $result;
-        $listPost = array();
-        foreach($result as $topic)
-        {
-            $listPost[] = $topic->id;
-        }
-        if (count($listPost) >0 )
-        {        
-            $this->db->select('
-    					ci_posts.id,
-    					post_author,					
-    					post_date,
-    					post_title,
-    					post_excerpt,
-    					post_content,
-    					post_type,
-    					post_parent,
-                        guid					
-    				');
-            $this->db->from('ci_posts');
-            $this->db->where('post_type','topic');  
-           	if($post_status!='')
-			{
-				$this->db->where('post_status',$post_status);
-			}         	
-            $this->db->where_in('post_parent',$listPost);
-            $this->db->order_by($order_by, $order);
-            if($limit > 0)
-            {
-                $this->db->limit($limit,$offset);
-            }
-            $query = $this->db->get();
-            return $query->result();
-         } 
-         return array();  
-    }	
-    
+        return $query->result();              
+    }
     function get_top_toppic_comment($limit=0,$offset=0,$term_id='',$from_date='',$to_date='')
     {    	
     	$this->db->select('
