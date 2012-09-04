@@ -17,7 +17,7 @@
                 	<p>Bút danh: <span><a href="<?php echo base_url().'profile/'.$butdanh['id']; ?>"><?php echo $butdanh['user_nicename'];?></a></span></p>
                     <p>Đơn vị công tác: <span><?php echo $butdanh['name'] ;?></span></p>                                                                 
                 </div>                                
-				<!--<div id="showSuggestTopic">                        
+				<div id="showSuggestTopic">                        
                         <img id="imgShow" src="<?php echo base_url();?>application/content/images/show.png" alt="suggest"/>
                         
                         <input type="hidden" id="imageHidden" value="<?php echo base_url();?>application/content/images/hidden.png" />
@@ -26,17 +26,48 @@
                         <label id="btSuggestTopic" >Đề xuất thảo luận</label>                                                                            
                 </div> 
                 <div id="suggestTopic">                	
-                	<form method="post" id="formID" action="<?php echo base_url().'post/suggest/'.$post_id;?>"  accept-charset="utf-8" enctype="multipart/form-data">        
+                	<form method="post" id="formID" action="<?php echo base_url().'post/suggest/';?>"  accept-charset="utf-8" enctype="multipart/form-data">        
                     	<div class="edit-main">   
                                 <p><label>Tiêu đề:</label></p>
                                 <p><span class="field "><input type="text" class=" textbox longinput validate[required]" name="txttitle" size="40"></span></p>
                                 <br/>                                
                                 <p><label>Ảnh đại diện:</label></p>
                                 <p><span class="field"><input class="textbox" type="file" name="userfile" size="40"  /></span></p>
-                                <br/>                            
-                                <p><label>Tóm tắt:</label></p>                            
-                                <p><span class="field"><textarea class="validate[required]" name="txtexcerpt"></textarea></span></p>
-                                <br/>
+                                <br/>   
+                                 
+                                <div class="widgetbox">                                    
+                                    <div class="widgetcontent" style="display: block;">
+                                    	<input type="hidden" id="hdurlajax" value="<?php echo base_url();?>/admin/posts/list_posts_ajax" />
+                                    	<p id="sl_butdanh_ajax">
+                                            <p><label>Tác giả:</label></p>
+                                            <input type="text" id="inputString" autocomplete="off" class=" textbox longinput validate[required]" name="txtnicename" onkeyup="lookupauthor(this.value);" onblur="fillauthor();" size="40" />
+                                            <div class="suggestionsBox" id="suggestions" style="display: none;">
+        										<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+        										<div class="suggestionList" id="autoSuggestionsList">
+        											&nbsp;
+        										</div>
+        									</div>                                    
+                                        <p/>
+                                        <div id="author_load_ajax">
+                                            <p>Tác giả đã chọn: <label id="lblAuthor" style="color:red">Chưa chọn tác giả</label></p>
+                                            <input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]">
+                                        </div>
+                                        <br/>
+                                       
+                                        <p><label>Danh mục bài viết:</label></p>   
+                                        <div id="suggest_category">
+                                            <p><span class="field">                                    
+                                                <select name="cbxcategory" style="width:100%;" id="cbxcategory" class="textbox longinput" >
+                                                	
+                                                	<?php foreach($lstCategories as $category){?>                                        	
+                                                    	<option value="<?php echo $category->term_id;?>"><?php echo $category->name;?></option>
+                                                    <?php }?>
+                                                </select>  
+                                            </span></p>                                  
+                                        </div>                                                                                                                       
+                                    </div><!--widgetcontent-->
+                                </div>    
+                                                                                     
                                 <p><label>Nội dung:</label></p>                            
                                 <p><textarea class="validate[required]" name="txtcontent" id="editor_content"></textarea></p>                                
                                 <br/>
@@ -47,7 +78,7 @@
                                 <?php } ?>
                         </div>                    
                     </form>              
-            </div>--><!--suggusetTopic-->
+                </div><!--suggusetTopic-->
             </div><!-- end newtopic -->           
         </div><!-- end middle-center -->
         <?php $this->load->view('front_end/right');?>
