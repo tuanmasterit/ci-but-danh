@@ -175,8 +175,14 @@ class Post extends CI_Controller {
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');	
         $data['post_id'] = $post_id;	
         //$data['post_term'] = $this->common->removesign(urldecode($post_term));
-        
-        
+        if($this->session->userdata('logged_in') != 1)
+            {
+			$data['check_login'] = false;
+    		}
+    		else {
+    			$data['check_login'] = true;
+    		}
+        $data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
         
         //print_r($data['post_detail']);
         if($post_id != 0){
