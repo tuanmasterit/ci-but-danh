@@ -1,28 +1,78 @@
 <?php $this->load->view('front_end/header');?>
+
+<script type="text/javascript">
+      $(function() {
+        var moveLeft = 20;
+        var moveDown = 10;
+        
+        $('.link-popup').hover(function(e) {
+        	$(this).next().show();
+          //.css('top', e.pageY + moveDown)
+          //.css('left', e.pageX + moveLeft)
+          //.appendTo('body');                      
+        }, function() {
+        	$(this).next().hide();
+        });
+        
+        $('.link-popup').mousemove(function(e) {
+        	$(this).next().css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+        
+      });
+    </script>
     <div id="middle">
-    	<!--<div id="middle-top">
-        	<div class="time">
-            	<p>Thứ 2 ngày 6 tháng 4 năm 2012 12:19:10</p>
-            </div>
-            <div class="search">
-            	<input type="text" id="txtsearch" class="txt" value="tìm kiếm chủ đề" />
-                <a href="#" class="btn-search">Tìm</a>
-            </div>
-        </div>-->
+    	
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">   
         	<?php $term_toptic=0;?>
             <?php $this->load->view('front_end/menu-top');?>
              	
             <div class="box-center" id="box-newtopic">            	
-                <div id="div-topic-top">                	
+                <!-- <div id="div-topic-top">                	
                     <ul class="top-topic-top">                            
                         <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish tab-active">Thảo luận mới</a></li>
                         <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top pending">Thảo luận mới đề xuất</a></li>
-                        <!-- <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Thảo luận mới từ chối</a></li>-->
+                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Thảo luận mới từ chối</a></li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="box-content">
+                	<div id="div-topic-top"> 
+                		<ul class="top-topic-top"> 
+                			<li class="topic-list-top">                		                        
+                        		<a>Thảo luận mới</a>   
+                        	</li>
+                    	</ul>                 	
+                	</div>
+                    <div class ="box1" id="scroll_box-top">
+                        <ul>
+                          <?php 
+                              foreach ($lstLatesTopic as $new_topic)
+                              {
+                          ?>
+                          <li>
+                          <a class="link-popup" href="<?php echo base_url().'chu-de/'.urldecode($new_topic->guid);?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a>
+                          <div class="pop-up">
+					        <p>Bút Danh</p>
+					        <p>
+					        	<span><?php echo $new_topic->post_title;?></span><br />
+					        	<span class="date-time"><?php echo date_format(date_create($new_topic->post_date),'d-m-Y H:i:s');?></span>
+					        </p>
+					      </div>
+                          </li>
+                          <?php
+                              }
+                           ?>				    
+                        </ul>
+                    </div>                                       
+                </div><!-- end box-content -->
+                <div class="box-content content-right">
+                	<div id="div-topic-top"> 
+                		<ul class="top-topic-top"> 
+                			<li class="topic-list-top">                		                        
+                        		<a>Thảo luận mới đề xuất</a>   
+                        	</li>
+                    	</ul>                 	
+                	</div>
                     <div class ="box1" id="scroll_box-top">
                         <ul>
                           <?php 
@@ -34,7 +84,7 @@
                           </li>
                           <?php
                               }
-                           ?>				    
+                           ?>	                           			    
                         </ul>
                     </div>                                       
                 </div><!-- end box-content -->
