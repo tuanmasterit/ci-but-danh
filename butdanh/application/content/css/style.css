@@ -63,7 +63,7 @@ ul li{list-style-type:none;}
 #middle-center{background:#EAEAEA;width:494px;float:left;color:#333;}
 .profile_member1:hover{cursor: pointer;}
 #div-topic-top{margin-bottom:10px;}
-#box-newtopic .box-content ul li{margin-bottom:8px;}
+#box-newtopic .box-content ul li{}
 /**
  * #middle-center a{color:#FFF;}
  */
@@ -112,13 +112,13 @@ ul li{list-style-type:none;}
 }
 #butdanh li a{font-size:9px;}
 #chude{}
-.box-center{margin-bottom:5px;}
+.box-center{margin-bottom:5px;overflow: hidden;}
 .box-center .top-topic-top{overflow:hidden;margin-bottom:0px;background:#333;}
 #box-topichot{}
 #box-topichot .top-topic-top li{float:right;}
 .box-content .box1 ul li{margin-left:5px;}
 .box-center .top-topic-top li{float:left;}
-.box-center .top-topic-top li a{padding:3px 10px;display:block;font-size:12px;color: #fff;}
+.box-center .top-topic-top li a{padding:3px 10px;display:block;font-size:12px;color: #fff;background:#CC0000;}
 .box-center .top-topic-top li a:hover,.box-center .top-topic-top li a.tab-active{background:#CC0000;color:#FFF;}
 .tab-active1 {background:#808080;color:#FFF; font-size: 12px;padding:4px;margin-left:0px;}
 .box-center .top-topic-top li a:focus{color:#FFF;}
@@ -129,9 +129,9 @@ ul li{list-style-type:none;}
 .box-center .content-box ul li a{}
 .box-center .box-content .topic-item .topic h3 a{ color: #FFFFFF;}
 
-.item-toptic-new{background: url("../images/4.gif") no-repeat scroll left center transparent;
+.item-toptic-new{background: url("../images/icon.png") no-repeat scroll left center transparent;
     padding-left: 20px;color:#333;}
-.date-time{font-size:10px;color:#AC0000;font-style:italic;padding-left:10px;}
+.date-time{font-size:10px;color:#AC0000;font-style:italic;padding-left:10px;float: right;}
 /* end middle*/
 /* right */
 #middle-right{float:right;background:#EAEAEA; width:19%;color:#333;}
@@ -140,7 +140,7 @@ ul li{list-style-type:none;}
 .thanh-right{}
 .box-center{}
 .bullet{font-size:13px;}
-.bullet1{background: url("../images/4.gif") no-repeat scroll left center transparent;
+.bullet1{background: url("../images/icon.png") no-repeat scroll left center transparent;
     font-size: 10px !important;
     margin-top: 20px;
     padding-left: 20px;}
@@ -1414,4 +1414,26 @@ select {
 {
     color: #FFFFFF;
     margin-left: 20px;
+}
+.box-content{
+	width: 50%;
+	float: left;	
+}
+.content-right{
+	
+}
+/* HOVER STYLES */
+.pop-up {
+	margin-left:20px;
+    display: none;
+  	position: absolute;
+  	width: 280px;
+  	padding: 10px;
+  	background: #FFECA8;
+  	color: #000000;
+  	border: 1px solid #9A620E;
+  	font-size: 90%;
+  	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
 }

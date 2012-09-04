@@ -51,6 +51,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).on("click",".qr_submit",function(){
+		//$('.qr_submit').click(function(){
 		var title = $(this).parent().parent().prev().find('#title').attr('value');
 		
 		var editor = $(this).parent().parent().prev().find('.editor_content').attr('id');
@@ -59,21 +60,14 @@ $(document).ready(function(){
 		var url = $('#hdfurl').attr('value');
 		var post_id = $("#post_id").attr('value');		
 		$.post(url,{post_id:post_id,comment_content:content,comment_title:title},function(data) {
-			/*$('#last-comment').html(data.mess1);
-			CKEDITOR.replace( 'editor_content'+data.mess2,
-					{			
-						filebrowserBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=file',
-						filebrowserImageBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
-						filebrowserFlashBrowseUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
-						filebrowserImageUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=image',
-						filebrowserFlashUploadUrl : '<?php echo base_url();?>application/elfinder/elfinder.php?mode=flash',
-						filebrowserImageWindowWidth : '950',
-						filebrowserImageWindowHeight : '490',
-						filebrowserWindowWidth : '950',
-						filebrowserWindowHeight : '490'
-					});*/
+			if(data == 1)
+			{
+				window.location.reload();
+			}
+			else
+			{return false;}
 		});
-		/*$(".vbform").hide();*/		
+			
 	});
 	
 	$('.newreply').click(function(){		
