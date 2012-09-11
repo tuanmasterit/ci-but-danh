@@ -1,27 +1,39 @@
 <?php $this->load->view('front_end/header');?>
-    <div id="middle">
-    	<!--<div id="middle-top">
-        	<div class="time">
-            	<p>Thứ 2 ngày 6 tháng 4 năm 2012 12:19:10</p>
-            </div>
-            <div class="search">
-            	<input type="text" id="txtsearch" class="txt" value="tìm kiếm chủ đề" />
-                <a href="#" class="btn-search">Tìm</a>
-            </div>
-        </div>-->
+<script type="text/javascript">
+      $(function() {
+        var moveLeft = 20;
+        var moveDown = 10;
+        
+        $('.link-popup').hover(function(e) {
+        	$(this).next().show();
+          //.css('top', e.pageY + moveDown)
+          //.css('left', e.pageX + moveLeft)
+          //.appendTo('body');                      
+        }, function() {
+        	$(this).next().hide();
+        });
+        
+        $('.link-popup').mousemove(function(e) {
+        	$(this).next().css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+        
+      });
+    </script>
+    <div id="middle">    	
     	<?php $this->load->view('front_end/left');?>
         <div id="middle-center">        	
            <?php $this->load->view('front_end/menu-top');?>
             <!-- end menu top -->
             <div class="box-center" id="box-newtopic">            	
-                <div id="div-topic-top">                	
-                    <ul class="top-topic-top">                            
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top publish tab-active">Thảo luận mới</a></li>
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top pending">Thảo luận mới đề xuất</a></li>
-                        <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Thảo luận mới từ chối</a></li>
-                    </ul>
-                </div>
+                
                 <div class="box-content">
+                	<div id="div-topic-top"> 
+                		<ul class="top-topic-top"> 
+                			<li class="topic-list-top">                		                        
+                        		<a>Thảo luận mới</a>   
+                        	</li>
+                    	</ul>                 	
+                	</div>
                     <div class ="box1" id="scroll_box-top">
                         <ul>
                           <?php 
@@ -29,11 +41,72 @@
                               {
                           ?>
                           <li>
-                          <a href="<?php echo base_url().'chu-de/'.urldecode($new_topic->guid);?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a>&nbsp;<span class="date-time"><?php echo date_format(date_create($new_topic->post_date),'d-m-Y H:i:s');?></span><br>
+                          <a class="link-popup" href="<?php echo base_url().'chu-de/'.urldecode($new_topic->guid);?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a>
+                          <div class="pop-up">
+					        <p><b><?php echo $new_topic->post_title;?></b></p>
+					        <p>
+					        	<span><?php 
+					        		$content = $new_topic->post_content;
+					        		if(strlen($content)>350)
+					        		{
+						        		$content = substr($content,0,350);
+						        		echo $content.'...';
+					        		}
+					        		else 
+					        		{
+					        			echo $content;
+					        		}
+				        			?>
+			        			</span><br />
+					        	<span class="date-time"><?php echo date_format(date_create($new_topic->post_date),'d-m-Y H:i:s');?></span>
+					        </p>
+					      </div>
                           </li>
                           <?php
                               }
                            ?>				    
+                        </ul>
+                    </div>                                       
+                </div><!-- end box-content -->
+                <div class="box-content content-right">
+                	<div id="div-topic-top"> 
+                		<ul class="top-topic-top"> 
+                			<li class="topic-list-top">                		                        
+                        		<a>Thảo luận mới đề xuất</a>   
+                        	</li>
+                    	</ul>                 	
+                	</div>
+                    <div class ="box1" id="scroll_box-top">
+                        <ul>
+                          <?php 
+                              foreach ($lstPendingTopic as $pending_topic)
+                              {
+                          ?>
+                          <li>
+                          <a class="link-popup" href="<?php echo base_url().'chu-de/'.urldecode($pending_topic->guid);?>"><span class="item-toptic-new"><?php echo $pending_topic->post_title;?></span></a>
+                          <div class="pop-up">
+					        <p><b><?php echo $pending_topic->post_title;?></b></p>
+					        <p>
+					        	<span><?php 
+					        		$content = $pending_topic->post_content;
+					        		if(strlen($content)>350)
+					        		{
+						        		$content = substr($content,0,350);
+						        		echo $content.'...';
+					        		}
+					        		else 
+					        		{
+					        			echo $content;
+					        		}
+				        			?>
+			        			</span><br />
+					        	<span class="date-time"><?php echo date_format(date_create($pending_topic->post_date),'d-m-Y H:i:s');?></span>
+					        </p>
+					      </div>
+                          </li>
+                          <?php
+                              }
+                           ?>	                           			    
                         </ul>
                     </div>                                       
                 </div><!-- end box-content -->
@@ -42,8 +115,11 @@
             <div class="box-center" id="box-topichot">
                 <ul class="top-topic-top">
                     <li >
-                        <a class="tab-active" href=""  >Thảo luận mới nhất</a>   
+                        <!-- <a class="tab-active" href=""  >Thảo luận mới nhất</a>-->
                     </li>
+					<li>
+						<div id="suggest_topic"><a href="<?php echo base_url().'post/suggest' ?>">Đề xuất thảo luận</a></div>
+					</li>
                 </ul>
                 <div class="lst-butdanh1">
                     <?php                     	
@@ -52,13 +128,13 @@
                     ?>
                     <ul>
                         <li>
-                            <div class="left-comment">
+                            <div class="left-comment">                            	
                                 <p><a href="<?php echo base_url().'chu-de/'.$LatestComment->guid;?>"><span class="item-toptic-new"><?php echo $LatestComment->post_title;?></span></a></p>
                                 <p>Được đăng bởi <a href="<?php echo base_url().'member/profile/'.$LatestComment->post_author;?>"><b><?php echo $LatestComment->user_login;?></b></a>, <?php echo date_format(date_create($LatestComment->post_date),'d-m-Y');?></p>                                
                             </div>
                             <div class="right-comment">
                                 <img src="<?php 
-                                    if($this->User_model->get_usermeta($LatestComment->post_author,'avatar')=='')
+                                    if($this->User_model->get_usermeta($LatestComment->user_id,'avatar')=='')
                                     {
                                         echo base_url().'application/content/images/avatars/no_avatar.gif';
                                     }
@@ -69,7 +145,8 @@
                                 <p class="info-comment">
                                     <a href="<?php echo base_url().'member/profile/'.$LatestComment->user_id;?>"><?php echo $LatestComment->comment_author;?></a>
                                 </p>
-                                <p><?php echo date_format(date_create($LatestComment->comment_date),'d-m-Y H:s:i ');?></p>
+                                <p class="comment-date"><?php echo date_format(date_create($LatestComment->comment_date),'d-m-Y H:s:i ');?></p>
+                                
                             </div>
                         </li>
                     </ul>
@@ -77,7 +154,8 @@
                         $num++;
                         }
                     ?>
-                </div> 
+                    
+                </div>
             </div>    <!-- end binh luan moi nhat -->
         </div><!-- end middle-center -->
         <?php $this->load->view('front_end/right');?>

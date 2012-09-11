@@ -2,10 +2,8 @@
 
 <!-- top left -->
 		<div id="top-left">
-                    <div id="logo">
-                        <a href="<?php echo base_url()?>"><img src="<?php echo base_url()?>application/content/images/logo.png"></a>
-                    </div> 
-                    <p class="time">
+			<div id="top-func">
+				<p class="time">
                     <?php
 						//$today =  mktime(date("h"),date("m"),0,date("m"),date("d")+1,date("Y"));
 						date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -42,12 +40,22 @@
 						}
 						$gio=date("H");
 						$phut=date("i");
-						$xuat_thu="$thu, $ngay / $thang / $nam  | $gio:$phut";
+						$xuat_thu="$thu, $ngay / $thang / $nam";
 						echo $xuat_thu;
 					?> 
                     
-                    </p>   
+                </p>
+                <div id="top-link">
+                	<ul>
+                		<li><a href="<?php echo base_url().'home/page/1137'?>">Giới thiệu</a>&nbsp;/&nbsp;</li>
+                		<li><a href="<?php echo base_url().'home/contact'?>">Liên hệ</a></li>
+                	</ul>
                 </div>
+			</div>
+            <div id="logo">
+            	<a href="<?php echo base_url()?>"><img src="<?php echo base_url()?>application/content/images/logo.png"></a>
+            </div>                        
+         </div>
 <!-- end top left -->
 <!-- form login -->
  				<div class="user">
@@ -92,7 +100,33 @@
             </form>
 <!--  end form search -->
 
-
+			<div class="box-sidebar" id="box-tag">
+				<h3 class="tamgiac arrow-up"><a class="bullet" >Bút danh được tìm kiếm nhiều nhất</a></h3>
+				<div id="suggestButdanh0" class="lst-butdanh" style="display: block;">
+					<?php 
+						$lstTag = $this->Author_model->getTopTag(40,0);						
+						$top = 0;
+						if(count($lstTag)>0)
+						{
+							$top = $lstTag[0]->num_tag;							
+						}
+						$i=1;
+						foreach ($lstTag as $tag)
+						{
+					?>
+						<a <?php 
+						if($tag->num_tag > ($top*0.8)) 
+						{
+							echo "style='font-size:12px;font-weight: bold;'";
+						}
+						elseif ($tag->num_tag > ($top*0.6))
+						{
+							echo "style='font-size:11px;font-weight: bold;'";
+						}
+						?> href="<?php echo base_url().'profile/'.$tag->user_id?>"><?php echo $tag->user_nicename;?></a><?php if($i!=count($lstTag)) echo ",";?>
+					<?php $i++;}?>					
+				</div>
+			</div>
         	<div class="box-sidebar" id="box-butdanh">
                 <ul class="lst-bao">                	
                     <?php 

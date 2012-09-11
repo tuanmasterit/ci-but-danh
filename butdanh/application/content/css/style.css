@@ -21,9 +21,9 @@ ul li{list-style-type:none;}
 #left-t{}
 #left-t form{padding:5px}
 #box-butdanh{}
-#top-left{overflow:hidden;padding:5px;background:#808080;height:36px;}
+#top-left{overflow:hidden;padding:5px;background:#808080;}
 #logo{ padding:3px 0px 0px 0px;float:left}
-.time{float:right;font-size:10px;color:#FFF;padding-top:13px;}
+.time{font-size:10px;color:#FFF;float: left;}
 .lst-bao{padding-left:5px;padding-bottom:10px;color:#333;}
 .lst-bao h3{margin-bottom:5px;}
 #middle-left .lst-bao h3 a{color:#CC0000;font-weight:bold;text-transform:uppercase;}
@@ -112,7 +112,7 @@ ul li{list-style-type:none;}
 }
 #butdanh li a{font-size:9px;}
 #chude{}
-.box-center{margin-bottom:5px;overflow: hidden;}
+.box-center{margin-bottom:5px;overflow: hidden;width: 100%;}
 .box-center .top-topic-top{overflow:hidden;margin-bottom:0px;background:#333;}
 #box-topichot{}
 #box-topichot .top-topic-top li{float:right;}
@@ -150,7 +150,7 @@ ul li{list-style-type:none;}
 #middle-right .box-center .tap-right a{color:#FFF;}
 .box-center .content-box-right ul li{list-style-position:inside;}
 #middle-right .box-center .content-box-right ul li a{font-size:10px;padding-top:5px;padding-right: 5px;}
-.box-center ul li a {font-size:12px;}
+.box-center ul li a {font-size:12px; font-weight: normal;}
 #list-topic-detail{
     overflow: hidden;
     padding-left: 5px;
@@ -1162,6 +1162,7 @@ a {
 .divTagRight {
     float: left;
     width: 350px;
+    margin-top: 15px;
 }
 .aTitleTag {
     color: #000000;
@@ -1409,6 +1410,7 @@ select {
     font-weight: bold;
     /*margin-bottom: 2px;*/
     padding: 3px 5px 4px;
+    float: right;
 }    
 #suggest_topic a
 {
@@ -1416,8 +1418,7 @@ select {
     margin-left: 20px;
 }
 .box-content{
-	width: 50%;
-	float: left;	
+	
 }
 .content-right{
 	
@@ -1429,11 +1430,46 @@ select {
   	position: absolute;
   	width: 280px;
   	padding: 10px;
-  	background: #FFECA8;
+  	background: #FFFFE0;
   	color: #000000;
-  	border: 1px solid #9A620E;
+  	border: 2px solid #9A620E;
   	font-size: 90%;
   	-webkit-border-radius: 7px;
 	-moz-border-radius: 7px;
 	border-radius: 7px;
+}
+.left-div{
+	float:left;	
+}
+.right-div{
+	float: right;
+}
+.top-func .frm-search{float: left;}
+.tagTitle {font-size: 12px;}
+#box-tag h3 a{ color: #CC0000;
+    font-weight: bold;
+    }
+#box-tag h3{
+	margin-bottom: 5px;
+}
+#top-func{overflow: hidden;}
+#top-link ul li{float: left;color: #fff;padding-top: 3px;}
+#top-link ul li a{color: #fff;}
+#top-link{float: right;}
+#box-content-page{padding: 5px;}
+.box #div-topic-top{margin-bottom: 0px;}
+.aiContactSafe_row {width:100%;padding-bottom: 5px;}
+.aiContactSafe_contact_form_field_label_left{float: left;}
+.aiContactSafe_contact_form_field_right{
+	margin-left: 100px;
+}
+.aiContactSafe_contact_form_field_right .textbox{width: 200px;}
+.aiContactSafe {margin-bottom: 5px;}
+.box-content-left {float: left;width: 50%;}
+.message{margin-top: 10px;}
+.left-comment p {font-weight: normal;}
+.postbitlegacy .postfoot .textcontrols a.editpost, .postbit .postfoot .textcontrols a.editpost, .eventbit .eventfoot .textcontrols a.editevent {
+    background: url("../images/edit_40b.png") no-repeat scroll left center #DDDCDC;
+    border: 0 solid #A8A8A8;
+    padding: 0 0 0 20px;
 }

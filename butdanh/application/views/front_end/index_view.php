@@ -35,7 +35,7 @@
                         <li class="topic-list-top"><a href="<?php echo base_url();?>ajax/getLatestTopic" class="topic-a-top reject">Thảo luận mới từ chối</a></li>
                     </ul>
                 </div> -->
-                <div class="box-content">
+                <div class="box-content box-content-left">
                 	<div id="div-topic-top"> 
                 		<ul class="top-topic-top"> 
                 			<li class="topic-list-top">                		                        
@@ -52,11 +52,23 @@
                           <li>
                           <a class="link-popup" href="<?php echo base_url().'chu-de/'.urldecode($new_topic->guid);?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a>
                           <div class="pop-up">
-					        <p>Bút Danh</p>
-					        <p>
-					        	<span><?php echo $new_topic->post_title;?></span><br />
+					        <p><b><?php echo $new_topic->post_title;?></b></p>
+					        
+					        	<span style="font-weight: normal;"><?php 
+					        		$content = $new_topic->post_content;
+					        		if(strlen($content)>250)
+					        		{
+						        		$content = substr($content,0,250);
+						        		echo $content.'...';
+					        		}
+					        		else 
+					        		{
+					        			echo $content;
+					        		}
+				        			?>
+			        			</span><br />
 					        	<span class="date-time"><?php echo date_format(date_create($new_topic->post_date),'d-m-Y H:i:s');?></span>
-					        </p>
+					        
 					      </div>
                           </li>
                           <?php
@@ -76,11 +88,30 @@
                     <div class ="box1" id="scroll_box-top">
                         <ul>
                           <?php 
-                              foreach ($lstLatesTopic as $new_topic)
+                              foreach ($lstPendingTopic as $pending_topic)
                               {
                           ?>
                           <li>
-                          <a href="<?php echo base_url().'chu-de/'.urldecode($new_topic->guid);?>"><span class="item-toptic-new"><?php echo $new_topic->post_title;?></span></a>&nbsp;<span class="date-time"><?php echo date_format(date_create($new_topic->post_date),'d-m-Y H:i:s');?></span><br>
+                          <a class="link-popup" href="<?php echo base_url().'chu-de/'.urldecode($pending_topic->guid);?>"><span class="item-toptic-new"><?php echo $pending_topic->post_title;?></span></a>
+                          <div class="pop-up">
+					        <p><b><?php echo $pending_topic->post_title;?></b></p>
+					        
+					        	<span style="font-weight: normal;"><?php 
+					        		$content = $pending_topic->post_content;
+					        		if(strlen($content)>250)
+					        		{
+						        		$content = substr($content,0,250);
+						        		echo $content.'...';
+					        		}
+					        		else 
+					        		{
+					        			echo $content;
+					        		}
+				        			?>
+			        			</span><br />
+					        	<span class="date-time"><?php echo date_format(date_create($pending_topic->post_date),'d-m-Y H:i:s');?></span>
+					        
+					      </div>
                           </li>
                           <?php
                               }

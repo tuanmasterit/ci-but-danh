@@ -4,7 +4,8 @@
 		{
 			// Call the Model constructor
 			parent::__construct();
-			$this->load->database();				
+			$this->load->database();
+			date_default_timezone_set('Asia/Ho_Chi_Minh');				
 		}
 		//add
 		function add($user_nicename,$user_regitered,$display_name){
@@ -100,13 +101,17 @@
 		{
 			$this->db->select('id');
 			$this->db->from('ci_users');			
-			$this->db->where('user_nicename',$user_nicename);			
+			$this->db->where("ENCODE(UPPER(user_nicename),'key') = ENCODE(UPPER('".$user_nicename."'),'key')");			
 			
 			$query = $this->db->get();
 			$result = $query->result();			
 			if(count($result)>0)
 			{
 				return  $result[0]->id;
+			}
+			else 
+			{
+				return 0;
 			}
 		}
 		
@@ -118,6 +123,57 @@
 				'meta_value'=>$magazine_id
 			);
 			$this->db->insert('ci_usermeta',$arr);
+		}
+		
+		function addAuthorTag($user_nicename)
+		{
+			$author_id = $this->get_by_user_nicename($user_nicename);			
+			if($author_id>0)
+			{
+				$this->db->select('user_id,num_tag,date_search');
+				$this->db->from('ci_tags');
+				$this->db->where('user_id',$author_id);
+				$query = $this->db->get();
+				$result = $query->result();
+				if(count($result)>0)
+				{
+					$array = array(
+						'num_tag'=>($result[0]->num_tag +1),
+						'date_search' => date('Y-m-d H:i:s')
+					);
+					$this->db->where('user_id',$author_id);
+					$this->db->update('ci_tags',$array);
+				}
+				else 
+				{
+					$array = array(
+						'user_id'=>$author_id,
+						'num_tag'=>1,
+						'date_search'=>date('Y-m-d H:i:s')
+					);
+					$this->db->insert('ci_tags',$array);					
+				}
+				return true;
+			}
+			else 
+			{
+				return false;				
+			}
+		}
+		
+		function getTopTag($limit=0,$ofset=0)
+		{
+			$this->db->select('user_id,num_tag,date_search,user_nicename');
+			$this->db->from('ci_tags');
+			$this->db->join('ci_users', 'ci_users.id = user_id');
+			$this->db->order_by('num_tag','DESC');
+			$this->db->order_by('date_search','DESC');
+			if($limit>0)
+			{
+				$this->db->limit($limit,$ofset);
+			}
+			$query = $this->db->get();
+			return $query->result();
 		}
 	}
 ?>
