@@ -9,7 +9,7 @@
             <!-- end menu-top -->
         	<div id="box_post_detail">
                 <div id="profile_title"><p>Đề xuất thảo luận</p></div>	
-                <div id="suggestTopic">                	
+                <div id="suggestTopic-view">                	
                 	<form method="post" id="formID" action="<?php echo base_url().'post/suggest/';?>"  accept-charset="utf-8" enctype="multipart/form-data">        
                     	<div class="edit-main">   
                                 <p><label>Tiêu đề:</label></p>
