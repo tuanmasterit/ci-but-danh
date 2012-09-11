@@ -40,7 +40,7 @@
                     	foreach ($lstAuthorMonth as $AuthorMonth){
                     ?>
                     <ul>
-                    	<li><a href="<?php echo base_url().'profile/'.$AuthorMonth->post_author;?>"><?php echo $num;?>.&nbsp;<b><?php echo $AuthorMonth->user_nicename;?></b> &nbsp;(<?php echo $TopLike->name;?>)</a></li>
+                    	<li><a href="<?php echo base_url().'profile/'.$AuthorMonth->post_author;?>"><?php echo $num;?>.&nbsp;<b><?php echo $AuthorMonth->user_nicename;?></b> &nbsp;(<?php echo $AuthorMonth->name;?>)</a></li>
                     </ul>
                     <?php 
                     	$num++;

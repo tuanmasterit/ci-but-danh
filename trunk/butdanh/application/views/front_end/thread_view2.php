@@ -162,11 +162,20 @@
 							</form>
 						</li>
 						<li>
-							<ul class="box-social-network">
+							<!-- <ul class="box-social-network">
 			                    <li><div class="fb-like" data-href="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true"></div></li> 
 			                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>" data-text="Bút danh" data-dnt="true">Tweet</a></li>                    
 			                    <li><div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://butdanh.com/chu-de/<?php echo urldecode($thr->guid); ?>"></div></li>		                    
-		                	</ul>
+		                	</ul> -->
+		                	<!-- AddThis Button BEGIN -->
+							<div class="addthis_toolbox addthis_default_style ">
+							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+							<a class="addthis_button_tweet"></a>
+							<a class="addthis_button_pinterest_pinit"></a>
+							<a class="addthis_counter addthis_pill_style"></a>
+							</div>
+							<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-5045b0fe624e36a7"></script>
+							<!-- AddThis Button END -->
 						</li>
 						<li id="post_thanks_box_13234602" class="postbit postbitim">
 							<div class="postbody">
@@ -275,6 +284,17 @@
 							<div class="postfoot">
 								<div class="textcontrols floatcontainer">
 									<span class="postcontrols">
+										<?php 
+											if($Comment->comment_author == $user_name)
+											{
+										?>
+										<a class="editpost" comment_title = "<?php echo $Comment->comment_agent;?>" title="Sửa/Xóa nội dung" href="" rel="nofollow">
+											<img id="editimg_13729010" alt="Sửa/Xóa nội dung" src="<?php echo base_url();?>application/content/images/clear.gif" title="Sửa/Xóa nội dung">
+											Sửa Bài Viết
+										</a>
+										
+										<span class="seperator"> </span>
+										<?php }?>
 										 <img style="display:none" id="progress_13234602" src="<?php echo base_url();?>application/content/images/progress.gif" alt=""> 
 										 <a id="qr_13234602" class="quickreply" href="" rel="nofollow" title="Trả Lời Nhanh">
 										 	<img title="Trả Lời Nhanh" id="replyimg_13234602" src="<?php echo base_url();?>application/content/images/clear.gif" alt="Trả Lời Nhanh"> Trả lời
@@ -282,7 +302,8 @@
 									 	<span class="seperator">&nbsp;</span> 
 									 	<a id="qrwq_13234602" class="newreply" href="" rel="nofollow" title="Trả Lời Với Trích Dẫn">
 									 		<img title="Trả Lời Với Trích Dẫn" id="quoteimg_13234602" src="<?php echo base_url();?>application/content/images/clear.gif" alt="Trả Lời Với Trích Dẫn">  Trả Lời Với Trích Dẫn
-							 			</a> 							 			
+							 			</a> 
+							 			<input type="hidden" id="hdfCheckEdit" value="">							 			
 									</span>								
 								</div>
 							</div>
@@ -310,7 +331,7 @@
 									</div>
 									<div class="blockfoot actionbuttons">
 										<div class="group">											
-											<input id="qr_submit" class="button qr_submit" type="submit"  tabindex="1" name="sbutton" title="Gửi trả lời" accesskey="s" value="Gửi Trả Lời">											
+											<input id="<?php echo $Comment->comment_ID;?>" class="button qr_submit" type="submit"  tabindex="1" name="sbutton" title="Gửi trả lời" accesskey="s" value="Gửi Trả Lời">											
 											<input id="qr_cancelbutton" class="button qr_cancelbutton" type="reset"  tabindex="4" name="cancel" title="Hủy bỏ" accesskey="c" value="Hủy bỏ" style="">
 										</div>
 									</div>

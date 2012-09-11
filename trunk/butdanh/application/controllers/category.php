@@ -21,7 +21,8 @@ class Category extends CI_Controller {
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$id);
         $data['lstLatestComment'] = $this->Comment_model->get(5,0,'comment_date','DESC','',$id);
-        $data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', $id,'', 10, 0, 'DESC', 'post_date','publish');
+        $data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', $id,'', 0, 0, 'DESC', 'post_date','publish','',date('Y-m-d h:i:s',strtotime('-1 days')),date('Y-m-d h:i:s'));
+        $data['lstPendingTopic'] = $this->Post_model->get(0, 'topic', $id,'', 0, 0, 'DESC', 'post_date','pending','',date('Y-m-d h:i:s',strtotime('-1 days')),date('Y-m-d h:i:s'));
 		$data['lstToppic_top'] = $lstToppic_top;
 		$data['new_topics'] = $this->Post_model->get(0, 'topic', $id,'', -1, 0, 'DESC', 'post_date','pending');
 		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', $id,'', -1, 0, 'DESC', 'post_date','reject');

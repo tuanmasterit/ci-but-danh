@@ -58,16 +58,26 @@ $(document).ready(function(){
 		var content = (CKEDITOR.instances[editor].getData());
 		
 		var url = $('#hdfurl').attr('value');
-		var post_id = $("#post_id").attr('value');		
-		$.post(url,{post_id:post_id,comment_content:content,comment_title:title},function(data) {
-			if(data == 1)
-			{
-				window.location.reload();
-			}
-			else
-			{return false;}
-		});
-			
+		var post_id = $("#post_id").attr('value');
+		var comment_id = $(this).attr('id');
+		
+		var check = $(this).parent().parent().parent().parent().parent().prev().children().next().next().children().children().children();
+		var check2 = check.next().next().next().next().next().next('#hdfCheckEdit').attr('value');
+		var check_edit = '';
+		if(check2)
+		{
+			check_edit = check2;
+		}		
+		
+		$.ajax({
+		     type: "POST",
+		     url: url, 
+		     data: {post_id:post_id,comment_content:content,comment_title:title,check_edit:check_edit,comment_id:comment_id}, 
+		     complete:function(){
+		        window.location.reload(true);
+		     } 
+		  });
+		return false;	
 	});
 	
 	$('.newreply').click(function(){		
@@ -75,6 +85,19 @@ $(document).ready(function(){
 		$(this).parent().parent().parent().parent().next().find('.vbform').show();
 		var content =  $(this).parent().parent().parent().prev().find('.postcontent').html();
 		content = "<blockquote class='qoute-comment'>"+content+"</blockquote><br/>";		
+		CKEDITOR.instances[editor].setData(content);
+		
+		return false;
+	});
+	
+	$('.editpost').click(function(){		
+		var editor = $(this).parent().parent().parent().parent().next().find('.vbform').find('.editor_content').attr('id');
+		$(this).parent().parent().parent().parent().next().find('.vbform').show();
+		var content =  $(this).parent().parent().parent().prev().find('.postcontent').html();		
+		var title = $(this).attr('comment_title');
+		$(this).parent().parent().parent().parent().next().find('#title').val(title);
+		$(this).next().next().next().next().next().next().val('true');
+		
 		CKEDITOR.instances[editor].setData(content);
 		
 		return false;

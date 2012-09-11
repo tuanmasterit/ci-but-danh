@@ -13,6 +13,7 @@ class Home extends CI_Controller {
 		$this->load->helper('captcha');
 		$this->load->library('email');
 		$this->load->helper('security');
+		$this->load->model('Option_model');
     }	
 	public function index()
 	{				
@@ -25,7 +26,11 @@ class Home extends CI_Controller {
 		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
 		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
 		$data['lstLatestComment'] = $this->Comment_model->get(15);
-		$data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', 0,'', 10, 0, 'DESC', 'post_date','publish');
+		//$data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', 0,'', 0, 0, 'DESC', 'post_date','publish','',date('Y-m-d h:i:s',strtotime('-1 days')),date('Y-m-d h:i:s'));
+		//$data['lstPendingTopic'] = $this->Post_model->get(0, 'topic', 0,'', 0, 0, 'DESC', 'post_date','pending','',date('Y-m-d h:i:s',strtotime('-1 days')),date('Y-m-d h:i:s'));
+		
+		$data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', 0,'', 15, 0, 'DESC', 'post_date','publish','');
+		$data['lstPendingTopic'] = $this->Post_model->get(0, 'topic', 0,'', 15, 0, 'DESC', 'post_date','pending','');
 		//New topic
 		
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
@@ -142,8 +147,8 @@ class Home extends CI_Controller {
 		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
 		$data['term_toptic'] =0;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
-		//$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
-		//$data['lstToppic_top'] = $lstToppic_top;
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+		$data['lstToppic_top'] = $lstToppic_top;
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		$this->load->view('front_end/view_register',$data);
@@ -169,22 +174,22 @@ class Home extends CI_Controller {
 		$data['lstLatestComment'] = $this->Comment_model->get(5);	
 		$data['term_toptic'] =0;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
-		//$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
-		//$data['lstToppic_top'] = $lstToppic_top;
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+		$data['lstToppic_top'] = $lstToppic_top;
 		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
 		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
 		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
 		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
 		$this->load->view('front_end/view_verify',$data);
 	}
-    public function search($post_type='all',$term=0,$titleTopic='~',$row=0)
+    public function search($post_type='all',$term=0,$titleTopic='~',$row=0,$row2=0)
 	{
 	    $data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
 		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
 		$data['lstLatestComment'] = $this->Comment_model->get(5);
 		$data['term_toptic'] =0;
-		//$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
-		//$data['lstToppic_top'] = $lstToppic_top;
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
+		$data['lstToppic_top'] = $lstToppic_top;
 		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
 		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
@@ -199,7 +204,7 @@ class Home extends CI_Controller {
 		}
         
         $data['post_type'] = $post_type;
-        echo $post_type;
+        
 		// Get category
 		$data['category'] = $term;
 		if($this->input->post('slcategory') != ''){
@@ -219,12 +224,13 @@ class Home extends CI_Controller {
         {
             if ($post_type == 'topic') {$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','publish',$data['titleTopic']);}
             elseif ($post_type == 'post') {$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],'','',$data['titleTopic']);}
+            elseif ($post_type == 'author') {$config['total_rows'] = 0;}
             else $config['total_rows']=$this->Post_model->getCount('',$data['category'],'','all',$data['titleTopic']);
         } else
         {
             $config['total_rows'] = 0;
         }
-        echo   $config['total_rows'];		
+        		
 		$config['cur_page']= $row;
         $config['num_links'] = 3;		
 		$this->pagination->initialize($config);
@@ -233,23 +239,155 @@ class Home extends CI_Controller {
         $data['total_rows'] = $config['total_rows'];
         if ($row+10 <= $data['total_rows'] )
          {$data['row']  = 10;} 
-         else {$data['row']  =$data['total_rows'] - $row;}
-        if  ($data['titleTopic'] != '~' )
+        else {$data['row']  =$data['total_rows'] - $row;}
+        
+        include('paging2.php');
+        $org_config['base_url']= base_url()."home/search/".$data['post_type']."/".$data['category']."/".$data['titleTopic']."/".$row.'/';
+        
+        $org_config['cur_page']= $row2;
+        $org_config['num_links'] = 3;		
+		$this->pagination->initialize($org_config);
+		$data['list_link2'] = $this->pagination->create_links();
+		if  ($data['titleTopic'] != '~' )
         { 
-    		if ($post_type == 'topic') $data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']); 
-            elseif ($post_type == 'post') {$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);}
-            else $data['lstPosts'] = $this->Post_model->get(0,'',$data['category'],'',$config['per_page'],$row,'DESC','post_date','all',$data['titleTopic']);
+    		if ($post_type == 'topic') 
+    		{
+    			$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','publish',$data['titleTopic']);
+    			$data['lstAuthor'] = array();	
+    			$org_config['total_rows'] = 0; 
+    		}    		
+            elseif ($post_type == 'post') 
+            {
+            	$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$data['category'],'',$config['per_page'],$row,'DESC','post_date','',$data['titleTopic']);
+            	$data['lstAuthor'] = array();
+            	$org_config['total_rows'] = 0;
+            }
+            elseif ($post_type == 'author') 
+            {
+            	$data['lstPosts'] = array();
+            	$data['lstAuthor'] = $this->User_model->get(0,$org_config['per_page'],$row2,'butdanh',$data['category'],'user_registered','DESC',-1,$data['titleTopic'],'magazine');
+            	$org_config['total_rows'] = $this->User_model->getCount('butdanh',$data['category'],$data['titleTopic']);
+            	$this->Author_model->addAuthorTag($data['titleTopic']);
+            }            
+            else 
+            {
+            	
+            	$data['lstPosts'] = $this->Post_model->get(0,'',$data['category'],'',$config['per_page'],$row,'DESC','post_date','all',$data['titleTopic']);
+            	$data['lstAuthor'] = $this->User_model->get(0,$org_config['per_page'],$row2,'butdanh',$data['category'],'user_registered','DESC',-1,$data['titleTopic'],'magazine');
+            	$org_config['total_rows'] = $this->User_model->getCount('butdanh',$data['category'],$data['titleTopic']);
+            	$this->Author_model->addAuthorTag($data['titleTopic']);	
+            	
+            }
         } else
         {
             $data['lstPosts'] = array();
+            $data['lstAuthor'] = array();
         }
+			
         if  ($data['titleTopic'] == '~' ) $data['titleTopic'] = '';
         $data['lstCategories'] = $this->Term_model->get();
 		
 		$this->load->view('front_end/search_view',$data);
 	}	
-    	
 	
+	function page($id)
+	{
+		$data['term_toptic'] =0;
+		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'',date('Y-m-d h:i:s',strtotime('-30 days')),date('Y-m-d h:i:s'));
+		$data['lstToppic_top'] = $lstToppic_top;
+		
+		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(15);
+		
+		//New topic
+		
+		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
+		$data['page_detail'] = $this->Post_model->get($id);
+		$this->load->view('front_end/page_view', $data);
+	}
+	
+	function contact()
+	{		
+		if($this->input->post('txtHoTen'))
+		{			
+			$name = $this->input->post('txtHoTen');
+			$email = $this->input->post('email');					
+			$address = $this->input->post('txtAddress');			
+			$phone = $this->input->post('txtPhone');	
+			$thongtin = $this->input->post('txtThongTin');
+				
+			//Send Mail
+			$this->email->from('lienhe@butdanh.com','Liên hệ - Phản hồi');
+			
+			//Email
+			$admin_email = $this->Option_model->getOption('admin_email');
+			
+			$this->email->to($admin_email);  
+			$this->email->subject('Liên hệ - Phản hồi');
+					
+			$email_msg='';
+			$email_msg.='Họ tên: '.$name;$email_msg.='<br>';
+			$email_msg.='Email: '.$email;$email_msg.='<br>';
+			$email_msg.='Địa chỉ: '.$address;$email_msg.='<br>';
+			$email_msg.='Điện thoại: '.$phone;$email_msg.='<br>';
+			$email_msg.='Thông tin liên hệ - phản hồi: '.$thongtin;$email_msg.='<br>';
+					
+			$this->email->message($email_msg);  
+			$this->email->send(); 
+			redirect('home/success');  
+		}
+				
+		
+		//Captcha
+		$vals = array(
+		    'word'		 => $this->rand_string(4),
+		    'img_path'	 => './captcha/',
+		    'img_url'	 => base_url().'captcha/',
+		    'font_path'	 => base_url().'system/fonts/texb.ttf',
+		    'img_width'	 => 100,
+		    'img_height' => 25,
+		    'expiration' => 7200
+		    );
+		
+		$cap = create_captcha($vals);
+		$data['image']=$cap['image'];
+		$data['word'] = $cap['word'];
+		//tranfer data
+		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(5);
+		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
+		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
+		$data['term_toptic'] =0;
+		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+		$data['lstToppic_top'] = $lstToppic_top;
+		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
+		
+		$this->load->view('front_end/contact_view', $data);
+	}
+	
+	function success()
+	{
+		//tranfer data
+		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
+		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
+		$data['lstLatestComment'] = $this->Comment_model->get(5);
+		$data['new_topics'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','pending');
+		$data['new_topics_reject'] = $this->Post_model->get(0, 'topic', 0,'', -1, 0, 'DESC', 'post_date','reject');
+		$data['term_toptic'] =0;
+		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
+		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,'');
+		$data['lstToppic_top'] = $lstToppic_top;
+		$data['lstmagazine'] = $this->Term_model->get(0,-1,0,'magazine');
+		$data['lstuser'] = $this->User_model->get(0,-1,0,'thanhvien');
+		
+		$this->load->view('front_end/contact_success_view', $data);
+	}
 }
 
 /* End of file welcome.php */

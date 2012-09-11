@@ -117,6 +117,8 @@ class Threads extends CI_Controller {
 		$data['check_thanks'] = $check_thanks;
         
         //end like ---------------------------------------------------
+        
+		$data['user_name']=$this->session->userdata('username');
 		$vals = array(
 		    'word'		 => $this->rand_string(3),
 		    'img_path'	 => './captcha/',

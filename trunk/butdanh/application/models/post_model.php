@@ -120,7 +120,7 @@ class Post_model extends CI_Model{
 		return $flag;
 	}	
 	//List Posts	
-	function get($id, $post_type='post', $term_id=0,$author='', $limit=-1, $offset=0, $order='DESC', $order_by='post_date',$post_status='',$titleTopic=''){
+	function get($id, $post_type='post', $term_id=0,$author='', $limit=-1, $offset=0, $order='DESC', $order_by='post_date',$post_status='',$titleTopic='',$from_date='',$to_date=''){
 		$this->db->select('
 					ci_posts.id,
 					post_author,
@@ -168,6 +168,11 @@ class Post_model extends CI_Model{
                     $this->db->where('post_status !=','reject');
                 } else
 				$this->db->where('post_status',$post_status);
+			}
+			if($from_date!='')
+			{
+				$this->db->where("post_date BETWEEN '".$from_date."' AND '".$to_date."'");
+				//$this->db->where('post_date >=',$from_date);
 			}
 			$query = $this->db->get();
 			return $query->result();
@@ -461,9 +466,10 @@ class Post_model extends CI_Model{
 		$this->db->join('ci_term_taxonomy', 'ci_term_taxonomy.term_taxonomy_id = ci_term_relationships.term_taxonomy_id');
 		$this->db->join('ci_terms', 'ci_terms.term_id = ci_term_taxonomy.term_id');
     	$this->db->where('post_type','post');
-    	$this->db->where('YEAR(post_date) = '.$year);
-    	$this->db->where('MONTH(post_date) = '.$month);
+    	//$this->db->where('YEAR(post_date) = '.$year);
+    	//$this->db->where('MONTH(post_date) = '.$month);
     	$this->db->where('user_activation_key','butdanh');
+    	$this->db->where('taxonomy','magazine');
     	$this->db->group_by('post_author');
     	$this->db->order_by('count','DESC');
     	if($limit>0)
