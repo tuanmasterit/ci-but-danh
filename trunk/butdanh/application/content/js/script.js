@@ -63,6 +63,13 @@ $(document).ready(function(){
 		
 		var check = $(this).parent().parent().parent().parent().parent().prev().children().next().next().children().children().children();
 		var check2 = check.next().next().next().next().next().next('#hdfCheckEdit').attr('value');
+		var alow = '';
+		var topic_id = $('#hdfTopicID').attr('value');
+		
+		if(check.next().hasClass('alow-edit'))
+		{
+			alow = 'true';			
+		}
 		var check_edit = '';
 		if(check2)
 		{
@@ -72,11 +79,12 @@ $(document).ready(function(){
 		$.ajax({
 		     type: "POST",
 		     url: url, 
-		     data: {post_id:post_id,comment_content:content,comment_title:title,check_edit:check_edit,comment_id:comment_id}, 
+		     data: {post_id:post_id,comment_content:content,comment_title:title,check_edit:check_edit,comment_id:comment_id,alow:alow,topic_id:topic_id}, 
 		     complete:function(){
 		        window.location.reload(true);
 		     } 
 		  });
+		  
 		return false;	
 	});
 	
