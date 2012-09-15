@@ -31,10 +31,14 @@
 					<input id="post_id" type="hidden" name="post_id" value="<?php echo $post_id;?>">
 					<input type="hidden" id="hdfurl" value="<?php echo base_url();?>/comments/add">
 					<ul id="posts" class="posts">
-					<?php                	
+					<?php 
+					$check_duyet = true;               	
 	        		foreach ($thread as $thr)
 	        		{
-	        			
+	        			if($thr->post_status == 'pending')
+	        			{
+	        				$check_duyet=false;	        				
+	        			}
 	        		?>
 	        		
 						<li id="thread-li" class="postbit postbitim postcontainer old">
@@ -94,6 +98,7 @@
 							</div>
 							<div class="postbody">
 								<div class="postrow">
+									<input type="hidden" value="<?php echo $thr->id?>" id="hdfTopicID">
 									<h2 class="posttitle icon">
 										<img alt="Post" src="<?php echo base_url();?>application/content/images/icon1.png" title="Post">
 										<?php echo $thr->post_title;?>
@@ -104,12 +109,24 @@
 								</div>
 							</div>
 							<?php 
-							if($check_login)
+							if($check_login == true)
 							{
 							?>
 							<div class="postfoot">
 								<div class="textcontrols floatcontainer">
 									<span class="postcontrols">
+										<?php 
+											if($thr->user_login == $user_name)
+											{
+										?>
+										<a class="editpost" comment_title = "<?php echo $thr->post_title;?>" title="Sửa/Xóa nội dung" href="" rel="nofollow">
+											<img id="editimg_13729010" alt="Sửa/Xóa nội dung" src="<?php echo base_url();?>application/content/images/clear.gif" title="Sửa/Xóa nội dung">
+											Sửa Bài Viết
+										</a>
+										
+										
+										<?php }?>
+										<?php if($check_duyet==true){?>
 										 <img style="display:none" src="<?php echo base_url();?>application/content/images/progress.gif" alt=""> 
 										 <a class="quickreply" href="" rel="nofollow" title="Trả Lời Nhanh">
 										 	<img title="Trả Lời Nhanh" id="replyimg_13234602" src="<?php echo base_url();?>application/content/images/clear.gif" alt="Trả Lời Nhanh"> Trả lời
@@ -117,7 +134,9 @@
 									 	<span class="seperator">&nbsp;</span> 
 									 	<a id="qrwq_13234602" class="newreply" href="" rel="nofollow" title="Trả Lời Với Trích Dẫn">
 									 		<img title="Trả Lời Với Trích Dẫn" id="quoteimg_13234602" src="<?php echo base_url();?>application/content/images/clear.gif" alt="Trả Lời Với Trích Dẫn">  Trả Lời Với Trích Dẫn
-							 			</a> 
+							 			</a> 							 			
+							 			<?php }?>
+							 			<input type="hidden" id="hdfCheckEdit" class="alow-edit" value="">
 							 			<?php 
 					                    	if(($check_login)&&($check_thanks==false))
 					                    	{                    	
@@ -191,11 +210,11 @@
 					                                if ($i!=$total_thanks)
 					                                 {        
 					                        ?>
-												<a rel="nofollow" href='<?php echo base_url()."member/profile/".$thanks->meta_value;?>'><?php $name =  $this->User_model->getById($thanks->meta_value); echo $name['user_nicename'];?> &nbsp;</a> ,												
+												<a rel="nofollow" href='<?php echo base_url()."member/profile/".$thanks->meta_value;?>'><?php $name =  $this->User_model->getById($thanks->meta_value); if(count($name>0))echo $name['user_nicename'];?> &nbsp;</a> ,												
  											<?php } else 
 				                                  {                             
 				                            ?>
- 												<a rel="nofollow" href='<?php echo base_url()."member/profile/".$thanks->meta_value;?>'><?php $name =  $this->User_model->getById($thanks->meta_value); echo $name['user_nicename']?></a> 												
+ 												<a rel="nofollow" href='<?php echo base_url()."member/profile/".$thanks->meta_value;?>'><?php $name =  $this->User_model->getById($thanks->meta_value); if(count($name>0)) echo $name['user_nicename']?></a> 												
  											<?php }}?>
 											</div>
 										</div>

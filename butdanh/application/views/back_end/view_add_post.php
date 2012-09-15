@@ -70,7 +70,7 @@
                             <div class="widgetcontent" style="display: block;">
                             	<p id="sl_butdanh_ajax">
                                     Tác giả:
-                                    <input type="text" id="inputString" class="longinput validate[required]" name="txtnicename" onkeyup="lookup(this.value);" onblur="fill();" />
+                                    <input type="text" id="inputString" class="longinput" name="txtnicename" onkeyup="lookup(this.value);" onblur="fill();" />
                                     <div class="suggestionsBox" id="suggestions" style="display: none;">
 										<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
 										<div class="suggestionList" id="autoSuggestionsList">
@@ -85,10 +85,11 @@
                                 <p class="linkadd"><a href="javascript: return false;" id="link-add">Thêm mới</a></p>
                                 <div class="thembutdanh" style="display:none;">
                                 	<input type="hidden" id="hd_url_ajax_add_butdanh" value="<?php echo base_url();?>admin/author/add_ajax" />
-                                	<p>Tác giả: <input type="text" id="txtbutdanh" value="" style="width:75%;" /></p>
+                                	<p>Tác giả: <input type="text" id="txtbutdanh" value="" style="width:72%;" /></p>
+                                	<p>Lĩnh vực: <input type="text" id="txtLinhVuc" name="txtLinhVuc" style="width:72%;"></p>
                                     <p>
                                     	Báo: 
-                                        <select id="slmagazine" style="width:80%;">
+                                        <select id="slmagazine" style="width:77%;">
                                         	<?php foreach($lstmagazine as $magazine){?>
                                         		<option value="<?php echo $magazine->term_id;?>"><?php echo $magazine->name;?></option>
                                             <?php }?>

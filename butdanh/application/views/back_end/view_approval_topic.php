@@ -80,8 +80,10 @@
                                     <td><?php echo $Post->user_nicename;?></td>
                                     <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo $Post->post_date;?></td>
-                                    <td class="center">
-                                    	<a class="edit" href="<?php echo base_url();?>admin/topic/confirm/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>">Phê duyệt</a>                                        
+                                    <td class="center" style="min-width:100px;">
+                                    	<a class="edit" href="<?php echo base_url();?>admin/topic/edit/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>">Sửa</a> &nbsp;
+                                    	<a class="edit" href="<?php echo base_url();?>admin/topic/confirm/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>">Phê duyệt</a>
+                                    </td>                                        
                                 </tr>
                             <?php }?>
                         </tbody>
