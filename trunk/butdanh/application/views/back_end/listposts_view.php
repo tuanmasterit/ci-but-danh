@@ -55,19 +55,19 @@
                                 <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
                                 <th class="head1">Tiêu đề</th>
                                 <th class="head0">Tác giả</th>
-                                
+                                <th class="head0">Tóm tắt</th>
                                 <th class="head0">Ngày cập nhật</th>
                                 <th class="head0" width="60">&nbsp;</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th class="head0"><input type="checkbox" class="checkall" /></th>
+                                <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
                                 <th class="head1">Tiêu đề</th>
                                 <th class="head0">Tác giả</th>
-                               
+                                <th class="head0">Tóm tắt</th>
                                 <th class="head0">Ngày cập nhật</th>
-                                <th class="head0">&nbsp;</th>
+                                <th class="head0" width="60">&nbsp;</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -76,7 +76,7 @@
                                 	<td class="center"><input value="<?php echo $Post->id;?>" type="checkbox"></td>
                                     <td><?php echo $Post->post_title;?></td>
                                     <td><?php echo $Post->user_nicename;?></td>
-                                    
+                                    <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo date_format(date_create($Post->post_date),'d-m-Y H:i:s');?></td>
                                     <td class="center">
                                     	<a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
