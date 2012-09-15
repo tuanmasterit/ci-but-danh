@@ -6,6 +6,7 @@
 			parent::__construct();
 			$this->load->model('Comment_model');
 			$this->load->model('User_model');
+			$this->load->model('Post_model');
 		}
 		
 		function add()
@@ -21,14 +22,24 @@
 			$comment_date = date('Y-m-d H-i-s');			
 			$comment_content = $this->security->xss_clean($this->input->post('comment_content'));
 			$comment_title = $this->security->xss_clean($this->input->post('comment_title'));
-			if($check_edit=='')
-			{
-				$this->Comment_model->add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$comment_title,$author_id,'approved');
+			$alow = $this->input->post('alow');
+			$topicID  = $this->input->post('topic_id');
+			if($alow=='true')
+			{				
+				$this->Post_model->updateTopic($topicID,$comment_content);
 			}
-			elseif($check_edit=='true')
+			else 
 			{
-				$this->Comment_model->update($comment_id,$comment_author,$comment_author_email,$comment_content,$comment_title,'approved');
-			}			      
+				if($check_edit=='')
+				{
+					$this->Comment_model->add($comment_post_ID,$comment_author,$comment_author_email,$comment_date,$comment_content,$comment_title,$author_id,'approved');
+				}
+				elseif($check_edit=='true')
+				{
+					$this->Comment_model->update($comment_id,$comment_author,$comment_author_email,$comment_content,$comment_title,'approved');
+				}
+			}
+						      
 		}
 	}
 ?>

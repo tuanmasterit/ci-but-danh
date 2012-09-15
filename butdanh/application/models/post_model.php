@@ -131,7 +131,8 @@ class Post_model extends CI_Model{
 					post_content,
 					post_type,
 					post_parent,
-                    guid					
+                    guid,
+                    user_login			
 				');
         // echo $titleTopic;       
 		$this->db->from('ci_posts');
@@ -457,9 +458,9 @@ class Post_model extends CI_Model{
         $this->db->update('ci_posts', $data); 
     }
     
-    function get_top_author_month($month='',$year='',$limit=0,$ofset=0)
+    function get_top_author_month($month='',$year='',$limit=0,$ofset=0,$term_id=0)
     {
-    	$this->db->select('post_author,post_title,user_nicename,user_activation_key,name, count(*) as count');
+    	$this->db->select('user_login,post_author,post_title,user_nicename,user_activation_key,name, count(*) as count');
     	$this->db->from('ci_posts');
     	$this->db->join('ci_users', 'ci_users.ID = ci_posts.post_author');
     	$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id = post_author');
@@ -470,6 +471,10 @@ class Post_model extends CI_Model{
     	//$this->db->where('MONTH(post_date) = '.$month);
     	$this->db->where('user_activation_key','butdanh');
     	$this->db->where('taxonomy','magazine');
+    	if($term_id>0)
+    	{
+    		$this->db->where('ci_terms.term_id',$term_id);
+    	}
     	$this->db->group_by('post_author');
     	$this->db->order_by('count','DESC');
     	if($limit>0)
@@ -494,7 +499,9 @@ class Post_model extends CI_Model{
 					post_type,
 					post_parent,
                     guid,
-                    user_registered               				
+                    post_status,
+                    user_registered,
+                    user_login             				
 				');
             $this->db->from('ci_posts');
             $this->db->join('ci_users','post_author=ci_users.id');
@@ -521,5 +528,14 @@ class Post_model extends CI_Model{
         return $query->result();
     }
     
+    
+    function updateTopic($id,$content)
+    {
+    	$arr = array(    		
+    		'post_content' => $content
+    	);
+    	$this->db->where('id',$id);
+    	$this->db->update('ci_posts',$arr);
+    }
 }
 ?>

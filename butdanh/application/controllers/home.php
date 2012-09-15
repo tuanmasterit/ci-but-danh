@@ -15,8 +15,18 @@ class Home extends CI_Controller {
 		$this->load->helper('security');
 		$this->load->model('Option_model');
     }	
-	public function index()
-	{				
+	public function index($row=0)
+	{	
+		include('paging.php');	
+
+		$config['base_url'] = base_url().'home/index/';
+		$config['total_rows'] = count($this->Comment_model->get());
+		$config['per_page'] = 15;
+		$config['cur_page']= $row;
+        $config['num_links'] = 5;		
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();	 
+		
 		//tranfer data
 		$data['term_toptic'] =0;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
@@ -25,7 +35,7 @@ class Home extends CI_Controller {
 		
 		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
 		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
-		$data['lstLatestComment'] = $this->Comment_model->get(15);
+		$data['lstLatestComment'] = $this->Comment_model->get($config['per_page'],$row);
 		//$data['lstLatesTopic'] = $this->Post_model->get(0, 'topic', 0,'', 0, 0, 'DESC', 'post_date','publish','',date('Y-m-d h:i:s',strtotime('-1 days')),date('Y-m-d h:i:s'));
 		//$data['lstPendingTopic'] = $this->Post_model->get(0, 'topic', 0,'', 0, 0, 'DESC', 'post_date','pending','',date('Y-m-d h:i:s',strtotime('-1 days')),date('Y-m-d h:i:s'));
 		
