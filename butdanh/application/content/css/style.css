@@ -77,7 +77,7 @@ ul li{list-style-type:none;}
 
 .name-butdanh{border-top: 1px solid #CCCCCC;padding-top:5px;}
 
-.nav-top{float:right;
+.nav-top{float: left;
 
 }
 
@@ -418,6 +418,7 @@ ul li{list-style-type:none;}
     word-wrap: break-word;
     font-size: 12px;
     padding: 10px;
+    text-align: justify;
 }
 blockquote {
     overflow: hidden;
@@ -847,6 +848,12 @@ form#quick_reply .actionbuttons .group {
     margin-left: 10px;       
     margin-top: 0px !important;
     overflow: hidden;
+    text-align: justify;
+    font-size: 12px;
+}
+#post_content td
+{
+	font-size: 12px;
 }
 .fon p {
     font-family: arial;
@@ -1473,3 +1480,7 @@ select {
     border: 0 solid #A8A8A8;
     padding: 0 0 0 20px;
 }
+.lst-butdanh1 ul {margin-bottom: 5px;}
+#profile_detail_more .linhvuc span{color: #000;}
+table tr td {font-size: 12px;}
+table tr td p{font-size: 12px;}

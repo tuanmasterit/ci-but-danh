@@ -22,10 +22,14 @@ jQuery(document).ready(function(){
 		var ten_but_danh = jQuery('#txtbutdanh').val();		
 		var magazine = jQuery('#slmagazine').val();
 		var url = jQuery('#hd_url_ajax_add_butdanh').val();
+		var display_name = jQuery('#txtLinhVuc').val();
 		//alert(url);
-		jQuery.post(url,{txtnicename:ten_but_danh,slmagazine:magazine},function(data) {
+		
+		jQuery.post(url,{txtnicename:ten_but_danh,slmagazine:magazine,display_name:display_name},function(data) {
 			jQuery('#author_load_ajax').html(data);
+			
 		});
+		jQuery('#inputString').val(ten_but_danh);
 		jQuery('.thembutdanh').hide('slow');
 		return false;
 	});
