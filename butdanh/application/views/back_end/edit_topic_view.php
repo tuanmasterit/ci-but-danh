@@ -32,11 +32,11 @@
                             </p>
                             </br>
                            
-                            <!--
-<p><label>Tóm t?t:</label></p>                            
+                            
+							<p><label>Tóm tắt:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"><?php echo $l_topic->post_excerpt;?></textarea></span></p>
                             </br>
--->
+
                             <p><label>Nội dung:</label></p>                            
                             <p><textarea name="txtcontent" id="editor_content"><?php echo $l_topic->post_content;?></textarea></p>                            
                             </br>
