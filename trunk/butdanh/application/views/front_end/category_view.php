@@ -26,7 +26,7 @@
             <!-- end menu top -->
             <div class="box-center" id="box-newtopic">            	
                 
-                <div class="box-content">
+                <div class="box-content box-content-left">
                 	<div id="div-topic-top"> 
                 		<ul class="top-topic-top"> 
                 			<li class="topic-list-top">                		                        
@@ -154,7 +154,7 @@
                         $num++;
                         }
                     ?>
-                    
+                    <?php echo $list_link;?>
                 </div>
             </div>    <!-- end binh luan moi nhat -->
         </div><!-- end middle-center -->

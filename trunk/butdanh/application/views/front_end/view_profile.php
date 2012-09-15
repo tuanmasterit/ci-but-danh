@@ -20,7 +20,7 @@
                                                          
 					<div id="profile_detail_more">									
 						<p><span>Báo: <?php echo $butdanh['name'];?></span></p>
-						
+						<p class="linhvuc"><span>Lĩnh vực viết bài: <?php echo $butdanh['display_name'];?></span></p>
 						<input type="hidden" id="hdflike" value="<?php echo $check_like;?>" />
                         <div class="like" id="div-like">
                         

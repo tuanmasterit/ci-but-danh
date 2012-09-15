@@ -104,27 +104,27 @@
 				<h3 class="tamgiac arrow-up"><a class="bullet" >Bút danh được tìm kiếm nhiều nhất</a></h3>
 				<div id="suggestButdanh0" class="lst-butdanh" style="display: block;">
 					<?php 
-						$lstTag = $this->Author_model->getTopTag(40,0);						
+						$lstTag = $this->Author_model->getTopTag(30,0);						
 						$top = 0;
 						if(count($lstTag)>0)
 						{
 							$top = $lstTag[0]->num_tag;							
 						}
-						$i=1;
+						shuffle($lstTag);
 						foreach ($lstTag as $tag)
 						{
 					?>
 						<a <?php 
-						if($tag->num_tag > ($top*0.8)) 
+						if($tag->num_tag > ($top*0.7)) 
+						{
+							echo "style='font-size:13px;font-weight: bold;'";
+						}
+						elseif ($tag->num_tag > ($top*0.5))
 						{
 							echo "style='font-size:12px;font-weight: bold;'";
 						}
-						elseif ($tag->num_tag > ($top*0.6))
-						{
-							echo "style='font-size:11px;font-weight: bold;'";
-						}
-						?> href="<?php echo base_url().'profile/'.$tag->user_id?>"><?php echo $tag->user_nicename;?></a><?php if($i!=count($lstTag)) echo ",";?>
-					<?php $i++;}?>					
+						?> href="<?php echo base_url().'profile/'.$tag->user_id?>"><?php echo $tag->user_nicename;?></a> &nbsp;
+					<?php }?>					
 				</div>
 			</div>
         	<div class="box-sidebar" id="box-butdanh">
@@ -139,7 +139,7 @@
                 	
                     <li class="name-butdanh">
                     	<h3 class="tamgiac arrow-up" id="btSuggestBao<?php echo $jj;?>"><a class="bullet" ><?php echo $magazine->name;?></a></h3> 
-                        <?php $lstbutdanh = $this->User_model->get_butdanh_order($magazine->term_id);?>                       
+                        <?php $lstbutdanh = $this->Post_model->get_top_author_month('','',0,0,$magazine->term_id);?>                       
                     	<div class="lst-butdanh" id="suggestButdanh<?php echo $jj;?>">
                         	<?php 
                         	$count1=count($lstbutdanh);
@@ -149,9 +149,9 @@
                         		$i++;
                         		if($i==$count1)
                         		{?>
-                        		<a href="<?php echo base_url();?>profile/<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></a>&nbsp;
+                        		<a href="<?php echo base_url();?>profile/<?php echo $butdanh->post_author;?>"><?php if($i<=20) {echo '<b>'.$butdanh->user_nicename.'</b>';} else {echo $butdanh->user_nicename;}?></a>&nbsp;
           						<?php continue;}?>
-                        		<a href="<?php echo base_url();?>profile/<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></a>,&nbsp;
+                        		<a href="<?php echo base_url();?>profile/<?php echo $butdanh->post_author;?>"><?php if($i<=20) {echo '<b>'.$butdanh->user_nicename.'</b>';} else {echo $butdanh->user_nicename;}?></a>,&nbsp;
 							<?php }?>
                         </div>
                     </li>

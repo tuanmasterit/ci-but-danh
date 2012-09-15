@@ -163,7 +163,7 @@
                         $num++;
                         }
                     ?>
-                    
+                    <?php echo $list_link;?>
                 </div>  
             </div>    <!-- end binh luan moi nhat -->
         </div><!-- end middle-center -->

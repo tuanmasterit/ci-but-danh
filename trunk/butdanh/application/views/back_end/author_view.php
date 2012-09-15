@@ -73,7 +73,7 @@
 								</div>
 							</div>
 							<br />
-                            <p><label>Thông tin:</label></p>                            
+                            <p><label>Lĩnh vực viết bài:</label></p>                            
                             <p><span class="field"><textarea class="longinput" name="txtdescription"></textarea></span></p>
 							<br />
                             <p><label>Thuộc báo:</label></p>
@@ -97,7 +97,8 @@
                 			<?php echo form_open('admin/author/edit',array('id'=>'formID','class'=>'stdform'));?>
                 			<input type="hidden" name="id" value="<?php echo $user['id'];?>">
                 			
-                            <p><label>Tên bút danh:</label></p>                            
+                            <p><label>Tên bút danh:</label></p>   
+                            <input type="hidden" name="hdfName" value="<?php echo $user['user_nicename'];?>">                         
                             <p><span class="field"><input id="inputString" type="text" value="<?php echo $user['user_nicename'];?>" class="longinput validate[required]" name="txtnicename" AUTOCOMPLETE=OFF onkeyup="lookup(this.value);" /></span></p>
                             <div class="suggestionsBox" id="suggestions" style="display: none;">
 								<img src="<?php echo base_url();?>application/content-admin/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
@@ -107,8 +108,8 @@
 							</div>
 							
                             <br />
-                            <p><label>Thông tin:</label></p>                            
-                            <p><span class="field"><textarea class="longinput" name="txtdescription"></textarea></span></p>
+                            <p><label>Lĩnh vực viết bài:</label></p>                            
+                            <p><span class="field"><textarea class="longinput" name="txtdescription"><?php echo $user['display_name'];?></textarea></span></p>
 							<br />
                             <p><label>Thuộc báo:</label></p>
                             <p>
@@ -163,21 +164,24 @@
                                 <col class="con1" />
                                 <col class="con0" />
                                 <col class="con1" />
+                                <col class="con0" />
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
                                     <th class="head1">Tên bút danh</th>    
-                                    <th class="head0">Tên báo</th>                                
-                                    <th class="head1" width="60">&nbsp;</th>
+                                    <th class="head0">Tên báo</th>    
+                                    <th class="head1">Lĩnh vực viết bài</th>                            
+                                    <th class="head0" width="60">&nbsp;</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th class="head0"><input type="checkbox" class="checkall" /></th>
                                     <th class="head1">Tên bút danh</th> 
-                                    <th class="head0">Tên báo</th>                                   
-                                    <th class="head1" width="60">&nbsp;</th>
+                                    <th class="head0">Tên báo</th>     
+                                    <th class="head1">Lĩnh vực viết bài</th>                              
+                                    <th class="head0" width="60">&nbsp;</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -186,6 +190,7 @@
                                         <td class="center"><input value="<?php echo $thanhvien->id;?>" type="checkbox"></td>
                                         <td><?php echo $thanhvien->user_nicename;?></td>
                                         <td><?php echo $thanhvien->name;?></td> 
+                                        <td><?php echo $thanhvien->display_name;?></td>
                                         <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/author/edit/<?php echo $thanhvien->id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $thanhvien->id;?>" title="Xóa thành viên" href="<?php echo base_url();?>admin/author/delete" name="delete" >Xóa</a></td>
                                     </tr>
                                 <?php }?>
