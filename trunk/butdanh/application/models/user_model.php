@@ -76,6 +76,11 @@ class User_model extends CI_Model{
 		$query = $this->db->query($sql);
 		return  $query->result();
 	}
+	
+	function get_butdanh_order_new($term_id)
+	{
+		
+	}
 	function get_butdanh($id=0,$limit=-1,$offset=0,$user_activation_key='',$term_id=0,$order_by='user_registered',$order='DESC'){
 		if($id==0)
 		{

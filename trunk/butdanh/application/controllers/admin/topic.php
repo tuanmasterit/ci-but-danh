@@ -116,7 +116,7 @@ class Topic extends CI_Controller {
 		$l_title = $this->input->post('txttitle');		
         
         $l_link = $this->get_link($l_title);		
-        //$l_exerpt = $this->input->post('txtexcerpt');		
+        $l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');
 		$l_butdanh2 = $this->input->post('txtAuthor');	
 		$l_post_id = $this->Author_model->get_by_user_nicename($l_butdanh2);	
@@ -128,7 +128,7 @@ class Topic extends CI_Controller {
 		if($flag==false){
 			$l_arr_categories = $this->input->post('cbcategory');			
 			//Insert posts			
-			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,'','topic',$l_featured_image,$l_arr_categories,$l_post_id,'public',$l_link);            
+			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d H-i-s'),$l_content,$l_title,$l_exerpt,'topic',$l_featured_image,$l_arr_categories,$l_post_id,'public',$l_link);            
 			if($last_id > 0){
 				redirect('admin/topic/lists/topic');							
 			}

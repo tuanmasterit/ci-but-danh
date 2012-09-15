@@ -11,12 +11,21 @@ class Category extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->model('Comment_model');
     }	
-	public function index($id=0)
-	{				
+	public function index($id=0,$row=0)
+	{		
+		include('paging.php');	
+
+		$config['base_url'] = base_url().'category/index/'.$id.'/';
+		$config['total_rows'] = count($this->Comment_model->get());
+		$config['per_page'] = 15;
+		$config['cur_page']= $row;
+        $config['num_links'] = 5;		
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();			
 		//tranfer data
 		$data['lstAuthorMonth'] = $this->Post_model->get_top_author_month(date('m'),date('Y'),10,0);
 		$data['lstLatestAuthor'] = $this->User_model->get_latest_author();
-		$data['lstLatestComment'] = $this->Comment_model->get(15);
+		$data['lstLatestComment'] = $this->Comment_model->get($config['per_page'],$row);
 		$data['term_toptic'] =$id;
 		$data['lsttopic'] = $this->Post_model->get(0,'topic','','',10,0);
 		$lstToppic_top = $this->Post_model->get_top_toppic_comment(5,0,$id);

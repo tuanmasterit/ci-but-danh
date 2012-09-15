@@ -70,7 +70,6 @@ class Author extends CI_Controller {
 			$term = $this->input->post('slmagazine');
 			if($this->Author_model->checkExitUser($user_nicename,$term)==true)
 			{	
-				
 				$this->session->set_flashdata('trang_thai','Exited');						
 				redirect('admin/author','refresh');
 			}
@@ -78,9 +77,7 @@ class Author extends CI_Controller {
 			{
 				
 				$user_regitered = date('Y-m-d h-i-s');
-				$display_name = $this->input->post('txtdescription');
-				
-				
+				$display_name = $this->input->post('txtdescription');				
 				
 				$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,'butdanh');
 				//$id = $this->User_model->get_id_last_row();
@@ -104,18 +101,27 @@ class Author extends CI_Controller {
 		{
 			$user_nicename = $this->input->post('txtnicename');
 			$user_regitered = date('Y-m-d h-i-s');
-			$display_name = '';
+			$display_name = $this->input->post('display_name');
 			$term = $this->input->post('slmagazine');
 			$meta_value = 'butdanh';
-			
-			$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,$meta_value);
-			$id = $this->User_model->get_id_last_row();
-			$this->Term_model->add_term_relationship($id,$term);
-			$lstbutdanh = $this->User_model->get($id);
-						
-			$html = '<p>Tác giả đã chọn: <label id="lblAuthor" style="color:red">';
-			$html .='<b>'.$lstbutdanh['user_nicename'].'</b></label></p>';
-			$html .='<input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]" value="'.$user_nicename.'">';				
+			$html = '';
+			if($this->Author_model->checkExitUser($user_nicename,$term)==true)
+			{	
+				$html .= '<p>Tác giả đã chọn: <label id="lblAuthor" style="color:red">';
+				$html .='<b>'.$user_nicename.'</b></label></p>';
+				$html .='<input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]" value="'.$user_nicename.'">';
+			}
+			else 
+			{
+				$this->User_model->add('',$user_nicename,'',$user_regitered,$display_name,$meta_value);
+				$id = $this->User_model->get_id_last_row();
+				$this->Term_model->add_term_relationship($id,$term);
+				$lstbutdanh = $this->User_model->get($id);
+							
+				$html .= '<p>Tác giả đã chọn: <label id="lblAuthor" style="color:red">';
+				$html .='<b>'.$lstbutdanh['user_nicename'].'</b></label></p>';
+				$html .='<input type="hidden" name="txtAuthor" id="txtAuthor" class="validate[required]" value="'.$user_nicename.'">';				
+			}
 
 			echo $html;	
 		}
@@ -141,19 +147,27 @@ class Author extends CI_Controller {
 			$user_id = $this->input->post('id');
 			$user_nicename = trim($this->input->post('txtnicename'));
 			$user_email = $this->input->post('txtemail');			
-			$display_name = $this->input->post('txtdisplay');
+			$display_name = $this->input->post('txtdescription');
 			$magazine = $this->input->post('slmagazine');
-			
-			if($this->Author_model->checkExitUser($user_nicename,$magazine)==true)
-			{						
-				$this->session->set_flashdata('trang_thai','Exited');						
+			$check_duplicate = $this->input->post('hdfName');
+			if($check_duplicate == trim($user_nicename))
+			{
+				$this->User_model->update_author($user_id,$user_nicename,$user_email,$display_name,$magazine);
 				redirect('admin/author','refresh');
 			}
 			else 
 			{
-				$this->User_model->update_author($user_id,$user_nicename,$user_email,$display_name,$magazine);
-				redirect('admin/author','refresh');
-			}			
+				if($this->Author_model->checkExitUser($user_nicename,$magazine)==true)
+				{						
+					$this->session->set_flashdata('trang_thai','Exited');						
+					redirect('admin/author','refresh');
+				}
+				else 
+				{
+					$this->User_model->update_author($user_id,$user_nicename,$user_email,$display_name,$magazine);
+					redirect('admin/author','refresh');
+				}
+			}						
 		}
 		else 
 		{
